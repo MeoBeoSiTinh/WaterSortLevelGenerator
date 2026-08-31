@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a42c7910d8f4b6a9c3e21f5a7b8d901, type: 3}
+  m_Name: WaterSortGenerationConfig
+  m_EditorClassIdentifier: 
+  schemaVersion: 1
+  levelsPerPack: 100
+  solutionExampleLimitWhenMany: 3
+  manySolutionThreshold: 10
+  defaultBottleCapacity: 4
+  allowCapacityFive: 1
+  allowNoEmptyStartingBottles: 1
+  noEmptyStartingBottleChance: 0.15
+  preferredMinEmptyBottleCount: 1
+  preferredMaxEmptyBottleCount: 3
+  duplicateColorBottleChance: 0.45
+  maxDuplicateBottleTargetsPerColor: 6
+  maxBottleCount: 30
+  selectionPolicy: shortest_non_loop_empty_priority
+  difficultyBands:
+  - name: Tutorial
+    levelFrom: 1
+    levelTo: 20
+    targetDifficultyScoreMin: 0.9
+    targetDifficultyScoreMax: 1
+    colorWeights:
+    - colorCount: 3
+      weight: 45
+    - colorCount: 5
+      weight: 35
+    - colorCount: 7
+      weight: 20
+    helperCapacityWeights:
+    - helperCapacity: 12
+      weight: 65
+    - helperCapacity: 8
+      weight: 35
+    capacityFiveChance: 0
+    minTargetBottleCount: 4
+    maxTargetBottleCount: 10
+    minShortestStepCount: 3
+    maxShortestStepCount: 16
+    maxSolutionCount: 10000
+  - name: Ramp
+    levelFrom: 21
+    levelTo: 100
+    targetDifficultyScoreMin: 0.75
+    targetDifficultyScoreMax: 0.9
+    colorWeights:
+    - colorCount: 7
+      weight: 25
+    - colorCount: 9
+      weight: 45
+    - colorCount: 10
+      weight: 30
+    helperCapacityWeights:
+    - helperCapacity: 8
+      weight: 55
+    - helperCapacity: 12
+      weight: 45
+    capacityFiveChance: 0.15
+    minTargetBottleCount: 9
+    maxTargetBottleCount: 16
+    minShortestStepCount: 7
+    maxShortestStepCount: 32
+    maxSolutionCount: 100000
+  - name: Main
+    levelFrom: 101
+    levelTo: 1000
+    targetDifficultyScoreMin: 0.6
+    targetDifficultyScoreMax: 0.75
+    colorWeights:
+    - colorCount: 9
+      weight: 20
+    - colorCount: 10
+      weight: 35
+    - colorCount: 11
+      weight: 30
+    - colorCount: 12
+      weight: 15
+    helperCapacityWeights:
+    - helperCapacity: 8
+      weight: 60
+    - helperCapacity: 12
+      weight: 35
+    - helperCapacity: 16
+      weight: 5
+    capacityFiveChance: 0.25
+    minTargetBottleCount: 12
+    maxTargetBottleCount: 24
+    minShortestStepCount: 12
+    maxShortestStepCount: 55
+    maxSolutionCount: 500000
+  - name: Late
+    levelFrom: 1001
+    levelTo: 999999
+    targetDifficultyScoreMin: 0.45
+    targetDifficultyScoreMax: 0.65
+    colorWeights:
+    - colorCount: 9
+      weight: 15
+    - colorCount: 10
+      weight: 35
+    - colorCount: 11
+      weight: 32
+    - colorCount: 12
+      weight: 18
+    helperCapacityWeights:
+    - helperCapacity: 8
+      weight: 65
+    - helperCapacity: 12
+      weight: 30
+    - helperCapacity: 16
+      weight: 5
+    capacityFiveChance: 0.35
+    minTargetBottleCount: 16
+    maxTargetBottleCount: 30
+    minShortestStepCount: 16
+    maxShortestStepCount: 80
+    maxSolutionCount: 1000000

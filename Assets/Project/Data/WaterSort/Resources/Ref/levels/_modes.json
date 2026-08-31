@@ -1,0 +1,205 @@
+{
+  "schema": "watersort-modes/v1",
+  "description": "Canonical play-modes (unified across the 4 games). Each folder levels/<canonical_mode>/ collects every game's levels of that gameplay mode; per-game source packs kept as filenames.",
+  "canonical_modes": {
+    "classic_sort": {
+      "count": 33270,
+      "games": {
+        "ASMRWaterSort": {
+          "source_modes": {
+            "Complicated": 250,
+            "RED": 250,
+            "RED1": 250,
+            "RED1-fc": 250,
+            "RED1-reset": 252,
+            "RED1-reset-1": 250,
+            "RED1-reset-1-1": 239,
+            "RED1-reset-1-2": 238,
+            "RED1-reset-2": 250,
+            "RED1_1": 249,
+            "RED1_10": 250,
+            "RED1_11": 250,
+            "RED1_12": 247,
+            "RED1_2": 249,
+            "RED1_2_1": 248,
+            "RED1_2_2": 239,
+            "RED1_2_2_1": 248,
+            "RED1_2_2_16": 238,
+            "RED1_2_2_2": 248,
+            "RED1_2_2_3": 247,
+            "RED1_2_2_4": 246,
+            "RED1_2_2_5": 239,
+            "RED1_2_2_6": 239,
+            "RED1_3": 250,
+            "RED1_4": 250,
+            "RED1_5": 250,
+            "RED1_6": 250,
+            "RED1_7": 250,
+            "RED1_8": 250,
+            "RED1_9": 250,
+            "RED2": 250,
+            "RED2-fc": 250,
+            "RED3": 250,
+            "RED90_1": 142
+          },
+          "count": 8308
+        },
+        "GetColor": {
+          "source_modes": {
+            "classic_main": 1111,
+            "colored_flask_1": 37,
+            "daily_secret": 100,
+            "kitty": 100,
+            "locked_by_position": 43,
+            "ms6_layout": 585,
+            "secret": 371
+          },
+          "count": 2347
+        },
+        "LogicColor": {
+          "source_modes": {
+            "daily_5field": 800,
+            "main_extended": 2820,
+            "main_mode3": 1404,
+            "main_normal": 2491
+          },
+          "count": 7515
+        },
+        "NutSort": {
+          "source_modes": {
+            "lv_10101_10600": 500,
+            "lv_101_600": 500,
+            "lv_10601_11100": 500,
+            "lv_1101_1600": 500,
+            "lv_11101_11600": 500,
+            "lv_11601_12100": 500,
+            "lv_12101_12600": 500,
+            "lv_12601_13100": 500,
+            "lv_13101_13600": 500,
+            "lv_13601_14100": 500,
+            "lv_14101_14600": 500,
+            "lv_14601_15100": 500,
+            "lv_1601_2100": 500,
+            "lv_1_100": 100,
+            "lv_2101_2600": 500,
+            "lv_2601_3100": 500,
+            "lv_3101_3600": 500,
+            "lv_3601_4100": 500,
+            "lv_4101_4600": 500,
+            "lv_4601_5100": 500,
+            "lv_5101_5600": 500,
+            "lv_5601_6100": 500,
+            "lv_601_1100": 500,
+            "lv_6101_6600": 500,
+            "lv_6601_7100": 500,
+            "lv_7101_7600": 500,
+            "lv_7601_8100": 500,
+            "lv_8101_8600": 500,
+            "lv_8601_9100": 500,
+            "lv_9101_9600": 500,
+            "lv_9601_10100": 500
+          },
+          "count": 15100
+        }
+      }
+    },
+    "collector_sort": {
+      "count": 6458,
+      "games": {
+        "LogicColor": {
+          "source_modes": {
+            "daily_3field": 300,
+            "daily_4field": 700,
+            "special_lonlong": 1972,
+            "special_shape": 3486
+          },
+          "count": 6458
+        }
+      }
+    },
+    "endless_sort": {
+      "count": 507,
+      "games": {
+        "NutSort": {
+          "source_modes": {
+            "i_lv_1_255": 255,
+            "i_lv_256_507": 252
+          },
+          "count": 507
+        }
+      }
+    },
+    "mixed_sort": {
+      "count": 62,
+      "games": {
+        "ASMRWaterSort": {
+          "source_modes": {
+            "RED1-reset-1-1": 11,
+            "RED1_1": 1,
+            "RED1_12": 3,
+            "RED1_2": 1,
+            "RED1_2_1": 2,
+            "RED1_2_2": 11,
+            "RED1_2_2_1": 2,
+            "RED1_2_2_2": 2,
+            "RED1_2_2_3": 3,
+            "RED1_2_2_4": 4,
+            "RED1_2_2_5": 11,
+            "RED1_2_2_6": 11
+          },
+          "count": 62
+        }
+      }
+    },
+    "short_sort": {
+      "count": 1348,
+      "games": {
+        "GetColor": {
+          "source_modes": {
+            "colored_flask_1": 2,
+            "locked_by_position": 1,
+            "ms6_layout": 11,
+            "special": 134
+          },
+          "count": 148
+        },
+        "LogicColor": {
+          "source_modes": {
+            "special_short": 1200
+          },
+          "count": 1200
+        }
+      }
+    },
+    "tall_sort": {
+      "count": 2113,
+      "games": {
+        "ASMRWaterSort": {
+          "source_modes": {
+            "RED133": 230,
+            "RED143": 97
+          },
+          "count": 327
+        },
+        "GetColor": {
+          "source_modes": {
+            "special": 66
+          },
+          "count": 66
+        },
+        "LogicColor": {
+          "source_modes": {
+            "special_long": 1200
+          },
+          "count": 1200
+        },
+        "NutSort": {
+          "source_modes": {
+            "s_lv_1_520": 520
+          },
+          "count": 520
+        }
+      }
+    }
+  }
+}

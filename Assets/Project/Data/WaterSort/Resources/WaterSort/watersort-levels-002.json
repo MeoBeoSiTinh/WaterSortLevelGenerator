@@ -1,0 +1,8408 @@
+{
+  "packName": "Water Sort Levels 002",
+  "levels": [
+    {
+      "displayName": "Level 101",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 102",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 103",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 104",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 105",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 106",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 107",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            6,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            6,
+            2,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 108",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 109",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 110",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 111",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 112",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 113",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 114",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 115",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 116",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 117",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 118",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 119",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 120",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 121",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 122",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 123",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 124",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 125",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 126",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            5,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 127",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 128",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 129",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 130",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 131",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 132",
+      "bottles": [
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            0,
+            2,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            2,
+            4,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            0,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            1,
+            4,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            4,
+            1,
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 133",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 134",
+      "bottles": [
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            0,
+            2,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            1,
+            1,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            0,
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            2,
+            0,
+            4,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            2,
+            3,
+            4,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            4,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 135",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            5,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 136",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 137",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 138",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            0,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 139",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 140",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 141",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            0,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 142",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            1,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 143",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 144",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 145",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 146",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 147",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 148",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 149",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 150",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 151",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            6,
+            2,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 152",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 153",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 154",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 155",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            6,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            6,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            4,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            6,
+            6,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 156",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 157",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 158",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 159",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 160",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            5,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 161",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 162",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 163",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 164",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 165",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 166",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 167",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            6,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            3,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 168",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 169",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 170",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 171",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            0,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 172",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 173",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 174",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 175",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 176",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 177",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 178",
+      "bottles": [
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            3,
+            3,
+            4,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            1,
+            1,
+            5,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            2,
+            5,
+            0,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            4,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            4,
+            3,
+            1,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            5,
+            5,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 179",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 180",
+      "bottles": [
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            3,
+            2,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            2,
+            1,
+            1,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            3,
+            0,
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            4,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            0,
+            3,
+            4,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 181",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 182",
+      "bottles": [
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            4,
+            4,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            2,
+            1,
+            4,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            2,
+            0,
+            5,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            5,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            5,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            3,
+            0,
+            5,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            1,
+            1,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 183",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 184",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 185",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 186",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            5,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 187",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 188",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 189",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 190",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 191",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 192",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            6,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            6,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            2,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            1,
+            6
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 193",
+      "bottles": [
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            1,
+            3,
+            2,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            3,
+            0,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            2,
+            2,
+            1,
+            3
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            3,
+            1,
+            4,
+            0
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            0,
+            4,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            1,
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 5,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 194",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 195",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            2,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            4,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 196",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 197",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 198",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            3,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 199",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            5,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    },
+    {
+      "displayName": "Level 200",
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            6,
+            3,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            6,
+            0,
+            3
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            6,
+            4,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            6,
+            0,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            5,
+            5
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": []
+        }
+      ]
+    }
+  ]
+}

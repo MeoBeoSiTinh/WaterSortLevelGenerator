@@ -1,0 +1,26 @@
+{
+  "schema": "watersort-order-index/v1",
+  "description": "Per-game ordered level lists (native play order). See _order/<game>.json.",
+  "games": {
+    "LogicColor": {
+      "count": 16373,
+      "order_basis": "main(normal→mode3→extended)→daily(5f→3f→4f)→special(short→long→lonlong→shape); orig_id within",
+      "file": "_order/LogicColor.json"
+    },
+    "GetColor": {
+      "count": 2561,
+      "order_basis": "main→secret→daily_secret→kitty→special→locked→colored_flask_1→ms6; orig_id (line) within",
+      "file": "_order/GetColor.json"
+    },
+    "ASMRWaterSort": {
+      "count": 8697,
+      "order_basis": "family (main_progression→reset→fc→special) then packs_index order; orig_id within pack",
+      "file": "_order/ASMRWaterSort.json"
+    },
+    "NutSort": {
+      "count": 16127,
+      "order_basis": "main stages by mapdata (level 1→15100), then special (s_lv), then infinite (i_lv); orig_id within",
+      "file": "_order/NutSort.json"
+    }
+  }
+}

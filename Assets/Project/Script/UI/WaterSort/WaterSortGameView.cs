@@ -10,9 +10,14 @@ namespace TrainWaterSort.UI.WaterSort
 {
     public sealed class WaterSortGameView : MonoBehaviour
     {
+        private const int GridColumns = 8;
+        private const int GridRows = 8;
+
         private readonly List<Button> bottleButtons = new();
         private readonly List<Image> bottleOutlines = new();
         private readonly List<List<Image>> slotImages = new();
+        private readonly List<List<Text>> slotQuestionTexts = new();
+        private readonly List<Text> bottleLockedTexts = new();
 
         private WaterSortGameManager manager;
         private Text messageText;
@@ -23,6 +28,7 @@ namespace TrainWaterSort.UI.WaterSort
         private InputField levelInput;
         private Text levelCounterText;
         private Transform boardRoot;
+        private int lastRebuiltLevelIndex = -1;
 
         public void Initialize(WaterSortGameManager gameManager)
         {
@@ -59,7 +65,7 @@ namespace TrainWaterSort.UI.WaterSort
 
             RectTransform root = CreateRect("Root", canvas.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
             Image background = root.gameObject.AddComponent<Image>();
-            background.color = new Color(0.95f, 0.97f, 1f);
+            background.color = new Color(0f, 0f, 0f);
             background.raycastTarget = false;
 
             RectTransform topBar = CreateRect("TopBar", root, new Vector2(0f, 1f), Vector2.one, new Vector2(24f, -128f), new Vector2(-24f, -24f));
@@ -105,11 +111,11 @@ namespace TrainWaterSort.UI.WaterSort
 
             RectTransform board = CreateRect("Board", root, Vector2.zero, Vector2.one, new Vector2(24f, 126f), new Vector2(-24f, -230f));
             GridLayoutGroup grid = board.gameObject.AddComponent<GridLayoutGroup>();
-            grid.cellSize = new Vector2(150f, 270f);
-            grid.spacing = new Vector2(24f, 24f);
+            grid.cellSize = new Vector2(118f, 190f);
+            grid.spacing = new Vector2(10f, 10f);
             grid.childAlignment = TextAnchor.MiddleCenter;
             grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            grid.constraintCount = 4;
+            grid.constraintCount = GridColumns;
             boardRoot = board;
 
             RectTransform bottomBar = CreateRect("MessageBar", root, Vector2.zero, new Vector2(1f, 0f), new Vector2(24f, 24f), new Vector2(-24f, 104f));
@@ -200,20 +206,71 @@ namespace TrainWaterSort.UI.WaterSort
             bottleButtons.Clear();
             bottleOutlines.Clear();
             slotImages.Clear();
+            slotQuestionTexts.Clear();
+            bottleLockedTexts.Clear();
 
+            Transform[] cells = new Transform[GridColumns * GridRows];
+            for (int i = 0; i < cells.Length; i++)
+            {
+                GameObject cellObject = new($"GridCell{i + 1}");
+                RectTransform cellRect = cellObject.AddComponent<RectTransform>();
+                cellObject.transform.SetParent(boardRoot, false);
+                cellRect.anchorMin = new Vector2(0.5f, 0.5f);
+                cellRect.anchorMax = new Vector2(0.5f, 0.5f);
+                cellRect.pivot = new Vector2(0.5f, 0.5f);
+                cells[i] = cellRect;
+            }
+
+            bool[] occupiedCells = new bool[cells.Length];
             for (int i = 0; i < manager.Bottles.Count; i++)
             {
                 int bottleIndex = i;
                 WaterSortBottleState bottle = manager.Bottles[i];
-                Button button = CreateBottleButton(bottleIndex, bottle.Capacity, () => manager.SelectBottle(bottleIndex));
+                int cellIndex = ResolveGridCellIndex(bottleIndex, occupiedCells);
+                Button button = CreateBottleButton(cells[cellIndex], bottleIndex, bottle.Capacity, () => manager.SelectBottle(bottleIndex));
                 bottleButtons.Add(button);
+            }
+
+            lastRebuiltLevelIndex = manager.CurrentLevelIndex;
+            if (boardRoot is RectTransform boardRect)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(boardRect);
             }
         }
 
-        private Button CreateBottleButton(int bottleIndex, int capacity, UnityEngine.Events.UnityAction onClick)
+        private int ResolveGridCellIndex(int bottleIndex, bool[] occupiedCells)
+        {
+            WaterSortJsonLevel level = manager.CurrentLevel;
+            if (level?.bottles != null && bottleIndex >= 0 && bottleIndex < level.bottles.Count)
+            {
+                Vector2Int position = level.bottles[bottleIndex].GridPosition;
+                if (position.x >= 0 && position.x < GridColumns && position.y >= 0 && position.y < GridRows)
+                {
+                    int gridIndex = position.y * GridColumns + position.x;
+                    if (!occupiedCells[gridIndex])
+                    {
+                        occupiedCells[gridIndex] = true;
+                        return gridIndex;
+                    }
+                }
+            }
+
+            for (int i = 0; i < occupiedCells.Length; i++)
+            {
+                if (!occupiedCells[i])
+                {
+                    occupiedCells[i] = true;
+                    return i;
+                }
+            }
+
+            return occupiedCells.Length - 1;
+        }
+
+        private Button CreateBottleButton(Transform parent, int bottleIndex, int capacity, UnityEngine.Events.UnityAction onClick)
         {
             GameObject bottleObject = new($"Bottle{bottleIndex + 1}");
-            bottleObject.transform.SetParent(boardRoot, false);
+            bottleObject.transform.SetParent(parent, false);
 
             Image outline = bottleObject.AddComponent<Image>();
             outline.color = new Color(1f, 1f, 1f, 0.65f);
@@ -223,11 +280,15 @@ namespace TrainWaterSort.UI.WaterSort
             button.onClick.AddListener(onClick);
 
             RectTransform rect = bottleObject.GetComponent<RectTransform>();
-            rect.sizeDelta = new Vector2(150f, 270f);
+            rect.anchorMin = new Vector2(0.5f, 0.5f);
+            rect.anchorMax = new Vector2(0.5f, 0.5f);
+            rect.pivot = new Vector2(0.5f, 0.5f);
+            rect.anchoredPosition = Vector2.zero;
+            rect.sizeDelta = new Vector2(108f, 180f);
 
             VerticalLayoutGroup stack = bottleObject.AddComponent<VerticalLayoutGroup>();
-            stack.padding = new RectOffset(14, 14, 18, 18);
-            stack.spacing = 6f;
+            stack.padding = new RectOffset(10, 10, 12, 12);
+            stack.spacing = 4f;
             stack.childControlWidth = true;
             stack.childControlHeight = true;
             stack.childForceExpandWidth = true;
@@ -235,6 +296,7 @@ namespace TrainWaterSort.UI.WaterSort
             stack.childAlignment = TextAnchor.LowerCenter;
 
             List<Image> slots = new();
+            List<Text> questionTexts = new();
             for (int i = capacity - 1; i >= 0; i--)
             {
                 GameObject slotObject = new($"Slot{i + 1}");
@@ -242,12 +304,42 @@ namespace TrainWaterSort.UI.WaterSort
                 Image slot = slotObject.AddComponent<Image>();
                 slot.color = new Color(0.85f, 0.88f, 0.93f, 0.45f);
                 slot.raycastTarget = false;
-                slotObject.AddComponent<LayoutElement>().minHeight = 28f;
+                slotObject.AddComponent<LayoutElement>().minHeight = 22f;
+
+                Text questionText = CreateText(
+                    "LockedLabel",
+                    slotObject.transform,
+                    Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"),
+                    "?",
+                    24,
+                    TextAnchor.MiddleCenter,
+                    Color.white);
+                questionText.fontStyle = FontStyle.Bold;
+                questionText.enabled = false;
+                Stretch(questionText.rectTransform);
+
                 slots.Insert(0, slot);
+                questionTexts.Insert(0, questionText);
             }
+
+            Text lockedText = CreateText(
+                "LockedLabel",
+                bottleObject.transform,
+                Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"),
+                "LOCK",
+                22,
+                TextAnchor.MiddleCenter,
+                Color.white);
+            lockedText.fontStyle = FontStyle.Bold;
+            lockedText.enabled = false;
+            LayoutElement lockedLayout = lockedText.GetComponent<LayoutElement>();
+            lockedLayout.ignoreLayout = true;
+            Stretch(lockedText.rectTransform);
 
             bottleOutlines.Add(outline);
             slotImages.Add(slots);
+            slotQuestionTexts.Add(questionTexts);
+            bottleLockedTexts.Add(lockedText);
             return button;
         }
 
@@ -278,23 +370,42 @@ namespace TrainWaterSort.UI.WaterSort
             for (int i = 0; i < manager.Bottles.Count; i++)
             {
                 WaterSortBottleState bottle = manager.Bottles[i];
-                bottleOutlines[i].color = i == manager.SelectedBottleIndex
+                bottleOutlines[i].color = bottle.IsLocked
+                    ? new Color(0.18f, 0.19f, 0.22f, 0.95f)
+                    : i == manager.SelectedBottleIndex
                     ? new Color(1f, 0.9f, 0.25f, 0.95f)
                     : new Color(1f, 1f, 1f, 0.72f);
+                bottleLockedTexts[i].enabled = bottle.IsLocked;
 
                 for (int slot = 0; slot < slotImages[i].Count; slot++)
                 {
                     Image slotImage = slotImages[i][slot];
-                    if (slot < bottle.Count)
+                    Text questionText = slotQuestionTexts[i][slot];
+                    if (bottle.IsLocked)
                     {
-                        int colorIndex = bottle.ColorIndexes[slot];
-                        slotImage.color = hasPlayableCatalog
-                            ? manager.Catalog.GetColor(colorIndex)
-                            : Color.magenta;
+                        slotImage.color = new Color(0.02f, 0.025f, 0.035f, 0.98f);
+                        questionText.enabled = false;
+                    }
+                    else if (slot < bottle.Count)
+                    {
+                        if (bottle.IsLayerUnlocked(slot))
+                        {
+                            int colorIndex = bottle.ColorIndexes[slot];
+                            slotImage.color = hasPlayableCatalog
+                                ? manager.Catalog.GetColor(colorIndex)
+                                : Color.magenta;
+                            questionText.enabled = false;
+                        }
+                        else
+                        {
+                            slotImage.color = new Color(0.03f, 0.035f, 0.045f, 0.95f);
+                            questionText.enabled = true;
+                        }
                     }
                     else
                     {
                         slotImage.color = new Color(0.85f, 0.88f, 0.93f, 0.45f);
+                        questionText.enabled = false;
                     }
                 }
             }
@@ -326,9 +437,29 @@ namespace TrainWaterSort.UI.WaterSort
                 return true;
             }
 
+            if (lastRebuiltLevelIndex != manager.CurrentLevelIndex)
+            {
+                return true;
+            }
+
+            if (slotQuestionTexts.Count != manager.Bottles.Count)
+            {
+                return true;
+            }
+
+            if (slotImages.Count != manager.Bottles.Count)
+            {
+                return true;
+            }
+
             for (int i = 0; i < manager.Bottles.Count; i++)
             {
                 if (slotImages[i].Count != manager.Bottles[i].Capacity)
+                {
+                    return true;
+                }
+
+                if (slotQuestionTexts[i].Count != manager.Bottles[i].Capacity)
                 {
                     return true;
                 }

@@ -91,6 +91,8 @@ namespace TrainWaterSort.Gameplay.WaterSort
     public sealed class WaterSortJsonLevel
     {
         public string displayName;
+        public WaterSortJsonLayoutGrid layoutGrid = new();
+        public WaterSortJsonModeOptions modeOptions = new();
         public List<WaterSortJsonBottle> bottles = new();
         public WaterSortJsonSolutionData solutionData = new();
 
@@ -98,6 +100,37 @@ namespace TrainWaterSort.Gameplay.WaterSort
         {
             return string.IsNullOrWhiteSpace(displayName) ? $"Level {levelIndex + 1}" : displayName;
         }
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonLayoutGrid
+    {
+        public int columns = 8;
+        public int rows = 8;
+        public string shape;
+
+        public int Columns => columns > 0 ? columns : 8;
+        public int Rows => rows > 0 ? rows : 8;
+        public string Shape => string.IsNullOrWhiteSpace(shape) ? "default" : shape;
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonModeOptions
+    {
+        public bool hiddenStack;
+        public bool hybridHiddenStack;
+        public bool lockedBottles;
+
+        public bool HiddenStack => hiddenStack;
+        public bool HybridHiddenStack => hybridHiddenStack;
+        public bool LockedBottles => lockedBottles;
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonGridPosition
+    {
+        public int x;
+        public int y;
     }
 
     [Serializable]
@@ -119,9 +152,17 @@ namespace TrainWaterSort.Gameplay.WaterSort
     {
         public int capacity = 4;
         public List<int> colorsBottomToTop = new();
+        public List<int> hiddenLayerIndexes = new();
+        public WaterSortJsonGridPosition gridPosition = new();
+        public bool isLocked;
+        public int unlockCompletedBottleCount = 1;
 
-        public int Capacity => capacity == 5 ? 5 : 4;
+        public int Capacity => Mathf.Clamp(capacity, 2, 5);
         public IReadOnlyList<int> ColorsBottomToTop => colorsBottomToTop;
+        public IReadOnlyList<int> HiddenLayerIndexes => hiddenLayerIndexes;
+        public Vector2Int GridPosition => gridPosition == null ? new Vector2Int(-1, -1) : new Vector2Int(gridPosition.x, gridPosition.y);
+        public bool IsLocked => isLocked;
+        public int UnlockCompletedBottleCount => Mathf.Max(1, unlockCompletedBottleCount);
     }
 
     [Serializable]

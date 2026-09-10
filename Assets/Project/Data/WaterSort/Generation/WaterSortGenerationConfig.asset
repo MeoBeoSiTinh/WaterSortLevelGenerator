@@ -21,9 +21,9 @@ MonoBehaviour:
   layoutGridColumns: 8
   layoutGridRows: 5
   allowNoEmptyStartingBottles: 1
-  noEmptyStartingBottleChance: 0.15
-  preferredMinEmptyBottleCount: 1
-  preferredMaxEmptyBottleCount: 3
+  noEmptyStartingBottleChance: 0.4
+  preferredMinEmptyBottleCount: 0
+  preferredMaxEmptyBottleCount: 1
   duplicateColorBottleChance: 0.45
   maxDuplicateBottleTargetsPerColor: 6
   maxBottleCount: 40
@@ -123,13 +123,15 @@ MonoBehaviour:
       allowShuffleRescue: 1
       shuffleCandidateCount: 24
       minShuffleRemainingSteps: 2
-    minNormalHelperCount: 1
-    maxNormalHelperCount: 2
+    minNormalHelperCount: 0
+    maxNormalHelperCount: 1
     minActiveFillRatio: 0.7
     targetActiveFillRatio: 0.85
-    maxStartingFreeRatio: 0.25
-    minPartialBottleCount: 0
-    maxSafeMoveRatio: 1
+    maxStartingFreeRatio: 0.3
+    minPartialBottleCount: 1
+    maxSafeMoveRatio: 0.75
+    minDeadEndPotential: 0.05
+    minTrapLikelihood: 0.1
     minAverageBranchingFactor: 0
     minCriticalDecisionCount: 0
   - profileId: 2
@@ -276,15 +278,17 @@ MonoBehaviour:
       allowShuffleRescue: 1
       shuffleCandidateCount: 24
       minShuffleRemainingSteps: 2
-    minNormalHelperCount: 1
-    maxNormalHelperCount: 2
-    minActiveFillRatio: 0.7
-    targetActiveFillRatio: 0.85
-    maxStartingFreeRatio: 0.25
-    minPartialBottleCount: 0
-    maxSafeMoveRatio: 1
-    minAverageBranchingFactor: 0
-    minCriticalDecisionCount: 0
+    minNormalHelperCount: 0
+    maxNormalHelperCount: 1
+    minActiveFillRatio: 0.72
+    targetActiveFillRatio: 0.86
+    maxStartingFreeRatio: 0.28
+    minPartialBottleCount: 2
+    maxSafeMoveRatio: 0.55
+    minDeadEndPotential: 0.15
+    minTrapLikelihood: 0.2
+    minAverageBranchingFactor: 2
+    minCriticalDecisionCount: 1
   - profileId: 3
     name: Hard
     enabled: 1
@@ -461,15 +465,17 @@ MonoBehaviour:
       allowShuffleRescue: 1
       shuffleCandidateCount: 24
       minShuffleRemainingSteps: 2
-    minNormalHelperCount: 1
-    maxNormalHelperCount: 2
-    minActiveFillRatio: 0.7
-    targetActiveFillRatio: 0.85
+    minNormalHelperCount: 0
+    maxNormalHelperCount: 1
+    minActiveFillRatio: 0.75
+    targetActiveFillRatio: 0.88
     maxStartingFreeRatio: 0.25
-    minPartialBottleCount: 0
-    maxSafeMoveRatio: 1
-    minAverageBranchingFactor: 0
-    minCriticalDecisionCount: 0
+    minPartialBottleCount: 2
+    maxSafeMoveRatio: 0.55
+    minDeadEndPotential: 0.15
+    minTrapLikelihood: 0.2
+    minAverageBranchingFactor: 2
+    minCriticalDecisionCount: 1
   - profileId: 4
     name: VeryHard
     enabled: 1
@@ -646,15 +652,17 @@ MonoBehaviour:
       allowShuffleRescue: 1
       shuffleCandidateCount: 24
       minShuffleRemainingSteps: 2
-    minNormalHelperCount: 1
-    maxNormalHelperCount: 2
-    minActiveFillRatio: 0.7
-    targetActiveFillRatio: 0.85
-    maxStartingFreeRatio: 0.25
-    minPartialBottleCount: 0
-    maxSafeMoveRatio: 1
-    minAverageBranchingFactor: 0
-    minCriticalDecisionCount: 0
+    minNormalHelperCount: 0
+    maxNormalHelperCount: 1
+    minActiveFillRatio: 0.78
+    targetActiveFillRatio: 0.9
+    maxStartingFreeRatio: 0.22
+    minPartialBottleCount: 2
+    maxSafeMoveRatio: 0.4
+    minDeadEndPotential: 0.25
+    minTrapLikelihood: 0.3
+    minAverageBranchingFactor: 2
+    minCriticalDecisionCount: 1
   - profileId: 5
     name: Special
     enabled: 1
@@ -811,29 +819,31 @@ MonoBehaviour:
     allowSmallIntroLevel: 0
     allowSpecialNearWin: 1
     nearWin:
-      minNearWinScore: 0.75
+      minNearWinScore: 0.55
       minCriticalDepthRatio: 0.4
-      maxCriticalDepthRatio: 0.85
+      maxCriticalDepthRatio: 0.99
       maxCriticalStates: 24
       maxTrapCandidates: 128
       trapSolverMaxStates: 100000
       trapSolverMaxDepth: 180
-      minSoftTrapRecoveryPenalty: 5
-      minSoftTrapRecoveryRatio: 1.35
+      minSoftTrapRecoveryPenalty: 2
+      minSoftTrapRecoveryRatio: 1.15
       softTrapWeight: 0.4
-      strongTrapWeight: 0.5
-      hardDeadlockWeight: 0.1
+      strongTrapWeight: 0.4
+      hardDeadlockWeight: 0.2
       allowAddBottleRescue: 1
       allowShuffleRescue: 1
       shuffleCandidateCount: 24
       minShuffleRemainingSteps: 2
     minNormalHelperCount: 0
     maxNormalHelperCount: 1
-    minActiveFillRatio: 0.72
-    targetActiveFillRatio: 0.82
+    minActiveFillRatio: 0.75
+    targetActiveFillRatio: 0.88
     maxStartingFreeRatio: 0.25
-    minPartialBottleCount: 3
+    minPartialBottleCount: 2
     maxSafeMoveRatio: 0.45
-    minAverageBranchingFactor: 2.5
+    minDeadEndPotential: 0.2
+    minTrapLikelihood: 0.25
+    minAverageBranchingFactor: 2
     minCriticalDecisionCount: 1
   difficultyBands: []

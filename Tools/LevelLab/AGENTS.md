@@ -37,9 +37,9 @@ node Tools/LevelLab/generate.js --pack 5 --config path/to/config.asset
 
 The wrapper calls the production generator, pins config for the run, picks a free pack number (unless `--pack` is set), records an explicit seed, validates with production `validate-pack.js`, and publishes the pair only on success. It removes inherited `WATERSORT_*` environment overrides so the documented config is authoritative.
 
-Do not overwrite existing packs. Do not edit generated output to conceal a generator defect. When a constraint cannot be satisfied, explain the actual failure. Never weaken capacity, layout, hidden, lock, Mega, Ad or solution rules silently. Do not claim global shortestness unless proven by the solver.
+Honor profile composition/difficulty gates in config (helpers, partial fills, safe-move / dead-end / trap targets). Prefer partial fills over many empty normal helpers; Ads stay separate. Keep the approved difficulty baseline — do not silently soften those gates to make generation succeed. Do not overwrite existing packs. Do not edit generated output to conceal a generator defect. When a constraint cannot be satisfied, explain the actual failure. Never weaken capacity, layout, hidden, lock, Mega, Ad or solution rules silently. Do not claim global shortestness unless proven by the solver.
 
-Production modules live under `Assets/Project/Editor/WaterSort/LevelGeneration/Tools/`. Entry point: `generate-watersort-exhaustive-100.js`. Do not use the implementation-artifact copy or legacy generator as source of truth. Do not run `solve-watersort-solutions.js` as routine post-generation validation.
+Production modules live under `Assets/Project/Editor/WaterSort/LevelGeneration/Tools/`. Entry point: `generate-watersort-exhaustive-100.js`. Do not use legacy generators or `_bmad-output` copies as source of truth. Do not run `solve-watersort-solutions.js` as routine post-generation validation.
 
 ## Output
 

@@ -67,16 +67,17 @@ If generating JSON manually instead of running the tool:
 - Ad helper bottles are reserved for future IAA/rewarded helper flows and should not be referenced by stored solution moves.
 - `colorsBottomToTop` is ordered from bottom layer to top layer.
 - Keep default bottle `capacity` between 2 and 5. Mega bottles are the exception and must use `capacity 12-20`.
-- Bottle capacity must come from the active stage's `bottleCapacityWeights`; do not clamp tutorial or low-step levels down to 2 or 3 when config requests 4.
+- Bottle capacity must come from the active profile's `bottleCapacityWeights`; do not clamp low-step levels down to 2 or 3 when config requests 4.
 - Do not exceed 40 bottles or the 8x5 physical grid.
 - Every `gridPosition` must be unique inside a level.
 - Do not enable both `hiddenStack` and `hybridHiddenStack` in one level.
 - Every stored solution must replay legally under the same mode options.
+- Prefer partial fills over many empty normal helpers; Ads remain separate optional assistance.
 
 Mega bottle rules:
 
 - Use `modeOptions.megaBottle: true` when a level contains a mega bottle.
-- Generation is controlled by the current band config: `allowMegaBottleMode`, `megaBottleChance`, `minMegaBottleCapacity`, `maxMegaBottleCapacity`, Mega V2 candidate attempts, blocker color counts, normal helper counts, target group size, buried/deep buried target ratios, top-color diversity/share, non-Mega move requirements, consecutive fill cap, and solver search limits.
+- Generation is controlled by the current difficulty profile: `allowMegaBottleMode`, `megaBottleChance`, `minMegaBottleCapacity`, `maxMegaBottleCapacity`, Mega V2 candidate attempts, blocker color counts, normal helper counts, target group size, buried/deep buried target ratios, top-color diversity/share, non-Mega move requirements, consecutive fill cap, and solver search limits.
 - Use exactly one main mega bottle unless explicitly requested otherwise.
 - The mega bottle has `isMegaBottle: true`, `capacity 12-20`, and `targetColor` set.
 - The mega bottle starts with at least one visible layer of `targetColor` in `colorsBottomToTop`.

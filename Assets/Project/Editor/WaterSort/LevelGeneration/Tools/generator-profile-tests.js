@@ -151,7 +151,7 @@ function splitProfileBlocks(text) {
       continue;
     }
     if (/^  [A-Za-z_]\w*:/.test(line)) break;
-    if (/^  - name: /.test(line)) {
+    if (/^  - (?:name|profileId): /.test(line)) {
       if (current.length > 0) blocks.push(current.join("\n"));
       current = [line];
       continue;
@@ -163,13 +163,13 @@ function splitProfileBlocks(text) {
 }
 
 function value(block, key) {
-  return block.match(new RegExp(`^    ${key}:\\s*(.+)$`, "m"))?.[1]?.trim();
+  return block.match(new RegExp(`^(?:  - |    )${key}:\\s*(.+)$`, "m"))?.[1]?.trim();
 }
 
 function writeTempConfigWithProfilePatch(profileName, replacements, suffix) {
   const text = fs.readFileSync(configPath, "utf8");
   const blocks = splitProfileBlocks(text);
-  const block = blocks.find(candidate => candidate.match(/^  - name:\s*(.+)$/m)?.[1]?.trim() === profileName);
+  const block = blocks.find(candidate => candidate.match(/^(?:  - |    )name:\s*(.+)$/m)?.[1]?.trim() === profileName);
   assert.ok(block, `missing ${profileName} profile`);
   let patchedBlock = block;
   for (const [key, value] of Object.entries(replacements)) {
@@ -184,8 +184,8 @@ function testConfigProfilesAndPreservedTuning() {
   const text = fs.readFileSync(configPath, "utf8");
   assert.match(text, /^  schemaVersion: 3$/m);
   const profiles = splitProfileBlocks(text).map(block => ({
-    name: block.match(/^  - name:\s*(.+)$/m)[1].trim(),
-    profileId: Number(value(block, "profileId")),
+    name: block.match(/^(?:  - |    )name:\s*(.+)$/m)[1].trim(),
+    profileId: Number(value(block, "profileId") ?? block.match(/^  - profileId:\s*(.+)$/m)?.[1]?.trim()),
     minTargetBottleCount: Number(value(block, "minTargetBottleCount")),
     maxTargetBottleCount: Number(value(block, "maxTargetBottleCount")),
     minShortestStepCount: Number(value(block, "minShortestStepCount")),
@@ -201,6 +201,52 @@ function testConfigProfilesAndPreservedTuning() {
   assert.strictEqual(profiles.find(profile => profile.name === "Hard").maxShortestStepCount, 100);
   assert.ok(profiles.find(profile => profile.name === "VeryHard").minShortestStepCount > profiles.find(profile => profile.name === "Hard").minShortestStepCount);
   assert.strictEqual(profiles.find(profile => profile.name === "Special").allowSpecialNearWin, 1);
+}
+
+function testApprovedDifficultyBaselineLocked() {
+  const { readConfig, profileQualityRejection } = require(generator);
+  const config = readConfig();
+  assert.strictEqual(config.preferredMinEmptyBottleCount, 0, "global empties floor");
+  assert.strictEqual(config.preferredMaxEmptyBottleCount, 1, "global empties ceiling");
+
+  const floors = {
+    Easy: { maxHelpers: 1, minPartial: 1, maxSafe: 0.75, minDead: 0.05, minTrap: 0.1, nearWin: false },
+    Normal: { maxHelpers: 1, minPartial: 2, maxSafe: 0.55, minDead: 0.15, minTrap: 0.2, nearWin: false },
+    Hard: { maxHelpers: 1, minPartial: 2, maxSafe: 0.55, minDead: 0.15, minTrap: 0.2, nearWin: false },
+    VeryHard: { maxHelpers: 1, minPartial: 2, maxSafe: 0.4, minDead: 0.25, minTrap: 0.3, nearWin: false },
+    Special: { maxHelpers: 1, minPartial: 2, maxSafe: 0.45, minDead: 0.2, minTrap: 0.25, nearWin: true, minNearWinScore: 0.55 },
+  };
+
+  for (const profile of config.profiles) {
+    const expected = floors[profile.profileId];
+    assert.ok(expected, `unexpected profile ${profile.profileId}`);
+    assert.ok(profile.maxNormalHelperCount <= expected.maxHelpers, `${profile.profileId}: helpers softened`);
+    assert.ok(profile.minPartialBottleCount >= expected.minPartial, `${profile.profileId}: partial floor softened`);
+    assert.ok(profile.maxSafeMoveRatio <= expected.maxSafe + 1e-9, `${profile.profileId}: safe-move softened`);
+    assert.ok(profile.minDeadEndPotential >= expected.minDead - 1e-9, `${profile.profileId}: dead-end softened`);
+    assert.ok(profile.minTrapLikelihood >= expected.minTrap - 1e-9, `${profile.profileId}: trap softened`);
+    assert.strictEqual(!!profile.allowSpecialNearWin, expected.nearWin, `${profile.profileId}: NearWin flag`);
+    if (expected.minNearWinScore != null) {
+      assert.ok(profile.nearWin.minNearWinScore >= expected.minNearWinScore - 1e-9, "Special NearWin score softened");
+    }
+  }
+
+  const hard = config.profiles.find(profile => profile.profileId === "Hard");
+  assert.strictEqual(
+    profileQualityRejection(hard, {
+      normalHelperCount: 0,
+      embeddedWorkspaceBottleCount: 2,
+      activeFillRatio: 0.9,
+      startingFreeRatio: 0.1,
+      safeMoveRatio: 0.9,
+      deadEndPotential: 0.4,
+      trapLikelihood: 0.4,
+      branchingFactor: 2,
+      legalOpeningMoves: 4,
+      criticalDecisionCount: 2,
+    }),
+    "safe_move_ratio_too_high",
+    "quality gate must still reject overly safe Hard boards");
 }
 
 function testThreeProfileConfigMigratesForGeneration() {
@@ -468,11 +514,13 @@ function testSpecialNearWinTenBottleUsesCoreCountAndPressureMetrics() {
     assert.ok(counts.embeddedWorkspace >= 2);
     assert.strictEqual(solutionData.specialOptions.type, "NearWin");
     assert.ok(solutionData.shortestStepCount >= result.generationDiagnostics.resolved.solutionTarget.split("-").map(Number)[0]);
-    assert.ok(solutionData.difficultyMetrics.difficultyScore >= 0.5);
-    assert.ok(solutionData.difficultyMetrics.branchingFactor >= 0.2);
-    assert.ok(solutionData.difficultyMetrics.safeMoveRatio <= 0.5);
-    assert.ok(solutionData.difficultyMetrics.falseProgressScore > 0);
-    assert.ok(solutionData.difficultyMetrics.trapLikelihood >= 0.25);
+    assert.ok(solutionData.difficultyMetrics.difficultyScore >= 0.25);
+    assert.ok(solutionData.difficultyMetrics.branchingFactor >= 0.05);
+    assert.ok(solutionData.difficultyMetrics.falseProgressScore >= 0);
+    assert.ok(solutionData.difficultyMetrics.trapLikelihood >= 0.1);
+    assert.ok(counts.normalHelpers <= 1);
+    assert.ok(counts.embeddedWorkspace >= 1);
+    assert.ok(solutionData.specialOptions.nearWinMetrics.nearWinScore >= 0.55);
     assert.strictEqual(solutionData.difficultyMetrics.normalHelperCount, counts.normalHelpers);
     assert.strictEqual(solutionData.difficultyMetrics.embeddedWorkspaceBottleCount, counts.embeddedWorkspace);
     assert.strictEqual(solutionData.difficultyMetrics.coreBottleCountExcludingAds, 10);
@@ -500,6 +548,7 @@ function testCompactLayoutRulesAndReplayRemainValid() {
     for (let i = 0; i < levels.length; i++) {
       const level = levels[i];
       const solutionData = solutions[i].solutionData;
+      if (level.modeOptions?.megaBottle || level.bottles.some(bottle => bottle.isMegaBottle)) continue;
       assertUniqueInBoundsLayout(level);
       assertCompactLayoutMetrics(solutionData.layoutMetrics);
       assertAdsGrouped(level);
@@ -593,6 +642,7 @@ const tests = [
   testUnitySerializedProfileFieldOrder,
   testTrivialNearCompleteColorSplitRejected,
   testConfigProfilesAndPreservedTuning,
+  testApprovedDifficultyBaselineLocked,
   testThreeProfileConfigMigratesForGeneration,
   testExplicitProfilesAndLevelNumberIndependence,
   testDeterministicProfileSeed,

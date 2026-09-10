@@ -22,7 +22,6 @@ Do not reimplement gameplay in the browser. Do not require colleagues to install
 | Launcher | `Tools/LevelLab/Start.cmd` |
 | Packaged share folder | `Builds/LevelLab/` (created by package step) |
 | Owner WebGL player | `Builds/WebGL/` |
-| Spec | `_bmad-output/implementation-artifacts/spec-portable-watersort-level-lab.md` |
 
 Production generator/validator stay under `Assets/Project/Editor/WaterSort/LevelGeneration/Tools/`. Lab wrappers call those modules; do not fork a second rule engine.
 
@@ -65,7 +64,7 @@ Never silently fall back to embedded Resources data after an external Lab load f
 
 On WebGL builds, `WaterSortGameView` shows side panels outside the gameplay board:
 
-- Left: short level summary — difficulty band, stored step count, bottle/color/mode overview, and a few readable playability ratios (difficulty score /10, safe moves, dead-end risk, trap risk, opening choices, fragmentation, free slots). Special trap type only when present.
+- Left: short level summary — difficulty profile, stored step count, bottle/color/mode overview, and a few readable playability ratios (difficulty score /10, safe moves, dead-end risk, trap risk, opening choices, fragmentation, free slots). Special trap type only when present.
 - Right: stored solution move list for the current level.
 
 Do not enable these panels on non-WebGL player builds. Difficulty metrics come from stored solution JSON; they are selector/tuning signals, not a second solvability proof. Solvability remains exact solution replay.

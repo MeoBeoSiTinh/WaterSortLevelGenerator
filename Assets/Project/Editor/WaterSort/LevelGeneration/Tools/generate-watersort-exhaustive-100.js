@@ -139,6 +139,12 @@ function readConfig(sourcePath = configPath) {
     const number = Number(raw);
     return Number.isFinite(number) ? number : raw;
   };
+  const topNumber = (name, fallback) => {
+    const match = text.match(new RegExp(`^  ${name}:\\s*(.+)$`, "m"));
+    if (!match) return fallback;
+    const number = Number(match[1].trim());
+    return Number.isFinite(number) ? number : fallback;
+  };
 
   const profiles = [];
   const profileSectionName = /^\s{2}difficultyProfiles:/m.test(text) ? "difficultyProfiles" : "difficultyBands";
@@ -284,6 +290,17 @@ function readConfig(sourcePath = configPath) {
       allowSmallIntroLevel: getBool("allowSmallIntroLevel", false),
       allowSpecialNearWin: getBool("allowSpecialNearWin", false),
       nearWin: parseNearWin(),
+      minNormalHelperCount: get("minNormalHelperCount", 1),
+      maxNormalHelperCount: get("maxNormalHelperCount", 2),
+      minActiveFillRatio: get("minActiveFillRatio", 0.7),
+      targetActiveFillRatio: get("targetActiveFillRatio", 0.85),
+      maxStartingFreeRatio: get("maxStartingFreeRatio", 0.25),
+      minPartialBottleCount: get("minPartialBottleCount", 0),
+      maxSafeMoveRatio: get("maxSafeMoveRatio", 1),
+      minDeadEndPotential: get("minDeadEndPotential", 0),
+      minTrapLikelihood: get("minTrapLikelihood", 0),
+      minAverageBranchingFactor: get("minAverageBranchingFactor", 0),
+      minCriticalDecisionCount: get("minCriticalDecisionCount", 0),
     });
   }
   upgradeMissingDifficultyProfiles(profiles);
@@ -296,9 +313,9 @@ function readConfig(sourcePath = configPath) {
     defaultBottleCapacity: top("defaultBottleCapacity", 4),
     layoutGridColumns: top("layoutGridColumns", 8),
     layoutGridRows: top("layoutGridRows", 5),
-    preferredMinEmptyBottleCount: top("preferredMinEmptyBottleCount", 1),
-    preferredMaxEmptyBottleCount: top("preferredMaxEmptyBottleCount", 3),
-    maxBottleCount: top("maxBottleCount", 40),
+    preferredMinEmptyBottleCount: topNumber("preferredMinEmptyBottleCount", 1),
+    preferredMaxEmptyBottleCount: topNumber("preferredMaxEmptyBottleCount", 3),
+    maxBottleCount: topNumber("maxBottleCount", 40),
     selectionPolicy: String(top("selectionPolicy", "shortest_non_loop_empty_priority_opening_diversity_soft")),
     profiles,
     bands: profiles,
@@ -515,7 +532,9 @@ function adaptiveStepRange(profile, coreBottleCount, colorCount, capacity, nearW
   const min = Math.max(1, Math.floor(base * minScale) - pressureBonus);
   const max = Math.max(min + 2, Math.ceil(base * maxScale) + pressureBonus);
   const resolvedMin = id === "Special"
-    ? (coreBottleCount <= 7 && !nearWinRequested ? min : Math.max(min, Math.min(profile.minShortestStepCount, max - 2)))
+    ? (coreBottleCount != null && coreBottleCount <= 12 && nearWinRequested
+      ? min
+      : (coreBottleCount <= 7 && !nearWinRequested ? min : Math.max(min, Math.min(profile.minShortestStepCount, max - 2))))
     : Math.min(profile.minShortestStepCount, min);
   return {
     min: resolvedMin,
@@ -652,11 +671,23 @@ const deriveOneHelperForSmallSpecial = coreBottleCount != null
 if (resolvedProfile.profileId === "Special" && coreBottleCount != null && coreBottleCount <= 12) {
     resolvedProfile.adaptiveSmallSpecial = true;
     resolvedProfile.minSpecialDifficultyScore = Math.max(0.5, Math.min(0.65, resolvedProfile.targetDifficultyScoreMin ?? 0.5));
-resolvedProfile.maxNormalHelperCount = overrides.normalHelperCount != null ? overrides.normalHelperCount : 0;
+    resolvedProfile.maxNormalHelperCount = overrides.normalHelperCount != null ? overrides.normalHelperCount : 0;
+    resolvedProfile.minNormalHelperCount = 0;
     resolvedProfile.minEmbeddedWorkspaceBottleCount = coreBottleCount >= 8 && overrides.normalHelperCount == null ? 2 : 1;
     resolvedProfile.maxSmallSpecialSafeMoveRatio = coreBottleCount >= 11 ? 0.75 : 0.5;
     resolvedProfile.minSmallSpecialBranchingFactor = coreBottleCount >= 11 ? 0.12 : 0.2;
     resolvedProfile.minSmallSpecialTrapLikelihood = coreBottleCount >= 11 ? 0.15 : 0.25;
+    // Keep full-pack Special gates strict; relax only for explicit small-core overrides.
+    resolvedProfile.maxSafeMoveRatio = resolvedProfile.maxSmallSpecialSafeMoveRatio;
+    resolvedProfile.minDeadEndPotential = Math.min(Number(resolvedProfile.minDeadEndPotential || 0), 0.15);
+    resolvedProfile.minTrapLikelihood = Math.min(
+      Number(resolvedProfile.minTrapLikelihood || 0),
+      Number(resolvedProfile.minSmallSpecialTrapLikelihood || 0.25));
+    resolvedProfile.minPartialBottleCount = Math.min(
+      Number(resolvedProfile.minPartialBottleCount || 0),
+      Math.max(2, Number(resolvedProfile.minEmbeddedWorkspaceBottleCount || 1)));
+    resolvedProfile.minAverageBranchingFactor = Number(resolvedProfile.minSmallSpecialBranchingFactor || 0.2);
+    resolvedProfile.minCriticalDecisionCount = Math.min(Number(resolvedProfile.minCriticalDecisionCount || 0), 1);
     autoAdjusted.push("limitedWorkspace", "falseProgress", "trapDensity");
   }
 
@@ -1014,30 +1045,54 @@ function recipeStepCount(recipe, solvedModules) {
   }, 0);
 }
 
+function moduleCountBounds(config, band) {
+  const minHelpers = Math.max(0, Number(band.minNormalHelperCount ?? config.preferredMinEmptyBottleCount ?? 0));
+  const maxHelpers = Math.max(minHelpers, Number(band.maxNormalHelperCount ?? config.preferredMaxEmptyBottleCount ?? 1));
+  // Modular recipes always start with at least one empty workspace bottle per module;
+  // embedWorkspace then reduces empties down to maxHelpers.
+  let maxModules = Math.max(1, maxHelpers, Number(config.preferredMaxEmptyBottleCount ?? 1));
+  if ((band.minPartialBottleCount || 0) >= 2 && maxHelpers <= 1) {
+    maxModules = Math.max(maxModules, 2);
+  }
+  const targetMax = Number(band.maxTargetBottleCount || 0);
+  if (targetMax >= 16) maxModules = Math.max(maxModules, 3);
+  if (targetMax >= 24) maxModules = Math.max(maxModules, 4);
+  const minModules = Math.max(1, Math.min(Math.max(1, minHelpers || 1), maxModules));
+  return { minModules, maxModules, minHelpers, maxHelpers };
+}
+
 function chooseRecipe(config, band, profile, capacity, maxModuleCount, solvedModules, random) {
   const desiredColorCount = weighted(random, band.colorWeights, 9);
   const minBottles = Math.min(profile.bottleMin, config.maxBottleCount);
   const maxBottles = Math.min(profile.bottleMax, config.maxBottleCount);
   const desiredBottleCount = randomInt(random, minBottles, maxBottles);
   const desiredStepCount = randomInt(random, profile.stepMin, profile.stepMax);
+  const bounds = moduleCountBounds(config, band);
+  const effectiveMaxModules = Math.max(1, maxModuleCount || bounds.maxModules);
 
-  let candidates = recipesForCapacity(capacity, maxModuleCount, config.maxBottleCount)
+  let candidates = recipesForCapacity(capacity, effectiveMaxModules, config.maxBottleCount)
     .map(recipe => ({ recipe, stepCount: recipeStepCount(recipe, solvedModules) }))
     .filter(candidate =>
       candidate.recipe.bottles >= minBottles &&
       candidate.recipe.bottles <= maxBottles &&
       (band.explicitColorCount == null || candidate.recipe.colors === band.explicitColorCount) &&
-      candidate.recipe.modules.length >= config.preferredMinEmptyBottleCount &&
-      candidate.recipe.modules.length <= config.preferredMaxEmptyBottleCount &&
+      candidate.recipe.modules.length >= bounds.minModules &&
+      candidate.recipe.modules.length <= bounds.maxModules &&
       candidate.stepCount >= profile.stepMin &&
       candidate.stepCount <= profile.stepMax);
 
   if (candidates.length === 0) throw new Error(`No modular recipe fits band ${band.name}/${profile.name} capacity ${capacity}`);
 
+  const preferFewerModules = band.profileId === "Hard" || band.profileId === "VeryHard" || band.profileId === "Special";
   const ranked = candidates
     .map(candidate => ({
       recipe: candidate.recipe,
-      score: Math.abs(candidate.recipe.bottles - desiredBottleCount) * 2 + Math.abs(candidate.stepCount - desiredStepCount) + Math.abs(Math.min(candidate.recipe.colors, paletteSize) - desiredColorCount) * 1.5 + random() * 0.01,
+      score:
+        Math.abs(candidate.recipe.bottles - desiredBottleCount) * 2 +
+        Math.abs(candidate.stepCount - desiredStepCount) +
+        Math.abs(Math.min(candidate.recipe.colors, paletteSize) - desiredColorCount) * 1.5 +
+        candidate.recipe.modules.length * (preferFewerModules ? 3.5 : 0.5) +
+        random() * 0.01,
     }))
     .sort((left, right) => left.score - right.score);
   const pickIndex = Math.min(ranked.length - 1, Math.floor(random() * Math.min(ranked.length, 8)));
@@ -2273,6 +2328,9 @@ function evaluateNormalDifficulty(board, capacity, moves, solverVisitedStates = 
     helperPressure,
     freeCapacity: free,
     fillDensity,
+    activeFillRatio: fillDensity,
+    startingFreeRatio: free / Math.max(1, board.length * capacity),
+    partialBottleCount: embeddedWorkspaceBottleCount,
     rehandling,
     crossBottleDependency,
     temporaryDisorder: fragmentation + rehandling,
@@ -2451,19 +2509,19 @@ function solveClassicBoard(board, capacity, profile, options = {}) {
 
 function buildSpecialNearWinLevel(config, profile, levelNumber, random, solvedModules, duplicateAttempt = 0) {
   const intent = generationIntentFor(profile);
-  const maxModuleCount = Math.max(config.preferredMinEmptyBottleCount, config.preferredMaxEmptyBottleCount);
+  const bounds = moduleCountBounds(config, profile);
+  const maxModuleCount = bounds.maxModules;
   const preferredCapacity = capacityFor(config, profile, random);
   const failures = [];
   for (const candidateCapacity of capacityOptionsFor(config, profile, preferredCapacity)) {
-    for (let attempt = 0; attempt < Math.max(8, profile.nearWin.maxTrapCandidates); attempt++) {
+    const recipeAttempts = Math.max(24, Math.min(96, Number(profile.nearWin?.maxTrapCandidates) || 24));
+    for (let attempt = 0; attempt < recipeAttempts; attempt++) {
       const attemptLevelNumber = levelNumber + attempt + Math.imul(duplicateAttempt, 4099);
       const attemptRandom = rng(seedFor(attemptLevelNumber, 0x5EC1A1, 374761393));
       try {
         const picked = chooseRecipe(config, profile, intent, candidateCapacity, maxModuleCount, solvedModules, attemptRandom);
         const composed = buildComposedLevel(picked.recipe, solvedModules, attemptLevelNumber, intent.storedSolutionTarget, duplicateAttempt);
-        const pressureBoard = profile.adaptiveSmallSpecial
-          ? applySmallSpecialWorkspacePressure(composed.board, candidateCapacity, attemptRandom, profile.maxNormalHelperCount ?? 0)
-          : composed.board;
+        const pressureBoard = applyProfileWorkspacePressure(composed.board, candidateCapacity, attemptRandom, profile);
         const safe = solveClassicBoard(pressureBoard, candidateCapacity, profile, {
           mode: SolverMode.Fast,
           maxDepth: profile.maxShortestStepCount,
@@ -2477,6 +2535,10 @@ function buildSpecialNearWinLevel(config, profile, levelNumber, random, solvedMo
         const trap = findNearWinTrap(pressureBoard, candidateCapacity, safe.solutions[0].moves, profile, attemptLevelNumber, attemptRandom);
         if (trap == null) {
           failures.push("no_trap");
+          continue;
+        }
+        if (countNormalEmptyHelpers(pressureBoard) > Number(profile.maxNormalHelperCount ?? 1)) {
+          failures.push("too_many_helpers_after_nearwin");
           continue;
         }
         return {
@@ -2556,7 +2618,7 @@ function findNearWinTrap(board, capacity, safeMoves, profile, levelNumber, rando
           classification = classifyTrap(trapResult, safeRemainingSteps, options);
         }
       }
-      if (!classification.accepted && profile.adaptiveSmallSpecial && plausibility >= 0.35 && legalMoves.length >= 2) {
+      if (!classification.accepted && (profile.adaptiveSmallSpecial || profile.profileId === "Special") && plausibility >= 0.35 && legalMoves.length >= 2) {
         const trapRemainingSteps = trapResult.success ? trapResult.shortestStepCount : null;
         const recoveryPenalty = trapRemainingSteps == null ? null : Math.max(0, trapRemainingSteps - safeRemainingSteps);
         classification = {
@@ -2573,7 +2635,7 @@ function findNearWinTrap(board, capacity, safeMoves, profile, levelNumber, rando
         continue;
       }
       const rescues = validateNearWinRescues(trapState.colors, capacity, profile, levelNumber, random, options);
-      if (rescues.supportedRescueTypes.length === 0 && !profile.adaptiveSmallSpecial) {
+      if (rescues.supportedRescueTypes.length === 0 && !profile.adaptiveSmallSpecial && profile.profileId !== "Special") {
         debugFailures.noRescue++;
         continue;
       }
@@ -2837,9 +2899,84 @@ function embedWorkspaceIntoActiveBottles(board, capacity, random, maxNormalEmpty
   return out;
 }
 
+function applyProfileWorkspacePressure(board, capacity, random, band) {
+  let maxHelpers = Math.max(0, Number(band.maxNormalHelperCount ?? 2));
+  const minPartial = Number(band.minPartialBottleCount || 0);
+  const wantsPartial = minPartial > 0
+    || maxHelpers <= 1
+    || band.profileId === "Special"
+    || band.adaptiveSmallSpecial;
+  if (!wantsPartial) return board;
+  if (minPartial > 0 && countEmbeddedWorkspaceBottles(board, capacity) < minPartial) {
+    // Convert at least one empty into a partial fill so free capacity sits inside active bottles.
+    maxHelpers = Math.min(maxHelpers, Math.max(0, countNormalEmptyHelpers(board) - 1));
+  }
+  return embedWorkspaceIntoActiveBottles(board, capacity, random, maxHelpers);
+}
+
 function applySmallSpecialWorkspacePressure(board, capacity, random, maxNormalEmptyHelpers = 0) {
-  if (board.length > 12) return board;
   return embedWorkspaceIntoActiveBottles(board, capacity, random, maxNormalEmptyHelpers);
+}
+
+function meetsBranchingGate(band, metrics) {
+  const min = Number(band.minAverageBranchingFactor ?? 0);
+  if (min <= 0) return true;
+  if (min > 1) return metrics.legalOpeningMoves >= min;
+  return metrics.branchingFactor >= min;
+}
+
+function profileQualityRejection(band, metrics, options = {}) {
+  if (shouldBuildSmallIntroLevel(band)) return null;
+  const nearWinLevel = options.nearWinLevel === true;
+
+  const maxHelpers = band.maxNormalHelperCount;
+  const minHelpers = band.minNormalHelperCount;
+  if (maxHelpers != null && metrics.normalHelperCount > maxHelpers) return "too_many_normal_helpers";
+  if (minHelpers != null && metrics.normalHelperCount < minHelpers) return "too_few_normal_helpers";
+
+  if ((band.minPartialBottleCount || 0) > 0 && metrics.embeddedWorkspaceBottleCount < band.minPartialBottleCount) {
+    return "insufficient_partial_bottles";
+  }
+  if ((band.minActiveFillRatio || 0) > 0 && metrics.activeFillRatio + 1e-9 < band.minActiveFillRatio) {
+    return "active_fill_too_low";
+  }
+  if ((band.maxStartingFreeRatio || 1) < 1 && metrics.startingFreeRatio - 1e-9 > band.maxStartingFreeRatio) {
+    return "starting_free_too_high";
+  }
+  // NearWin already encodes trap/false-progress pressure via specialOptions; enforce composition only.
+  const maxSafe = nearWinLevel ? 1 : Number(band.maxSafeMoveRatio ?? 1);
+  const minDead = nearWinLevel ? 0 : Number(band.minDeadEndPotential || 0);
+  const minTrap = nearWinLevel ? 0 : Number(band.minTrapLikelihood || 0);
+  if (maxSafe < 1 && metrics.safeMoveRatio - 1e-9 > maxSafe) return "safe_move_ratio_too_high";
+  if (minDead > 0 && metrics.deadEndPotential + 1e-9 < minDead) return "dead_end_too_low";
+  if (minTrap > 0 && metrics.trapLikelihood + 1e-9 < minTrap) return "trap_likelihood_too_low";
+  if (!nearWinLevel && !meetsBranchingGate(band, metrics)) return "branching_too_low";
+  if (!nearWinLevel && (band.minCriticalDecisionCount || 0) > 0 && metrics.criticalDecisionCount < band.minCriticalDecisionCount) {
+    return "critical_decisions_too_low";
+  }
+  return null;
+}
+
+function maybeScrambleForCrossBottleDependency(board, capacity, band, random, profile, storedSolutionTarget) {
+  const id = band.profileId || normalizeProfileId(band.name);
+  if (id === "Easy") return null;
+  if (random() > 0.55) return null;
+  const scrambled = deterministicShuffleBoard(board, random);
+  if (hasTrivialNearCompleteColorSplit(scrambled, capacity)) return null;
+  const solved = solveClassicBoard(scrambled, capacity, band, {
+    mode: SolverMode.Fast,
+    maxDepth: band.maxShortestStepCount,
+    maxStates: band.maxSolutionCount,
+    maxSolutions: Math.max(1, storedSolutionTarget || 1),
+    selectionPolicy: "cross_bottle_scramble_resolve",
+  });
+  if (!solved.success || solved.solutions.length === 0) return null;
+  const steps = solved.solutions[0].moves.length;
+  if (steps < band.minShortestStepCount || steps > band.maxShortestStepCount) return null;
+  return {
+    board: scrambled,
+    solutionMoveLists: solved.solutions.map(solution => solution.moves),
+  };
 }
 
 function removeOldJsonPacks() {
@@ -2886,7 +3023,8 @@ function main() {
     const levelNumber = levelOffset + localLevelNumber;
     const band = selectedProfile;
     const profile = generationIntentFor(band);
-    const maxModuleCount = Math.max(config.preferredMinEmptyBottleCount, config.preferredMaxEmptyBottleCount);
+    const bounds = moduleCountBounds(config, band);
+    const maxModuleCount = bounds.maxModules;
     let levelAccepted = false;
     let lastDuplicateOf = null;
     let lastRejectionReason = null;
@@ -2909,7 +3047,12 @@ function main() {
         if (band.explicitNearWinRequested) {
           throw new Error(`GenerationConstraintFailure: requested NearWin could not be constructed under current constraints (${error.message})`);
         }
-        throw error;
+        lastRejectionReason = error instanceof Error ? error.message : String(error);
+        stats.duplicateRetryCount++;
+        if (process.env.WATERSORT_DEBUG_SPECIAL_QUALITY === "1") {
+          console.error(`Level ${levelNumber} NearWin attempt ${attempt + 1} failed: ${lastRejectionReason}`);
+        }
+        continue;
       }
       capacity = specialLevel.capacity;
       board = specialLevel.board;
@@ -2944,19 +3087,32 @@ function main() {
       board = composedLevel.board;
       solutionMoveLists = composedLevel.solutionMoveLists;
     }
-    if (megaLevel == null && specialLevel == null && band.adaptiveSmallSpecial) {
-      board = applySmallSpecialWorkspacePressure(board, capacity, random, band.maxNormalHelperCount ?? 0);
-      const solved = solveClassicBoard(board, capacity, band, {
-        mode: SolverMode.Fast,
-        maxDepth: band.maxShortestStepCount,
-        maxStates: band.maxSolutionCount,
-        maxSolutions: profile.storedSolutionTarget,
-        selectionPolicy: "adaptive_small_special_embedded_workspace",
-      });
-      if (!solved.success || solved.solutions.length === 0) {
-        throw new Error(`No valid adaptive Special solution at level ${levelNumber}`);
+    if (megaLevel == null && specialLevel == null && !shouldBuildSmallIntroLevel(band)) {
+      const beforeHelpers = countNormalEmptyHelpers(board);
+      const beforePartial = countEmbeddedWorkspaceBottles(board, capacity);
+      board = applyProfileWorkspacePressure(board, capacity, random, band);
+      const changed = beforeHelpers !== countNormalEmptyHelpers(board)
+        || beforePartial !== countEmbeddedWorkspaceBottles(board, capacity);
+      if (changed) {
+        const solved = solveClassicBoard(board, capacity, band, {
+          mode: SolverMode.Fast,
+          maxDepth: band.maxShortestStepCount,
+          maxStates: band.maxSolutionCount,
+          maxSolutions: profile.storedSolutionTarget,
+          selectionPolicy: "profile_embedded_workspace",
+        });
+        if (!solved.success || solved.solutions.length === 0) {
+          lastRejectionReason = "embedded_workspace_unsolved";
+          stats.duplicateRetryCount++;
+          continue;
+        }
+        solutionMoveLists = solved.solutions.map(solution => solution.moves);
       }
-      solutionMoveLists = solved.solutions.map(solution => solution.moves);
+      const scrambled = maybeScrambleForCrossBottleDependency(board, capacity, band, random, band, profile.storedSolutionTarget);
+      if (scrambled != null) {
+        board = scrambled.board;
+        solutionMoveLists = scrambled.solutionMoveLists;
+      }
     }
     const adHelpers = addAdHelperBottles(board, random);
     const shape = applyAlternatingGapPreference(
@@ -2993,7 +3149,11 @@ function main() {
     const moves = validSolutionMoveLists[0];
     if (board.length > config.maxBottleCount) throw new Error(`Bad bottle count at level ${levelNumber}: ${board.length}`);
     assertBoardWithinCapacity(board, capacity, levelNumber, megaLevel);
-    if (moves.length < band.minShortestStepCount || moves.length > band.maxShortestStepCount) throw new Error(`Bad step count at level ${levelNumber}: ${moves.length} for band ${band.name}`);
+    if (moves.length < band.minShortestStepCount || moves.length > band.maxShortestStepCount) {
+      lastRejectionReason = `bad_step_count_${moves.length}`;
+      stats.duplicateRetryCount++;
+      continue;
+    }
     if (megaLevel == null && hasCapacityRepeat(board, capacity)) throw new Error(`Capacity repeat at level ${levelNumber}`);
     const coreBoardForQuality = board.slice(0, adHelpers.firstAdBottleIndex);
     if (
@@ -3024,7 +3184,18 @@ function main() {
 
     const stepCount = moves.length;
     const difficultyMetrics = megaLevel == null ? evaluateNormalDifficulty(board.slice(0, adHelpers.firstAdBottleIndex), capacity, moves) : null;
-    if (band.adaptiveSmallSpecial && difficultyMetrics) {
+    if (difficultyMetrics) {
+      const qualityReason = profileQualityRejection(band, difficultyMetrics, { nearWinLevel: specialLevel != null });
+      if (qualityReason) {
+        lastRejectionReason = qualityReason;
+        stats.duplicateRetryCount++;
+        if (process.env.WATERSORT_DEBUG_SPECIAL_QUALITY === "1") {
+          console.error(`Level ${levelNumber} rejected: ${qualityReason} ${JSON.stringify(difficultyMetrics)}`);
+        }
+        continue;
+      }
+    }
+    if (band.adaptiveSmallSpecial && difficultyMetrics && specialLevel == null) {
       const rejectSmallSpecial = reason => {
         lastRejectionReason = reason;
         if (process.env.WATERSORT_DEBUG_SPECIAL_QUALITY === "1") {
@@ -3032,8 +3203,6 @@ function main() {
         }
         return true;
       };
-      if (difficultyMetrics.normalHelperCount > (band.maxNormalHelperCount ?? 1) && rejectSmallSpecial("too_many_normal_helpers")) continue;
-      if (difficultyMetrics.embeddedWorkspaceBottleCount < (band.minEmbeddedWorkspaceBottleCount ?? 1) && rejectSmallSpecial("insufficient_embedded_workspace")) continue;
       if (difficultyMetrics.difficultyScore < (band.minSpecialDifficultyScore ?? 0.5) && rejectSmallSpecial("difficulty_too_low")) continue;
       if (difficultyMetrics.safeMoveRatio > (band.maxSmallSpecialSafeMoveRatio ?? 1) && rejectSmallSpecial("safe_move_ratio_too_high")) continue;
       if (difficultyMetrics.branchingFactor < (band.minSmallSpecialBranchingFactor ?? 0) && rejectSmallSpecial("branching_too_low")) continue;
@@ -3239,7 +3408,10 @@ if (require.main === module) {
     evaluateLayoutMetrics,
     hasTrivialNearCompleteColorSplit,
     moduleSizesForCapacity,
+    moduleCountBounds,
     evaluateNormalDifficulty,
     analyzeDynamicMoveSafety,
+    applyProfileWorkspacePressure,
+    profileQualityRejection,
   };
 }

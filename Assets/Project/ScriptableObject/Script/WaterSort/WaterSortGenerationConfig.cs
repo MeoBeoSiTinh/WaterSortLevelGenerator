@@ -374,6 +374,12 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
             [SerializeField, Range(0f, 1f)]
             private float maxSafeMoveRatio = 1f;
 
+            [SerializeField, Range(0f, 1f)]
+            private float minDeadEndPotential = 0f;
+
+            [SerializeField, Range(0f, 1f)]
+            private float minTrapLikelihood = 0f;
+
             [SerializeField] private float minAverageBranchingFactor = 0f;
 
             [SerializeField] private int minCriticalDecisionCount = 0;
@@ -445,6 +451,8 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
             public float MaxStartingFreeRatio => maxStartingFreeRatio;
             public int MinPartialBottleCount => minPartialBottleCount;
             public float MaxSafeMoveRatio => maxSafeMoveRatio;
+            public float MinDeadEndPotential => minDeadEndPotential;
+            public float MinTrapLikelihood => minTrapLikelihood;
             public float MinAverageBranchingFactor => minAverageBranchingFactor;
             public int MinCriticalDecisionCount => minCriticalDecisionCount;
             public NearWinOptions NearWin => nearWin;
@@ -514,6 +522,8 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
                 minPartialBottleCount = Mathf.Max(0, minPartialBottleCount);
 
                 maxSafeMoveRatio = Mathf.Clamp01(maxSafeMoveRatio);
+                minDeadEndPotential = Mathf.Clamp01(minDeadEndPotential);
+                minTrapLikelihood = Mathf.Clamp01(minTrapLikelihood);
                 minAverageBranchingFactor = Mathf.Max(0f, minAverageBranchingFactor);
                 minCriticalDecisionCount = Mathf.Max(0, minCriticalDecisionCount);
 
@@ -640,20 +650,19 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
                     storedSolutionTarget = storedSolutionTarget,
                     allowSmallIntroLevel = allowSmallIntroLevel,
                     allowSpecialNearWin = allowSpecialNearWin,
-                    nearWin = nearWin?.Clone() ?? new NearWinOptions()
+                    nearWin = nearWin?.Clone() ?? new NearWinOptions(),
+                    minNormalHelperCount = minNormalHelperCount,
+                    maxNormalHelperCount = maxNormalHelperCount,
+                    minActiveFillRatio = minActiveFillRatio,
+                    targetActiveFillRatio = targetActiveFillRatio,
+                    maxStartingFreeRatio = maxStartingFreeRatio,
+                    minPartialBottleCount = minPartialBottleCount,
+                    maxSafeMoveRatio = maxSafeMoveRatio,
+                    minDeadEndPotential = minDeadEndPotential,
+                    minTrapLikelihood = minTrapLikelihood,
+                    minAverageBranchingFactor = minAverageBranchingFactor,
+                    minCriticalDecisionCount = minCriticalDecisionCount
                 };
-                minNormalHelperCount = 0;
-                maxNormalHelperCount = 1;
-
-                minActiveFillRatio = 0.72f;
-                targetActiveFillRatio = 0.82f;
-                maxStartingFreeRatio = 0.25f;
-
-                minPartialBottleCount = 3;
-
-                maxSafeMoveRatio = 0.45f;
-                minAverageBranchingFactor = 2.5f;
-                minCriticalDecisionCount = 1;
                 return clone;
             }
 
@@ -717,6 +726,18 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
 
                     nearWin ??= new NearWinOptions();
                     nearWin.ApplySpecialDefaults();
+
+                    minNormalHelperCount = 0;
+                    maxNormalHelperCount = 1;
+                    minActiveFillRatio = 0.75f;
+                    targetActiveFillRatio = 0.88f;
+                    maxStartingFreeRatio = 0.22f;
+                    minPartialBottleCount = 2;
+                    maxSafeMoveRatio = 0.45f;
+                    minDeadEndPotential = 0.2f;
+                    minTrapLikelihood = 0.25f;
+                    minAverageBranchingFactor = 2f;
+                    minCriticalDecisionCount = 1;
                 }
             }
 
@@ -812,10 +833,10 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
                 trapSolverMaxStates = 100000;
                 trapSolverMaxDepth = 180;
                 minSoftTrapRecoveryPenalty = 2;
-                minSoftTrapRecoveryRatio = 1.1f;
-                softTrapWeight = 0.55f;
-                strongTrapWeight = 0.35f;
-                hardDeadlockWeight = 0.1f;
+                minSoftTrapRecoveryRatio = 1.15f;
+                softTrapWeight = 0.4f;
+                strongTrapWeight = 0.4f;
+                hardDeadlockWeight = 0.2f;
                 allowAddBottleRescue = true;
                 allowShuffleRescue = true;
                 shuffleCandidateCount = 24;

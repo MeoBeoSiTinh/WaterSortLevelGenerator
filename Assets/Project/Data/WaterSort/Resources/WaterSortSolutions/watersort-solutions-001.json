@@ -15,480 +15,56 @@
             "stepCount": 2,
             "moves": [
               {
-                "fromBottle": 1,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 3
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.2948833333333334,
-          "solutionSteps": 2,
-          "legalOpeningMoves": 2,
-          "branchingFactor": 0.6666666666666666,
-          "safeMoveRatio": 0.75,
-          "criticalDecisionCount": 2,
-          "falseProgressScore": 0.11166666666666666,
-          "trapLikelihood": 0.29183333333333333,
-          "recoveryPenalty": 0,
-          "normalHelperCount": 0,
-          "embeddedWorkspaceBottleCount": 3,
-          "coreBottleCountExcludingAds": 3,
-          "forcedMoveRatio": 0.5,
-          "fragmentation": 0.25,
-          "buriedDepth": 1,
-          "helperPressure": 0.6666666666666667,
-          "freeCapacity": 4,
-          "fillDensity": 0.6666666666666666,
-          "rehandling": 0.5,
-          "crossBottleDependency": 1,
-          "temporaryDisorder": 0.75,
-          "deadEndPotential": 0.25,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 1,
-          "safeOpeningMoves": 1,
-          "deadEndOpeningMoves": 1,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 2,
-          "safetySampleCheckpoints": 2
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 1,
-              "count": 3
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0.5,
-          "compactnessScore": 1,
-          "leftRightBalance": 0.3333333333333333,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 70.75
-        }
-      }
-    },
-    {
-      "levelNumber": 2,
-      "solutionData": {
-        "solutionCount": 1,
-        "shortestStepCount": 3,
-        "storedSolutionCount": 1,
-        "storesAllSolutions": false,
-        "difficulty": "Easy",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Easy_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 3,
-            "moves": [
-              {
-                "fromBottle": 1,
-                "toBottle": 3
-              },
-              {
                 "fromBottle": 2,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 2
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.21778333333333333,
-          "solutionSteps": 3,
-          "legalOpeningMoves": 2,
-          "branchingFactor": 0.6666666666666666,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 2,
-          "falseProgressScore": 0.03,
-          "trapLikelihood": 0.17983333333333337,
-          "recoveryPenalty": 0,
-          "normalHelperCount": 1,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 3,
-          "forcedMoveRatio": 0.5,
-          "fragmentation": 0.25,
-          "buriedDepth": 8,
-          "helperPressure": 0.6666666666666667,
-          "freeCapacity": 4,
-          "fillDensity": 0.6666666666666666,
-          "rehandling": 0,
-          "crossBottleDependency": 1,
-          "temporaryDisorder": 0.25,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 2,
-          "safeOpeningMoves": 2,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 2,
-          "safetySampleCheckpoints": 2
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 3,
-              "count": 3
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0.5,
-          "compactnessScore": 1,
-          "leftRightBalance": 0.3333333333333333,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 70.75
-        }
-      }
-    },
-    {
-      "levelNumber": 3,
-      "solutionData": {
-        "solutionCount": 1,
-        "shortestStepCount": 3,
-        "storedSolutionCount": 1,
-        "storesAllSolutions": false,
-        "difficulty": "Easy",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Easy_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 3,
-            "moves": [
-              {
-                "fromBottle": 1,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 2
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.21278333333333332,
-          "solutionSteps": 3,
-          "legalOpeningMoves": 2,
-          "branchingFactor": 0.6666666666666666,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 2,
-          "falseProgressScore": 0.03,
-          "trapLikelihood": 0.17983333333333337,
-          "recoveryPenalty": 0,
-          "normalHelperCount": 1,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 3,
-          "forcedMoveRatio": 0.5,
-          "fragmentation": 0.25,
-          "buriedDepth": 6,
-          "helperPressure": 0.6666666666666667,
-          "freeCapacity": 4,
-          "fillDensity": 0.6666666666666666,
-          "rehandling": 0,
-          "crossBottleDependency": 1,
-          "temporaryDisorder": 0.25,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 2,
-          "safeOpeningMoves": 2,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 2,
-          "safetySampleCheckpoints": 2
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 2,
-              "count": 3
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0.5,
-          "compactnessScore": 1,
-          "leftRightBalance": 0.3333333333333333,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 70.75
-        }
-      }
-    },
-    {
-      "levelNumber": 4,
-      "solutionData": {
-        "solutionCount": 1,
-        "shortestStepCount": 4,
-        "storedSolutionCount": 1,
-        "storesAllSolutions": false,
-        "difficulty": "Easy",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Easy_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 4,
-            "moves": [
-              {
-                "fromBottle": 3,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 1
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.26150833333333334,
-          "solutionSteps": 4,
-          "legalOpeningMoves": 2,
-          "branchingFactor": 0.6666666666666666,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 5,
-          "falseProgressScore": 0.08,
-          "trapLikelihood": 0.2510833333333333,
-          "recoveryPenalty": 0,
-          "normalHelperCount": 0,
-          "embeddedWorkspaceBottleCount": 3,
-          "coreBottleCountExcludingAds": 3,
-          "forcedMoveRatio": 0.5,
-          "fragmentation": 0.5,
-          "buriedDepth": 5,
-          "helperPressure": 0.6666666666666667,
-          "freeCapacity": 4,
-          "fillDensity": 0.6666666666666666,
-          "rehandling": 0.25,
-          "crossBottleDependency": 2,
-          "temporaryDisorder": 0.75,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 3,
-          "safeOpeningMoves": 2,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 2,
-          "safetySampleCheckpoints": 4
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 3,
-              "count": 3
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0.5,
-          "compactnessScore": 1,
-          "leftRightBalance": 0.3333333333333333,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 70.75
-        }
-      }
-    },
-    {
-      "levelNumber": 5,
-      "solutionData": {
-        "solutionCount": 1,
-        "shortestStepCount": 4,
-        "storedSolutionCount": 1,
-        "storesAllSolutions": false,
-        "difficulty": "Easy",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Easy_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 4,
-            "moves": [
-              {
-                "fromBottle": 1,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 3
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.3433833333333334,
-          "solutionSteps": 4,
-          "legalOpeningMoves": 2,
-          "branchingFactor": 0.6666666666666666,
-          "safeMoveRatio": 0.75,
-          "criticalDecisionCount": 6,
-          "falseProgressScore": 0.12166666666666666,
-          "trapLikelihood": 0.36983333333333335,
-          "recoveryPenalty": 0,
-          "normalHelperCount": 0,
-          "embeddedWorkspaceBottleCount": 3,
-          "coreBottleCountExcludingAds": 3,
-          "forcedMoveRatio": 0.5,
-          "fragmentation": 0.5,
-          "buriedDepth": 5,
-          "helperPressure": 0.6666666666666667,
-          "freeCapacity": 4,
-          "fillDensity": 0.6666666666666666,
-          "rehandling": 0.25,
-          "crossBottleDependency": 2,
-          "temporaryDisorder": 0.75,
-          "deadEndPotential": 0.25,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 3,
-          "safeOpeningMoves": 2,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 2,
-          "safetySampleCheckpoints": 4
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 1,
-              "count": 3
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0.5,
-          "compactnessScore": 1,
-          "leftRightBalance": 0.3333333333333333,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 70.75
-        }
-      }
-    },
-    {
-      "levelNumber": 6,
-      "solutionData": {
-        "solutionCount": 1,
-        "shortestStepCount": 3,
-        "storedSolutionCount": 1,
-        "storesAllSolutions": false,
-        "difficulty": "Easy",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Easy_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 3,
-            "moves": [
-              {
-                "fromBottle": 2,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 3,
                 "toBottle": 1
               },
               {
                 "fromBottle": 4,
-                "toBottle": 1
+                "toBottle": 3
               }
             ]
           }
         ],
         "difficultyMetrics": {
-          "difficultyScore": 0.146875,
-          "solutionSteps": 3,
-          "legalOpeningMoves": 1,
-          "branchingFactor": 0.25,
+          "difficultyScore": 0.13930833333333334,
+          "solutionSteps": 2,
+          "legalOpeningMoves": 2,
+          "branchingFactor": 0.5,
           "safeMoveRatio": 1,
           "criticalDecisionCount": 1,
-          "falseProgressScore": 0.09,
-          "trapLikelihood": 0.04575,
+          "falseProgressScore": 0.03,
+          "trapLikelihood": 0.09441666666666668,
           "recoveryPenalty": 0,
           "normalHelperCount": 0,
           "embeddedWorkspaceBottleCount": 4,
           "coreBottleCountExcludingAds": 4,
-          "forcedMoveRatio": 1,
-          "fragmentation": 0.75,
+          "forcedMoveRatio": 0.5,
+          "fragmentation": 0.25,
           "buriedDepth": 0,
-          "helperPressure": 0,
-          "freeCapacity": 12,
-          "fillDensity": 0.25,
+          "helperPressure": 0.33333333333333337,
+          "freeCapacity": 8,
+          "fillDensity": 0.5,
+          "activeFillRatio": 0.5,
+          "startingFreeRatio": 0.5,
+          "partialBottleCount": 4,
           "rehandling": 0,
-          "crossBottleDependency": 3,
-          "temporaryDisorder": 0.75,
+          "crossBottleDependency": 1,
+          "temporaryDisorder": 0.25,
           "deadEndPotential": 0,
           "specialModePressure": 0,
           "solverVisitedStates": 0,
           "remainingMixedBottleCount": 0,
-          "safeOpeningMoves": 1,
+          "safeOpeningMoves": 2,
           "deadEndOpeningMoves": 0,
           "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 1,
+          "classifiedOpeningMoves": 2,
           "safetySampleCheckpoints": 2
         },
         "layoutMetrics": {
           "layoutRows": [
             {
               "y": 1,
-              "count": 2
-            },
-            {
-              "y": 2,
-              "count": 2
+              "count": 4
             }
           ],
           "connectedGroupCount": 1,
@@ -508,7 +84,89 @@
       }
     },
     {
-      "levelNumber": 7,
+      "levelNumber": 2,
+      "solutionData": {
+        "solutionCount": 1,
+        "shortestStepCount": 2,
+        "storedSolutionCount": 1,
+        "storesAllSolutions": false,
+        "difficulty": "Easy",
+        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Easy_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
+        "solutions": [
+          {
+            "stepCount": 2,
+            "moves": [
+              {
+                "fromBottle": 2,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 1
+              }
+            ]
+          }
+        ],
+        "difficultyMetrics": {
+          "difficultyScore": 0.13125,
+          "solutionSteps": 2,
+          "legalOpeningMoves": 2,
+          "branchingFactor": 0.5,
+          "safeMoveRatio": 1,
+          "criticalDecisionCount": 2,
+          "falseProgressScore": 0.06,
+          "trapLikelihood": 0.055499999999999994,
+          "recoveryPenalty": 0,
+          "normalHelperCount": 1,
+          "embeddedWorkspaceBottleCount": 3,
+          "coreBottleCountExcludingAds": 4,
+          "forcedMoveRatio": 0.5,
+          "fragmentation": 0.5,
+          "buriedDepth": 0,
+          "helperPressure": 0,
+          "freeCapacity": 12,
+          "fillDensity": 0.25,
+          "activeFillRatio": 0.25,
+          "startingFreeRatio": 0.75,
+          "partialBottleCount": 3,
+          "rehandling": 0,
+          "crossBottleDependency": 2,
+          "temporaryDisorder": 0.5,
+          "deadEndPotential": 0,
+          "specialModePressure": 0,
+          "solverVisitedStates": 0,
+          "remainingMixedBottleCount": 0,
+          "safeOpeningMoves": 2,
+          "deadEndOpeningMoves": 0,
+          "falseProgressOpeningMoves": 0,
+          "classifiedOpeningMoves": 2,
+          "safetySampleCheckpoints": 2
+        },
+        "layoutMetrics": {
+          "layoutRows": [
+            {
+              "y": 2,
+              "count": 4
+            }
+          ],
+          "connectedGroupCount": 1,
+          "connectedGroups": 1,
+          "isolatedBottleCount": 0,
+          "isolatedBottles": 0,
+          "emptyRowGapCount": 0,
+          "internalHorizontalGapCount": 0,
+          "internalGaps": 0,
+          "rowBalanceScore": 1,
+          "centerOffset": 0,
+          "compactnessScore": 1,
+          "leftRightBalance": 0,
+          "roleSeparationPenalty": 0,
+          "layoutScore": 77
+        }
+      }
+    },
+    {
+      "levelNumber": 3,
       "solutionData": {
         "solutionCount": 1,
         "shortestStepCount": 1,
@@ -521,31 +179,34 @@
             "stepCount": 1,
             "moves": [
               {
-                "fromBottle": 1,
-                "toBottle": 2
+                "fromBottle": 2,
+                "toBottle": 1
               }
             ]
           }
         ],
         "difficultyMetrics": {
-          "difficultyScore": 0.14270833333333335,
+          "difficultyScore": 0.11416666666666667,
           "solutionSteps": 1,
-          "legalOpeningMoves": 2,
-          "branchingFactor": 0.6666666666666666,
+          "legalOpeningMoves": 1,
+          "branchingFactor": 0.3333333333333333,
           "safeMoveRatio": 1,
-          "criticalDecisionCount": 1,
+          "criticalDecisionCount": 0,
           "falseProgressScore": 0.03,
-          "trapLikelihood": 0.09441666666666668,
+          "trapLikelihood": 0.07566666666666667,
           "recoveryPenalty": 0,
           "normalHelperCount": 1,
           "embeddedWorkspaceBottleCount": 2,
           "coreBottleCountExcludingAds": 3,
-          "forcedMoveRatio": 0.5,
+          "forcedMoveRatio": 1,
           "fragmentation": 0.25,
           "buriedDepth": 0,
           "helperPressure": 0.33333333333333337,
           "freeCapacity": 8,
           "fillDensity": 0.3333333333333333,
+          "activeFillRatio": 0.3333333333333333,
+          "startingFreeRatio": 0.6666666666666666,
+          "partialBottleCount": 2,
           "rehandling": 0,
           "crossBottleDependency": 1,
           "temporaryDisorder": 0.25,
@@ -553,10 +214,10 @@
           "specialModePressure": 0,
           "solverVisitedStates": 0,
           "remainingMixedBottleCount": 0,
-          "safeOpeningMoves": 2,
+          "safeOpeningMoves": 1,
           "deadEndOpeningMoves": 0,
           "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 2,
+          "classifiedOpeningMoves": 1,
           "safetySampleCheckpoints": 1
         },
         "layoutMetrics": {
@@ -583,7 +244,89 @@
       }
     },
     {
-      "levelNumber": 8,
+      "levelNumber": 4,
+      "solutionData": {
+        "solutionCount": 1,
+        "shortestStepCount": 2,
+        "storedSolutionCount": 1,
+        "storesAllSolutions": false,
+        "difficulty": "Easy",
+        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Easy_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
+        "solutions": [
+          {
+            "stepCount": 2,
+            "moves": [
+              {
+                "fromBottle": 1,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 1,
+                "toBottle": 2
+              }
+            ]
+          }
+        ],
+        "difficultyMetrics": {
+          "difficultyScore": 0.2948833333333334,
+          "solutionSteps": 2,
+          "legalOpeningMoves": 2,
+          "branchingFactor": 0.6666666666666666,
+          "safeMoveRatio": 0.75,
+          "criticalDecisionCount": 2,
+          "falseProgressScore": 0.11166666666666666,
+          "trapLikelihood": 0.29183333333333333,
+          "recoveryPenalty": 0,
+          "normalHelperCount": 0,
+          "embeddedWorkspaceBottleCount": 3,
+          "coreBottleCountExcludingAds": 3,
+          "forcedMoveRatio": 0.5,
+          "fragmentation": 0.25,
+          "buriedDepth": 1,
+          "helperPressure": 0.6666666666666667,
+          "freeCapacity": 4,
+          "fillDensity": 0.6666666666666666,
+          "activeFillRatio": 0.6666666666666666,
+          "startingFreeRatio": 0.3333333333333333,
+          "partialBottleCount": 3,
+          "rehandling": 0.5,
+          "crossBottleDependency": 1,
+          "temporaryDisorder": 0.75,
+          "deadEndPotential": 0.25,
+          "specialModePressure": 0,
+          "solverVisitedStates": 0,
+          "remainingMixedBottleCount": 1,
+          "safeOpeningMoves": 1,
+          "deadEndOpeningMoves": 1,
+          "falseProgressOpeningMoves": 0,
+          "classifiedOpeningMoves": 2,
+          "safetySampleCheckpoints": 2
+        },
+        "layoutMetrics": {
+          "layoutRows": [
+            {
+              "y": 3,
+              "count": 3
+            }
+          ],
+          "connectedGroupCount": 1,
+          "connectedGroups": 1,
+          "isolatedBottleCount": 0,
+          "isolatedBottles": 0,
+          "emptyRowGapCount": 0,
+          "internalHorizontalGapCount": 0,
+          "internalGaps": 0,
+          "rowBalanceScore": 1,
+          "centerOffset": 0.5,
+          "compactnessScore": 1,
+          "leftRightBalance": 0.3333333333333333,
+          "roleSeparationPenalty": 0,
+          "layoutScore": 70.75
+        }
+      }
+    },
+    {
+      "levelNumber": 5,
       "solutionData": {
         "solutionCount": 1,
         "shortestStepCount": 2,
@@ -625,6 +368,9 @@
           "helperPressure": 0.33333333333333337,
           "freeCapacity": 8,
           "fillDensity": 0.3333333333333333,
+          "activeFillRatio": 0.3333333333333333,
+          "startingFreeRatio": 0.6666666666666666,
+          "partialBottleCount": 3,
           "rehandling": 0,
           "crossBottleDependency": 2,
           "temporaryDisorder": 0.5,
@@ -641,165 +387,7 @@
         "layoutMetrics": {
           "layoutRows": [
             {
-              "y": 3,
-              "count": 3
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0.5,
-          "compactnessScore": 1,
-          "leftRightBalance": 0.3333333333333333,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 70.75
-        }
-      }
-    },
-    {
-      "levelNumber": 9,
-      "solutionData": {
-        "solutionCount": 1,
-        "shortestStepCount": 2,
-        "storedSolutionCount": 1,
-        "storesAllSolutions": false,
-        "difficulty": "Easy",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Easy_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 2,
-            "moves": [
-              {
-                "fromBottle": 2,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 3
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.13930833333333334,
-          "solutionSteps": 2,
-          "legalOpeningMoves": 2,
-          "branchingFactor": 0.5,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 1,
-          "falseProgressScore": 0.03,
-          "trapLikelihood": 0.09441666666666668,
-          "recoveryPenalty": 0,
-          "normalHelperCount": 0,
-          "embeddedWorkspaceBottleCount": 4,
-          "coreBottleCountExcludingAds": 4,
-          "forcedMoveRatio": 0.5,
-          "fragmentation": 0.25,
-          "buriedDepth": 0,
-          "helperPressure": 0.33333333333333337,
-          "freeCapacity": 8,
-          "fillDensity": 0.5,
-          "rehandling": 0,
-          "crossBottleDependency": 1,
-          "temporaryDisorder": 0.25,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 0,
-          "safeOpeningMoves": 2,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 2,
-          "safetySampleCheckpoints": 2
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
               "y": 1,
-              "count": 2
-            },
-            {
-              "y": 2,
-              "count": 2
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0,
-          "compactnessScore": 1,
-          "leftRightBalance": 0,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 77
-        }
-      }
-    },
-    {
-      "levelNumber": 10,
-      "solutionData": {
-        "solutionCount": 1,
-        "shortestStepCount": 1,
-        "storedSolutionCount": 1,
-        "storesAllSolutions": false,
-        "difficulty": "Easy",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Easy_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 1,
-            "moves": [
-              {
-                "fromBottle": 2,
-                "toBottle": 1
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.11416666666666667,
-          "solutionSteps": 1,
-          "legalOpeningMoves": 1,
-          "branchingFactor": 0.3333333333333333,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 0,
-          "falseProgressScore": 0.03,
-          "trapLikelihood": 0.07566666666666667,
-          "recoveryPenalty": 0,
-          "normalHelperCount": 1,
-          "embeddedWorkspaceBottleCount": 2,
-          "coreBottleCountExcludingAds": 3,
-          "forcedMoveRatio": 1,
-          "fragmentation": 0.25,
-          "buriedDepth": 0,
-          "helperPressure": 0.33333333333333337,
-          "freeCapacity": 8,
-          "fillDensity": 0.3333333333333333,
-          "rehandling": 0,
-          "crossBottleDependency": 1,
-          "temporaryDisorder": 0.25,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 0,
-          "safeOpeningMoves": 1,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 1,
-          "safetySampleCheckpoints": 1
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 3,
               "count": 3
             }
           ],

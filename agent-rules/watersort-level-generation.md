@@ -8,13 +8,12 @@ Use this rule whenever creating, editing, validating, or regenerating Water Sort
 - Runtime solution JSON lives in `Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/`.
 - Generation tuning comes from `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`.
 - Config schema is defined by `Assets/Project/ScriptableObject/Script/WaterSort/WaterSortGenerationConfig.cs`.
-- The current generator implementation is `_bmad-output/implementation-artifacts/generate-watersort-exhaustive-100.js`.
-- The active project generator implementation is `Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js`.
+- Production generator entry point: `Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js`.
 - Mega Bottle generation uses `Assets/Project/Editor/WaterSort/LevelGeneration/Tools/mega-generator-v2.js`; the old template-style Mega builder must remain legacy-only and must not be silently used when Mega V2 quality checks fail.
 - The portable single-level editor tool is `Assets/Project/Editor/WaterSort/LevelGeneration/WaterSortLevelDataDesignerWindow.cs`.
 - One level JSON pack should contain at most 100 levels. Add the next numbered pack when a pack exceeds that.
 
-Do not depend on legacy sample data or legacy generator output.
+Do not depend on legacy sample data, legacy generators, or `_bmad-output` artifact copies as source of truth.
 
 ## Single-Level Editing Tool
 
@@ -45,60 +44,58 @@ Generation uses explicit difficulty profiles:
 
 Difficulty must not be inferred from level number.
 
-Profiles provide defaults, ranges and quality targets, not fixed recipes.
+Profiles provide ranges and quality targets. The production generator must **parse and enforce** profile composition/difficulty fields (not leave them as documentation-only):
 
-Explicit generation inputs are hard constraints when feasible.
+- `minNormalHelperCount` / `maxNormalHelperCount` — fully empty normal helpers (Ad bottles excluded)
+- `minPartialBottleCount`, `minActiveFillRatio`, `targetActiveFillRatio`, `maxStartingFreeRatio`
+- `maxSafeMoveRatio`, `minDeadEndPotential`, `minTrapLikelihood`
+- `minAverageBranchingFactor`, `minCriticalDecisionCount`
 
-Example:
+Prefer embedding free capacity as partial fills (2/4, 3/4) over multiple fully empty normal helpers. Global `preferredMin/MaxEmptyBottleCount` bounds modular recipe empties before embed; final boards must still satisfy the active profile helper/partial gates.
 
-Special with 10 bottles
+### Approved Difficulty Baseline (locked 2026-09-10)
 
-means:
+The current production config is the approved playtest baseline. Keep this difficulty feel unless the user **explicitly** asks to loosen or harden it.
 
-coreBottleCount = 10
+Do **not** silently:
 
-where coreBottleCount includes active normal bottles and normal helpers,
-but excludes Ad bottles.
+- raise `preferredMaxEmptyBottleCount` or profile `maxNormalHelperCount`
+- lower `minPartialBottleCount`, `minActiveFillRatio`, `targetActiveFillRatio`
+- raise `maxStartingFreeRatio` or `maxSafeMoveRatio`
+- lower `minDeadEndPotential` or `minTrapLikelihood`
+- disable Special `allowSpecialNearWin` or weaken NearWin trap construction
+- bypass `profileQualityRejection` / workspace embed pressure to make generation “easier to pass”
 
-Changing coreBottleCount must adapt:
+Floor values currently locked by regression test:
 
-- activeBottleCount
-- normalHelperCount
-- colorCount
-- fill distribution
-- embedded free slots
-- fragmentation
-- difficulty targets
+| Profile | helpers | minPartial | maxSafe | minDead | minTrap | notes |
+|---|---|---|---|---|---|---|
+| global empties | 0–1 | — | — | — | — | before embed |
+| Easy | 0–1 | ≥1 | ≤0.75 | ≥0.05 | ≥0.10 | |
+| Normal | 0–1 | ≥2 | ≤0.55 | ≥0.15 | ≥0.20 | |
+| Hard | 0–1 | ≥2 | ≤0.55 | ≥0.15 | ≥0.20 | denser fill than Normal |
+| VeryHard | 0–1 | ≥2 | ≤0.40 | ≥0.25 | ≥0.30 | |
+| Special | 0–1 | ≥2 | ≤0.45 | ≥0.20 | ≥0.25 | NearWin on; `minNearWinScore` ≥ 0.55 |
 
-Never reuse a fixed role composition such as:
+When regenerating large packs, keep the same config + enforce gates. Prefer failing a candidate/retry over softening thresholds. Record an explicit seed when reproducibility matters.
 
-5 active + 3 helpers + 2 Ads.
+Explicit generation overrides (for example `coreBottleCount`) are hard constraints when feasible and may adapt color count, helpers, fill distribution, and step targets. Never reuse a fixed role composition such as `5 active + 3 helpers + 2 Ads`.
 
-### Special Composition
+`coreBottleCount` includes active normal bottles and normal helpers, and excludes Ad bottles.
 
-For Special/NearWin with coreBottleCount <= 10:
+### Special / NearWin
 
-- prefer 0 fully empty normal helpers;
-- maximum 1 helper unless solver feasibility proves it necessary;
-- prefer distributing free capacity inside active bottles;
-- prefer several 2/4 or 3/4 bottles instead of multiple 0/4 bottles;
-- Ads are separate optional assistance and never count toward coreBottleCount.
+Special prefers NearWin construction when `allowSpecialNearWin` is enabled.
 
-Special difficulty should prioritize:
+Composition:
 
-- high branching factor;
-- low safe-move ratio;
-- plausible false-progress moves;
-- low generic workspace;
-- cross-bottle dependencies;
-- critical decisions;
-- dead-end proximity;
-- recovery penalty.
+- prefer 0 fully empty normal helpers; maximum 1 unless feasibility requires it
+- prefer several 2/4 or 3/4 bottles instead of multiple 0/4 bottles
+- Ads are separate optional assistance and never count toward `coreBottleCount`
 
-Solution step count alone must not determine Special difficulty.
+Special difficulty should prioritize low safe-move pressure, traps / false-progress, dead-end proximity, cross-bottle dependency, and recovery penalty — not step count alone.
 
-Every NearWin initial state must have at least one validated
-assist-free SafeSolution.
+Every NearWin initial state must have at least one validated assist-free SafeSolution. NearWin metadata is stored under solution `specialOptions`. For accepted NearWin boards, composition gates still apply; move-safety floors may be owned by NearWin trap proof rather than duplicate `maxSafeMoveRatio` rejection.
 
 ## Level JSON Schema
 
@@ -137,7 +134,7 @@ Each generated level should include layout and mode data in the level itself:
 Bottle rules:
 
 - `capacity` is per bottle and must be 2, 3, 4, or 5.
-- Generated bottle capacity must come from the active stage's `bottleCapacityWeights`, clamped only to the supported 2-5 range.
+- Generated bottle capacity must come from the active profile's `bottleCapacityWeights`, clamped only to the supported 2-5 range.
 - Tutorial or low-step generation must not force capacity down to 2 or 3 when config requests capacity 4.
 - `colorsBottomToTop` must not exceed `capacity`.
 - `gridPosition` is required for authored/generated layout and must be unique inside the level.
@@ -166,7 +163,7 @@ Mode rules:
 - `modeOptions.lockedBottles` means 1 to 4 bottles may start locked.
 - Locked bottles can be unlocked only after the player has enough completed full single-color bottles.
 - `modeOptions.megaBottle` means the level contains a mega bottle and uses mega completion rules.
-- Mega-bottle generation is controlled per difficulty band by `allowMegaBottleMode`, `megaBottleChance`, `minMegaBottleCapacity`, and `maxMegaBottleCapacity`, matching the same config style as hidden-stack and hybrid hidden-stack modes.
+- Mega-bottle generation is controlled per difficulty profile by `allowMegaBottleMode`, `megaBottleChance`, `minMegaBottleCapacity`, and `maxMegaBottleCapacity`, matching the same config style as hidden-stack and hybrid hidden-stack modes.
 
 ## Gameplay Rules Assumed by Generation
 
@@ -197,7 +194,7 @@ The board is a grid, currently 8x5.
 - Dense shapes should minimize empty cells inside the occupied middle area instead of spreading bottles thinly across the full 8x5 grid.
 - Staggered/zigzag dense shapes should use adjacent rows or columns with alternating offsets, similar to a compact reference layout.
 - Alternating-row shapes should intentionally leave checkerboard-style gaps: one row uses even columns and the adjacent row uses odd columns.
-- Dense layout preference should override generic shape weighting for a meaningful share of Ramp/Main levels when dense candidates fit.
+- Dense layout preference should override generic shape weighting for a meaningful share of denser profiles when dense candidates fit.
 - Alternating-gap preference should also be applied explicitly so checkerboard-style layouts appear in generated packs, not only as passive config options.
 - If a shape path has fewer cells than required, fill the remaining cells from nearby free grid cells while preserving uniqueness and readability.
 - Do not select shapes blindly at random when they cannot fit the bottle count.
@@ -228,11 +225,11 @@ Mega-bottle levels should resemble a complex board around a central target, not 
 - Distribute remaining target-color layers across many normal bottles at mixed depths.
 - Target-containing normal bottles must never be mono targetColor.
 - Target groups are usually size 1, may sometimes be size 2, and larger groups must be rare/config-driven.
-- For standard/main Mega levels, at least 85% of target groups should be buried below one or more blockers, and at least 35% should be buried below two or more blockers when capacity permits.
-- Hard Mega profiles should bury all target groups where possible and deeply bury at least 50%.
-- Use a balanced blocker palette instead of one shared blocker color. Standard Mega should use roughly 6-9 non-target blocker colors; hard Mega should use roughly 8-12, limited by the active palette.
-- Do not allow one visible top blocker color to dominate. Standard/Main max top-color share should stay at or below 0.25; hard Mega should stay at or below 0.20.
-- Start with at least 4 distinct visible top colors, preferably more for Main levels.
+- For typical Mega levels, at least 85% of target groups should be buried below one or more blockers, and at least 35% should be buried below two or more blockers when capacity permits.
+- Harder Mega profiles should bury all target groups where possible and deeply bury at least 50%.
+- Use a balanced blocker palette instead of one shared blocker color. Typical Mega should use roughly 6-9 non-target blocker colors; harder Mega should use roughly 8-12, limited by the active palette.
+- Do not allow one visible top blocker color to dominate. Typical max top-color share should stay at or below 0.25; harder Mega profiles should stay at or below 0.20.
+- Start with at least 4 distinct visible top colors, preferably more on denser Mega boards.
 - Reject exact duplicate `colorsBottomToTop` patterns between filled normal bottles.
 - Avoid repeated permutations of the same small color set and repeated ordered adjacent color pairs across the board.
 - Include blocker-only bottles so not every normal filled bottle contains targetColor.
@@ -240,10 +237,10 @@ Mega-bottle levels should resemble a complex board around a central target, not 
   Normal empty helpers are optional.
   For small/high-pressure levels prefer 0-1 normal helper.
   Ads remain separate optional assistance.
-- Stored solution moves should include meaningful moves between non-empty normal bottles before and between mega fills. Standard/Main Mega should target at least 3 moves before the first mega fill, at least 3 cross-bottle blocker moves, non-mega move ratio of at least 0.40, at least 3 distinct non-mega destination bottles, and no more than 3 consecutive mega-fill moves.
+- Stored solution moves should include meaningful moves between non-empty normal bottles before and between mega fills. Typical Mega should target at least 3 moves before the first mega fill, at least 3 cross-bottle blocker moves, non-mega move ratio of at least 0.40, at least 3 distinct non-mega destination bottles, and no more than 3 consecutive mega-fill moves.
 - Reject or heavily penalize repeated two-move motifs such as `source -> helper`, then the same `source -> mega`.
 - Mega V2 active normal bottles are target-source or blocker-only bottles; exclude Mega, normal helpers, and Ad bottles from active fill-density metrics.
-- Mega V2 should calculate active bottle count from required liquid and target fill ratio, then keep active bottles dense. Standard/Main candidates should avoid distributed spare capacity, keep active free ratio near or below 0.20, sparse active bottles near or below 0.15, and one-layer active bottles at 0 unless the active profile explicitly relaxes it.
+- Mega V2 should calculate active bottle count from required liquid and target fill ratio, then keep active bottles dense. Candidates should avoid distributed spare capacity, keep active free ratio near or below 0.20, sparse active bottles near or below 0.15, and one-layer active bottles at 0 unless the active profile explicitly relaxes it.
 - Normal helper bottles remain intentional playable free capacity and must not be counted as active-board density failures. Ad bottles remain excluded from stored solutions and density/difficulty helper budgeting.
 - Generate multiple deterministic candidates per level seed, then run static validation, Mega solver, exact solution replay, difficulty/diversity evaluation, and best-candidate selection.
 - If no candidate passes solver and quality checks, fail generation clearly. Do not silently fall back to the old template-style Mega builder.
@@ -268,11 +265,11 @@ Hybrid hidden-stack:
 
 ## Locked-Bottle Generation
 
-Locked-bottle mode is optional per stage.
+Locked-bottle mode is optional per profile.
 
 - If enabled for a generated level, choose 1 to 4 locked bottles.
 - Locked bottles should have `isLocked: true`.
-- Each locked bottle must have `unlockCompletedBottleCount` set from the stage config range.
+- Each locked bottle must have `unlockCompletedBottleCount` set from the profile config range.
 - A locked bottle unlocks when the number of completed full single-color bottles reaches its threshold.
 - Do not lock every useful helper bottle in a way that prevents all legal opening moves.
 - Solutions must replay with lock checks enabled.
@@ -290,7 +287,7 @@ Generated levels should satisfy:
 - bottle count does not exceed the configured maximum, currently 40,
 - bottle count fits inside the layout grid cell count,
 - palette color indexes are valid for the active palette,
-- generated `difficultyScore` should be inside the stage target range when possible.
+- generated `difficultyScore` should be inside the profile target range when possible.
 
 Difficulty score is a selector/tuning metric. It is not a proof of solvability. Solvability comes from replaying generated solution moves under the stored mode options.
 
@@ -327,7 +324,6 @@ Run the narrowest available verification for the files touched:
 
 - JSON parses cleanly.
 - generated level count equals `levelsPerPack`.
-- stage `levelCount` values sum to `levelsPerPack`.
 - all capacities are between 2 and 5.
 - total bottle count is at or below top-level `maxBottleCount`.
 - total bottle count is at or below the physical grid cell count.

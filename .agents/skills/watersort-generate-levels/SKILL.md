@@ -34,21 +34,24 @@ Optional: `Assets/Project/Editor/WaterSort/LevelGeneration/README.md`, `agent-ru
 
 ## Hard Rules
 
-- Choose the **next** pack number. Do not overwrite an existing pack unless the user explicitly asks.
+- Choose the **next** pack number. Do not overwrite an existing pack unless the user explicitly asks to replace/delete first.
+- Difficulty comes from explicit profiles (Easy → Special), not level number.
+- Profile composition/difficulty fields in config must be honored by the production generator (helpers, partial fills, safe-move / dead-end / trap targets). Prefer partial fills over many empty normal helpers.
+- Keep the approved 2026-09-10 difficulty baseline. Do **not** loosen empties/helpers/partials/safe-move/dead-end/trap/NearWin thresholds unless the user explicitly asks. Fail/retry candidates instead of softening gates.
 - `layoutGrid` must be **8x5**.
 - Total bottles ≤ **40**; each bottle has a unique `gridPosition`.
 - Bottle `capacity` comes from config/`bottleCapacityWeights`. Do **not** clamp down to 2 or 3 when config requests 4.
-- Tutorial follows config: 1–2 colors, 2–3 gameplay bottles, 1–5 steps.
 - Every generated level must include **2 or 3** empty ads bottles:
   - `isAdBottle: true`
   - `colorsBottomToTop: []`
-- Stored solution moves must **never** use ads bottles.
+- Stored solution moves must **never** use ads bottles. Ads never count as normal helpers.
 - Do not use a seed workflow as user input unless reproducibility is requested; Lab `generate.js` records seed automatically.
 - Color indexes must exist in the palette.
 - `colorsBottomToTop` is bottom → mouth order.
 - Never enable `hiddenStack` and `hybridHiddenStack` together.
 - Solutions must replay validly under `modeOptions`, locked bottles, hidden layers, capacity, and pour rules.
 - Config may be edited as YAML before generate; keep Unity YAML headers.
+- Production entry only: `generate-watersort-exhaustive-100.js` under `Assets/Project/Editor/.../Tools/`. Do not run `_bmad-output` copies or `generate-watersort-100.js`.
 
 ## Workflow
 

@@ -2,1487 +2,113 @@
   "packName": "Water Sort Solutions 002",
   "levelSolutions": [
     {
-      "levelNumber": 11,
-      "solutionData": {
-        "solutionCount": 2,
-        "shortestStepCount": 21,
-        "storedSolutionCount": 2,
-        "storesAllSolutions": false,
-        "difficulty": "Normal",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Normal_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 21,
-            "moves": [
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 7
-              }
-            ]
-          },
-          {
-            "stepCount": 21,
-            "moves": [
-              {
-                "fromBottle": 1,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 5
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.2661095238095238,
-          "solutionSteps": 21,
-          "legalOpeningMoves": 6,
-          "branchingFactor": 0.6666666666666666,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 19,
-          "falseProgressScore": 0.14714285714285713,
-          "trapLikelihood": 0.19414285714285712,
-          "recoveryPenalty": 0,
-          "normalHelperCount": 3,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 9,
-          "forcedMoveRatio": 0.16666666666666666,
-          "fragmentation": 0.75,
-          "buriedDepth": 24,
-          "helperPressure": 0,
-          "freeCapacity": 12,
-          "fillDensity": 0.6666666666666666,
-          "rehandling": 0.7142857142857143,
-          "crossBottleDependency": 1,
-          "temporaryDisorder": 1.4642857142857144,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 6,
-          "safeOpeningMoves": 6,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 6,
-          "safetySampleCheckpoints": 4
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 0,
-              "count": 3
-            },
-            {
-              "y": 1,
-              "count": 3
-            },
-            {
-              "y": 2,
-              "count": 3
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0.5,
-          "compactnessScore": 1,
-          "leftRightBalance": 0.3333333333333333,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 70.75
-        }
-      }
-    },
-    {
-      "levelNumber": 12,
-      "solutionData": {
-        "solutionCount": 2,
-        "shortestStepCount": 30,
-        "storedSolutionCount": 2,
-        "storesAllSolutions": false,
-        "difficulty": "Normal",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_hidden_profile_Normal_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 30,
-            "moves": [
-              {
-                "fromBottle": 5,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 7
-              }
-            ]
-          },
-          {
-            "stepCount": 30,
-            "moves": [
-              {
-                "fromBottle": 3,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 8
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.30705333333333334,
-          "solutionSteps": 30,
-          "legalOpeningMoves": 9,
-          "branchingFactor": 0.75,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 31,
-          "falseProgressScore": 0.14066666666666666,
-          "trapLikelihood": 0.19219999999999998,
-          "recoveryPenalty": 1,
-          "normalHelperCount": 3,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 12,
-          "forcedMoveRatio": 0.1111111111111111,
-          "fragmentation": 0.75,
-          "buriedDepth": 47,
-          "helperPressure": 0,
-          "freeCapacity": 12,
-          "fillDensity": 0.75,
-          "rehandling": 0.6333333333333333,
-          "crossBottleDependency": 2.2222222222222223,
-          "temporaryDisorder": 1.3833333333333333,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 9,
-          "safeOpeningMoves": 9,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 9,
-          "safetySampleCheckpoints": 4
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 1,
-              "count": 4
-            },
-            {
-              "y": 2,
-              "count": 4
-            },
-            {
-              "y": 3,
-              "count": 4
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0,
-          "compactnessScore": 1,
-          "leftRightBalance": 0,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 77
-        }
-      }
-    },
-    {
-      "levelNumber": 13,
+      "levelNumber": 6,
       "solutionData": {
         "solutionCount": 1,
-        "shortestStepCount": 30,
-        "storedSolutionCount": 1,
-        "storesAllSolutions": false,
-        "difficulty": "Normal",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_locked_profile_Normal_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 30,
-            "moves": [
-              {
-                "fromBottle": 1,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 4
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.3081333333333333,
-          "solutionSteps": 30,
-          "legalOpeningMoves": 9,
-          "branchingFactor": 0.75,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 30,
-          "falseProgressScore": 0.1433333333333333,
-          "trapLikelihood": 0.19299999999999998,
-          "recoveryPenalty": 1,
-          "normalHelperCount": 3,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 12,
-          "forcedMoveRatio": 0.1111111111111111,
-          "fragmentation": 0.75,
-          "buriedDepth": 47,
-          "helperPressure": 0,
-          "freeCapacity": 12,
-          "fillDensity": 0.75,
-          "rehandling": 0.6666666666666666,
-          "crossBottleDependency": 2.2222222222222223,
-          "temporaryDisorder": 1.4166666666666665,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 9,
-          "safeOpeningMoves": 9,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 9,
-          "safetySampleCheckpoints": 4
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 1,
-              "count": 6
-            },
-            {
-              "y": 2,
-              "count": 6
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0,
-          "compactnessScore": 1,
-          "leftRightBalance": 0,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 77
-        }
-      }
-    },
-    {
-      "levelNumber": 14,
-      "solutionData": {
-        "solutionCount": 2,
-        "shortestStepCount": 24,
-        "storedSolutionCount": 2,
-        "storesAllSolutions": false,
-        "difficulty": "Normal",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Normal_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 24,
-            "moves": [
-              {
-                "fromBottle": 9,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 7
-              }
-            ]
-          },
-          {
-            "stepCount": 24,
-            "moves": [
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 4
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.2814785714285714,
-          "solutionSteps": 24,
-          "legalOpeningMoves": 7,
-          "branchingFactor": 0.7,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 23,
-          "falseProgressScore": 0.14666666666666667,
-          "trapLikelihood": 0.194,
-          "recoveryPenalty": 0,
-          "normalHelperCount": 3,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 10,
-          "forcedMoveRatio": 0.14285714285714285,
-          "fragmentation": 0.75,
-          "buriedDepth": 31,
-          "helperPressure": 0,
-          "freeCapacity": 12,
-          "fillDensity": 0.7,
-          "rehandling": 0.7083333333333334,
-          "crossBottleDependency": 1.4285714285714286,
-          "temporaryDisorder": 1.4583333333333335,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 7,
-          "safeOpeningMoves": 7,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 7,
-          "safetySampleCheckpoints": 4
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 2,
-              "count": 5
-            },
-            {
-              "y": 3,
-              "count": 5
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0.5,
-          "compactnessScore": 1,
-          "leftRightBalance": 0.2,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 72.35
-        }
-      }
-    },
-    {
-      "levelNumber": 15,
-      "solutionData": {
-        "solutionCount": 1,
-        "shortestStepCount": 42,
+        "shortestStepCount": 38,
         "storedSolutionCount": 1,
         "storesAllSolutions": false,
         "difficulty": "Normal",
         "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_mega_mega_v2_target_directed_solver_exact_replay_not_global_shortest",
         "solutions": [
           {
-            "stepCount": 42,
+            "stepCount": 38,
             "moves": [
               {
-                "fromBottle": 7,
-                "toBottle": 18
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 20
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 19
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 5,
+                "fromBottle": 2,
                 "toBottle": 17
               },
               {
-                "fromBottle": 6,
-                "toBottle": 7
+                "fromBottle": 2,
+                "toBottle": 18
               },
               {
-                "fromBottle": 5,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 21
-              },
-              {
-                "fromBottle": 13,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 13,
-                "toBottle": 6
+                "fromBottle": 4,
+                "toBottle": 15
               },
               {
                 "fromBottle": 2,
-                "toBottle": 23
-              },
-              {
-                "fromBottle": 13,
                 "toBottle": 1
               },
               {
-                "fromBottle": 2,
-                "toBottle": 5
+                "fromBottle": 4,
+                "toBottle": 14
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 4
               },
               {
                 "fromBottle": 8,
                 "toBottle": 13
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 1
               },
               {
                 "fromBottle": 8,
                 "toBottle": 2
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 13
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 1
               },
               {
                 "fromBottle": 10,
                 "toBottle": 16
               },
               {
-                "fromBottle": 3,
-                "toBottle": 23
+                "fromBottle": 8,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 19
               },
               {
                 "fromBottle": 10,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 15,
-                "toBottle": 23
-              },
-              {
-                "fromBottle": 15,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 15,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 15,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 15
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 14,
-                "toBottle": 15
+                "toBottle": 20
               },
               {
                 "fromBottle": 4,
                 "toBottle": 1
               },
               {
-                "fromBottle": 14,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 14,
-                "toBottle": 15
-              },
-              {
-                "fromBottle": 14,
+                "fromBottle": 10,
                 "toBottle": 1
-              }
-            ]
-          }
-        ],
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 1,
-              "count": 8
-            },
-            {
-              "y": 2,
-              "count": 8
-            },
-            {
-              "y": 3,
-              "count": 8
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0,
-          "compactnessScore": 1,
-          "leftRightBalance": 0,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 77
-        },
-        "megaMetrics": {
-          "activeBottleCount": 21,
-          "normalHelperCount": 2,
-          "averageActiveFill": 3.7142857142857144,
-          "activeFillRatio": 0.9285714285714286,
-          "activeFreeSlots": 6,
-          "activeFreeRatio": 0.07142857142857142,
-          "sparseBottleCount": 0,
-          "sparseBottleRatio": 0,
-          "singleLayerBottleCount": 0,
-          "distributedActiveFreeRatio": 0.2857142857142857,
-          "targetSourceBottleCount": 14,
-          "buriedTargetRatio": 1,
-          "deepBuriedTargetRatio": 0.7142857142857143,
-          "uniqueVisibleTopColors": 9,
-          "maxTopColorShare": 0.14285714285714285,
-          "uniqueBottlePatternRatio": 1,
-          "movesBeforeFirstMegaPour": 3,
-          "nonMegaMoveCount": 28,
-          "nonMegaMoveRatio": 0.6666666666666666,
-          "crossBottleBlockerMoves": 24,
-          "normalHelperMoves": 4,
-          "rehandledBlockerCount": 14,
-          "distinctSourceBottles": 14,
-          "distinctDestinationBottles": 18,
-          "distinctNonMegaDestinationBottles": 18,
-          "maxConsecutiveMegaPours": 3,
-          "templatePenalty": 1,
-          "solutionStepCount": 42,
-          "solverVisitedStates": 43
-        }
-      }
-    },
-    {
-      "levelNumber": 16,
-      "solutionData": {
-        "solutionCount": 2,
-        "shortestStepCount": 32,
-        "storedSolutionCount": 2,
-        "storesAllSolutions": false,
-        "difficulty": "Normal",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_hybrid_hidden_profile_Normal_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 32,
-            "moves": [
-              {
-                "fromBottle": 3,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 9
               },
               {
                 "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 12
+                "toBottle": 4
               },
               {
                 "fromBottle": 9,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 8,
                 "toBottle": 4
               },
               {
-                "fromBottle": 1,
+                "fromBottle": 9,
+                "toBottle": 2
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 9
+              },
+              {
+                "fromBottle": 5,
                 "toBottle": 8
               },
               {
-                "fromBottle": 11,
+                "fromBottle": 12,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 5,
                 "toBottle": 1
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 8
               },
               {
                 "fromBottle": 6,
-                "toBottle": 1
-              }
-            ]
-          },
-          {
-            "stepCount": 32,
-            "moves": [
-              {
-                "fromBottle": 8,
-                "toBottle": 6
+                "toBottle": 12
               },
               {
-                "fromBottle": 1,
-                "toBottle": 8
+                "fromBottle": 6,
+                "toBottle": 19
               },
               {
-                "fromBottle": 11,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 8
+                "fromBottle": 3,
+                "toBottle": 5
               },
               {
                 "fromBottle": 6,
@@ -1490,781 +116,69 @@
               },
               {
                 "fromBottle": 3,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 10
+                "toBottle": 1
               },
               {
                 "fromBottle": 7,
-                "toBottle": 12
+                "toBottle": 6
               },
               {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 10
+                "fromBottle": 11,
+                "toBottle": 6
               },
               {
                 "fromBottle": 7,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 10
+                "toBottle": 20
               },
               {
                 "fromBottle": 7,
-                "toBottle": 12
+                "toBottle": 4
               },
               {
                 "fromBottle": 9,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 7,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 9,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 11,
                 "toBottle": 7
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 7
+              },
+              {
+                "fromBottle": 11,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 6
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 1
               }
             ]
           }
         ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.3658166666666666,
-          "solutionSteps": 32,
-          "legalOpeningMoves": 10,
-          "branchingFactor": 0.8333333333333334,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 36,
-          "falseProgressScore": 0.14,
-          "trapLikelihood": 0.2586666666666667,
-          "recoveryPenalty": 1,
-          "normalHelperCount": 2,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 12,
-          "forcedMoveRatio": 0.1,
-          "fragmentation": 0.75,
-          "buriedDepth": 60,
-          "helperPressure": 0.33333333333333337,
-          "freeCapacity": 8,
-          "fillDensity": 0.8333333333333334,
-          "rehandling": 0.625,
-          "crossBottleDependency": 3,
-          "temporaryDisorder": 1.375,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 10,
-          "safeOpeningMoves": 10,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 10,
-          "safetySampleCheckpoints": 4
-        },
         "layoutMetrics": {
           "layoutRows": [
             {
               "y": 0,
-              "count": 6
+              "count": 4
             },
             {
               "y": 1,
-              "count": 6
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 1,
-          "centerOffset": 0,
-          "compactnessScore": 1,
-          "leftRightBalance": 0,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 77
-        }
-      }
-    },
-    {
-      "levelNumber": 17,
-      "solutionData": {
-        "solutionCount": 2,
-        "shortestStepCount": 33,
-        "storedSolutionCount": 2,
-        "storesAllSolutions": false,
-        "difficulty": "Normal",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_hybrid_hidden_profile_Normal_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 33,
-            "moves": [
-              {
-                "fromBottle": 4,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 13,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 13,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 13
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 13,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 13
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 7
-              }
-            ]
-          },
-          {
-            "stepCount": 33,
-            "moves": [
-              {
-                "fromBottle": 12,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 13,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 13,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 13
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 13,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 13
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 11
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.31810000000000005,
-          "solutionSteps": 33,
-          "legalOpeningMoves": 10,
-          "branchingFactor": 0.7692307692307693,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 34,
-          "falseProgressScore": 0.1433333333333333,
-          "trapLikelihood": 0.19299999999999998,
-          "recoveryPenalty": 1,
-          "normalHelperCount": 3,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 13,
-          "forcedMoveRatio": 0.1,
-          "fragmentation": 0.75,
-          "buriedDepth": 54,
-          "helperPressure": 0,
-          "freeCapacity": 12,
-          "fillDensity": 0.7692307692307693,
-          "rehandling": 0.6666666666666666,
-          "crossBottleDependency": 2.4,
-          "temporaryDisorder": 1.4166666666666665,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 10,
-          "safeOpeningMoves": 10,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 10,
-          "safetySampleCheckpoints": 4
-        },
-        "layoutMetrics": {
-          "layoutRows": [
-            {
-              "y": 2,
-              "count": 6
+              "count": 4
             },
-            {
-              "y": 3,
-              "count": 7
-            }
-          ],
-          "connectedGroupCount": 1,
-          "connectedGroups": 1,
-          "isolatedBottleCount": 0,
-          "isolatedBottles": 0,
-          "emptyRowGapCount": 0,
-          "internalHorizontalGapCount": 0,
-          "internalGaps": 0,
-          "rowBalanceScore": 0.875,
-          "centerOffset": 0.25,
-          "compactnessScore": 0.9285714285714286,
-          "leftRightBalance": 0.07692307692307693,
-          "roleSeparationPenalty": 0,
-          "layoutScore": 69.95192307692308
-        }
-      }
-    },
-    {
-      "levelNumber": 18,
-      "solutionData": {
-        "solutionCount": 2,
-        "shortestStepCount": 30,
-        "storedSolutionCount": 2,
-        "storesAllSolutions": false,
-        "difficulty": "Normal",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_normal_profile_Normal_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
-        "solutions": [
-          {
-            "stepCount": 30,
-            "moves": [
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 10
-              }
-            ]
-          },
-          {
-            "stepCount": 30,
-            "moves": [
-              {
-                "fromBottle": 8,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 6,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 4
-              }
-            ]
-          }
-        ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.30705333333333334,
-          "solutionSteps": 30,
-          "legalOpeningMoves": 9,
-          "branchingFactor": 0.75,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 30,
-          "falseProgressScore": 0.14066666666666666,
-          "trapLikelihood": 0.19219999999999998,
-          "recoveryPenalty": 1,
-          "normalHelperCount": 3,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 12,
-          "forcedMoveRatio": 0.1111111111111111,
-          "fragmentation": 0.75,
-          "buriedDepth": 47,
-          "helperPressure": 0,
-          "freeCapacity": 12,
-          "fillDensity": 0.75,
-          "rehandling": 0.6333333333333333,
-          "crossBottleDependency": 2.2222222222222223,
-          "temporaryDisorder": 1.3833333333333333,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 9,
-          "safeOpeningMoves": 9,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 9,
-          "safetySampleCheckpoints": 4
-        },
-        "layoutMetrics": {
-          "layoutRows": [
             {
               "y": 2,
               "count": 4
@@ -2291,368 +205,226 @@
           "leftRightBalance": 0,
           "roleSeparationPenalty": 0,
           "layoutScore": 77
+        },
+        "megaMetrics": {
+          "activeBottleCount": 17,
+          "normalHelperCount": 2,
+          "averageActiveFill": 3.6470588235294117,
+          "activeFillRatio": 0.9117647058823529,
+          "activeFreeSlots": 6,
+          "activeFreeRatio": 0.08823529411764706,
+          "sparseBottleCount": 0,
+          "sparseBottleRatio": 0,
+          "singleLayerBottleCount": 0,
+          "distributedActiveFreeRatio": 0.35294117647058826,
+          "targetSourceBottleCount": 11,
+          "buriedTargetRatio": 1,
+          "deepBuriedTargetRatio": 1,
+          "uniqueVisibleTopColors": 8,
+          "maxTopColorShare": 0.17647058823529413,
+          "uniqueBottlePatternRatio": 1,
+          "movesBeforeFirstMegaPour": 3,
+          "nonMegaMoveCount": 27,
+          "nonMegaMoveRatio": 0.7105263157894737,
+          "crossBottleBlockerMoves": 21,
+          "normalHelperMoves": 6,
+          "rehandledBlockerCount": 16,
+          "distinctSourceBottles": 11,
+          "distinctDestinationBottles": 17,
+          "distinctNonMegaDestinationBottles": 17,
+          "maxConsecutiveMegaPours": 2,
+          "templatePenalty": 1,
+          "solutionStepCount": 38,
+          "solverVisitedStates": 39
         }
       }
     },
     {
-      "levelNumber": 19,
+      "levelNumber": 7,
       "solutionData": {
-        "solutionCount": 2,
-        "shortestStepCount": 38,
-        "storedSolutionCount": 2,
+        "solutionCount": 1,
+        "shortestStepCount": 41,
+        "storedSolutionCount": 1,
         "storesAllSolutions": false,
         "difficulty": "Normal",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_hidden_profile_Normal_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
+        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_mega_mega_v2_target_directed_solver_exact_replay_not_global_shortest",
         "solutions": [
           {
-            "stepCount": 38,
+            "stepCount": 41,
             "moves": [
               {
-                "fromBottle": 14,
-                "toBottle": 13
+                "fromBottle": 9,
+                "toBottle": 17
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 16
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 18
+              },
+              {
+                "fromBottle": 9,
+                "toBottle": 1
               },
               {
                 "fromBottle": 11,
+                "toBottle": 4
+              },
+              {
+                "fromBottle": 13,
+                "toBottle": 9
+              },
+              {
+                "fromBottle": 13,
                 "toBottle": 14
               },
               {
-                "fromBottle": 6,
+                "fromBottle": 8,
                 "toBottle": 11
               },
               {
-                "fromBottle": 6,
+                "fromBottle": 13,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 2,
                 "toBottle": 13
               },
               {
-                "fromBottle": 14,
+                "fromBottle": 2,
+                "toBottle": 4
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 13
+              },
+              {
+                "fromBottle": 2,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 9
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 2
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 6,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 7,
                 "toBottle": 6
               },
               {
-                "fromBottle": 11,
-                "toBottle": 14
+                "fromBottle": 7,
+                "toBottle": 10
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 7,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 2
               },
               {
                 "fromBottle": 11,
-                "toBottle": 13
+                "toBottle": 12
               },
               {
-                "fromBottle": 6,
+                "fromBottle": 4,
+                "toBottle": 20
+              },
+              {
+                "fromBottle": 11,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 10,
                 "toBottle": 11
               },
               {
-                "fromBottle": 14,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 14,
-                "toBottle": 13
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 3
-              },
-              {
                 "fromBottle": 10,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 5,
                 "toBottle": 7
               },
               {
-                "fromBottle": 5,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 5
-              },
-              {
                 "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 3
+                "toBottle": 20
               },
               {
                 "fromBottle": 10,
                 "toBottle": 1
               },
               {
-                "fromBottle": 4,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 5
-              },
-              {
                 "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 9
-              }
-            ]
-          },
-          {
-            "stepCount": 38,
-            "moves": [
-              {
-                "fromBottle": 2,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 12
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 8
-              },
-              {
-                "fromBottle": 1,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 10,
-                "toBottle": 1
-              },
-              {
-                "fromBottle": 4,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 12,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 14,
-                "toBottle": 13
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 14
-              },
-              {
-                "fromBottle": 6,
                 "toBottle": 11
               },
               {
+                "fromBottle": 12,
+                "toBottle": 4
+              },
+              {
+                "fromBottle": 8,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 4
+              },
+              {
                 "fromBottle": 6,
-                "toBottle": 13
+                "toBottle": 5
               },
               {
-                "fromBottle": 14,
-                "toBottle": 6
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 14
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 13
+                "fromBottle": 5,
+                "toBottle": 8
               },
               {
                 "fromBottle": 6,
-                "toBottle": 11
+                "toBottle": 10
               },
               {
-                "fromBottle": 14,
-                "toBottle": 6
+                "fromBottle": 5,
+                "toBottle": 1
               },
               {
-                "fromBottle": 14,
-                "toBottle": 13
+                "fromBottle": 6,
+                "toBottle": 1
               }
             ]
           }
         ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.37668032581453637,
-          "solutionSteps": 38,
-          "legalOpeningMoves": 12,
-          "branchingFactor": 0.8571428571428571,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 52,
-          "falseProgressScore": 0.14473684210526316,
-          "trapLikelihood": 0.2600877192982456,
-          "recoveryPenalty": 1,
-          "normalHelperCount": 2,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 14,
-          "forcedMoveRatio": 0.08333333333333333,
-          "fragmentation": 0.75,
-          "buriedDepth": 69,
-          "helperPressure": 0.33333333333333337,
-          "freeCapacity": 8,
-          "fillDensity": 0.8571428571428571,
-          "rehandling": 0.6842105263157895,
-          "crossBottleDependency": 2.75,
-          "temporaryDisorder": 1.4342105263157894,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 12,
-          "safeOpeningMoves": 12,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 12,
-          "safetySampleCheckpoints": 4
-        },
         "layoutMetrics": {
           "layoutRows": [
+            {
+              "y": 1,
+              "count": 7
+            },
             {
               "y": 2,
               "count": 7
@@ -2675,116 +447,127 @@
           "leftRightBalance": 0.14285714285714285,
           "roleSeparationPenalty": 0,
           "layoutScore": 73.03571428571429
+        },
+        "megaMetrics": {
+          "activeBottleCount": 18,
+          "normalHelperCount": 2,
+          "averageActiveFill": 3.7222222222222223,
+          "activeFillRatio": 0.9305555555555556,
+          "activeFreeSlots": 5,
+          "activeFreeRatio": 0.06944444444444445,
+          "sparseBottleCount": 0,
+          "sparseBottleRatio": 0,
+          "singleLayerBottleCount": 0,
+          "distributedActiveFreeRatio": 0.2777777777777778,
+          "targetSourceBottleCount": 12,
+          "buriedTargetRatio": 1,
+          "deepBuriedTargetRatio": 0.9166666666666666,
+          "uniqueVisibleTopColors": 6,
+          "maxTopColorShare": 0.2222222222222222,
+          "uniqueBottlePatternRatio": 1,
+          "movesBeforeFirstMegaPour": 3,
+          "nonMegaMoveCount": 29,
+          "nonMegaMoveRatio": 0.7073170731707317,
+          "crossBottleBlockerMoves": 25,
+          "normalHelperMoves": 4,
+          "rehandledBlockerCount": 17,
+          "distinctSourceBottles": 12,
+          "distinctDestinationBottles": 17,
+          "distinctNonMegaDestinationBottles": 17,
+          "maxConsecutiveMegaPours": 2,
+          "templatePenalty": 0,
+          "solutionStepCount": 41,
+          "solverVisitedStates": 42
         }
       }
     },
     {
-      "levelNumber": 20,
+      "levelNumber": 8,
       "solutionData": {
-        "solutionCount": 2,
-        "shortestStepCount": 29,
-        "storedSolutionCount": 2,
+        "solutionCount": 1,
+        "shortestStepCount": 42,
+        "storedSolutionCount": 1,
         "storesAllSolutions": false,
         "difficulty": "Normal",
-        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_hybrid_hidden_profile_Normal_modular_constructed_validated_from_exhaustive_pruned_canonical_modules_not_global_shortest",
+        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_mega_mega_v2_target_directed_solver_exact_replay_not_global_shortest",
         "solutions": [
           {
-            "stepCount": 29,
+            "stepCount": 42,
             "moves": [
               {
-                "fromBottle": 9,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 9
+                "fromBottle": 2,
+                "toBottle": 14
               },
               {
                 "fromBottle": 3,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 8,
                 "toBottle": 2
               },
               {
-                "fromBottle": 8,
-                "toBottle": 10
+                "fromBottle": 3,
+                "toBottle": 15
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 18
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 19
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 16
               },
               {
                 "fromBottle": 9,
-                "toBottle": 8
+                "toBottle": 17
               },
               {
                 "fromBottle": 7,
                 "toBottle": 9
               },
               {
-                "fromBottle": 3,
+                "fromBottle": 8,
                 "toBottle": 7
               },
               {
                 "fromBottle": 11,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 9,
                 "toBottle": 8
               },
               {
-                "fromBottle": 7,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 5,
+                "fromBottle": 4,
                 "toBottle": 11
               },
               {
-                "fromBottle": 5,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 1,
+                "fromBottle": 13,
                 "toBottle": 4
               },
               {
-                "fromBottle": 6,
+                "fromBottle": 12,
+                "toBottle": 13
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 12
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 5
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 4,
                 "toBottle": 1
               },
               {
@@ -2792,190 +575,585 @@
                 "toBottle": 4
               },
               {
-                "fromBottle": 1,
+                "fromBottle": 12,
                 "toBottle": 6
               },
               {
-                "fromBottle": 1,
-                "toBottle": 4
+                "fromBottle": 9,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 20
+              },
+              {
+                "fromBottle": 6,
+                "toBottle": 21
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 1
               },
               {
                 "fromBottle": 6,
                 "toBottle": 1
               },
               {
-                "fromBottle": 6,
-                "toBottle": 4
-              }
-            ]
-          },
-          {
-            "stepCount": 29,
-            "moves": [
-              {
-                "fromBottle": 1,
-                "toBottle": 4
+                "fromBottle": 9,
+                "toBottle": 21
               },
               {
-                "fromBottle": 6,
+                "fromBottle": 8,
+                "toBottle": 5
+              },
+              {
+                "fromBottle": 9,
                 "toBottle": 1
               },
               {
-                "fromBottle": 6,
-                "toBottle": 4
+                "fromBottle": 8,
+                "toBottle": 1
               },
               {
-                "fromBottle": 1,
+                "fromBottle": 13,
                 "toBottle": 6
               },
               {
-                "fromBottle": 1,
-                "toBottle": 4
+                "fromBottle": 2,
+                "toBottle": 9
               },
               {
-                "fromBottle": 6,
+                "fromBottle": 13,
                 "toBottle": 1
               },
               {
-                "fromBottle": 6,
-                "toBottle": 4
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 7,
-                "toBottle": 9
-              },
-              {
-                "fromBottle": 3,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 11
-              },
-              {
                 "fromBottle": 2,
                 "toBottle": 5
               },
               {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 8
-              },
-              {
                 "fromBottle": 7,
                 "toBottle": 9
               },
               {
-                "fromBottle": 3,
-                "toBottle": 7
-              },
-              {
-                "fromBottle": 11,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 11
-              },
-              {
                 "fromBottle": 2,
-                "toBottle": 5
-              },
-              {
-                "fromBottle": 2,
-                "toBottle": 10
-              },
-              {
-                "fromBottle": 8,
-                "toBottle": 2
-              },
-              {
-                "fromBottle": 9,
-                "toBottle": 8
+                "toBottle": 1
               },
               {
                 "fromBottle": 7,
-                "toBottle": 9
+                "toBottle": 8
               },
               {
-                "fromBottle": 3,
+                "fromBottle": 11,
+                "toBottle": 2
+              },
+              {
+                "fromBottle": 7,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 11,
                 "toBottle": 7
               },
               {
                 "fromBottle": 11,
-                "toBottle": 3
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 11
-              },
-              {
-                "fromBottle": 5,
-                "toBottle": 10
+                "toBottle": 1
               }
             ]
           }
         ],
-        "difficultyMetrics": {
-          "difficultyScore": 0.3544751306165099,
-          "solutionSteps": 29,
-          "legalOpeningMoves": 9,
-          "branchingFactor": 0.8181818181818182,
-          "safeMoveRatio": 1,
-          "criticalDecisionCount": 39,
-          "falseProgressScore": 0.14517241379310344,
-          "trapLikelihood": 0.26021839080459774,
-          "recoveryPenalty": 1,
-          "normalHelperCount": 2,
-          "embeddedWorkspaceBottleCount": 0,
-          "coreBottleCountExcludingAds": 11,
-          "forcedMoveRatio": 0.1111111111111111,
-          "fragmentation": 0.75,
-          "buriedDepth": 50,
-          "helperPressure": 0.33333333333333337,
-          "freeCapacity": 8,
-          "fillDensity": 0.8181818181818182,
-          "rehandling": 0.6896551724137931,
-          "crossBottleDependency": 2.5555555555555554,
-          "temporaryDisorder": 1.4396551724137931,
-          "deadEndPotential": 0,
-          "specialModePressure": 0,
-          "solverVisitedStates": 0,
-          "remainingMixedBottleCount": 9,
-          "safeOpeningMoves": 9,
-          "deadEndOpeningMoves": 0,
-          "falseProgressOpeningMoves": 0,
-          "classifiedOpeningMoves": 9,
-          "safetySampleCheckpoints": 4
-        },
         "layoutMetrics": {
           "layoutRows": [
             {
               "y": 0,
-              "count": 4
+              "count": 7
             },
             {
               "y": 1,
-              "count": 4
+              "count": 7
             },
             {
               "y": 2,
-              "count": 3
+              "count": 7
+            }
+          ],
+          "connectedGroupCount": 1,
+          "connectedGroups": 1,
+          "isolatedBottleCount": 0,
+          "isolatedBottles": 0,
+          "emptyRowGapCount": 0,
+          "internalHorizontalGapCount": 0,
+          "internalGaps": 0,
+          "rowBalanceScore": 1,
+          "centerOffset": 0.5,
+          "compactnessScore": 1,
+          "leftRightBalance": 0.14285714285714285,
+          "roleSeparationPenalty": 0,
+          "layoutScore": 73.03571428571429
+        },
+        "megaMetrics": {
+          "activeBottleCount": 18,
+          "normalHelperCount": 2,
+          "averageActiveFill": 3.6666666666666665,
+          "activeFillRatio": 0.9166666666666666,
+          "activeFreeSlots": 6,
+          "activeFreeRatio": 0.08333333333333333,
+          "sparseBottleCount": 0,
+          "sparseBottleRatio": 0,
+          "singleLayerBottleCount": 0,
+          "distributedActiveFreeRatio": 0.3333333333333333,
+          "targetSourceBottleCount": 12,
+          "buriedTargetRatio": 1,
+          "deepBuriedTargetRatio": 1,
+          "uniqueVisibleTopColors": 7,
+          "maxTopColorShare": 0.16666666666666666,
+          "uniqueBottlePatternRatio": 1,
+          "movesBeforeFirstMegaPour": 5,
+          "nonMegaMoveCount": 30,
+          "nonMegaMoveRatio": 0.7142857142857143,
+          "crossBottleBlockerMoves": 22,
+          "normalHelperMoves": 8,
+          "rehandledBlockerCount": 18,
+          "distinctSourceBottles": 12,
+          "distinctDestinationBottles": 19,
+          "distinctNonMegaDestinationBottles": 19,
+          "maxConsecutiveMegaPours": 2,
+          "templatePenalty": 1,
+          "solutionStepCount": 42,
+          "solverVisitedStates": 43
+        }
+      }
+    },
+    {
+      "levelNumber": 9,
+      "solutionData": {
+        "solutionCount": 1,
+        "shortestStepCount": 37,
+        "storedSolutionCount": 1,
+        "storesAllSolutions": false,
+        "difficulty": "Normal",
+        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_mega_mega_v2_target_directed_solver_exact_replay_not_global_shortest",
+        "solutions": [
+          {
+            "stepCount": 37,
+            "moves": [
+              {
+                "fromBottle": 8,
+                "toBottle": 19
+              },
+              {
+                "fromBottle": 2,
+                "toBottle": 15
+              },
+              {
+                "fromBottle": 9,
+                "toBottle": 2
+              },
+              {
+                "fromBottle": 8,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 9,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 11,
+                "toBottle": 9
+              },
+              {
+                "fromBottle": 13,
+                "toBottle": 8
+              },
+              {
+                "fromBottle": 11,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 13,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 13
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 17
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 16
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 9
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 6,
+                "toBottle": 4
+              },
+              {
+                "fromBottle": 6,
+                "toBottle": 18
+              },
+              {
+                "fromBottle": 6,
+                "toBottle": 14
+              },
+              {
+                "fromBottle": 2,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 6,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 2,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 2
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 11
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 6
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 4
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 20
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 21
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 4
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 10
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 12
+              },
+              {
+                "fromBottle": 7,
+                "toBottle": 4
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 7,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 7,
+                "toBottle": 11
+              },
+              {
+                "fromBottle": 7,
+                "toBottle": 1
+              }
+            ]
+          }
+        ],
+        "layoutMetrics": {
+          "layoutRows": [
+            {
+              "y": 1,
+              "count": 7
+            },
+            {
+              "y": 2,
+              "count": 7
+            },
+            {
+              "y": 3,
+              "count": 7
+            }
+          ],
+          "connectedGroupCount": 1,
+          "connectedGroups": 1,
+          "isolatedBottleCount": 0,
+          "isolatedBottles": 0,
+          "emptyRowGapCount": 0,
+          "internalHorizontalGapCount": 0,
+          "internalGaps": 0,
+          "rowBalanceScore": 1,
+          "centerOffset": 0.5,
+          "compactnessScore": 1,
+          "leftRightBalance": 0.14285714285714285,
+          "roleSeparationPenalty": 0,
+          "layoutScore": 73.03571428571429
+        },
+        "megaMetrics": {
+          "activeBottleCount": 18,
+          "normalHelperCount": 2,
+          "averageActiveFill": 3.6666666666666665,
+          "activeFillRatio": 0.9166666666666666,
+          "activeFreeSlots": 6,
+          "activeFreeRatio": 0.08333333333333333,
+          "sparseBottleCount": 0,
+          "sparseBottleRatio": 0,
+          "singleLayerBottleCount": 0,
+          "distributedActiveFreeRatio": 0.3333333333333333,
+          "targetSourceBottleCount": 12,
+          "buriedTargetRatio": 1,
+          "deepBuriedTargetRatio": 0.6666666666666666,
+          "uniqueVisibleTopColors": 9,
+          "maxTopColorShare": 0.16666666666666666,
+          "uniqueBottlePatternRatio": 1,
+          "movesBeforeFirstMegaPour": 3,
+          "nonMegaMoveCount": 25,
+          "nonMegaMoveRatio": 0.6756756756756757,
+          "crossBottleBlockerMoves": 20,
+          "normalHelperMoves": 5,
+          "rehandledBlockerCount": 13,
+          "distinctSourceBottles": 12,
+          "distinctDestinationBottles": 18,
+          "distinctNonMegaDestinationBottles": 18,
+          "maxConsecutiveMegaPours": 2,
+          "templatePenalty": 1,
+          "solutionStepCount": 37,
+          "solverVisitedStates": 38
+        }
+      }
+    },
+    {
+      "levelNumber": 10,
+      "solutionData": {
+        "solutionCount": 1,
+        "shortestStepCount": 42,
+        "storedSolutionCount": 1,
+        "storesAllSolutions": false,
+        "difficulty": "Normal",
+        "selectionPolicy": "shortest_non_loop_empty_priority_opening_diversity_soft_mega_mega_v2_target_directed_solver_exact_replay_not_global_shortest",
+        "solutions": [
+          {
+            "stepCount": 42,
+            "moves": [
+              {
+                "fromBottle": 7,
+                "toBottle": 18
+              },
+              {
+                "fromBottle": 9,
+                "toBottle": 15
+              },
+              {
+                "fromBottle": 2,
+                "toBottle": 17
+              },
+              {
+                "fromBottle": 7,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 9,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 2,
+                "toBottle": 7
+              },
+              {
+                "fromBottle": 11,
+                "toBottle": 9
+              },
+              {
+                "fromBottle": 13,
+                "toBottle": 2
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 13
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 2
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 11
+              },
+              {
+                "fromBottle": 6,
+                "toBottle": 19
+              },
+              {
+                "fromBottle": 3,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 6,
+                "toBottle": 9
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 7
+              },
+              {
+                "fromBottle": 6,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 6
+              },
+              {
+                "fromBottle": 11,
+                "toBottle": 12
+              },
+              {
+                "fromBottle": 13,
+                "toBottle": 11
+              },
+              {
+                "fromBottle": 2,
+                "toBottle": 3
+              },
+              {
+                "fromBottle": 13,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 2,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 11,
+                "toBottle": 2
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 21
+              },
+              {
+                "fromBottle": 11,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 12,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 11
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 11
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 13
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 4
+              },
+              {
+                "fromBottle": 10,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 16
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 12
+              },
+              {
+                "fromBottle": 5,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 4,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 8,
+                "toBottle": 5
+              },
+              {
+                "fromBottle": 8,
+                "toBottle": 10
+              },
+              {
+                "fromBottle": 14,
+                "toBottle": 5
+              },
+              {
+                "fromBottle": 8,
+                "toBottle": 1
+              },
+              {
+                "fromBottle": 14,
+                "toBottle": 12
+              },
+              {
+                "fromBottle": 14,
+                "toBottle": 4
+              },
+              {
+                "fromBottle": 14,
+                "toBottle": 1
+              }
+            ]
+          }
+        ],
+        "layoutMetrics": {
+          "layoutRows": [
+            {
+              "y": 0,
+              "count": 5
+            },
+            {
+              "y": 1,
+              "count": 6
+            },
+            {
+              "y": 2,
+              "count": 5
+            },
+            {
+              "y": 3,
+              "count": 6
             }
           ],
           "connectedGroupCount": 1,
@@ -2986,11 +1164,42 @@
           "internalHorizontalGapCount": 0,
           "internalGaps": 0,
           "rowBalanceScore": 0.875,
-          "centerOffset": 0.16666666666666666,
+          "centerOffset": 0.25,
           "compactnessScore": 0.9166666666666666,
           "leftRightBalance": 0.09090909090909091,
           "roleSeparationPenalty": 0,
-          "layoutScore": 69.74242424242424
+          "layoutScore": 69.36742424242424
+        },
+        "megaMetrics": {
+          "activeBottleCount": 19,
+          "normalHelperCount": 2,
+          "averageActiveFill": 3.6842105263157894,
+          "activeFillRatio": 0.9210526315789473,
+          "activeFreeSlots": 6,
+          "activeFreeRatio": 0.07894736842105263,
+          "sparseBottleCount": 0,
+          "sparseBottleRatio": 0,
+          "singleLayerBottleCount": 0,
+          "distributedActiveFreeRatio": 0.3157894736842105,
+          "targetSourceBottleCount": 13,
+          "buriedTargetRatio": 1,
+          "deepBuriedTargetRatio": 0.8461538461538461,
+          "uniqueVisibleTopColors": 8,
+          "maxTopColorShare": 0.21052631578947367,
+          "uniqueBottlePatternRatio": 1,
+          "movesBeforeFirstMegaPour": 3,
+          "nonMegaMoveCount": 29,
+          "nonMegaMoveRatio": 0.6904761904761905,
+          "crossBottleBlockerMoves": 23,
+          "normalHelperMoves": 6,
+          "rehandledBlockerCount": 16,
+          "distinctSourceBottles": 13,
+          "distinctDestinationBottles": 17,
+          "distinctNonMegaDestinationBottles": 17,
+          "maxConsecutiveMegaPours": 2,
+          "templatePenalty": 1,
+          "solutionStepCount": 42,
+          "solverVisitedStates": 43
         }
       }
     }

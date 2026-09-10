@@ -63,8 +63,7 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 
 - Production generator entry point: `Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js`.
 - Treat modules used by the production entry point as production code. Keep the entry point thin; substantial generator, solver, rule, validation, or evaluation logic belongs in its appropriate module.
-- `_bmad-output/implementation-artifacts/generate-watersort-exhaustive-100.js` is an implementation artifact copy, not production source.
-- `generate-watersort-100.js` is legacy/experimental and must not be used as a source of truth unless explicitly requested.
+- Do not use `_bmad-output` generator copies or `generate-watersort-100.js` as source of truth.
 - Runtime level JSON: `Assets/Project/Data/WaterSort/Resources/WaterSort/`.
 - Runtime solution JSON: `Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/`.
 - Generation config: `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`.
@@ -80,9 +79,13 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 - Config is editable as YAML in the Lab folder; palette/gameplay changes still need a new WebGL player from the project owner.
 - Lab mode loads packs over localhost (`levelLab=1`); normal builds keep Resources loading.
 - WebGL Lab play UI may show side inspection panels (metrics + stored solution steps). Non-WebGL builds must not require those panels.
+
 ### Generator Invariants
 
-- Generation is config-driven. `levelsPerPack` controls requested level count; one JSON pack may contain at most 100 levels.
+- Generation is config-driven by difficulty profiles (Easy → Special). `levelsPerPack` controls requested level count; one JSON pack may contain at most 100 levels.
+- The JS generator must parse and enforce profile composition/difficulty fields (`min/maxNormalHelperCount`, partial-fill targets, `maxSafeMoveRatio`, `minDeadEndPotential`, `minTrapLikelihood`, etc.). Config fields are not documentation-only.
+- Prefer partial fills (2/4, 3/4) over multiple fully empty normal helpers. Ads are separate optional assistance and never count as normal helpers or toward `coreBottleCount`.
+- Treat the 2026-09-10 config difficulty floors as the approved baseline. Do not silently soften helper/empty/partial/safe-move/dead-end/trap/NearWin gates to improve generation success rate; change them only when the user explicitly asks.
 - Generated normal bottle capacity must be 2-5. Mega bottle capacity must be 12-20.
 - Generated layouts use the configured 8x5 grid, at most 40 physical bottles, and unique in-bounds `gridPosition` values.
 - Full hidden-stack and hybrid hidden-stack are mutually exclusive.

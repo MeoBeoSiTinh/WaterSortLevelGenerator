@@ -18,6 +18,13 @@ Use these rules for Unity UI creation, UI edits, prefab edits, Figma/image-to-UI
 - Make camera/world GameObjects adapt through camera viewport or orthographic bounds, not UI pixel coordinates; keep critical gameplay content inside the visible safe play area at the reference ratio.
 - Verify new UI and screen-bound GameObjects at the 1080×2160 reference resolution and at least one narrower/taller portrait resolution when practical.
 
+## Water Sort WebGL Lab Layout
+
+- Ordinary mobile/portrait Water Sort UI keeps a single gameplay column.
+- WebGL Level Lab builds may add left/right inspection panels outside the gameplay board. Keep the left panel concise and human-readable (summary + a few playability ratios), not a full dump of generator fields. Gate panels with `UNITY_WEBGL`.
+- On landscape WebGL, prefer reference resolution around 1920×1080, reserve non-overlapping header/board/footer regions, mask the board, and size bottle cells from available board rect so controls do not overlap bottles.
+- Inspection text should remain readable on dark backgrounds; do not duplicate the level title in the status message.
+
 ## Persistent UI Root
 
 - Use a persistent `UIRoot` with `DontDestroyOnLoad` when the project needs UI shared across scenes.

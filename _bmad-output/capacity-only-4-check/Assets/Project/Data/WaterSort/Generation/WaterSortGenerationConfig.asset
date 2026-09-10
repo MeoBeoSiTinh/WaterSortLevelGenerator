@@ -1,0 +1,308 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a42c7910d8f4b6a9c3e21f5a7b8d901, type: 3}
+  m_Name: WaterSortGenerationConfig
+  m_EditorClassIdentifier: 
+  schemaVersion: 1
+  levelsPerPack: 100
+  solutionExampleLimitWhenMany: 3
+  manySolutionThreshold: 10
+  defaultBottleCapacity: 4
+  layoutGridColumns: 8
+  layoutGridRows: 8
+  allowNoEmptyStartingBottles: 1
+  noEmptyStartingBottleChance: 0.15
+  preferredMinEmptyBottleCount: 1
+  preferredMaxEmptyBottleCount: 3
+  duplicateColorBottleChance: 0.45
+  maxDuplicateBottleTargetsPerColor: 6
+  maxBottleCount: 50
+  diverseOpeningSolutionChance: 0.35
+  diverseOpeningMoveWindow: 4
+  diverseOpeningMinDistinctSourceBottles: 3
+  diverseOpeningMinStoredSolutions: 2
+  selectionPolicy: shortest_non_loop_empty_priority_opening_diversity_soft
+  difficultyBands:
+  - name: Tutorial
+    levelCount: 1
+    targetDifficultyScoreMin: 0.9
+    targetDifficultyScoreMax: 1
+    colorWeights:
+    - colorCount: 1
+      weight: 50
+    - colorCount: 2
+      weight: 50
+    helperCapacityWeights:
+    - helperCapacity: 0
+      weight: 50
+    - helperCapacity: 2
+      weight: 50
+    bottleCapacityWeights:
+    - capacity: 4
+      weight: 100
+    gridShapeWeights:
+    - shape: '-'
+      weight: 50
+      minBottleCount: 2
+      maxBottleCount: 3
+    allowHiddenStackMode: 0
+    hiddenStackChance: 0
+    allowHybridHiddenStackMode: 0
+    hybridHiddenStackChance: 0
+    hybridHiddenBottleChance: 0
+    minHybridHiddenLayersPerBottle: 1
+    maxHybridHiddenLayersPerBottle: 1
+    allowLockedBottleMode: 0
+    lockedBottleChance: 0
+    minLockedBottleCount: 1
+    maxLockedBottleCount: 1
+    minCompletedBottleCountToUnlock: 1
+    maxCompletedBottleCountToUnlock: 1
+    minTargetBottleCount: 2
+    maxTargetBottleCount: 3
+    minShortestStepCount: 1
+    maxShortestStepCount: 5
+    maxSolutionCount: 10000
+  - name: Ramp
+    levelCount: 9
+    targetDifficultyScoreMin: 0.75
+    targetDifficultyScoreMax: 0.9
+    colorWeights:
+    - colorCount: 7
+      weight: 25
+    - colorCount: 9
+      weight: 45
+    - colorCount: 10
+      weight: 30
+    helperCapacityWeights:
+    - helperCapacity: 8
+      weight: 55
+    - helperCapacity: 12
+      weight: 45
+    bottleCapacityWeights:
+    - capacity: 4
+      weight: 100
+    gridShapeWeights:
+    - shape: circle
+      weight: 25
+      minBottleCount: 10
+      maxBottleCount: 20
+    - shape: arc
+      weight: 25
+      minBottleCount: 9
+      maxBottleCount: 18
+    - shape: triangle
+      weight: 20
+      minBottleCount: 9
+      maxBottleCount: 18
+    - shape: diamond
+      weight: 15
+      minBottleCount: 10
+      maxBottleCount: 20
+    - shape: plus
+      weight: 15
+      minBottleCount: 9
+      maxBottleCount: 17
+    - shape: x
+      weight: 22
+      minBottleCount: 9
+      maxBottleCount: 16
+    - shape: y
+      weight: 18
+      minBottleCount: 9
+      maxBottleCount: 16
+    - shape: u
+      weight: 15
+      minBottleCount: 10
+      maxBottleCount: 18
+    - shape: wave
+      weight: 12
+      minBottleCount: 11
+      maxBottleCount: 18
+    - shape: staggered
+      weight: 60
+      minBottleCount: 9
+      maxBottleCount: 20
+    - shape: compact_zigzag
+      weight: 50
+      minBottleCount: 9
+      maxBottleCount: 20
+    - shape: alternating_rows
+      weight: 35
+      minBottleCount: 9
+      maxBottleCount: 20
+    allowHiddenStackMode: 1
+    hiddenStackChance: 0.2
+    allowHybridHiddenStackMode: 1
+    hybridHiddenStackChance: 0.18
+    hybridHiddenBottleChance: 0.35
+    minHybridHiddenLayersPerBottle: 1
+    maxHybridHiddenLayersPerBottle: 1
+    allowLockedBottleMode: 1
+    lockedBottleChance: 0.1
+    minLockedBottleCount: 1
+    maxLockedBottleCount: 2
+    minCompletedBottleCountToUnlock: 1
+    maxCompletedBottleCountToUnlock: 2
+    minTargetBottleCount: 9
+    maxTargetBottleCount: 15
+    minShortestStepCount: 18
+    maxShortestStepCount: 42
+    maxSolutionCount: 100000
+  - name: Main
+    levelCount: 90
+    targetDifficultyScoreMin: 0.6
+    targetDifficultyScoreMax: 0.75
+    colorWeights:
+    - colorCount: 9
+      weight: 20
+    - colorCount: 10
+      weight: 35
+    - colorCount: 11
+      weight: 30
+    - colorCount: 12
+      weight: 15
+    helperCapacityWeights:
+    - helperCapacity: 8
+      weight: 60
+    - helperCapacity: 12
+      weight: 35
+    - helperCapacity: 16
+      weight: 5
+    bottleCapacityWeights:
+    - capacity: 2
+      weight: 0
+    - capacity: 3
+      weight: 0
+    - capacity: 4
+      weight: 100
+    - capacity: 5
+      weight: 0
+    gridShapeWeights:
+    - shape: circle
+      weight: 15
+      minBottleCount: 13
+      maxBottleCount: 50
+    - shape: arc
+      weight: 15
+      minBottleCount: 13
+      maxBottleCount: 24
+    - shape: triangle
+      weight: 12
+      minBottleCount: 13
+      maxBottleCount: 24
+    - shape: square
+      weight: 12
+      minBottleCount: 16
+      maxBottleCount: 50
+    - shape: heart
+      weight: 12
+      minBottleCount: 14
+      maxBottleCount: 26
+    - shape: diamond
+      weight: 12
+      minBottleCount: 13
+      maxBottleCount: 24
+    - shape: spiral
+      weight: 10
+      minBottleCount: 18
+      maxBottleCount: 50
+    - shape: zigzag
+      weight: 7
+      minBottleCount: 14
+      maxBottleCount: 50
+    - shape: dense
+      weight: 80
+      minBottleCount: 12
+      maxBottleCount: 50
+    - shape: compact_zigzag
+      weight: 70
+      minBottleCount: 12
+      maxBottleCount: 50
+    - shape: staggered
+      weight: 70
+      minBottleCount: 12
+      maxBottleCount: 50
+    - shape: honeycomb
+      weight: 60
+      minBottleCount: 12
+      maxBottleCount: 50
+    - shape: dense_columns
+      weight: 50
+      minBottleCount: 12
+      maxBottleCount: 50
+    - shape: alternating_rows
+      weight: 45
+      minBottleCount: 12
+      maxBottleCount: 32
+    - shape: plus
+      weight: 5
+      minBottleCount: 13
+      maxBottleCount: 22
+    - shape: x
+      weight: 12
+      minBottleCount: 13
+      maxBottleCount: 18
+    - shape: y
+      weight: 10
+      minBottleCount: 13
+      maxBottleCount: 18
+    - shape: v
+      weight: 8
+      minBottleCount: 13
+      maxBottleCount: 16
+    - shape: u
+      weight: 10
+      minBottleCount: 14
+      maxBottleCount: 20
+    - shape: w
+      weight: 8
+      minBottleCount: 16
+      maxBottleCount: 24
+    - shape: l
+      weight: 6
+      minBottleCount: 13
+      maxBottleCount: 18
+    - shape: s
+      weight: 8
+      minBottleCount: 16
+      maxBottleCount: 24
+    - shape: wave
+      weight: 10
+      minBottleCount: 16
+      maxBottleCount: 26
+    - shape: double_arc
+      weight: 8
+      minBottleCount: 18
+      maxBottleCount: 50
+    - shape: frame
+      weight: 8
+      minBottleCount: 20
+      maxBottleCount: 50
+    allowHiddenStackMode: 1
+    hiddenStackChance: 0.35
+    allowHybridHiddenStackMode: 1
+    hybridHiddenStackChance: 0.3
+    hybridHiddenBottleChance: 0.5
+    minHybridHiddenLayersPerBottle: 1
+    maxHybridHiddenLayersPerBottle: 2
+    allowLockedBottleMode: 1
+    lockedBottleChance: 0.25
+    minLockedBottleCount: 1
+    maxLockedBottleCount: 4
+    minCompletedBottleCountToUnlock: 1
+    maxCompletedBottleCountToUnlock: 3
+    minTargetBottleCount: 12
+    maxTargetBottleCount: 30
+    minShortestStepCount: 28
+    maxShortestStepCount: 100
+    maxSolutionCount: 500000

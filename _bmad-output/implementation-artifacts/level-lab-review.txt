@@ -1,0 +1,1354 @@
+﻿+++ Tools/LevelLab\lab.css
+:root{font-family:system-ui,sans-serif;color:#243c4c;background:#f4f7f8;font-size:16px}*{box-sizing:border-box}body{margin:0}main{max-width:940px;margin:0 auto;padding:64px 28px}header{max-width:720px;margin-bottom:40px}.eyebrow{font-size:12px;font-weight:750;letter-spacing:.16em;color:#25766e}h1{font-size:clamp(30px,5vw,48px);line-height:1.15;letter-spacing:-.045em;margin:18px 0}p{line-height:1.7;color:#536978}h2{font-size:19px}.toolbar{display:flex;align-items:end;gap:12px;flex-wrap:wrap;padding:24px;background:white;border:1px solid #d8e3e6;border-radius:16px}label{display:grid;gap:8px;font-size:13px;font-weight:650;flex:1;min-width:200px}button,select{font:inherit;border:1px solid #c9d8dd;border-radius:8px;padding:12px 16px;background:white;color:inherit}button{cursor:pointer;font-weight:650}button:hover{background:#eaf1f3}button:disabled{opacity:.5;cursor:default}#play{background:#176e62;color:white;border-color:#176e62}#status{font-size:14px}.guide{margin-top:42px;border-top:1px solid #d8e3e6;padding-top:22px}blockquote{margin:16px 0;padding:18px 22px;border-left:3px solid #37978a;background:#e7f1ee;line-height:1.75}pre{padding:16px;background:#e5ecef;border-radius:8px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}#errors{color:#8d332a}#errors pre{background:#f7e8e5}:focus-visible{outline:3px solid #56a99d;outline-offset:3px}@media(max-width:580px){main{padding:32px 18px}.toolbar button{width:100%}}
++++ Tools/LevelLab\index.html
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Water Sort Â· Level Lab</title><link rel="stylesheet" href="/lab.css"></head>
+<body>
+<main>
+  <header><span class="eyebrow">WATER SORT / LEVEL LAB</span><h1>Táº¡o level. Má»Ÿ lÃªn. ChÆ¡i thá»­.</h1><p>DÃ¹ng AI trong thÆ° má»¥c Level Lab Ä‘á»ƒ táº¡o data theo rules vÃ  config, rá»“i táº£i láº¡i danh sÃ¡ch táº¡i Ä‘Ã¢y.</p></header>
+  <section class="toolbar" aria-label="Chá»n pack">
+    <label>Level pack <select id="packs" disabled><option>Äang kiá»ƒm tra dataâ€¦</option></select></label>
+    <button id="refresh">Táº£i láº¡i danh sÃ¡ch</button><button id="play" disabled>ChÆ¡i pack nÃ y â†—</button>
+  </section>
+  <p id="status" role="status">Äang Ä‘á»c vÃ  kiá»ƒm tra solutionâ€¦</p>
+  <section id="errors" hidden><h2>Pack cáº§n sá»­a</h2><pre id="errorText"></pre></section>
+  <section class="guide"><h2>Táº¡o pack má»›i vá»›i AI</h2><p>Má»Ÿ thÆ° má»¥c Ä‘Ã£ giáº£i nÃ©n trong cÃ´ng cá»¥ AI cá»§a báº¡n, rá»“i gá»­i:</p>
+    <blockquote>Äá»c AGENTS.md vÃ  rules trong thÆ° má»¥c nÃ y. Táº¡o má»™t pack Water Sort má»›i theo config hiá»‡n táº¡i, dÃ¹ng Tools/LevelLab/generate.js, kiá»ƒm tra solution vÃ  cho tÃ´i biáº¿t pack vá»«a táº¡o Ä‘á»ƒ chÆ¡i thá»­ trÃªn localhost.</blockquote>
+    <p>Hoáº·c cháº¡y tá»« thÆ° má»¥c gá»‘c:</p><pre>node Tools/LevelLab/generate.js</pre>
+    <p>AI cÃ³ thá»ƒ chá»‰nh config theo yÃªu cáº§u cá»§a báº¡n trÆ°á»›c khi táº¡o. Game Ä‘á»c JSON má»›i má»—i láº§n má»Ÿ; khÃ´ng cáº§n build láº¡i.</p>
+  </section>
+</main><script src="/lab.js"></script>
+</body></html>
++++ Tools/LevelLab\generate.js
+"use strict";
+
+const fs = require("node:fs");
+const os = require("node:os");
+const path = require("node:path");
+const crypto = require("node:crypto");
+const { spawnSync } = require("node:child_process");
+const { ROOT, TOOLS, CONFIG, LEVELS, SOLUTIONS, packPaths, readData, validatePair, digest } = require("./common");
+
+function parseArgs(args) {
+  const options = {};
+  for (let i = 0; i < args.length; i += 2) {
+    if (!["--pack", "--seed", "--profile", "--config"].includes(args[i]) || !args[i + 1] || options[args[i].slice(2)] != null) {
+      throw new Error("Usage: node Tools/LevelLab/generate.js [--pack 5] [--seed 12345] [--profile Easy|Normal|Hard|VeryHard|Special] [--config path]");
+    }
+    options[args[i].slice(2)] = args[i + 1];
+  }
+  if (options.pack != null && (!/^\d+$/.test(options.pack) || +options.pack < 1 || +options.pack > 999)) throw new Error("Pack must be 1â€“999.");
+  if (options.seed != null && (!/^\d+$/.test(options.seed) || !Number.isSafeInteger(+options.seed) || +options.seed > 0xffffffff)) throw new Error("Seed must be an unsigned 32-bit integer.");
+  if (options.profile && !["Easy", "Normal", "Hard", "VeryHard", "Special"].includes(options.profile)) throw new Error("Unknown difficulty profile.");
+  return options;
+}
+
+function generate(root, options = {}) {
+  const lockPath = path.join(root, ".level-lab-generation.lock");
+  const lock = fs.openSync(lockPath, "wx");
+  let temp;
+  try {
+    fs.writeFileSync(lock, JSON.stringify({ pid: process.pid }));
+    let index = options.pack ? Number(options.pack) : 1;
+    if (!options.pack) {
+      for (const folder of [LEVELS, SOLUTIONS]) {
+        if (!fs.existsSync(path.join(root, folder))) continue;
+        for (const name of fs.readdirSync(path.join(root, folder))) {
+          const number = name.match(/^watersort-(?:levels|solutions)-(\d{3})\.json$/)?.[1];
+          if (number) index = Math.max(index, Number(number) + 1);
+        }
+      }
+    }
+    const id = String(index).padStart(3, "0");
+    const output = packPaths(root, id);
+    if (fs.existsSync(output.levels) || fs.existsSync(output.solutions)) throw new Error(`Pack ${id} already exists. Choose a new pack number.`);
+    const seed = options.seed == null ? crypto.randomBytes(4).readUInt32LE() : Number(options.seed);
+    const config = path.resolve(root, options.config || CONFIG);
+    const configText = readData(config);
+    const count = Number(configText.match(/^\s*levelsPerPack:\s*(\d+)\s*$/m)?.[1]);
+    if (!Number.isInteger(count) || count < 1 || count > 100) throw new Error("Config levelsPerPack must be 1â€“100.");
+    temp = fs.mkdtempSync(path.join(os.tmpdir(), "watersort-generate-"));
+    // Pin the configuration for this run; edits made while solving affect the next run.
+    const pinnedConfig = path.join(temp, "config.asset");
+    fs.writeFileSync(pinnedConfig, configText);
+    const env = { ...process.env };
+    for (const key of Object.keys(env)) if (key.startsWith("WATERSORT_")) delete env[key];
+    env.WATERSORT_GENERATION_CONFIG_PATH = pinnedConfig;
+    console.log(`Generating pack ${id}; seed ${seed}; config ${config}; levels ${count}. This may take several minutes.`);
+    const result = spawnSync(process.execPath, [path.join(root, TOOLS, "generate-watersort-exhaustive-100.js"), String(index), String(seed), options.profile || ""], {
+      cwd: temp, env, stdio: "inherit", windowsHide: true,
+    });
+    if (result.error || result.status !== 0) throw new Error(result.error?.message || `Generator failed (exit ${result.status}). No pack published.`);
+    const staged = packPaths(temp, id);
+    const levelText = readData(staged.levels), solutionText = readData(staged.solutions);
+    const pair = validatePair(root, levelText, solutionText);
+    if (pair.levels.levels.length !== count) throw new Error("Generated count differs from config. No pack published.");
+    fs.mkdirSync(path.dirname(output.levels), { recursive: true });
+    fs.mkdirSync(path.dirname(output.solutions), { recursive: true });
+    // EXCL protects against a file appearing after the initial existence check.
+    fs.copyFileSync(staged.levels, output.levels, fs.constants.COPYFILE_EXCL);
+    try { fs.copyFileSync(staged.solutions, output.solutions, fs.constants.COPYFILE_EXCL); }
+    catch (error) { fs.unlinkSync(output.levels); throw error; }
+    const receipt = { pack: id, seed, profile: options.profile || "config", levelCount: count,
+      configHash: digest(configText), pairHash: digest(levelText, solutionText) };
+    fs.mkdirSync(path.join(root, "GenerationRuns"), { recursive: true });
+    fs.writeFileSync(path.join(root, "GenerationRuns", `pack-${id}.json`), JSON.stringify(receipt, null, 2) + "\n");
+    fs.writeFileSync(path.join(root, "GenerationRuns", `pack-${id}-config.asset`), configText);
+    console.log(`Validated ${count} levels. Pack ${id} is ready. Reload the Level Lab list to play.\n${output.levels}\n${output.solutions}`);
+    return receipt;
+  } finally {
+    if (temp) fs.rmSync(temp, { recursive: true, force: true });
+    fs.closeSync(lock);
+    fs.unlinkSync(lockPath);
+  }
+}
+
+if (require.main === module) {
+  try { generate(ROOT, parseArgs(process.argv.slice(2))); }
+  catch (error) { console.error(error.code === "EEXIST" ? `A generation is already running, or the requested output exists. ${error.message}` : error.message); process.exitCode = 1; }
+}
+module.exports = { parseArgs, generate };
++++ Tools/LevelLab\common.js
+"use strict";
+
+const fs = require("node:fs");
+const path = require("node:path");
+const os = require("node:os");
+const crypto = require("node:crypto");
+const { spawnSync } = require("node:child_process");
+
+const ROOT = path.resolve(__dirname, "../..");
+const ASSETS = "Assets/Project";
+const TOOLS = `${ASSETS}/Editor/WaterSort/LevelGeneration/Tools`;
+const CONFIG = `${ASSETS}/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`;
+const PALETTE = `${ASSETS}/Data/WaterSort/Resources/WaterSortColorPalette.asset`;
+const LEVELS = `${ASSETS}/Data/WaterSort/Resources/WaterSort`;
+const SOLUTIONS = `${ASSETS}/Data/WaterSort/Resources/WaterSortSolutions`;
+
+function packPaths(root, id) {
+  if (!/^(?!000)\d{3}$/.test(id)) throw new Error("Pack must be 001â€“999.");
+  return {
+    levels: path.join(root, LEVELS, `watersort-levels-${id}.json`),
+    solutions: path.join(root, SOLUTIONS, `watersort-solutions-${id}.json`),
+  };
+}
+
+function readData(file) {
+  if (fs.statSync(file).size > 32 * 1024 * 1024) throw new Error(`${path.basename(file)} exceeds 32 MB.`);
+  return fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "");
+}
+
+function normalizePair(levelText, solutionText) {
+  const levels = JSON.parse(levelText);
+  const solutions = JSON.parse(solutionText);
+  if (!Array.isArray(levels?.levels) || levels.levels.length < 1 || levels.levels.length > 100) {
+    throw new Error("A pack must contain 1â€“100 levels.");
+  }
+  if (!Array.isArray(solutions?.levelSolutions) || solutions.levelSolutions.length !== levels.levels.length) {
+    throw new Error("Missing or mismatched levelSolutions.");
+  }
+  const ids = new Set();
+  const indexed = new Map();
+  for (const entry of solutions.levelSolutions) {
+    if (!Number.isSafeInteger(entry?.levelNumber) || entry.levelNumber < 1 || indexed.has(entry.levelNumber)) {
+      throw new Error("Duplicate or invalid solution levelNumber.");
+    }
+    indexed.set(entry.levelNumber, entry);
+  }
+  solutions.levelSolutions = levels.levels.map((level, index) => {
+    const id = level?.id ?? index + 1;
+    if (!Number.isSafeInteger(id) || id < 1 || ids.has(id)) throw new Error("Duplicate or invalid level id.");
+    ids.add(id);
+    const solution = indexed.get(id);
+    if (!solution) throw new Error(`Level ${id}: no matching solution levelNumber.`);
+    if (!Array.isArray(level.bottles) || level.bottles.length < 1) throw new Error(`Level ${id}: missing bottles.`);
+    for (const bottle of level.bottles) {
+      if (!Number.isInteger(bottle?.capacity) || !Array.isArray(bottle.colorsBottomToTop)
+        || bottle.colorsBottomToTop.some(color => !Number.isInteger(color) || color < 0 || color >= 13)
+        || !Number.isInteger(bottle.gridPosition?.x) || !Number.isInteger(bottle.gridPosition?.y)) {
+        throw new Error(`Level ${id}: invalid bottle capacity, colors, or grid position.`);
+      }
+    }
+    for (const stored of solution.solutionData?.solutions ?? []) {
+      if (!Array.isArray(stored?.moves) || stored.moves.some(move =>
+        !Number.isInteger(move?.fromBottle) || !Number.isInteger(move?.toBottle))) {
+        throw new Error(`Level ${id}: invalid solution moves.`);
+      }
+    }
+    return solution;
+  });
+  return { levels, solutions };
+}
+
+// The production validator owns legality and replay. This adapter only resolves
+// pack identities and feeds it the exact pair in matching level order.
+function validatePair(root, levelText, solutionText) {
+  const pair = normalizePair(levelText, solutionText);
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), "watersort-validate-"));
+  try {
+    const levelFile = path.join(temp, "levels.json");
+    const solutionFile = path.join(temp, "solutions.json");
+    fs.writeFileSync(levelFile, JSON.stringify(pair.levels));
+    fs.writeFileSync(solutionFile, JSON.stringify(pair.solutions));
+    const result = spawnSync(process.execPath, [path.join(root, TOOLS, "validate-pack.js"), levelFile, solutionFile], {
+      encoding: "utf8", timeout: 60000, maxBuffer: 4 * 1024 * 1024, windowsHide: true,
+    });
+    if (result.error || result.status !== 0) {
+      throw new Error(`Pack validation failed: ${result.error?.message || result.stdout || result.stderr}`);
+    }
+    return pair;
+  } finally {
+    fs.rmSync(temp, { recursive: true, force: true });
+  }
+}
+
+function digest(...texts) {
+  const hash = crypto.createHash("sha256");
+  for (const value of texts) hash.update(value).update("\0");
+  return hash.digest("hex");
+}
+
+module.exports = { ROOT, ASSETS, TOOLS, CONFIG, PALETTE, LEVELS, SOLUTIONS, packPaths, readData, normalizePair, validatePair, digest };
++++ Tools/LevelLab\AGENTS.md
+# Water Sort Level Lab â€” AI instructions
+
+This folder lets colleagues generate and playtest Water Sort data without Unity. Use the actual prebuilt game in `Player/`. Node.js 22+ is the only command-line prerequisite. Do not run Unity, rebuild the player, install npm dependencies, or implement a replacement game for a level-generation request.
+
+Read only these task-relevant sources before generating/editing data:
+
+1. `agent-rules/watersort-level-generation.md` â€” authoritative rules. Unity-only editor steps do not apply to this portable folder.
+2. `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset` â€” current generation settings, editable as YAML.
+3. `Assets/Project/ScriptableObject/Script/WaterSort/WaterSortGenerationConfig.cs` â€” field schema when needed.
+4. `Assets/Project/Data/WaterSort/Resources/WaterSortColorPalette.asset` â€” palette. Do not change palette without a new player build.
+
+Run from this folder's root:
+
+```sh
+node Tools/LevelLab/generate.js
+```
+
+The wrapper calls the production generator, pins config, picks a free pack number, records an explicit seed, validates with production `validate-pack.js`, and publishes the pair only on success. It deliberately removes inherited WATERSORT environment overrides so the documented config is authoritative. Supported options: `--pack 5`, `--seed 12345`, `--profile Easy|Normal|Hard|VeryHard|Special`, `--config path`. Do not ask colleagues to invent a seed unless they want reproducibility; the receipt records it automatically. Use the receipt's seed and config snapshot to reproduce a result with the same generator and pack number in a separate folder.
+
+Honor requested config changes within the authoritative rules, then generate. Do not overwrite existing packs; do not edit generated output to conceal a generator defect. When a constraint cannot be satisfied, explain the actual failure. Never weaken capacity, layout, hidden, lock, Mega, Ad or solution rules silently. Do not claim global shortestness unless proven by the solver.
+
+Production modules are under `Assets/Project/Editor/WaterSort/LevelGeneration/Tools/`. The generator entry point is `generate-watersort-exhaustive-100.js`; the implementation artifact and legacy generator are not sources of truth. Reuse the production validator; do not create a second replay engine. Do not run `solve-watersort-solutions.js` as routine post-generation validation. For manual authoring, regenerate invalidated solutions using the current rules before claiming the pack playable.
+
+Output paths:
+- `Assets/Project/Data/WaterSort/Resources/WaterSort/watersort-levels-###.json`
+- `Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/watersort-solutions-###.json`
+
+Each pair has at most 100 levels. IDs are scoped to their pack: map `level.id` to `solution.levelNumber`, not global array position. Each level must have exactly one corresponding solution entry; all stored paths must replay. Keep 2â€“3 empty optional Ad bottles out of solutions, normal capacities 2â€“5, Mega capacities 12â€“20, and unique positions on an 8x5 grid. Hidden and hybrid modes are mutually exclusive. Follow full local rules for other constraints.
+
+To play: `node Tools/LevelLab/server.js`, then http://127.0.0.1:8080/. Use Reload List and select the new pack. Existing game tabs need page reload to pick up changed data. Keep the server running. Report pack number, level count, validation result and this playtest path. Return both JSON files plus `GenerationRuns` receipt/config to the project owner.
++++ Tools/LevelLab\README.md
+# Water Sort Level Lab
+
+Chia sáº» bá»™ nÃ y cho ngÆ°á»i khÃ´ng cÃ i Unity Ä‘á»ƒ táº¡o level báº±ng AI vÃ  chÆ¡i thá»­ Ä‘Ãºng game trÃªn localhost.
+
+## Äá»“ng nghiá»‡p: báº¯t Ä‘áº§u
+
+1. Giáº£i nÃ©n **toÃ n bá»™** thÆ° má»¥c Ä‘Æ°á»£c chia sáº». CÃ i Node.js 22 hoáº·c má»›i hÆ¡n náº¿u chÆ°a cÃ³.
+2. Windows: má»Ÿ `Start.cmd`. macOS/Linux: má»Ÿ terminal táº¡i thÆ° má»¥c gá»‘c rá»“i cháº¡y `node Tools/LevelLab/server.js`.
+3. Má»Ÿ **http://127.0.0.1:8080/**. Giá»¯ terminal cháº¡y server má»Ÿ trong lÃºc chÆ¡i.
+4. Chá»n pack vÃ  báº¥m **ChÆ¡i pack nÃ y**. Game má»Ÿ á»Ÿ tab má»›i. NÃºt Next/Previous trong game chuyá»ƒn level trong pack Ä‘ang chá»n.
+
+KhÃ´ng cáº§n Unity, Python, npm install hay tÃ i khoáº£n dá»‹ch vá»¥ AI riÃªng. AI lÃ  cÃ´ng cá»¥ coding báº¡n Ä‘ang dÃ¹ng, cÃ³ thá»ƒ Ä‘á»c/ghi thÆ° má»¥c vÃ  cháº¡y Node.
+
+## Táº¡o level báº±ng AI
+
+Má»Ÿ thÆ° má»¥c gá»‘c trong cÃ´ng cá»¥ AI, gá»­i:
+
+> Äá»c AGENTS.md vÃ  agent-rules/watersort-level-generation.md. Táº¡o má»™t pack má»›i theo config hiá»‡n táº¡i báº±ng Tools/LevelLab/generate.js. Kiá»ƒm tra solution, khÃ´ng ghi Ä‘Ã¨ pack cÅ©. Cho tÃ´i biáº¿t pack nÃ o Ä‘á»ƒ chÆ¡i thá»­.
+
+Hoáº·c tá»± cháº¡y:
+
+```sh
+node Tools/LevelLab/generate.js
+node Tools/LevelLab/generate.js --profile Easy --seed 12345
+```
+
+Lá»‡nh Ä‘áº§u dÃ¹ng config hiá»‡n táº¡i, tá»± chá»n sá»‘ pack trá»‘ng vÃ  ghi seed vÃ o `GenerationRuns/pack-###.json`. Lá»‡nh thá»© hai lÃ  vÃ­ dá»¥ chá»n profile vÃ  seed cá»¥ thá»ƒ. `--pack 5` chá»n sá»‘ pack; náº¿u Ä‘Ã£ tá»“n táº¡i, lá»‡nh tá»« chá»‘i ghi Ä‘Ã¨. `--config path/to/config.asset` dÃ¹ng má»™t báº£n config khÃ¡c. Lá»‡nh khÃ´ng nháº­n cÃ¢u tá»± nhiÃªn; AI chuyá»ƒn yÃªu cáº§u thÃ nh chá»‰nh config hoáº·c cÃ¡c tham sá»‘ Ä‘Æ°á»£c há»— trá»£.
+
+Config náº±m á»Ÿ `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`. ÄÃ¢y lÃ  YAML cÃ³ thá»ƒ sá»­a báº±ng AI/text editor mÃ  khÃ´ng má»Ÿ Unity. `levelsPerPack` cho phÃ©p 1â€“100 level. Giá»¯ nguyÃªn cÃ¡c header YAML; dÃ¹ng schema C# kÃ¨m theo Ä‘á»ƒ hiá»ƒu trÆ°á»ng dá»¯ liá»‡u. Khá»Ÿi Ä‘áº§u vá»›i Ã­t level Ä‘á»ƒ thá»­ tuning trÆ°á»›c khi táº¡o pack lá»›n. Má»™t sá»‘ cáº¥u hÃ¬nh khÃ³ cÃ³ thá»ƒ cháº¡y nhiá»u phÃºt hoáº·c bá»‹ generator tá»« chá»‘i; Ä‘á»c lá»—i vÃ  Ä‘iá»u chá»‰nh yÃªu cáº§u/config, khÃ´ng háº¡ rule ngáº§m.
+
+Sau khi táº¡o thÃ nh cÃ´ng: quay láº¡i Level Lab â†’ **Táº£i láº¡i danh sÃ¡ch** â†’ chá»n pack â†’ má»Ÿ game. Náº¿u sá»­a data cá»§a pack Ä‘ang chÆ¡i, táº£i láº¡i trang game Ä‘á»ƒ báº¯t Ä‘áº§u tá»« tráº¡ng thÃ¡i má»›i. KhÃ´ng cáº§n build láº¡i. Äá»•i code gameplay hoáº·c palette mÃ u cáº§n báº£n player má»›i tá»« ngÆ°á»i phá»¥ trÃ¡ch project; config sinh level vÃ  JSON khÃ´ng cáº§n rebuild.
+
+## Data vÃ  gá»­i láº¡i project
+
+- Level: `Assets/Project/Data/WaterSort/Resources/WaterSort/watersort-levels-###.json`
+- Solution: `Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/watersort-solutions-###.json`
+- Nháº­t kÃ½ seed vÃ  báº£n config dÃ¹ng lÃºc sinh: `GenerationRuns/`.
+
+Gá»­i cáº£ hai JSON tÆ°Æ¡ng á»©ng vÃ  nháº­t kÃ½/config cho ngÆ°á»i phá»¥ trÃ¡ch. Náº¿u nhiá»u ngÆ°á»i táº¡o trÃ¹ng sá»‘ pack, ngÆ°á»i nháº­n chá»n tÃªn pack má»›i cho **cáº£ cáº·p**; giá»¯ quan há»‡ `level.id` vá»›i `solution.levelNumber` trong pack. KhÃ´ng ghÃ©p solution theo thá»© tá»± toÃ n bá»™ thÆ° má»¥c.
+
+Server chá»‰ cho chÆ¡i cÃ¡c cáº·p vÆ°á»£t qua validator production. Lá»—i hiá»‡n trÃªn trang Level Lab. Sá»­a level thá»§ cÃ´ng lÃ m solution cÅ© máº¥t hiá»‡u lá»±c: pháº£i táº¡o láº¡i solution Ä‘Ãºng rule rá»“i kiá»ƒm tra láº¡i; khÃ´ng thay má»—i level Ä‘á»ƒ che lá»—i. KhÃ´ng cáº§n cháº¡y solver tá»•ng quÃ¡t sau má»—i láº§n generate: wrapper Ä‘Ã£ replay solution báº±ng validator.
+
+```sh
+node Assets/Project/Editor/WaterSort/LevelGeneration/Tools/validate-pack.js Assets/Project/Data/WaterSort/Resources/WaterSort/watersort-levels-001.json Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/watersort-solutions-001.json
+```
+
+Náº¿u cá»•ng 8080 báº­n, cháº¡y `node Tools/LevelLab/server.js 8081`, rá»“i má»Ÿ cá»•ng tÆ°Æ¡ng á»©ng. Náº¿u tiáº¿n trÃ¬nh generate bá»‹ táº¯t cÆ°á»¡ng bá»©c vÃ  Ä‘á»ƒ láº¡i `.level-lab-generation.lock`, chá»‰ xÃ³a file lock sau khi cháº¯c cháº¯n khÃ´ng cÃ²n lá»‡nh generate nÃ o cháº¡y trong thÆ° má»¥c Ä‘Ã³.
+
+## Chá»§ project: build vÃ  Ä‘Ã³ng gÃ³i má»™t láº§n
+
+CÃ¡c lá»‡nh sau chá»‰ dÃ nh cho project Unity gá»‘c. Äá»“ng nghiá»‡p dÃ¹ng báº£n Ä‘Ã³ng gÃ³i khÃ´ng cáº§n cháº¡y chÃºng.
+
+1. Trong Unity: **Tools â†’ Water Sort â†’ Build â†’ WebGL Release Build**. Build kiá»ƒm tra catalog trÆ°á»›c khi cháº¡y vÃ  táº¡o marker sau khi thÃ nh cÃ´ng. Náº¿u Editor Ä‘Ã£ Ä‘Ã³ng, cÃ³ thá»ƒ dÃ¹ng `powershell -ExecutionPolicy Bypass -File Tools/Build-WebGL.ps1 -Release`.
+2. Cháº¡y:
+
+```sh
+node Tools/LevelLab/package.js Builds/WebGL Builds/LevelLab
+```
+
+3. NÃ©n vÃ  gá»­i thÆ° má»¥c `Builds/LevelLab`. Bao gá»“m `Player/`, `Tools/`, `Assets/`, `agent-rules/`, `Start.cmd`, `README.md` vÃ  `AGENTS.md`. ThÆ° má»¥c `Assets` chá»‰ giá»¯ cÃ¡c cÃ´ng cá»¥ vÃ  dá»¯ liá»‡u cáº§n thiáº¿t; khÃ´ng pháº£i toÃ n bá»™ Unity project. Chá»n thÆ° má»¥c Ä‘Ã­ch má»›i náº¿u Ä‘Ã£ Ä‘Ã³ng gÃ³i trÆ°á»›c Ä‘Ã³.
+
+Äá»ƒ test trá»±c tiáº¿p trong project sau build:
+
+```sh
+node Tools/LevelLab/server.js 8080 Builds/WebGL
+node --test Tools/LevelLab/tests/lab.test.js
+```
+
+Server dÃ¹ng cÃ¹ng origin Ä‘á»ƒ táº£i player/data, khÃ´ng cache JSON vÃ  giá»¯ tá»«ng cáº·p JSON theo revision trong lÃºc táº£i. NÃ³ chá»‰ láº¯ng nghe loopback. KhÃ´ng cáº§n má»Ÿ firewall hoáº·c Ä‘Æ°a server lÃªn Internet.
++++ Tools/LevelLab\package.js
+"use strict";
+
+const fs = require("node:fs");
+const path = require("node:path");
+const { ROOT, TOOLS, CONFIG, PALETTE, LEVELS, SOLUTIONS, packPaths, readData, validatePair } = require("./common");
+
+const GENERATOR_FILES = ["generate-watersort-exhaustive-100.js", "watersort-exhaustive-solver.js", "mega-generator-v2.js", "watersort-core-fingerprint.js", "validate-pack.js", "solve-watersort-solutions.js", "mega-generator-v2-tests.js", "generator-profile-tests.js", "watersort-core-fingerprint-tests.js"];
+const LAB_FILES = ["common.js", "server.js", "generate.js", "index.html", "lab.js", "lab.css", "README.md", "AGENTS.md", "Start.cmd"];
+const CONTEXT_FILES = [CONFIG, PALETTE, "agent-rules/watersort-level-generation.md",
+  "Assets/Project/ScriptableObject/Script/WaterSort/WaterSortGenerationConfig.cs",
+  "Assets/Project/ScriptableObject/Script/WaterSort/WaterSortColorPalette.cs"];
+
+function copyFile(source, destination) {
+  if (!fs.lstatSync(source).isFile()) throw new Error(`Expected a regular file: ${source}`);
+  fs.mkdirSync(path.dirname(destination), { recursive: true });
+  fs.copyFileSync(source, destination, fs.constants.COPYFILE_EXCL);
+}
+
+function copyPlayer(source, destination) {
+  fs.mkdirSync(destination);
+  for (const entry of fs.readdirSync(source, { withFileTypes: true })) {
+    const from = path.join(source, entry.name), to = path.join(destination, entry.name);
+    if (entry.isSymbolicLink()) throw new Error(`Player must not contain links: ${from}`);
+    if (entry.isDirectory()) copyPlayer(from, to);
+    else if (entry.isFile()) copyFile(from, to);
+    else throw new Error(`Unsupported player entry: ${from}`);
+  }
+}
+
+function packageLab(root, build, output) {
+  build = path.resolve(build);
+  output = path.resolve(output);
+  if (!fs.existsSync(path.join(build, "index.html"))) throw new Error("WebGL build missing. Run Tools/Build-WebGL.ps1 first.");
+  const markerFile = path.join(build, "level-lab-build.json");
+  if (!fs.existsSync(markerFile) || JSON.parse(readData(markerFile)).externalCatalogVersion !== 1) {
+    throw new Error("This player has no Level Lab build marker. Rebuild with the updated WebGLBuildMenu before packaging.");
+  }
+  const relative = path.relative(build, output);
+  if (relative === "" || (!relative.startsWith(`..${path.sep}`) && relative !== ".." && !path.isAbsolute(relative))) {
+    throw new Error("Package output must be outside the WebGL build directory.");
+  }
+  if (fs.existsSync(output)) throw new Error(`Output already exists: ${output}. Choose a new directory.`);
+  const required = [...GENERATOR_FILES.map(file => `${TOOLS}/${file}`), ...CONTEXT_FILES,
+    ...LAB_FILES.map(file => `Tools/LevelLab/${file}`)];
+  for (const file of required) if (!fs.statSync(path.join(root, file)).isFile()) throw new Error(`Missing ${file}`);
+  const valid = [];
+  for (const file of fs.readdirSync(path.join(root, LEVELS))) {
+    const id = file.match(/^watersort-levels-((?!000)\d{3})\.json$/)?.[1];
+    if (!id) continue;
+    const pair = packPaths(root, id);
+    validatePair(root, readData(pair.levels), readData(pair.solutions));
+    valid.push(pair);
+  }
+  fs.mkdirSync(output, { recursive: true });
+  copyPlayer(build, path.join(output, "Player"));
+  for (const file of required) copyFile(path.join(root, file), path.join(output, file));
+  for (const pair of valid) for (const file of Object.values(pair)) copyFile(file, path.join(output, path.relative(root, file)));
+  fs.mkdirSync(path.join(output, LEVELS), { recursive: true });
+  fs.mkdirSync(path.join(output, SOLUTIONS), { recursive: true });
+  for (const file of ["README.md", "AGENTS.md", "Start.cmd"]) copyFile(path.join(root, "Tools/LevelLab", file), path.join(output, file));
+  fs.writeFileSync(path.join(output, "level-lab-package.json"), JSON.stringify({ format: 1, nodeMinimumMajor: 22, includedPacks: valid.length }, null, 2) + "\n");
+  console.log(`Ready to share: ${output}\n${valid.length} validated packs included. Colleagues run Start.cmd (Windows) or node Tools/LevelLab/server.js.`);
+}
+
+if (require.main === module) {
+  try { packageLab(ROOT, path.resolve(ROOT, process.argv[2] || "Builds/WebGL"), path.resolve(ROOT, process.argv[3] || "Builds/LevelLab")); }
+  catch (error) { console.error(error.message); process.exitCode = 1; }
+}
+module.exports = { packageLab };
++++ Tools/LevelLab\lab.js
+"use strict";
+const packs = document.getElementById("packs");
+const play = document.getElementById("play");
+const refresh = document.getElementById("refresh");
+const status = document.getElementById("status");
+async function reload() {
+  const selected = packs.value;
+  refresh.disabled = true;
+  play.disabled = true;
+  packs.disabled = true;
+  status.textContent = "Äang Ä‘á»c vÃ  kiá»ƒm tra solutionâ€¦";
+  try {
+    const response = await fetch("/api/manifest", { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    packs.replaceChildren(...data.packs.map(pack => {
+      const option = document.createElement("option");
+      option.value = pack.id;
+      option.textContent = `Pack ${pack.id} Â· ${pack.levelCount} levels`;
+      return option;
+    }));
+    if (data.packs.some(pack => pack.id === selected)) packs.value = selected;
+    else if (data.packs.length) packs.value = data.packs.at(-1).id;
+    document.getElementById("errors").hidden = !data.errors.length;
+    document.getElementById("errorText").textContent = data.errors.map(error => `Pack ${error.id}: ${error.message}`).join("\n\n");
+    status.textContent = data.packs.length ? `${data.packs.length} pack sáºµn sÃ ng. Chá»n pack Ä‘á»ƒ má»Ÿ game trong tab má»›i.` : "ChÆ°a cÃ³ pack há»£p lá»‡. Táº¡o pack báº±ng lá»‡nh bÃªn dÆ°á»›i hoáº·c sá»­a lá»—i Ä‘Æ°á»£c hiá»ƒn thá»‹.";
+    packs.disabled = play.disabled = !data.packs.length;
+  } catch (error) {
+    status.textContent = `KhÃ´ng táº£i Ä‘Æ°á»£c danh sÃ¡ch: ${error.message}. Kiá»ƒm tra terminal Ä‘ang cháº¡y server.`;
+  } finally { refresh.disabled = false; }
+}
+refresh.addEventListener("click", reload);
+play.addEventListener("click", () => window.open(`/player/index.html?levelLab=1&pack=${encodeURIComponent(packs.value)}`, "_blank", "noopener"));
+reload();
++++ Tools/LevelLab\server.js
+"use strict";
+
+const fs = require("node:fs");
+const path = require("node:path");
+const http = require("node:http");
+const { ROOT, LEVELS, SOLUTIONS, packPaths, readData, validatePair, digest } = require("./common");
+
+const TYPES = { ".html": "text/html; charset=utf-8", ".js": "application/javascript", ".css": "text/css", ".json": "application/json", ".wasm": "application/wasm", ".data": "application/octet-stream", ".png": "image/png", ".ico": "image/x-icon", ".svg": "image/svg+xml" };
+
+function safeFile(root, relative) {
+  const base = fs.realpathSync(root);
+  const candidate = fs.realpathSync(path.resolve(base, relative));
+  const rel = path.relative(base, candidate);
+  if (rel === ".." || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel) || !fs.statSync(candidate).isFile()) {
+    throw new Error("File is outside the served directory.");
+  }
+  return candidate;
+}
+
+function createLabServer({ root = ROOT, player = path.join(root, "Player") } = {}) {
+  const snapshots = new Map();
+  const cache = new Map();
+  function manifest() {
+    const ids = new Set();
+    for (const [folder, prefix] of [[LEVELS, "levels"], [SOLUTIONS, "solutions"]]) {
+      if (!fs.existsSync(path.join(root, folder))) continue;
+      for (const file of fs.readdirSync(path.join(root, folder))) {
+        const match = file.match(new RegExp(`^watersort-${prefix}-((?!000)\\d{3})\\.json$`));
+        if (match) ids.add(match[1]);
+      }
+    }
+    const packs = [], errors = [];
+    for (const id of [...ids].sort()) {
+      try {
+        const files = packPaths(root, id);
+        const levelText = readData(safeFile(path.join(root, LEVELS), path.basename(files.levels)));
+        const solutionText = readData(safeFile(path.join(root, SOLUTIONS), path.basename(files.solutions)));
+        const version = digest(levelText, solutionText);
+        let result = cache.get(id);
+        if (result?.version !== version) {
+          try {
+            result = { version, pair: validatePair(root, levelText, solutionText) };
+          } catch (error) {
+            result = { version, error: error.message };
+          }
+          cache.set(id, result);
+        }
+        if (result.error) throw new Error(result.error);
+        const key = `${id}:${version}`;
+        snapshots.set(key, { levels: JSON.stringify(result.pair.levels), solutions: JSON.stringify(result.pair.solutions) });
+        // Retain a bounded set of immutable pairs so two HTTP requests cannot mix revisions.
+        while (snapshots.size > 1000) snapshots.delete(snapshots.keys().next().value);
+        packs.push({ id, levelCount: result.pair.levels.levels.length,
+          levelUrl: `/api/packs/${id}/levels?v=${version}`, solutionUrl: `/api/packs/${id}/solutions?v=${version}` });
+      } catch (error) {
+        errors.push({ id, message: error.message });
+      }
+    }
+    return { packs, errors };
+  }
+
+  return http.createServer((req, res) => {
+    res.setHeader("Cache-Control", "no-store");
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+    res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+    const send = (status, body, type = "application/json; charset=utf-8") => {
+      res.writeHead(status, { "Content-Type": type });
+      res.end(req.method === "HEAD" ? undefined : body);
+    };
+    try {
+      if (!/^(127\.0\.0\.1|localhost)(:\d+)?$/.test(req.headers.host || "")) {
+        return send(403, JSON.stringify({ error: "Use the localhost URL printed by the launcher." }));
+      }
+      if (req.method !== "GET" && req.method !== "HEAD") return send(405, JSON.stringify({ error: "Read-only HTTP server." }));
+      const url = new URL(req.url, "http://localhost");
+      if (url.pathname === "/api/manifest") return send(200, JSON.stringify(manifest()));
+      const data = url.pathname.match(/^\/api\/packs\/((?!000)\d{3})\/(levels|solutions)$/);
+      if (data) {
+        const snapshot = snapshots.get(`${data[1]}:${url.searchParams.get("v")}`);
+        if (!snapshot) return send(409, JSON.stringify({ error: "Data revision expired. Reload the lab to load a validated pair." }));
+        return send(200, snapshot[data[2]]);
+      }
+      const pathname = decodeURIComponent(url.pathname);
+      let file;
+      if (pathname === "/") file = path.join(__dirname, "index.html");
+      else if (pathname === "/lab.js" || pathname === "/lab.css") file = path.join(__dirname, pathname.slice(1));
+      else if (pathname.startsWith("/player/")) file = safeFile(player, pathname.slice(8) || "index.html");
+      else return send(404, JSON.stringify({ error: "Not found." }));
+      let extension = path.extname(file);
+      if (extension === ".gz" || extension === ".br") {
+        res.setHeader("Content-Encoding", extension === ".gz" ? "gzip" : "br");
+        extension = path.extname(file.slice(0, -extension.length));
+      }
+      res.writeHead(200, { "Content-Type": TYPES[extension] || "application/octet-stream", "Content-Length": fs.statSync(file).size });
+      if (req.method === "HEAD") return res.end();
+      fs.createReadStream(file).on("error", () => res.destroy()).pipe(res);
+    } catch (error) {
+      if (!res.headersSent) send(404, JSON.stringify({ error: error.message }));
+      else res.destroy();
+    }
+  });
+}
+
+if (require.main === module) {
+  const port = Number(process.argv[2] || 8080);
+  const player = path.resolve(ROOT, process.argv[3] || "Player");
+  if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error("Port must be 1â€“65535.");
+  if (!fs.existsSync(path.join(player, "index.html"))) {
+    throw new Error("Prebuilt Player/index.html is missing. The project owner must build and package the lab first. For project testing: node Tools/LevelLab/server.js 8080 Builds/WebGL");
+  }
+  const server = createLabServer({ player });
+  server.on("error", error => { console.error(`Cannot start Level Lab: ${error.message}`); process.exitCode = 1; });
+  server.listen(port, "127.0.0.1", () => console.log(`Water Sort Level Lab: http://127.0.0.1:${port}/\nKeep this terminal open. Ctrl+C stops the server.`));
+}
+
+module.exports = { createLabServer, safeFile };
++++ Tools/LevelLab\Start.cmd
+@echo off
+setlocal
+cd /d "%~dp0"
+if not exist "Tools\LevelLab\server.js" cd /d "..\.."
+where node >nul 2>nul
+if errorlevel 1 (
+  echo Node.js is missing. Install Node.js 22 or newer, then run Start.cmd again.
+  pause
+  exit /b 1
+)
+echo Open http://127.0.0.1:8080/ in your browser once the server is ready.
+node Tools\LevelLab\server.js 8080
+pause
++++ Tools/LevelLab\tests\lab.test.js
+"use strict";
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const os = require("node:os");
+const path = require("node:path");
+const http = require("node:http");
+const { ROOT, TOOLS, LEVELS, SOLUTIONS, packPaths, normalizePair, validatePair } = require("../common");
+const { createLabServer, safeFile } = require("../server");
+const { parseArgs, generate } = require("../generate");
+const { packageLab } = require("../package");
+
+function pair(id = 301, name = "Fixture") {
+  const bottles = [[0, 1], [1, 0], [], [], []].map((colors, index) => ({
+    capacity: 2, colorsBottomToTop: colors, gridPosition: { x: index, y: 2 }, isAdBottle: index >= 3,
+  }));
+  return {
+    levels: { levels: [{ id, displayName: name, layoutGrid: { columns: 8, rows: 5 }, modeOptions: {}, bottles }] },
+    solutions: { levelSolutions: [{ levelNumber: id, solutionData: { solutions: [{ moves: [
+      { fromBottle: 1, toBottle: 3 }, { fromBottle: 2, toBottle: 1 }, { fromBottle: 2, toBottle: 3 },
+    ] }] } }] },
+  };
+}
+function texts(value) { return [JSON.stringify(value.levels), JSON.stringify(value.solutions)]; }
+function writePair(root, id, value) {
+  const files = packPaths(root, id);
+  for (const [key, file] of Object.entries(files)) {
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, JSON.stringify(value[key]));
+  }
+}
+function workspace(t) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "watersort-lab-test-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  fs.mkdirSync(path.join(root, TOOLS), { recursive: true });
+  for (const file of ["validate-pack.js", "watersort-exhaustive-solver.js", "mega-generator-v2.js", "watersort-core-fingerprint.js"]) {
+    fs.copyFileSync(path.join(ROOT, TOOLS, file), path.join(root, TOOLS, file));
+  }
+  fs.mkdirSync(path.join(root, "Player"));
+  fs.writeFileSync(path.join(root, "Player/index.html"), "<html>player fixture</html>");
+  return root;
+}
+
+test("pack identity supports global IDs and isolates reordered local IDs", () => {
+  const value = pair();
+  value.levels.levels.push({ ...structuredClone(value.levels.levels[0]), id: 302 });
+  value.solutions.levelSolutions.unshift({ ...structuredClone(value.solutions.levelSolutions[0]), levelNumber: 302 });
+  assert.deepEqual(normalizePair(...texts(value)).solutions.levelSolutions.map(entry => entry.levelNumber), [301, 302]);
+  value.levels.levels[1].id = 301;
+  assert.throws(() => normalizePair(...texts(value)), /Duplicate/);
+  const legacy = pair(1);
+  delete legacy.levels.levels[0].id;
+  assert.equal(normalizePair(...texts(legacy)).solutions.levelSolutions[0].levelNumber, 1);
+});
+
+test("validator rejects malformed pairs, missing identity and illegal stored paths", () => {
+  assert.throws(() => normalizePair("{", "{}"));
+  const value = pair();
+  value.solutions.levelSolutions[0].levelNumber = 1;
+  assert.throws(() => normalizePair(...texts(value)), /no matching/);
+  const valid = pair();
+  assert.equal(validatePair(ROOT, ...texts(valid)).levels.levels.length, 1);
+  valid.solutions.levelSolutions[0].solutionData.solutions[0].moves[0].toBottle = 4;
+  assert.throws(() => validatePair(ROOT, ...texts(valid)), /uses ad bottle/);
+});
+
+test("HTTP discovers new packs, preserves exact revisions, rejects invalid pairs and traversal", async t => {
+  const root = workspace(t);
+  writePair(root, "004", pair());
+  const server = createLabServer({ root });
+  await new Promise(resolve => server.listen(0, "127.0.0.1", resolve));
+  t.after(() => new Promise(resolve => { server.closeAllConnections(); server.close(resolve); }));
+  const base = `http://127.0.0.1:${server.address().port}`;
+  const first = await (await fetch(`${base}/api/manifest`)).json();
+  assert.equal(first.packs.length, 1);
+  const oldUrl = first.packs[0].levelUrl;
+  writePair(root, "004", pair(301, "Changed after build"));
+  writePair(root, "005", pair(1, "New pack"));
+  const second = await (await fetch(`${base}/api/manifest`)).json();
+  assert.equal(second.packs.length, 2);
+  assert.notEqual(second.packs[0].levelUrl, oldUrl);
+  assert.equal((await (await fetch(base + oldUrl)).json()).levels[0].displayName, "Fixture");
+  const current = await fetch(base + second.packs[0].levelUrl);
+  assert.equal(current.headers.get("cache-control"), "no-store");
+  assert.equal((await current.json()).levels[0].displayName, "Changed after build");
+  fs.writeFileSync(packPaths(root, "004").solutions, "{");
+  const bad = await (await fetch(`${base}/api/manifest`)).json();
+  assert.equal(bad.packs.length, 1);
+  assert.equal(bad.errors[0].id, "004");
+  fs.unlinkSync(packPaths(root, "005").solutions);
+  assert.equal((await (await fetch(`${base}/api/manifest`)).json()).errors.length, 2);
+  assert.equal((await fetch(`${base}/api/packs/005/levels?v=missing`)).status, 409);
+  assert.equal((await fetch(`${base}/player/index.html`)).status, 200);
+  assert.equal((await fetch(`${base}/player/%2e%2e%5cTools/LevelLab/common.js`)).status, 404);
+  assert.equal((await fetch(`${base}/api/manifest`, { method: "POST" })).status, 405);
+  const hostileHostStatus = await new Promise(resolve => {
+    http.get(`${base}/api/manifest`, { headers: { Host: "untrusted.example" } }, res => { res.resume(); resolve(res.statusCode); });
+  });
+  assert.equal(hostileHostStatus, 403);
+});
+
+test("realpath boundary rejects escaped and linked files", t => {
+  const root = workspace(t);
+  assert.throws(() => safeFile(path.join(root, "Player"), `../${TOOLS}/validate-pack.js`), /outside/);
+  const junction = path.join(root, "Player/outside");
+  fs.symlinkSync(path.join(root, TOOLS), junction, "junction");
+  assert.throws(() => safeFile(path.join(root, "Player"), "outside/validate-pack.js"), /outside/);
+});
+
+test("generation refuses invalid inputs and overwrite, releases its lock", t => {
+  for (const args of [["--seed", "4294967296"], ["--pack", "0"], ["--seed"], ["--profile", "Unknown"], ["--shell", "cmd"]]) {
+    assert.throws(() => parseArgs(args));
+  }
+  assert.equal(parseArgs(["--seed", "0"]).seed, "0");
+  const root = workspace(t);
+  writePair(root, "004", pair());
+  const before = fs.readFileSync(packPaths(root, "004").levels, "utf8");
+  assert.throws(() => generate(root, { pack: "4", seed: "0" }), /already exists/);
+  assert.equal(fs.readFileSync(packPaths(root, "004").levels, "utf8"), before);
+  assert.equal(fs.existsSync(path.join(root, ".level-lab-generation.lock")), false);
+});
+
+test("packaging rejects absent and old players and existing output", t => {
+  const root = workspace(t);
+  assert.throws(() => packageLab(ROOT, path.join(root, "missing"), path.join(root, "out")), /missing/);
+  assert.throws(() => packageLab(ROOT, path.join(root, "Player"), path.join(root, "out")), /marker/);
+  fs.writeFileSync(path.join(root, "Player/level-lab-build.json"), '{"externalCatalogVersion":1}');
+  assert.throws(() => packageLab(ROOT, path.join(root, "Player"), root), /already exists/);
+});
++++ Tools/LevelLab\tests\generation-smoke.js
+"use strict";
+// Explicit integration check, separate from the fast HTTP/unit tests.
+const fs = require("node:fs");
+const os = require("node:os");
+const path = require("node:path");
+const assert = require("node:assert/strict");
+const { ROOT, TOOLS, CONFIG, packPaths } = require("../common");
+const { generate } = require("../generate");
+const root = fs.mkdtempSync(path.join(os.tmpdir(), "watersort-determinism-"));
+try {
+  for (const name of ["a", "b"]) {
+    const run = path.join(root, name);
+    fs.mkdirSync(path.join(run, TOOLS), { recursive: true });
+    for (const file of fs.readdirSync(path.join(ROOT, TOOLS)).filter(file => file.endsWith(".js"))) {
+      fs.copyFileSync(path.join(ROOT, TOOLS, file), path.join(run, TOOLS, file));
+    }
+    fs.mkdirSync(path.dirname(path.join(run, CONFIG)), { recursive: true });
+    fs.writeFileSync(path.join(run, CONFIG), fs.readFileSync(path.join(ROOT, CONFIG), "utf8").replace(/levelsPerPack: \d+/, "levelsPerPack: 2"));
+    generate(run, { pack: "1", seed: "12345", profile: "Easy" });
+  }
+  const a = packPaths(path.join(root, "a"), "001"), b = packPaths(path.join(root, "b"), "001");
+  for (const key of ["levels", "solutions"]) assert.equal(fs.readFileSync(a[key], "utf8"), fs.readFileSync(b[key], "utf8"), `${key} differs for identical inputs`);
+  console.log("PASS: two isolated production runs, 2 levels each, seed 12345; paired JSON byte-identical and replay-valid.");
+} finally { fs.rmSync(root, { recursive: true, force: true }); }
++++ Tools/Build-WebGL.ps1
+param(
+    [string]$UnityPath = "",
+    [string]$OutputPath = "Builds/WebGL",
+    [switch]$Release
+)
+
+$ScriptRoot = Split-Path -Parent $PSCommandPath
+$ProjectRoot = (Resolve-Path (Join-Path $ScriptRoot "..")).Path
+$ProjectVersionFile = Join-Path $ProjectRoot "ProjectSettings/ProjectVersion.txt"
+
+if ([string]::IsNullOrWhiteSpace($UnityPath)) {
+    $VersionLine = Get-Content -LiteralPath $ProjectVersionFile | Where-Object { $_ -like "m_EditorVersion:*" } | Select-Object -First 1
+    $UnityVersion = ($VersionLine -replace "m_EditorVersion:\s*", "").Trim()
+    $UnityPath = "C:\Program Files\Unity\Hub\Editor\$UnityVersion\Editor\Unity.exe"
+}
+
+if (-not (Test-Path -LiteralPath $UnityPath)) {
+    throw "Unity executable was not found: $UnityPath"
+}
+
+$UnityEditorRoot = Split-Path -Parent $UnityPath
+$WebGLSupportPath = Join-Path $UnityEditorRoot "Data/PlaybackEngines/WebGLSupport"
+if (-not (Test-Path -LiteralPath $WebGLSupportPath)) {
+    throw "Unity WebGL Build Support is not installed for this editor: $UnityEditorRoot. Install it from Unity Hub, then run this script again."
+}
+
+$OutputFullPath = if ([System.IO.Path]::IsPathRooted($OutputPath)) {
+    $OutputPath
+} else {
+    Join-Path $ProjectRoot $OutputPath
+}
+
+$LogDirectory = Join-Path $ProjectRoot "_bmad-output/build-logs"
+New-Item -ItemType Directory -Force -Path $LogDirectory | Out-Null
+$LogFile = Join-Path $LogDirectory "webgl-build.log"
+$ExecuteMethod = if ($Release) {
+    "TrainWaterSort.Editor.WaterSort.WebGLBuildMenu.BuildRelease"
+} else {
+    "TrainWaterSort.Editor.WaterSort.WebGLBuildMenu.BuildDevelopment"
+}
+
+& $UnityPath `
+    -batchmode `
+    -quit `
+    -projectPath $ProjectRoot `
+    -buildTarget WebGL `
+    -executeMethod $ExecuteMethod `
+    -outputPath $OutputFullPath `
+    -logFile $LogFile
+
+if ($LASTEXITCODE -ne 0) {
+    throw "Unity WebGL build failed. See $LogFile"
+}
+
+Write-Host "WebGL build is ready: $OutputFullPath"
+Write-Host "Build log: $LogFile"
++++ Assets/Project/Script/Core/WaterSort/WaterSortBootstrap.cs
+using TrainWaterSort.Gameplay.WaterSort;
+using TrainWaterSort.ScriptableObject.WaterSort;
+using TrainWaterSort.UI.WaterSort;
+using UnityEngine;
+
+namespace TrainWaterSort.Core.WaterSort
+{
+    public static class WaterSortBootstrap
+    {
+        private const string LevelResourceFolder = "WaterSort";
+        private const string SolutionResourceFolder = "WaterSortSolutions";
+        private const string ColorPaletteResourceName = "WaterSortColorPalette";
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void CreateGame()
+        {
+            EnsureCamera();
+
+            WaterSortColorPalette palette = Resources.Load<WaterSortColorPalette>(ColorPaletteResourceName);
+            if (WaterSortExternalCatalogLoader.IsLabMode(Application.absoluteURL))
+            {
+                GameObject loaderObject = new("WaterSortExternalCatalogLoader");
+                loaderObject.AddComponent<WaterSortExternalCatalogLoader>().Initialize(palette, InitializeGame);
+                return;
+            }
+            WaterSortJsonCatalog catalog = WaterSortJsonCatalog.LoadFromResources(LevelResourceFolder, SolutionResourceFolder, palette);
+            InitializeGame(catalog);
+        }
+
+        private static void InitializeGame(WaterSortJsonCatalog catalog)
+        {
+            WaterSortGameManager manager = Object.FindFirstObjectByType<WaterSortGameManager>();
+            if (manager == null)
+            {
+                GameObject managerObject = new("WaterSortGameManager");
+                manager = managerObject.AddComponent<WaterSortGameManager>();
+                manager.Initialize(catalog);
+            }
+            else if (manager.Catalog == null)
+            {
+                manager.Initialize(catalog);
+            }
+
+            if (Object.FindFirstObjectByType<WaterSortGameView>() != null)
+            {
+                return;
+            }
+
+            GameObject viewObject = new("WaterSortGameView");
+            WaterSortGameView view = viewObject.AddComponent<WaterSortGameView>();
+            view.Initialize(manager);
+        }
+
+        private static void EnsureCamera()
+        {
+            if (Camera.main != null)
+            {
+                return;
+            }
+
+            GameObject cameraObject = new("Main Camera");
+            Camera camera = cameraObject.AddComponent<Camera>();
+            camera.tag = "MainCamera";
+            camera.clearFlags = CameraClearFlags.SolidColor;
+            camera.backgroundColor = new Color(0.95f, 0.97f, 1f);
+            camera.orthographic = true;
+        }
+    }
+}
++++ Assets/Project/Script/Core/WaterSort/WaterSortExternalCatalogLoader.cs
+using System;
+using System.Collections;
+using TrainWaterSort.Gameplay.WaterSort;
+using TrainWaterSort.ScriptableObject.WaterSort;
+using UnityEngine;
+using UnityEngine.Networking;
+
+namespace TrainWaterSort.Core.WaterSort
+{
+    /// <summary>Loads one validated localhost pack before the gameplay manager is initialized.</summary>
+    public sealed class WaterSortExternalCatalogLoader : MonoBehaviour
+    {
+        private string status = "Loading Level Lab dataâ€¦";
+        private bool failed;
+
+        public static bool IsLabMode(string url) => GetQueryValue(url, "levelLab") == "1";
+
+        public static string GetQueryValue(string url, string key)
+        {
+            if (!Uri.TryCreate(url, UriKind.Absolute, out Uri uri)) return null;
+            foreach (string pair in uri.Query.TrimStart('?').Split('&'))
+            {
+                string[] parts = pair.Split(new[] { '=' }, 2);
+                if (Uri.UnescapeDataString(parts[0]) == key)
+                    return parts.Length == 2 ? Uri.UnescapeDataString(parts[1].Replace("+", " ")) : string.Empty;
+            }
+            return null;
+        }
+
+        public static Uri ResolveSameOriginUrl(Uri playerUrl, string path)
+        {
+            if (string.IsNullOrWhiteSpace(path) || !Uri.TryCreate(playerUrl, path, out Uri result)
+                || result.Scheme != playerUrl.Scheme || result.Authority != playerUrl.Authority
+                || (result.Scheme != "http" && result.Scheme != "https") || !string.IsNullOrEmpty(result.UserInfo))
+                throw new FormatException("Level Lab manifest contains an invalid or cross-origin data URL.");
+            return result;
+        }
+
+        public void Initialize(WaterSortColorPalette palette, Action<WaterSortJsonCatalog> onLoaded)
+        {
+            StartCoroutine(Load(palette, onLoaded));
+        }
+
+        private IEnumerator Load(WaterSortColorPalette palette, Action<WaterSortJsonCatalog> onLoaded)
+        {
+            if (!Uri.TryCreate(Application.absoluteURL, UriKind.Absolute, out Uri playerUrl))
+            {
+                Fail("The player must be opened from the Level Lab localhost server.");
+                yield break;
+            }
+            string manifestJson = null;
+            yield return Fetch(new Uri(playerUrl, "/api/manifest"), value => manifestJson = value);
+            if (failed) yield break;
+
+            ManifestPack selected = null;
+            Uri levelsUrl = null;
+            Uri solutionsUrl = null;
+            try
+            {
+                Manifest manifest = JsonUtility.FromJson<Manifest>(manifestJson);
+                if (manifest?.packs == null || manifest.packs.Length == 0)
+                    throw new FormatException("No validated packs are available. Return to the Level Lab page for validation errors.");
+                string requested = GetQueryValue(Application.absoluteURL, "pack");
+                foreach (ManifestPack pack in manifest.packs)
+                {
+                    if (pack == null || string.IsNullOrWhiteSpace(pack.id))
+                        throw new FormatException("Manifest contains a pack without an identity.");
+                    if ((requested == null && selected == null) || pack.id == requested)
+                    {
+                        if (selected != null && requested != null)
+                            throw new FormatException($"Duplicate manifest pack identity {requested}.");
+                        selected = pack;
+                    }
+                }
+                if (selected == null) throw new FormatException($"Pack {requested} is unavailable. Return to the Level Lab page for validation errors.");
+                levelsUrl = ResolveSameOriginUrl(playerUrl, selected.levelUrl);
+                solutionsUrl = ResolveSameOriginUrl(playerUrl, selected.solutionUrl);
+            }
+            catch (Exception exception) { Fail(exception.Message); }
+            if (failed) yield break;
+
+            status = $"Loading Level Lab pack {selected.id}â€¦";
+            string levelJson = null;
+            string solutionJson = null;
+            yield return Fetch(levelsUrl, value => levelJson = value);
+            if (failed) yield break;
+            yield return Fetch(solutionsUrl, value => solutionJson = value);
+            if (failed) yield break;
+            try
+            {
+                WaterSortJsonCatalog catalog = WaterSortJsonCatalog.Create(palette);
+                catalog.AddPack(selected.id, levelJson, solutionJson, requireSolutions: true);
+                if (catalog.Levels.Count != selected.levelCount)
+                    throw new FormatException($"Pack {selected.id}: manifest and level count differ. Reload the Level Lab page.");
+                onLoaded(catalog);
+                Destroy(gameObject);
+            }
+            catch (Exception exception) { Fail($"Pack {selected.id}: {exception.Message}"); }
+        }
+
+        private IEnumerator Fetch(Uri url, Action<string> receive)
+        {
+            using UnityWebRequest request = UnityWebRequest.Get(url.AbsoluteUri);
+            request.timeout = 60;
+            yield return request.SendWebRequest();
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Fail($"{url.AbsolutePath}: HTTP {request.responseCode} â€” {request.error}");
+                yield break;
+            }
+            receive(request.downloadHandler.text);
+        }
+
+        private void Fail(string message)
+        {
+            failed = true;
+            status = $"Level Lab could not load data.\n\n{message}\n\nReturn to the Level Lab page, fix the pack, then reload the player.";
+            Debug.LogError(status);
+        }
+
+        // A startup-only overlay: no gameplay manager/view is created until the pair loads successfully.
+        private void OnGUI()
+        {
+            float width = Mathf.Min(Screen.width * 0.9f, 800f);
+            GUIStyle style = new(GUI.skin.box) { wordWrap = true, alignment = TextAnchor.MiddleCenter,
+                fontSize = Mathf.Clamp(Mathf.RoundToInt(Screen.width / 35f), 16, 28) };
+            GUI.Box(new Rect((Screen.width - width) / 2f, Screen.height * 0.2f, width, Screen.height * 0.6f), status, style);
+        }
+
+        [Serializable]
+        private sealed class Manifest { public ManifestPack[] packs; }
+
+        [Serializable]
+        private sealed class ManifestPack
+        {
+            public string id;
+            public string levelUrl;
+            public string solutionUrl;
+            public int levelCount;
+        }
+    }
+}
++++ Assets/Project/Script/Gameplay/WaterSort/WaterSortJsonCatalog.cs
+using System;
+using System.Collections.Generic;
+using TrainWaterSort.ScriptableObject.WaterSort;
+using UnityEngine;
+
+namespace TrainWaterSort.Gameplay.WaterSort
+{
+    public sealed class WaterSortJsonCatalog
+    {
+        private readonly List<WaterSortJsonLevel> levels = new();
+        private readonly HashSet<string> packIds = new(StringComparer.Ordinal);
+
+        public WaterSortColorPalette ColorPalette { get; private set; }
+        public IReadOnlyList<WaterSortJsonLevel> Levels => levels;
+
+        public static WaterSortJsonCatalog LoadFromResources(string levelResourcesFolder, string solutionResourcesFolder, WaterSortColorPalette colorPalette)
+        {
+            WaterSortJsonCatalog catalog = new()
+            {
+                ColorPalette = colorPalette
+            };
+            TextAsset[] levelFiles = Resources.LoadAll<TextAsset>(levelResourcesFolder);
+            Array.Sort(levelFiles, (left, right) => string.CompareOrdinal(left.name, right.name));
+            Dictionary<string, TextAsset> solutionFiles = new(StringComparer.Ordinal);
+            foreach (TextAsset file in Resources.LoadAll<TextAsset>(solutionResourcesFolder))
+            {
+                string id = GetPackId(file.name, "watersort-solutions-");
+                if (!solutionFiles.TryAdd(id, file))
+                    throw new FormatException($"Duplicate solution pack {id}.");
+            }
+            foreach (TextAsset file in levelFiles)
+            {
+                string id = GetPackId(file.name, "watersort-levels-");
+                solutionFiles.TryGetValue(id, out TextAsset solutions);
+                catalog.AddPack(id, file.text, solutions?.text);
+            }
+            return catalog;
+        }
+
+        public static WaterSortJsonCatalog Create(WaterSortColorPalette colorPalette)
+        {
+            return new WaterSortJsonCatalog { ColorPalette = colorPalette };
+        }
+
+        private static string GetPackId(string name, string prefix)
+        {
+            if (!name.StartsWith(prefix, StringComparison.Ordinal) || name.Length == prefix.Length)
+                throw new FormatException($"Unexpected Water Sort pack filename: {name}.");
+            return name.Substring(prefix.Length);
+        }
+
+        // Identity/shape checks only. The Level Lab server performs canonical rule validation and replay.
+        public void AddPack(string packId, string levelJson, string solutionJson, bool requireSolutions = false)
+        {
+            if (string.IsNullOrWhiteSpace(packId) || packIds.Contains(packId))
+                throw new FormatException($"Missing or duplicate pack identity: {packId}.");
+            WaterSortJsonPack pack;
+            WaterSortJsonSolutionPack solutions = null;
+            try
+            {
+                pack = JsonUtility.FromJson<WaterSortJsonPack>(levelJson);
+                if (!string.IsNullOrWhiteSpace(solutionJson))
+                    solutions = JsonUtility.FromJson<WaterSortJsonSolutionPack>(solutionJson);
+            }
+            catch (Exception exception)
+            {
+                throw new FormatException($"Pack {packId}: invalid JSON: {exception.Message}", exception);
+            }
+            if (pack?.levels == null || pack.levels.Count == 0 || pack.levels.Count > 100)
+                throw new FormatException($"Pack {packId}: expected 1â€“100 levels.");
+            Dictionary<int, WaterSortJsonLevel> byId = new();
+            for (int index = 0; index < pack.levels.Count; index++)
+            {
+                WaterSortJsonLevel level = pack.levels[index];
+                if (level?.bottles == null || level.bottles.Count == 0 || level.bottles.Exists(bottle => bottle == null))
+                    throw new FormatException($"Pack {packId}, level {index + 1}: missing bottle data.");
+                // Missing IDs in older packs use local numbering; collisions with explicit IDs are rejected.
+                int id = level.id == 0 ? index + 1 : level.id;
+                if (id < 1 || !byId.TryAdd(id, level))
+                    throw new FormatException($"Pack {packId}: duplicate or ambiguous level identity {id}.");
+            }
+            HashSet<int> attached = new();
+            if (solutions?.levelSolutions != null)
+            {
+                foreach (WaterSortJsonLevelSolution solution in solutions.levelSolutions)
+                {
+                    if (solution == null || !byId.TryGetValue(solution.levelNumber, out WaterSortJsonLevel level)
+                        || !attached.Add(solution.levelNumber) || solution.solutionData == null)
+                        throw new FormatException($"Pack {packId}: missing, duplicate, or unmatched solution identity {solution?.levelNumber}.");
+                    level.solutionData = solution.solutionData;
+                }
+            }
+            if (requireSolutions && attached.Count != pack.levels.Count)
+                throw new FormatException($"Pack {packId}: each level must have a matching solution entry.");
+            packIds.Add(packId);
+            levels.AddRange(pack.levels);
+        }
+
+        public Color GetColor(int index)
+        {
+            if (ColorPalette == null)
+            {
+                return Color.magenta;
+            }
+
+            return ColorPalette.GetColor(index);
+        }
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonPack
+    {
+        public string packName;
+        public List<WaterSortJsonLevel> levels = new();
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonLevel
+    {
+        public int id;
+        public string displayName;
+        public WaterSortJsonLayoutGrid layoutGrid = new();
+        public WaterSortJsonModeOptions modeOptions = new();
+        public List<WaterSortJsonBottle> bottles = new();
+        public WaterSortJsonSolutionData solutionData = new();
+
+        public string GetDisplayName(int levelIndex)
+        {
+            return string.IsNullOrWhiteSpace(displayName) ? $"Level {levelIndex + 1}" : displayName;
+        }
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonLayoutGrid
+    {
+        public int columns = 8;
+        public int rows = 5;
+        public string shape;
+
+        public int Columns => columns > 0 ? columns : 8;
+        public int Rows => rows > 0 ? rows : 5;
+        public string Shape => string.IsNullOrWhiteSpace(shape) ? "default" : shape;
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonModeOptions
+    {
+        public bool hiddenStack;
+        public bool hybridHiddenStack;
+        public bool lockedBottles;
+        public bool megaBottle;
+
+        public bool HiddenStack => hiddenStack;
+        public bool HybridHiddenStack => hybridHiddenStack;
+        public bool LockedBottles => lockedBottles;
+        public bool MegaBottle => megaBottle;
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonGridPosition
+    {
+        public int x;
+        public int y;
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonSolutionPack
+    {
+        public string packName;
+        public List<WaterSortJsonLevelSolution> levelSolutions = new();
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonLevelSolution
+    {
+        public int levelNumber;
+        public WaterSortJsonSolutionData solutionData = new();
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonBottle
+    {
+        public int capacity = 4;
+        public List<int> colorsBottomToTop = new();
+        public List<int> hiddenLayerIndexes = new();
+        public WaterSortJsonGridPosition gridPosition = new();
+        public bool isLocked;
+        public int unlockCompletedBottleCount = 1;
+        public bool isAdBottle;
+        public bool isMegaBottle;
+        public int targetColor;
+
+        public int Capacity => isMegaBottle ? Mathf.Max(12, capacity) : Mathf.Clamp(capacity, 2, 5);
+        public IReadOnlyList<int> ColorsBottomToTop => colorsBottomToTop;
+        public IReadOnlyList<int> HiddenLayerIndexes => hiddenLayerIndexes;
+        public Vector2Int GridPosition => gridPosition == null ? new Vector2Int(-1, -1) : new Vector2Int(gridPosition.x, gridPosition.y);
+        public bool IsLocked => isLocked;
+        public int UnlockCompletedBottleCount => Mathf.Max(1, unlockCompletedBottleCount);
+        public bool IsAdBottle => isAdBottle;
+        public bool IsMegaBottle => isMegaBottle;
+        public int TargetColor => targetColor;
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonSolutionData
+    {
+        public int solutionCount;
+        public int shortestStepCount;
+        public int storedSolutionCount;
+        public bool storesAllSolutions;
+        public string selectionPolicy;
+        public List<WaterSortJsonSolution> solutions = new();
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonSolution
+    {
+        public int stepCount;
+        public List<WaterSortJsonMove> moves = new();
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonMove
+    {
+        public int fromBottle;
+        public int toBottle;
+    }
+}
++++ Assets/Project/Script/Editor/WaterSort/WebGLBuildMenu.cs
+using System;
+using System.IO;
+using System.Linq;
+using UnityEditor;
+using UnityEditor.Build.Reporting;
+using UnityEngine;
+
+namespace TrainWaterSort.Editor.WaterSort
+{
+    public static class WebGLBuildMenu
+    {
+        private const string DefaultBuildPath = "Builds/WebGL";
+
+        [MenuItem("Tools/Water Sort/Build/WebGL Development Build")]
+        public static void BuildDevelopment()
+        {
+            Build(BuildOptions.Development | BuildOptions.AllowDebugging);
+        }
+
+        [MenuItem("Tools/Water Sort/Build/WebGL Release Build")]
+        public static void BuildRelease()
+        {
+            Build(BuildOptions.None);
+        }
+
+        private static void Build(BuildOptions options)
+        {
+            string outputPath = GetArgumentValue("-outputPath") ?? DefaultBuildPath;
+            outputPath = Path.GetFullPath(outputPath);
+            Directory.CreateDirectory(outputPath);
+            string labMarker = Path.Combine(outputPath, "level-lab-build.json");
+            if (File.Exists(labMarker)) File.Delete(labMarker);
+            WaterSortLevelLabVerification.Run();
+
+            string[] scenes = EditorBuildSettings.scenes
+                .Where(scene => scene.enabled)
+                .Select(scene => scene.path)
+                .ToArray();
+
+            if (scenes.Length == 0)
+            {
+                throw new InvalidOperationException("No enabled scenes found in Editor Build Settings.");
+            }
+
+            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.WebGL, BuildTarget.WebGL);
+            PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Disabled;
+
+            BuildPlayerOptions buildPlayerOptions = new()
+            {
+                scenes = scenes,
+                locationPathName = outputPath,
+                target = BuildTarget.WebGL,
+                options = options
+            };
+
+            BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
+            BuildSummary summary = report.summary;
+
+            if (summary.result != BuildResult.Succeeded)
+            {
+                throw new InvalidOperationException($"WebGL build failed with result {summary.result}.");
+            }
+
+            File.WriteAllText(labMarker, "{\"externalCatalogVersion\":1}");
+            Debug.Log($"WebGL build completed at {outputPath}");
+        }
+
+        private static string GetArgumentValue(string name)
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            for (int index = 0; index < args.Length - 1; index++)
+            {
+                if (string.Equals(args[index], name, StringComparison.OrdinalIgnoreCase))
+                {
+                    return args[index + 1];
+                }
+            }
+
+            return null;
+        }
+    }
+}
++++ Assets/Project/Script/Editor/WaterSort/WaterSortLevelLabVerification.cs
+using System;
+using TrainWaterSort.Core.WaterSort;
+using TrainWaterSort.Gameplay.WaterSort;
+using UnityEditor;
+using UnityEngine;
+
+namespace TrainWaterSort.Editor.WaterSort
+{
+    public static class WaterSortLevelLabVerification
+    {
+        [MenuItem("Tools/Water Sort/Verify Level Lab Loading")]
+        public static void Run()
+        {
+            WaterSortJsonCatalog catalog = WaterSortJsonCatalog.Create(null);
+            catalog.AddPack("004", Levels(301, 302), Solutions(302, 22, 301, 11), true);
+            Check(catalog.Levels[0].solutionData.shortestStepCount == 11, "Explicit IDs must match reordered solutions.");
+            Check(catalog.Levels[1].solutionData.shortestStepCount == 22, "Global IDs must not become list indexes.");
+            catalog.AddPack("005", Levels(1, 2), Solutions(1, 33, 2, 44), true);
+            Check(catalog.Levels[2].solutionData.shortestStepCount == 33, "Local IDs must be scoped to their pack.");
+            Check(catalog.Levels[0].solutionData.shortestStepCount == 11, "Another pack must not overwrite solutions.");
+
+            WaterSortJsonCatalog legacy = WaterSortJsonCatalog.Create(null);
+            legacy.AddPack("old", "{\"levels\":[{\"bottles\":[{}]},{\"bottles\":[{}]}]}", Solutions(2, 20, 1, 10), true);
+            Check(legacy.Levels[0].solutionData.shortestStepCount == 10, "Absent IDs must use unambiguous local identity.");
+            ExpectFailure(() => catalog.AddPack("004", Levels(1, 2), null), "duplicate pack");
+            ExpectFailure(() => catalog.AddPack("bad", Levels(1, 1), null), "duplicate level");
+            ExpectFailure(() => catalog.AddPack("bad", Levels(0, 1), null), "ambiguous fallback identity");
+            ExpectFailure(() => catalog.AddPack("bad", Levels(301, 302), Solutions(1, 1, 2, 2), true), "unmatched solutions");
+            ExpectFailure(() => catalog.AddPack("bad", Levels(1, 2), Solutions(1, 1, 1, 2), true), "duplicate solutions");
+            ExpectFailure(() => catalog.AddPack("bad", Levels(1, 2), null, true), "missing pair");
+            ExpectFailure(() => catalog.AddPack("bad", "{", null, true), "malformed JSON");
+            Check(catalog.Levels.Count == 4, "Rejected packs must not mutate the catalog.");
+
+            const string player = "http://localhost:8090/player/index.html?levelLab=1&pack=004";
+            Check(WaterSortExternalCatalogLoader.IsLabMode(player), "Explicit lab switch.");
+            Check(!WaterSortExternalCatalogLoader.IsLabMode(""), "Editor uses Resources.");
+            Check(!WaterSortExternalCatalogLoader.IsLabMode(player.Replace("levelLab=1", "levelLab=0")), "Disabled lab switch.");
+            Check(WaterSortExternalCatalogLoader.GetQueryValue(player, "pack") == "004", "Pack selection query.");
+            Uri resolved = WaterSortExternalCatalogLoader.ResolveSameOriginUrl(new Uri(player), "/api/packs/004/levels?v=abc");
+            Check(resolved.AbsoluteUri == "http://localhost:8090/api/packs/004/levels?v=abc", "Preserve snapshot token and origin.");
+            ExpectFailure(() => WaterSortExternalCatalogLoader.ResolveSameOriginUrl(new Uri(player), "https://example.com/data"), "cross-origin manifest URL");
+            ExpectFailure(() => WaterSortExternalCatalogLoader.ResolveSameOriginUrl(new Uri(player), ""), "missing manifest URL");
+            WaterSortJsonCatalog resources = WaterSortJsonCatalog.LoadFromResources("WaterSort", "WaterSortSolutions", null);
+            Check(resources.Levels.Count > 0, "Existing Resources catalog still loads.");
+            Debug.Log("Level Lab catalog and URL verification passed.");
+        }
+
+        private static string Levels(int first, int second) =>
+            $"{{\"levels\":[{{\"id\":{first},\"bottles\":[{{}}]}},{{\"id\":{second},\"bottles\":[{{}}]}}]}}";
+
+        private static string Solutions(int first, int firstSteps, int second, int secondSteps) =>
+            $"{{\"levelSolutions\":[{{\"levelNumber\":{first},\"solutionData\":{{\"shortestStepCount\":{firstSteps}}}}},{{\"levelNumber\":{second},\"solutionData\":{{\"shortestStepCount\":{secondSteps}}}}}]}}";
+
+        private static void Check(bool condition, string message)
+        {
+            if (!condition) throw new InvalidOperationException(message);
+        }
+
+        private static void ExpectFailure(Action action, string scenario)
+        {
+            try { action(); }
+            catch (FormatException) { return; }
+            throw new InvalidOperationException($"Expected rejection: {scenario}.");
+        }
+    }
+}

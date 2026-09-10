@@ -1,0 +1,3134 @@
+{
+  "packName": "Water Sort Levels 003",
+  "levels": [
+    {
+      "id": 21,
+      "displayName": "Level 21",
+      "layoutGrid": {
+        "columns": 8,
+        "rows": 5,
+        "shape": "square"
+      },
+      "modeOptions": {
+        "hiddenStack": true,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            12,
+            7,
+            0
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            11,
+            6,
+            10
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            8,
+            2,
+            10
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            10,
+            3
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            8,
+            2,
+            9
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            11,
+            4,
+            1
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            10,
+            3,
+            5
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            7,
+            0,
+            9
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            3,
+            5,
+            8
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            2,
+            10,
+            3
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 1,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 2,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            0,
+            9,
+            11
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            2,
+            9,
+            11
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            3,
+            5,
+            8
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            12,
+            7
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            9,
+            11,
+            6
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 4
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            8,
+            2
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 4
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            10,
+            3,
+            5
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 4
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            9,
+            11,
+            4
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 4
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            8,
+            2
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 4
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            4,
+            1,
+            12
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 4
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 6,
+            "y": 2
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 7,
+            "y": 2
+          },
+          "isAdBottle": true
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "displayName": "Level 22",
+      "layoutGrid": {
+        "columns": 8,
+        "rows": 5,
+        "shape": "compact_zigzag"
+      },
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "megaBottle": true
+      },
+      "bottles": [
+        {
+          "capacity": 20,
+          "colorsBottomToTop": [
+            11
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 2
+          },
+          "isMegaBottle": true,
+          "targetColor": 11
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            1,
+            12,
+            1
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            4,
+            7,
+            4
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            0,
+            5,
+            7
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            3,
+            0,
+            9
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            2,
+            8,
+            6
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            11,
+            8,
+            3
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            11,
+            2,
+            5
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            10,
+            12
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            4,
+            5,
+            7
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            10,
+            1,
+            0
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            11,
+            10,
+            6
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            11,
+            8,
+            12
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            3,
+            9,
+            1
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            7,
+            0,
+            10
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            11,
+            6,
+            8
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            11,
+            9,
+            4
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            12,
+            9,
+            2
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            1,
+            1,
+            8
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            8,
+            6
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            10,
+            7
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            1,
+            1
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            8,
+            5,
+            5
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            2
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            8,
+            10
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 5,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 6,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 2,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 4
+          },
+          "isAdBottle": true
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "displayName": "Level 23",
+      "layoutGrid": {
+        "columns": 8,
+        "rows": 5,
+        "shape": "square"
+      },
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "megaBottle": true
+      },
+      "bottles": [
+        {
+          "capacity": 20,
+          "colorsBottomToTop": [
+            8
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 2
+          },
+          "isMegaBottle": true,
+          "targetColor": 8
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            6,
+            4,
+            4
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            0,
+            2,
+            10
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            2,
+            1,
+            12
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            8,
+            7,
+            9
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            9,
+            12,
+            10
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            0,
+            1,
+            3
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            8,
+            6,
+            5
+          ],
+          "gridPosition": {
+            "x": 7,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            3,
+            11,
+            10
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            4,
+            3,
+            0
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            8,
+            12,
+            9
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            11,
+            7,
+            6
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            5,
+            5,
+            5
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            1,
+            8,
+            6
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            2,
+            8,
+            11
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            12,
+            8,
+            10
+          ],
+          "gridPosition": {
+            "x": 7,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            12,
+            3,
+            7
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            8,
+            2,
+            2
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            7,
+            1,
+            2
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            8,
+            4,
+            5
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            10,
+            7
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            12,
+            0,
+            4
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            6,
+            0,
+            2
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            3,
+            12
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            11,
+            6
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            3,
+            1
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            12,
+            10
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            7,
+            3
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 5,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 6,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 4
+          },
+          "isAdBottle": true
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "displayName": "Level 24",
+      "layoutGrid": {
+        "columns": 8,
+        "rows": 5,
+        "shape": "square"
+      },
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "megaBottle": true
+      },
+      "bottles": [
+        {
+          "capacity": 20,
+          "colorsBottomToTop": [
+            9
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 2
+          },
+          "isMegaBottle": true,
+          "targetColor": 9
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            12,
+            7,
+            12
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            11,
+            10,
+            10
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            9,
+            11,
+            1
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            9,
+            5,
+            0
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            5,
+            1,
+            0
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            6,
+            3,
+            8
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            9,
+            7,
+            7
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            9,
+            1,
+            12
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            11,
+            3,
+            3
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            9,
+            5,
+            6
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            9,
+            6,
+            10
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            8,
+            3,
+            11
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            1,
+            0,
+            1
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            0,
+            9,
+            8
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            0,
+            12,
+            8
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            0,
+            1,
+            5
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            9,
+            8,
+            6
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            9,
+            0,
+            12
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            7
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            12
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            5,
+            1
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            5,
+            8
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            8,
+            5
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            10,
+            0
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            8,
+            11
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 5,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 6,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 2,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 4
+          },
+          "isAdBottle": true
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "displayName": "Level 25",
+      "layoutGrid": {
+        "columns": 8,
+        "rows": 5,
+        "shape": "dense"
+      },
+      "modeOptions": {
+        "hiddenStack": true,
+        "hybridHiddenStack": false,
+        "lockedBottles": true,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            6,
+            12,
+            5
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            4,
+            3,
+            11
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            9,
+            6,
+            12
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            9,
+            6
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 5,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            0,
+            9
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            11,
+            1
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            11,
+            1,
+            8
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 3
+          },
+          "isLocked": true,
+          "unlockCompletedBottleCount": 2
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            8,
+            4,
+            3
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 3
+          },
+          "isLocked": true,
+          "unlockCompletedBottleCount": 2
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 3
+          },
+          "isLocked": true,
+          "unlockCompletedBottleCount": 1
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            1,
+            8,
+            4
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            12,
+            5,
+            2
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            5,
+            2,
+            0
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 4
+          },
+          "isAdBottle": true
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "displayName": "Level 26",
+      "layoutGrid": {
+        "columns": 8,
+        "rows": 5,
+        "shape": "square"
+      },
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": true,
+        "lockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            2,
+            10
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            4,
+            3
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            9,
+            1,
+            11
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 0
+          },
+          "hiddenLayerIndexes": [
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            8,
+            12,
+            9
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            2,
+            8,
+            12
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            3,
+            11
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            0,
+            5,
+            4
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 1
+          },
+          "hiddenLayerIndexes": [
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            11,
+            6,
+            2
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            12,
+            9,
+            1
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 1
+          },
+          "hiddenLayerIndexes": [
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            11,
+            6,
+            2
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 2
+          },
+          "hiddenLayerIndexes": [
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            7,
+            0,
+            5
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 2
+          },
+          "hiddenLayerIndexes": [
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            9,
+            1,
+            3
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            2,
+            10,
+            7
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 2
+          },
+          "hiddenLayerIndexes": [
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            2,
+            8
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 2
+          },
+          "hiddenLayerIndexes": [
+            0,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            12,
+            9,
+            1
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            8,
+            12
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 3
+          },
+          "hiddenLayerIndexes": [
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            11,
+            6
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 3
+          },
+          "hiddenLayerIndexes": [
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            1,
+            11,
+            6
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 3
+          },
+          "hiddenLayerIndexes": [
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            1,
+            3,
+            8
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            8,
+            12,
+            9
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            10,
+            7,
+            0
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 2,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 4
+          },
+          "isAdBottle": true
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "displayName": "Level 27",
+      "layoutGrid": {
+        "columns": 8,
+        "rows": 5,
+        "shape": "square"
+      },
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            10,
+            11,
+            6
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            5,
+            9,
+            10
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            7,
+            1
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            10,
+            11,
+            6
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            4,
+            0,
+            12
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            4,
+            0
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            1,
+            8,
+            3
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            7,
+            1,
+            8
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            12,
+            5,
+            9
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            4,
+            2,
+            7
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            8,
+            3,
+            12
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            5,
+            9,
+            10
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            4,
+            2
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            12,
+            5,
+            9
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            12,
+            5
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            3,
+            12,
+            5
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            11,
+            6,
+            4
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            11,
+            6,
+            4
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            9,
+            10,
+            11
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            9,
+            10,
+            11
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 5,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 6,
+            "y": 2
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 7,
+            "y": 2
+          },
+          "isAdBottle": true
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "displayName": "Level 28",
+      "layoutGrid": {
+        "columns": 8,
+        "rows": 5,
+        "shape": "dense"
+      },
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            5,
+            9,
+            5
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            8,
+            7,
+            1
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            1,
+            6,
+            2
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            7,
+            1,
+            6
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            11,
+            12
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            4,
+            11
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            3,
+            11,
+            12
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            11,
+            12,
+            8
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            10,
+            3,
+            11
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            8,
+            7,
+            1
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            1,
+            9,
+            5
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            9,
+            5,
+            9
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            9,
+            5,
+            10
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            7,
+            1,
+            9
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            12,
+            8,
+            7
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            11,
+            12,
+            8
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            5,
+            10,
+            3
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            6,
+            2,
+            0
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            12,
+            8,
+            7
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            2,
+            0,
+            4
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 2,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 4
+          },
+          "isAdBottle": true
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "displayName": "Level 29",
+      "layoutGrid": {
+        "columns": 8,
+        "rows": 5,
+        "shape": "square"
+      },
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            7,
+            4,
+            2
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            8,
+            11,
+            0
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            1,
+            6,
+            5
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            10,
+            1,
+            6
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            3,
+            8
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 5,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            6,
+            5,
+            12
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 2
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            11,
+            0,
+            7
+          ],
+          "gridPosition": {
+            "x": 0,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 1,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            12,
+            10,
+            1
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            5,
+            12,
+            10
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            8,
+            11
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            0,
+            7,
+            4
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            4,
+            2,
+            3
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 3
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 2,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 4
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 4
+          },
+          "isAdBottle": true
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "displayName": "Level 30",
+      "layoutGrid": {
+        "columns": 8,
+        "rows": 5,
+        "shape": "dense_columns"
+      },
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": true,
+        "lockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            7,
+            10,
+            0
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 2,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            10,
+            0,
+            2
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 0
+          },
+          "hiddenLayerIndexes": [
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            1,
+            4,
+            6
+          ],
+          "gridPosition": {
+            "x": 4,
+            "y": 0
+          },
+          "hiddenLayerIndexes": [
+            1,
+            2
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            6,
+            1,
+            4
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 6,
+            "y": 0
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            8,
+            11,
+            8
+          ],
+          "gridPosition": {
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            7,
+            10
+          ],
+          "gridPosition": {
+            "x": 2,
+            "y": 1
+          },
+          "hiddenLayerIndexes": [
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            0,
+            2,
+            7
+          ],
+          "gridPosition": {
+            "x": 3,
+            "y": 1
+          },
+          "hiddenLayerIndexes": [
+            0
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            11,
+            8,
+            11
+          ],
+          "gridPosition": {
+            "x": 5,
+            "y": 1
+          },
+          "hiddenLayerIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            6,
+            1
+          ],
+          "gridPosition": {
+            "x": 6,
+            "y": 1
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 2,
+            "y": 2
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 3,
+            "y": 2
+          },
+          "isAdBottle": true
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "gridPosition": {
+            "x": 4,
+            "y": 2
+          },
+          "isAdBottle": true
+        }
+      ]
+    }
+  ]
+}

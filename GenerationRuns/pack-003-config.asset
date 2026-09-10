@@ -1,0 +1,839 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a42c7910d8f4b6a9c3e21f5a7b8d901, type: 3}
+  m_Name: WaterSortGenerationConfig
+  m_EditorClassIdentifier: 
+  schemaVersion: 3
+  selectedDifficultyProfile: Hard
+  levelsPerPack: 10
+  solutionExampleLimitWhenMany: 3
+  manySolutionThreshold: 10
+  defaultBottleCapacity: 4
+  layoutGridColumns: 8
+  layoutGridRows: 5
+  allowNoEmptyStartingBottles: 1
+  noEmptyStartingBottleChance: 0.15
+  preferredMinEmptyBottleCount: 1
+  preferredMaxEmptyBottleCount: 3
+  duplicateColorBottleChance: 0.45
+  maxDuplicateBottleTargetsPerColor: 6
+  maxBottleCount: 40
+  diverseOpeningSolutionChance: 0.35
+  diverseOpeningMoveWindow: 4
+  diverseOpeningMinDistinctSourceBottles: 3
+  diverseOpeningMinStoredSolutions: 2
+  selectionPolicy: shortest_non_loop_empty_priority_opening_diversity_soft
+  difficultyProfiles:
+  - profileId: 1
+    name: Easy
+    enabled: 1
+    targetDifficultyScoreMin: 0.9
+    targetDifficultyScoreMax: 1
+    colorWeights:
+    - colorCount: 1
+      weight: 40
+    - colorCount: 2
+      weight: 60
+    helperCapacityWeights:
+    - helperCapacity: 0
+      weight: 50
+    - helperCapacity: 2
+      weight: 50
+    bottleCapacityWeights:
+    - capacity: 4
+      weight: 70
+    gridShapeWeights:
+    - shape: '-'
+      weight: 50
+      minBottleCount: 4
+      maxBottleCount: 6
+    allowHiddenStackMode: 0
+    hiddenStackChance: 0
+    allowHybridHiddenStackMode: 0
+    hybridHiddenStackChance: 0
+    hybridHiddenBottleChance: 0
+    minHybridHiddenLayersPerBottle: 1
+    maxHybridHiddenLayersPerBottle: 1
+    allowLockedBottleMode: 0
+    lockedBottleChance: 0
+    minLockedBottleCount: 1
+    maxLockedBottleCount: 1
+    minCompletedBottleCountToUnlock: 1
+    maxCompletedBottleCountToUnlock: 1
+    allowMegaBottleMode: 0
+    megaBottleChance: 0
+    minMegaBottleCapacity: 12
+    maxMegaBottleCapacity: 12
+    megaCandidateAttemptCount: 16
+    minMegaActiveBottleCount: 8
+    maxMegaActiveBottleCount: 12
+    minMegaBlockerColorCount: 4
+    maxMegaBlockerColorCount: 6
+    minMegaNormalHelperCount: 2
+    maxMegaNormalHelperCount: 3
+    maxMegaTargetGroupSize: 2
+    minMegaBuriedTargetRatio: 0.5
+    minMegaDeepBuriedTargetRatio: 0
+    minMegaUniqueTopColorCount: 3
+    maxMegaTopColorShare: 0.35
+    minMegaUniqueBottlePatternRatio: 1
+    minMegaMovesBeforeFirstFill: 1
+    minMegaCrossBottleBlockerMoves: 1
+    minMegaNonMegaMoveRatio: 0.25
+    maxMegaConsecutiveFillMoves: 4
+    megaSolverMaxStates: 30000
+    megaSolverMaxDepth: 80
+    minMegaActiveFillRatio: 0.45
+    targetMegaActiveFillRatio: 0.75
+    maxMegaActiveFreeRatio: 0.3
+    maxMegaSparseBottleRatio: 0.25
+    maxMegaSingleLayerBottleCount: 10000
+    megaFreeCapacityConcentrationRatio: 0.6
+    minTargetBottleCount: 2
+    maxTargetBottleCount: 4
+    minShortestStepCount: 1
+    maxShortestStepCount: 5
+    maxSolutionCount: 10000
+    storedSolutionTarget: 2
+    allowSmallIntroLevel: 1
+    allowSpecialNearWin: 0
+    nearWin:
+      minNearWinScore: 0.75
+      minCriticalDepthRatio: 0.4
+      maxCriticalDepthRatio: 0.85
+      maxCriticalStates: 24
+      maxTrapCandidates: 24
+      trapSolverMaxStates: 100000
+      trapSolverMaxDepth: 140
+      minSoftTrapRecoveryPenalty: 6
+      minSoftTrapRecoveryRatio: 1.35
+      softTrapWeight: 0.55
+      strongTrapWeight: 0.35
+      hardDeadlockWeight: 0.1
+      allowAddBottleRescue: 1
+      allowShuffleRescue: 1
+      shuffleCandidateCount: 24
+      minShuffleRemainingSteps: 2
+    minNormalHelperCount: 1
+    maxNormalHelperCount: 2
+    minActiveFillRatio: 0.7
+    targetActiveFillRatio: 0.85
+    maxStartingFreeRatio: 0.25
+    minPartialBottleCount: 0
+    maxSafeMoveRatio: 1
+    minAverageBranchingFactor: 0
+    minCriticalDecisionCount: 0
+  - profileId: 2
+    name: Normal
+    enabled: 1
+    targetDifficultyScoreMin: 0.75
+    targetDifficultyScoreMax: 0.9
+    colorWeights:
+    - colorCount: 7
+      weight: 25
+    - colorCount: 9
+      weight: 45
+    - colorCount: 10
+      weight: 30
+    helperCapacityWeights:
+    - helperCapacity: 8
+      weight: 55
+    - helperCapacity: 12
+      weight: 45
+    bottleCapacityWeights:
+    - capacity: 4
+      weight: 10
+    gridShapeWeights:
+    - shape: horizontal
+      weight: 25
+      minBottleCount: 2
+      maxBottleCount: 8
+    - shape: arc
+      weight: 20
+      minBottleCount: 6
+      maxBottleCount: 16
+    - shape: triangle
+      weight: 14
+      minBottleCount: 6
+      maxBottleCount: 18
+    - shape: diamond
+      weight: 14
+      minBottleCount: 6
+      maxBottleCount: 18
+    - shape: plus
+      weight: 12
+      minBottleCount: 7
+      maxBottleCount: 17
+    - shape: x
+      weight: 12
+      minBottleCount: 8
+      maxBottleCount: 16
+    - shape: y
+      weight: 10
+      minBottleCount: 7
+      maxBottleCount: 16
+    - shape: u
+      weight: 10
+      minBottleCount: 8
+      maxBottleCount: 18
+    - shape: wave
+      weight: 10
+      minBottleCount: 8
+      maxBottleCount: 18
+    - shape: dense
+      weight: 45
+      minBottleCount: 9
+      maxBottleCount: 20
+    - shape: compact_zigzag
+      weight: 55
+      minBottleCount: 9
+      maxBottleCount: 20
+    - shape: staggered
+      weight: 50
+      minBottleCount: 9
+      maxBottleCount: 20
+    - shape: alternating_rows
+      weight: 30
+      minBottleCount: 9
+      maxBottleCount: 20
+    - shape: checkerboard
+      weight: 18
+      minBottleCount: 9
+      maxBottleCount: 40
+    allowHiddenStackMode: 1
+    hiddenStackChance: 0.2
+    allowHybridHiddenStackMode: 1
+    hybridHiddenStackChance: 0.18
+    hybridHiddenBottleChance: 0.35
+    minHybridHiddenLayersPerBottle: 1
+    maxHybridHiddenLayersPerBottle: 1
+    allowLockedBottleMode: 1
+    lockedBottleChance: 0.1
+    minLockedBottleCount: 1
+    maxLockedBottleCount: 2
+    minCompletedBottleCountToUnlock: 1
+    maxCompletedBottleCountToUnlock: 2
+    allowMegaBottleMode: 1
+    megaBottleChance: 0.15
+    minMegaBottleCapacity: 12
+    maxMegaBottleCapacity: 20
+    megaCandidateAttemptCount: 48
+    minMegaActiveBottleCount: 14
+    maxMegaActiveBottleCount: 26
+    minMegaBlockerColorCount: 6
+    maxMegaBlockerColorCount: 9
+    minMegaNormalHelperCount: 2
+    maxMegaNormalHelperCount: 2
+    maxMegaTargetGroupSize: 2
+    minMegaBuriedTargetRatio: 0.85
+    minMegaDeepBuriedTargetRatio: 0.35
+    minMegaUniqueTopColorCount: 4
+    maxMegaTopColorShare: 0.25
+    minMegaUniqueBottlePatternRatio: 1
+    minMegaMovesBeforeFirstFill: 3
+    minMegaCrossBottleBlockerMoves: 3
+    minMegaNonMegaMoveRatio: 0.4
+    maxMegaConsecutiveFillMoves: 3
+    megaSolverMaxStates: 60000
+    megaSolverMaxDepth: 140
+    minMegaActiveFillRatio: 0.5
+    targetMegaActiveFillRatio: 0.85
+    maxMegaActiveFreeRatio: 0.2
+    maxMegaSparseBottleRatio: 0.15
+    maxMegaSingleLayerBottleCount: 100000
+    megaFreeCapacityConcentrationRatio: 0.65
+    minTargetBottleCount: 9
+    maxTargetBottleCount: 15
+    minShortestStepCount: 18
+    maxShortestStepCount: 42
+    maxSolutionCount: 100000
+    storedSolutionTarget: 2
+    allowSmallIntroLevel: 0
+    allowSpecialNearWin: 0
+    nearWin:
+      minNearWinScore: 0.75
+      minCriticalDepthRatio: 0.4
+      maxCriticalDepthRatio: 0.85
+      maxCriticalStates: 24
+      maxTrapCandidates: 24
+      trapSolverMaxStates: 100000
+      trapSolverMaxDepth: 140
+      minSoftTrapRecoveryPenalty: 6
+      minSoftTrapRecoveryRatio: 1.35
+      softTrapWeight: 0.55
+      strongTrapWeight: 0.35
+      hardDeadlockWeight: 0.1
+      allowAddBottleRescue: 1
+      allowShuffleRescue: 1
+      shuffleCandidateCount: 24
+      minShuffleRemainingSteps: 2
+    minNormalHelperCount: 1
+    maxNormalHelperCount: 2
+    minActiveFillRatio: 0.7
+    targetActiveFillRatio: 0.85
+    maxStartingFreeRatio: 0.25
+    minPartialBottleCount: 0
+    maxSafeMoveRatio: 1
+    minAverageBranchingFactor: 0
+    minCriticalDecisionCount: 0
+  - profileId: 3
+    name: Hard
+    enabled: 1
+    targetDifficultyScoreMin: 0.6
+    targetDifficultyScoreMax: 0.75
+    colorWeights:
+    - colorCount: 9
+      weight: 20
+    - colorCount: 10
+      weight: 35
+    - colorCount: 11
+      weight: 30
+    - colorCount: 12
+      weight: 15
+    helperCapacityWeights:
+    - helperCapacity: 8
+      weight: 60
+    - helperCapacity: 12
+      weight: 35
+    - helperCapacity: 16
+      weight: 5
+    bottleCapacityWeights:
+    - capacity: 4
+      weight: 100
+    gridShapeWeights:
+    - shape: horizontal
+      weight: 8
+      minBottleCount: 2
+      maxBottleCount: 8
+    - shape: circle
+      weight: 10
+      minBottleCount: 10
+      maxBottleCount: 26
+    - shape: arc
+      weight: 12
+      minBottleCount: 10
+      maxBottleCount: 24
+    - shape: triangle
+      weight: 10
+      minBottleCount: 10
+      maxBottleCount: 24
+    - shape: square
+      weight: 10
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: diamond
+      weight: 10
+      minBottleCount: 10
+      maxBottleCount: 24
+    - shape: zigzag
+      weight: 12
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: dense
+      weight: 90
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: compact_zigzag
+      weight: 80
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: staggered
+      weight: 75
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: honeycomb
+      weight: 60
+      minBottleCount: 12
+      maxBottleCount: 36
+    - shape: dense_columns
+      weight: 45
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: alternating_rows
+      weight: 38
+      minBottleCount: 12
+      maxBottleCount: 24
+    - shape: checkerboard
+      weight: 24
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: plus
+      weight: 6
+      minBottleCount: 10
+      maxBottleCount: 20
+    - shape: x
+      weight: 8
+      minBottleCount: 10
+      maxBottleCount: 18
+    - shape: y
+      weight: 8
+      minBottleCount: 10
+      maxBottleCount: 18
+    - shape: v
+      weight: 6
+      minBottleCount: 8
+      maxBottleCount: 16
+    - shape: u
+      weight: 6
+      minBottleCount: 10
+      maxBottleCount: 20
+    - shape: l
+      weight: 5
+      minBottleCount: 8
+      maxBottleCount: 18
+    - shape: wave
+      weight: 8
+      minBottleCount: 10
+      maxBottleCount: 24
+    allowHiddenStackMode: 1
+    hiddenStackChance: 0.35
+    allowHybridHiddenStackMode: 1
+    hybridHiddenStackChance: 0.3
+    hybridHiddenBottleChance: 0.5
+    minHybridHiddenLayersPerBottle: 1
+    maxHybridHiddenLayersPerBottle: 2
+    allowLockedBottleMode: 1
+    lockedBottleChance: 0.25
+    minLockedBottleCount: 1
+    maxLockedBottleCount: 4
+    minCompletedBottleCountToUnlock: 1
+    maxCompletedBottleCountToUnlock: 3
+    allowMegaBottleMode: 1
+    megaBottleChance: 0.15
+    minMegaBottleCapacity: 12
+    maxMegaBottleCapacity: 20
+    megaCandidateAttemptCount: 64
+    minMegaActiveBottleCount: 18
+    maxMegaActiveBottleCount: 34
+    minMegaBlockerColorCount: 8
+    maxMegaBlockerColorCount: 12
+    minMegaNormalHelperCount: 1
+    maxMegaNormalHelperCount: 2
+    maxMegaTargetGroupSize: 2
+    minMegaBuriedTargetRatio: 1
+    minMegaDeepBuriedTargetRatio: 0.5
+    minMegaUniqueTopColorCount: 5
+    maxMegaTopColorShare: 0.2
+    minMegaUniqueBottlePatternRatio: 1
+    minMegaMovesBeforeFirstFill: 3
+    minMegaCrossBottleBlockerMoves: 4
+    minMegaNonMegaMoveRatio: 0.4
+    maxMegaConsecutiveFillMoves: 3
+    megaSolverMaxStates: 90000
+    megaSolverMaxDepth: 180
+    minMegaActiveFillRatio: 0.55
+    targetMegaActiveFillRatio: 0.9
+    maxMegaActiveFreeRatio: 0.15
+    maxMegaSparseBottleRatio: 0.1
+    maxMegaSingleLayerBottleCount: 500000
+    megaFreeCapacityConcentrationRatio: 0.7
+    minTargetBottleCount: 12
+    maxTargetBottleCount: 30
+    minShortestStepCount: 28
+    maxShortestStepCount: 100
+    maxSolutionCount: 500000
+    storedSolutionTarget: 1
+    allowSmallIntroLevel: 0
+    allowSpecialNearWin: 0
+    nearWin:
+      minNearWinScore: 0.75
+      minCriticalDepthRatio: 0.4
+      maxCriticalDepthRatio: 0.85
+      maxCriticalStates: 24
+      maxTrapCandidates: 24
+      trapSolverMaxStates: 100000
+      trapSolverMaxDepth: 140
+      minSoftTrapRecoveryPenalty: 6
+      minSoftTrapRecoveryRatio: 1.35
+      softTrapWeight: 0.55
+      strongTrapWeight: 0.35
+      hardDeadlockWeight: 0.1
+      allowAddBottleRescue: 1
+      allowShuffleRescue: 1
+      shuffleCandidateCount: 24
+      minShuffleRemainingSteps: 2
+    minNormalHelperCount: 1
+    maxNormalHelperCount: 2
+    minActiveFillRatio: 0.7
+    targetActiveFillRatio: 0.85
+    maxStartingFreeRatio: 0.25
+    minPartialBottleCount: 0
+    maxSafeMoveRatio: 1
+    minAverageBranchingFactor: 0
+    minCriticalDecisionCount: 0
+  - profileId: 4
+    name: VeryHard
+    enabled: 1
+    targetDifficultyScoreMin: 0.72
+    targetDifficultyScoreMax: 0.92
+    colorWeights:
+    - colorCount: 9
+      weight: 20
+    - colorCount: 10
+      weight: 35
+    - colorCount: 11
+      weight: 30
+    - colorCount: 12
+      weight: 15
+    helperCapacityWeights:
+    - helperCapacity: 8
+      weight: 60
+    - helperCapacity: 12
+      weight: 35
+    - helperCapacity: 16
+      weight: 0
+    bottleCapacityWeights:
+    - capacity: 4
+      weight: 100
+    gridShapeWeights:
+    - shape: horizontal
+      weight: 8
+      minBottleCount: 2
+      maxBottleCount: 8
+    - shape: circle
+      weight: 10
+      minBottleCount: 10
+      maxBottleCount: 26
+    - shape: arc
+      weight: 12
+      minBottleCount: 10
+      maxBottleCount: 24
+    - shape: triangle
+      weight: 10
+      minBottleCount: 10
+      maxBottleCount: 24
+    - shape: square
+      weight: 10
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: diamond
+      weight: 10
+      minBottleCount: 10
+      maxBottleCount: 24
+    - shape: zigzag
+      weight: 12
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: dense
+      weight: 90
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: compact_zigzag
+      weight: 80
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: staggered
+      weight: 75
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: honeycomb
+      weight: 60
+      minBottleCount: 12
+      maxBottleCount: 36
+    - shape: dense_columns
+      weight: 45
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: alternating_rows
+      weight: 38
+      minBottleCount: 12
+      maxBottleCount: 24
+    - shape: checkerboard
+      weight: 24
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: plus
+      weight: 6
+      minBottleCount: 10
+      maxBottleCount: 20
+    - shape: x
+      weight: 8
+      minBottleCount: 10
+      maxBottleCount: 18
+    - shape: y
+      weight: 8
+      minBottleCount: 10
+      maxBottleCount: 18
+    - shape: v
+      weight: 6
+      minBottleCount: 8
+      maxBottleCount: 16
+    - shape: u
+      weight: 6
+      minBottleCount: 10
+      maxBottleCount: 20
+    - shape: l
+      weight: 5
+      minBottleCount: 8
+      maxBottleCount: 18
+    - shape: wave
+      weight: 8
+      minBottleCount: 10
+      maxBottleCount: 24
+    allowHiddenStackMode: 1
+    hiddenStackChance: 0.35
+    allowHybridHiddenStackMode: 1
+    hybridHiddenStackChance: 0.3
+    hybridHiddenBottleChance: 0.5
+    minHybridHiddenLayersPerBottle: 1
+    maxHybridHiddenLayersPerBottle: 2
+    allowLockedBottleMode: 1
+    lockedBottleChance: 0.25
+    minLockedBottleCount: 1
+    maxLockedBottleCount: 4
+    minCompletedBottleCountToUnlock: 1
+    maxCompletedBottleCountToUnlock: 3
+    allowMegaBottleMode: 1
+    megaBottleChance: 0.15
+    minMegaBottleCapacity: 12
+    maxMegaBottleCapacity: 20
+    megaCandidateAttemptCount: 64
+    minMegaActiveBottleCount: 18
+    maxMegaActiveBottleCount: 34
+    minMegaBlockerColorCount: 8
+    maxMegaBlockerColorCount: 12
+    minMegaNormalHelperCount: 1
+    maxMegaNormalHelperCount: 2
+    maxMegaTargetGroupSize: 2
+    minMegaBuriedTargetRatio: 1
+    minMegaDeepBuriedTargetRatio: 0.5
+    minMegaUniqueTopColorCount: 5
+    maxMegaTopColorShare: 0.2
+    minMegaUniqueBottlePatternRatio: 1
+    minMegaMovesBeforeFirstFill: 3
+    minMegaCrossBottleBlockerMoves: 4
+    minMegaNonMegaMoveRatio: 0.4
+    maxMegaConsecutiveFillMoves: 3
+    megaSolverMaxStates: 90000
+    megaSolverMaxDepth: 180
+    minMegaActiveFillRatio: 0.55
+    targetMegaActiveFillRatio: 0.9
+    maxMegaActiveFreeRatio: 0.15
+    maxMegaSparseBottleRatio: 0.1
+    maxMegaSingleLayerBottleCount: 500000
+    megaFreeCapacityConcentrationRatio: 0.7
+    minTargetBottleCount: 12
+    maxTargetBottleCount: 30
+    minShortestStepCount: 44
+    maxShortestStepCount: 120
+    maxSolutionCount: 500000
+    storedSolutionTarget: 1
+    allowSmallIntroLevel: 0
+    allowSpecialNearWin: 0
+    nearWin:
+      minNearWinScore: 0.75
+      minCriticalDepthRatio: 0.4
+      maxCriticalDepthRatio: 0.85
+      maxCriticalStates: 24
+      maxTrapCandidates: 24
+      trapSolverMaxStates: 100000
+      trapSolverMaxDepth: 140
+      minSoftTrapRecoveryPenalty: 6
+      minSoftTrapRecoveryRatio: 1.35
+      softTrapWeight: 0.55
+      strongTrapWeight: 0.35
+      hardDeadlockWeight: 0.1
+      allowAddBottleRescue: 1
+      allowShuffleRescue: 1
+      shuffleCandidateCount: 24
+      minShuffleRemainingSteps: 2
+    minNormalHelperCount: 1
+    maxNormalHelperCount: 2
+    minActiveFillRatio: 0.7
+    targetActiveFillRatio: 0.85
+    maxStartingFreeRatio: 0.25
+    minPartialBottleCount: 0
+    maxSafeMoveRatio: 1
+    minAverageBranchingFactor: 0
+    minCriticalDecisionCount: 0
+  - profileId: 5
+    name: Special
+    enabled: 1
+    targetDifficultyScoreMin: 0.75
+    targetDifficultyScoreMax: 1
+    colorWeights:
+    - colorCount: 9
+      weight: 20
+    - colorCount: 10
+      weight: 35
+    - colorCount: 11
+      weight: 30
+    - colorCount: 12
+      weight: 15
+    helperCapacityWeights:
+    - helperCapacity: 4
+      weight: 60
+    bottleCapacityWeights:
+    - capacity: 4
+      weight: 100
+    gridShapeWeights:
+    - shape: horizontal
+      weight: 8
+      minBottleCount: 2
+      maxBottleCount: 8
+    - shape: circle
+      weight: 10
+      minBottleCount: 10
+      maxBottleCount: 26
+    - shape: arc
+      weight: 12
+      minBottleCount: 10
+      maxBottleCount: 24
+    - shape: triangle
+      weight: 10
+      minBottleCount: 10
+      maxBottleCount: 24
+    - shape: square
+      weight: 10
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: diamond
+      weight: 10
+      minBottleCount: 10
+      maxBottleCount: 24
+    - shape: zigzag
+      weight: 12
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: dense
+      weight: 90
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: compact_zigzag
+      weight: 80
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: staggered
+      weight: 75
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: honeycomb
+      weight: 60
+      minBottleCount: 12
+      maxBottleCount: 36
+    - shape: dense_columns
+      weight: 45
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: alternating_rows
+      weight: 38
+      minBottleCount: 12
+      maxBottleCount: 24
+    - shape: checkerboard
+      weight: 24
+      minBottleCount: 12
+      maxBottleCount: 40
+    - shape: plus
+      weight: 6
+      minBottleCount: 10
+      maxBottleCount: 20
+    - shape: x
+      weight: 8
+      minBottleCount: 10
+      maxBottleCount: 18
+    - shape: y
+      weight: 8
+      minBottleCount: 10
+      maxBottleCount: 18
+    - shape: v
+      weight: 6
+      minBottleCount: 8
+      maxBottleCount: 16
+    - shape: u
+      weight: 6
+      minBottleCount: 10
+      maxBottleCount: 20
+    - shape: l
+      weight: 5
+      minBottleCount: 8
+      maxBottleCount: 18
+    - shape: wave
+      weight: 8
+      minBottleCount: 10
+      maxBottleCount: 24
+    allowHiddenStackMode: 0
+    hiddenStackChance: 0
+    allowHybridHiddenStackMode: 0
+    hybridHiddenStackChance: 0
+    hybridHiddenBottleChance: 0.5
+    minHybridHiddenLayersPerBottle: 1
+    maxHybridHiddenLayersPerBottle: 2
+    allowLockedBottleMode: 0
+    lockedBottleChance: 0
+    minLockedBottleCount: 1
+    maxLockedBottleCount: 4
+    minCompletedBottleCountToUnlock: 1
+    maxCompletedBottleCountToUnlock: 3
+    allowMegaBottleMode: 0
+    megaBottleChance: 0
+    minMegaBottleCapacity: 12
+    maxMegaBottleCapacity: 20
+    megaCandidateAttemptCount: 64
+    minMegaActiveBottleCount: 18
+    maxMegaActiveBottleCount: 34
+    minMegaBlockerColorCount: 8
+    maxMegaBlockerColorCount: 12
+    minMegaNormalHelperCount: 1
+    maxMegaNormalHelperCount: 2
+    maxMegaTargetGroupSize: 2
+    minMegaBuriedTargetRatio: 1
+    minMegaDeepBuriedTargetRatio: 0.5
+    minMegaUniqueTopColorCount: 5
+    maxMegaTopColorShare: 0.2
+    minMegaUniqueBottlePatternRatio: 1
+    minMegaMovesBeforeFirstFill: 3
+    minMegaCrossBottleBlockerMoves: 4
+    minMegaNonMegaMoveRatio: 0.4
+    maxMegaConsecutiveFillMoves: 3
+    megaSolverMaxStates: 90000
+    megaSolverMaxDepth: 180
+    minMegaActiveFillRatio: 0.55
+    targetMegaActiveFillRatio: 0.9
+    maxMegaActiveFreeRatio: 0.15
+    maxMegaSparseBottleRatio: 0.1
+    maxMegaSingleLayerBottleCount: 500000
+    megaFreeCapacityConcentrationRatio: 0.7
+    minTargetBottleCount: 12
+    maxTargetBottleCount: 24
+    minShortestStepCount: 28
+    maxShortestStepCount: 80
+    maxSolutionCount: 500000
+    storedSolutionTarget: 1
+    allowSmallIntroLevel: 0
+    allowSpecialNearWin: 1
+    nearWin:
+      minNearWinScore: 0.75
+      minCriticalDepthRatio: 0.4
+      maxCriticalDepthRatio: 0.85
+      maxCriticalStates: 24
+      maxTrapCandidates: 128
+      trapSolverMaxStates: 100000
+      trapSolverMaxDepth: 180
+      minSoftTrapRecoveryPenalty: 5
+      minSoftTrapRecoveryRatio: 1.35
+      softTrapWeight: 0.4
+      strongTrapWeight: 0.5
+      hardDeadlockWeight: 0.1
+      allowAddBottleRescue: 1
+      allowShuffleRescue: 1
+      shuffleCandidateCount: 24
+      minShuffleRemainingSteps: 2
+    minNormalHelperCount: 0
+    maxNormalHelperCount: 1
+    minActiveFillRatio: 0.72
+    targetActiveFillRatio: 0.82
+    maxStartingFreeRatio: 0.25
+    minPartialBottleCount: 3
+    maxSafeMoveRatio: 0.45
+    minAverageBranchingFactor: 2.5
+    minCriticalDecisionCount: 1
+  difficultyBands: []

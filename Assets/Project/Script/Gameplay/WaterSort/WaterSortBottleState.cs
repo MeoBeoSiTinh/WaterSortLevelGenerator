@@ -14,9 +14,15 @@ namespace TrainWaterSort.Gameplay.WaterSort
             bool hiddenStackEnabled = false,
             IEnumerable<int> initialHiddenLayerIndexes = null,
             bool startsLocked = false,
-            int unlockCompletedBottleCount = 1)
+            int unlockCompletedBottleCount = 1,
+            bool isAdBottle = false,
+            bool isMegaBottle = false,
+            int targetColor = 0)
         {
             Capacity = capacity;
+            IsAdBottle = isAdBottle;
+            IsMegaBottle = isMegaBottle;
+            TargetColor = targetColor;
             HashSet<int> hiddenLayerSet = initialHiddenLayerIndexes == null
                 ? new HashSet<int>()
                 : new HashSet<int>(initialHiddenLayerIndexes.Where(index => index >= 0));
@@ -45,6 +51,9 @@ namespace TrainWaterSort.Gameplay.WaterSort
 
         public int Capacity { get; }
         public bool HiddenStackEnabled { get; }
+        public bool IsAdBottle { get; }
+        public bool IsMegaBottle { get; }
+        public int TargetColor { get; }
         public bool IsLocked { get; private set; }
         public int UnlockCompletedBottleCount { get; }
         public IReadOnlyList<int> ColorIndexes => colorIndexes;
@@ -64,6 +73,11 @@ namespace TrainWaterSort.Gameplay.WaterSort
                     return false;
                 }
 
+                if (IsMegaBottle)
+                {
+                    return IsMegaComplete;
+                }
+
                 if (IsEmpty)
                 {
                     return true;
@@ -78,6 +92,27 @@ namespace TrainWaterSort.Gameplay.WaterSort
                 for (int i = 1; i < colorIndexes.Count; i++)
                 {
                     if (colorIndexes[i] != targetColor)
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+        }
+
+        public bool IsMegaComplete
+        {
+            get
+            {
+                if (!IsMegaBottle || Count < Capacity)
+                {
+                    return false;
+                }
+
+                for (int i = 0; i < colorIndexes.Count; i++)
+                {
+                    if (colorIndexes[i] != TargetColor)
                     {
                         return false;
                     }

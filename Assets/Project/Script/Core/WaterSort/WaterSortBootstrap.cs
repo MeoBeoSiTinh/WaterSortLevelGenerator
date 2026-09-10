@@ -17,8 +17,18 @@ namespace TrainWaterSort.Core.WaterSort
             EnsureCamera();
 
             WaterSortColorPalette palette = Resources.Load<WaterSortColorPalette>(ColorPaletteResourceName);
+            if (WaterSortExternalCatalogLoader.IsLabMode(Application.absoluteURL))
+            {
+                GameObject loaderObject = new("WaterSortExternalCatalogLoader");
+                loaderObject.AddComponent<WaterSortExternalCatalogLoader>().Initialize(palette, InitializeGame);
+                return;
+            }
             WaterSortJsonCatalog catalog = WaterSortJsonCatalog.LoadFromResources(LevelResourceFolder, SolutionResourceFolder, palette);
+            InitializeGame(catalog);
+        }
 
+        private static void InitializeGame(WaterSortJsonCatalog catalog)
+        {
             WaterSortGameManager manager = Object.FindFirstObjectByType<WaterSortGameManager>();
             if (manager == null)
             {

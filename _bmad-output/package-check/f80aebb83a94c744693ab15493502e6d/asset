@@ -1,0 +1,157 @@
+"use strict";
+
+const fs = require("fs");
+const { applyHiddenPour, isSolvedState, makeInitialHiddenState } = require("./watersort-exhaustive-solver");
+const { replayMegaSolutionExact } = require("./mega-generator-v2");
+
+const levelPath = process.argv[2];
+const solutionPath = process.argv[3];
+
+if (!levelPath || !solutionPath) {
+  console.error("Usage: node validate-pack.js <levelPack> <solutionPack>");
+  process.exit(2);
+}
+
+const levelPack = JSON.parse(fs.readFileSync(levelPath, "utf8"));
+const solutionPack = JSON.parse(fs.readFileSync(solutionPath, "utf8"));
+const errors = [];
+
+function add(levelIndex, message) {
+  errors.push(`Level ${levelIndex + 1}: ${message}`);
+}
+
+function replayNormal(level, moves) {
+  const board = level.bottles.map(bottle => (bottle.colorsBottomToTop || []).slice());
+  const capacity = level.bottles.find(bottle => !bottle.isAdBottle && !bottle.isMegaBottle)?.capacity || 4;
+  let state = makeInitialHiddenState(board);
+  const locked = level.bottles.map(bottle => level.modeOptions?.lockedBottles && bottle.isLocked === true);
+  const thresholds = level.bottles.map(bottle => Math.max(1, bottle.unlockCompletedBottleCount || 1));
+  const adIndexes = new Set(level.bottles.map((bottle, index) => bottle.isAdBottle ? index : -1).filter(index => index >= 0));
+
+  for (const move of moves) {
+    const from = move.fromBottle - 1;
+    const to = move.toBottle - 1;
+    if (adIndexes.has(from) || adIndexes.has(to)) return "uses ad bottle";
+    if (from < 0 || to < 0 || from >= board.length || to >= board.length || from === to) return "bad move index";
+    const completed = countCompletedFullBottles(state, level.bottles, locked);
+    for (let i = 0; i < locked.length; i++) {
+      if (locked[i] && completed >= thresholds[i]) locked[i] = false;
+    }
+    if (locked[from] || locked[to]) return "uses locked bottle";
+    state = applyHiddenPour(state, from, to, capacity);
+    if (state == null) return "illegal pour";
+  }
+
+  return isSolvedState(state, capacity) ? null : "not solved";
+}
+
+function countCompletedFullBottles(state, bottles, locked) {
+  let count = 0;
+  for (let i = 0; i < state.colors.length; i++) {
+    if (locked[i] || bottles[i]?.isAdBottle || bottles[i]?.isMegaBottle) continue;
+    const bottle = state.colors[i];
+    const capacity = bottles[i]?.capacity || 4;
+    if (bottle.length === capacity && bottle.every(color => color === bottle[0])) count++;
+  }
+  return count;
+}
+
+function validateLevel(level, solutionEntry, index) {
+  if (!level.layoutGrid || level.layoutGrid.columns !== 8 || level.layoutGrid.rows !== 5) add(index, "layoutGrid must be 8x5");
+  if (!Array.isArray(level.bottles)) {
+    add(index, "bottles must be an array");
+    return;
+  }
+  if (level.bottles.length > 40) add(index, "more than 40 bottles");
+  if (level.modeOptions?.hiddenStack && level.modeOptions?.hybridHiddenStack) add(index, "hidden and hybrid hidden both enabled");
+
+  const grid = new Set();
+  let adCount = 0;
+  let megaCount = 0;
+  for (let bottleIndex = 0; bottleIndex < level.bottles.length; bottleIndex++) {
+    const bottle = level.bottles[bottleIndex];
+    const capacity = bottle.capacity || 4;
+    if (bottle.isMegaBottle) {
+      megaCount++;
+      if (capacity < 12 || capacity > 20) add(index, `mega bottle ${bottleIndex + 1} capacity out of range`);
+      if (!Number.isInteger(bottle.targetColor)) add(index, `mega bottle ${bottleIndex + 1} missing targetColor`);
+    } else if (capacity < 2 || capacity > 5) {
+      add(index, `bottle ${bottleIndex + 1} capacity out of range`);
+    }
+    const colors = bottle.colorsBottomToTop || [];
+    if (colors.length > capacity) add(index, `bottle ${bottleIndex + 1} over capacity`);
+    if (bottle.isAdBottle) {
+      adCount++;
+      if (colors.length !== 0) add(index, `ad bottle ${bottleIndex + 1} is not empty`);
+    }
+    const pos = bottle.gridPosition;
+    if (!pos || pos.x < 0 || pos.x >= 8 || pos.y < 0 || pos.y >= 5) {
+      add(index, `bottle ${bottleIndex + 1} gridPosition out of range`);
+    } else {
+      const key = `${pos.x},${pos.y}`;
+      if (grid.has(key)) add(index, `duplicate gridPosition ${key}`);
+      grid.add(key);
+    }
+    if (Array.isArray(bottle.hiddenLayerIndexes)) {
+      for (const hiddenIndex of bottle.hiddenLayerIndexes) {
+        if (!Number.isInteger(hiddenIndex) || hiddenIndex < 0 || hiddenIndex >= colors.length - 1) {
+          add(index, `invalid hybrid hidden index on bottle ${bottleIndex + 1}`);
+        }
+      }
+    }
+  }
+
+  if (adCount < 2 || adCount > 3) add(index, `expected 2 or 3 ad bottles, found ${adCount}`);
+  if (level.modeOptions?.megaBottle && megaCount !== 1) add(index, `expected one mega bottle, found ${megaCount}`);
+
+  const solutions = solutionEntry?.solutionData?.solutions || [];
+  if (solutions.length === 0) {
+    add(index, "missing stored solution");
+    return;
+  }
+
+  for (let solutionIndex = 0; solutionIndex < solutions.length; solutionIndex++) {
+    const moves = solutions[solutionIndex].moves || [];
+    const replayError = level.modeOptions?.megaBottle
+      ? replayMega(level, moves)
+      : replayNormal(level, moves);
+    if (replayError) add(index, `solution ${solutionIndex + 1} ${replayError}`);
+  }
+}
+
+function replayMega(level, moves) {
+  const megaBottleIndex = level.bottles.findIndex(bottle => bottle.isMegaBottle);
+  const megaBottle = level.bottles[megaBottleIndex];
+  const candidate = {
+    board: level.bottles.map(bottle => (bottle.colorsBottomToTop || []).slice()),
+    capacities: level.bottles.map(bottle => bottle.isMegaBottle ? bottle.capacity : Math.max(2, Math.min(5, bottle.capacity || 4))),
+    megaBottleIndex,
+    megaCapacity: megaBottle?.capacity,
+    targetColor: megaBottle?.targetColor,
+  };
+  const adIndexes = new Set(level.bottles.map((bottle, index) => bottle.isAdBottle ? index : -1).filter(index => index >= 0));
+  if (moves.some(move => adIndexes.has(move.fromBottle - 1) || adIndexes.has(move.toBottle - 1))) return "uses ad bottle";
+  const replay = replayMegaSolutionExact(candidate, moves);
+  return replay.success ? null : replay.reason;
+}
+
+if (!Array.isArray(levelPack.levels)) errors.push("Pack: levels must be an array");
+if (!Array.isArray(solutionPack.levelSolutions)) errors.push("Pack: levelSolutions must be an array");
+
+const levels = levelPack.levels || [];
+const solutions = solutionPack.levelSolutions || [];
+if (levels.length !== solutions.length) errors.push(`Pack: level count ${levels.length} does not match solution count ${solutions.length}`);
+
+for (let i = 0; i < levels.length; i++) {
+  validateLevel(levels[i], solutions[i], i);
+}
+
+const summary = {
+  levels: levels.length,
+  solutions: solutions.length,
+  invalid: errors.length,
+  errors: errors.slice(0, 50),
+};
+
+console.log(JSON.stringify(summary, null, 2));
+if (errors.length > 0) process.exit(1);

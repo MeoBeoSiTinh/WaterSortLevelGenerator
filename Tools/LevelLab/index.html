@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Water Sort · Level Lab</title><link rel="stylesheet" href="/lab.css"></head>
+<body>
+<main>
+  <header><span class="eyebrow">WATER SORT / LEVEL LAB</span><h1>Tạo level. Mở lên. Chơi thử.</h1><p>Dùng AI trong thư mục Level Lab để tạo data theo rules và config, rồi tải lại danh sách tại đây.</p></header>
+  <section class="toolbar" aria-label="Chọn pack">
+    <label>Level pack <select id="packs" disabled><option>Đang kiểm tra data…</option></select></label>
+    <button id="refresh">Tải lại danh sách</button><button id="play" disabled>Chơi pack này ↗</button>
+  </section>
+  <p id="status" role="status">Đang đọc và kiểm tra solution…</p>
+  <section id="errors" hidden><h2>Pack cần sửa</h2><pre id="errorText"></pre></section>
+  <section class="guide"><h2>Tạo pack mới với AI</h2><p>Mở thư mục đã giải nén trong công cụ AI của bạn, rồi gửi:</p>
+    <blockquote>Đọc AGENTS.md và rules trong thư mục này. Nếu cần, sửa Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset (YAML, không cần Unity) theo yêu cầu của tôi — ví dụ levelsPerPack hoặc profile — rồi chạy Tools/LevelLab/generate.js, kiểm tra solution và cho tôi biết pack vừa tạo để chơi thử trên localhost.</blockquote>
+    <p>Hoặc chạy từ thư mục gốc:</p><pre>node Tools/LevelLab/generate.js</pre>
+    <p>Config và JSON nằm trong thư mục Lab; AI/editor sửa được trực tiếp. Game đọc JSON mới mỗi lần mở; không cần build lại. Đổi palette/gameplay mới cần player mới từ chủ project.</p>
+  </section>
+</main><script src="/lab.js"></script>
+</body></html>

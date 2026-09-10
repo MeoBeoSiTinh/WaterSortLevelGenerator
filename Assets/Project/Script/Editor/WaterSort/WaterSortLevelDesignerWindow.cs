@@ -649,7 +649,8 @@ namespace TrainWaterSort.Editor.WaterSort
             return new WaterSortJsonBottle
             {
                 capacity = bottle.Capacity,
-                colorsBottomToTop = bottle.colorsBottomToTop != null ? new List<int>(bottle.colorsBottomToTop) : new List<int>()
+                colorsBottomToTop = bottle.colorsBottomToTop != null ? new List<int>(bottle.colorsBottomToTop) : new List<int>(),
+                isAdBottle = bottle.IsAdBottle
             };
         }
 

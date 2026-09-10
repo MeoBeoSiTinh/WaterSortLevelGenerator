@@ -18,6 +18,7 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 - For game-wide state, win/lose, pause, restart, quit, level transition, scene transition, or manager structure work, read `agent-rules/game-flow.md` first.
 - For Unity animation, tweening, particle/VFX, shader, material, or MMF feedback work, read `agent-rules/unity-animation-fx.md` first.
 - For creating, editing, validating, or generating Water Sort level JSON, read `agent-rules/watersort-level-generation.md` first.
+- For portable Level Lab packaging, localhost playtesting, or colleague generation without Unity, read `agent-rules/watersort-level-lab.md` first.
 - Keep communication token-efficient: do not repeat the request, plans, unchanged context, code, or large tool outputs.
 - Never trade correctness for brevity. Run the narrowest relevant test or compilation check available and state clearly what could not be verified.
 - Do not introduce speculative abstractions, unrelated refactoring, or cleanup outside the requested scope.
@@ -32,6 +33,7 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 - Portable Unity game flow rules: `agent-rules/game-flow.md`
 - Portable Unity animation, FX, shader, tween, and MMF rules: `agent-rules/unity-animation-fx.md`
 - Water Sort level generation rules: `agent-rules/watersort-level-generation.md`
+- Water Sort Level Lab (portable generate + localhost WebGL playtest): `agent-rules/watersort-level-lab.md`
 
 ## Conventions that differ from defaults
 
@@ -53,26 +55,73 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 ## Local Gameplay Feature Rules
 
 - For interactive gameplay mechanics involving selection, validation, moving/transferring state, concurrency locks, undo, or animated action sequences, read `agent-rules/unity-gameplay-features.md` first.
-- Treat `Assets/WaterSortPuzzleColorGame/` as the current legacy reference implementation. Reuse its proven staged-action concepts selectively; keep newly authored files in the `Assets/Project/` convention defined above.
-- Water Sort level layouts must be authored as JSON files under `Assets/Project/Data/WaterSort/Resources/WaterSort/`. Keep one JSON file for up to 100 levels; add another numbered JSON file when a pack would exceed 100 levels.
-- Water Sort level JSON may distribute colors across every bottle; do not require fully empty starting bottles. Keep enough free capacity somewhere in the layout if the level should be playable under the pour rules.
-- Water Sort solution JSON lives in `Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/`, a sibling folder beside the level JSON folder, and stores exact shortest-solution count plus stored per-solution step counts/moves.
-- Water Sort solution counts should count optimized shortest non-loop paths; for levels with 10 or more shortest solutions, store only 3 representative examples unless requested otherwise.
-- When generating Water Sort levels, do not depend on any `Ref/` folder being present. Use the standalone generation recipe in `agent-rules/watersort-level-generation.md`: 100 levels per pack, early 3/5/7-color tutorials, main 9-12-color progression, helper capacity variants, seeded generation, and decreasing difficulty-score trend.
-- Water Sort generation difficulty and ramp tuning should come from the `WaterSortGenerationConfig` ScriptableObject at `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`, so designers can adjust it in the Unity Inspector.
-- For detailed Water Sort level authoring, generation, validation, and solvability guardrails, read `agent-rules/watersort-level-generation.md`.
-- Water Sort colors remain editable through `WaterSortColorPalette` ScriptableObject assets under `Assets/Project/Data/WaterSort/Resources/`.
+- Treat `Assets/WaterSortPuzzleColorGame/` as a legacy reference implementation only. Reuse proven concepts selectively; keep newly authored files under `Assets/Project/`.
+- `agent-rules/watersort-level-generation.md` is the local source of truth for Water Sort level generation, authoring, validation, and solvability rules.
+- `agent-rules/watersort-level-lab.md` is the source of truth for the portable Level Lab used by colleagues without Unity.
 
-## Local Folder Structure Override
+### Water Sort Production Paths
 
-- Author new project files under `Assets/Project/`.
-- Runtime scripts go under `Assets/Project/Script/`:
-  - `Core/` for manager and shared infrastructure scripts.
-  - `Gameplay/` for gameplay logic scripts.
-  - `UI/` for UI and canvas scripts.
-- ScriptableObject script definitions go under `Assets/Project/ScriptableObject/`:
-  - `Script/` for ScriptableObject definition scripts.
-- Water Sort palette assets are an exception and live under `Assets/Project/Data/WaterSort/Resources/` so runtime loading works without scene setup.
-- Prefabs go under `Assets/Project/Prefab/`:
-  - `UI/` for UI prefabs.
-  - `Gameplay/` for gameplay prefabs.
+- Production generator entry point: `Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js`.
+- Treat modules used by the production entry point as production code. Keep the entry point thin; substantial generator, solver, rule, validation, or evaluation logic belongs in its appropriate module.
+- `_bmad-output/implementation-artifacts/generate-watersort-exhaustive-100.js` is an implementation artifact copy, not production source.
+- `generate-watersort-100.js` is legacy/experimental and must not be used as a source of truth unless explicitly requested.
+- Runtime level JSON: `Assets/Project/Data/WaterSort/Resources/WaterSort/`.
+- Runtime solution JSON: `Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/`.
+- Generation config: `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`.
+- Water Sort palette assets live under `Assets/Project/Data/WaterSort/Resources/`.
+- Portable Level Lab tooling: `Tools/LevelLab/` (server, generate wrapper, package, docs, tests).
+- Packaged share output: `Builds/LevelLab/` after `node Tools/LevelLab/package.js Builds/WebGL Builds/LevelLab`.
+- Owner WebGL player for Lab: `Builds/WebGL/` (must include `level-lab-build.json`).
+
+### Level Lab
+
+- Colleagues without Unity generate and playtest using the packaged Level Lab; follow `agent-rules/watersort-level-lab.md` and `Tools/LevelLab/AGENTS.md`.
+- Lab generation must call the production generator/validator; do not invent a parallel engine.
+- Config is editable as YAML in the Lab folder; palette/gameplay changes still need a new WebGL player from the project owner.
+- Lab mode loads packs over localhost (`levelLab=1`); normal builds keep Resources loading.
+- WebGL Lab play UI may show side inspection panels (metrics + stored solution steps). Non-WebGL builds must not require those panels.
+### Generator Invariants
+
+- Generation is config-driven. `levelsPerPack` controls requested level count; one JSON pack may contain at most 100 levels.
+- Generated normal bottle capacity must be 2-5. Mega bottle capacity must be 12-20.
+- Generated layouts use the configured 8x5 grid, at most 40 physical bottles, and unique in-bounds `gridPosition` values.
+- Full hidden-stack and hybrid hidden-stack are mutually exclusive.
+- Locked bottles cannot be source or target while locked.
+- Mega bottles cannot be sources and accept only `targetColor`.
+- Generate exactly 2 or 3 empty Ad bottles when required by the generation rules. Ad bottles must never be required by generated/stored solutions or difficulty evaluation.
+- Generation must be deterministic for identical generator version, config, pack index, level number, and explicit seed. Candidate retries must derive deterministic sub-seeds; do not use wall-clock or unseeded randomness.
+- Reject non-intro boards where any color totaling exactly one bottle capacity is split across bottles as `(capacity-1)+1` (for capacity 4: the trivial 3+1 pour-complete pattern). Modular recipes must not use 1-color modules for this reason.
+
+### Canonical Validation
+
+- The canonical Water Sort rule engine and exact level/solution validator are authoritative for move legality, mode behavior, unlock/reveal transitions, and completion.
+- Generator code, editor tooling, tests, and pack validation must reuse the canonical validation path instead of introducing parallel replay implementations for Normal, Hidden, Hybrid, Locked, or Mega modes.
+- Every stored solution must replay successfully against the exact level JSON, including `modeOptions`, per-bottle capacity, hidden layer indexes, lock thresholds, Mega rules, and Ad-bottle restrictions.
+- Only describe a solution or solution count as globally shortest when the solver actually proves global shortestness.
+- When global shortestness is not proven, store representative/known solution metadata and do not claim uniqueness or exact shortest counts.
+- Stored `difficultyMetrics.safeMoveRatio` / `deadEndPotential` / `trapLikelihood` must come from classifying real legal moves along the known solution (bounded re-solve), not from crude proxies such as `1 / openingMoveCount`. Regenerate or refresh metrics after changing the evaluator.
+
+### Generated Data
+
+- Generated JSON is output, not the primary place to fix generator defects. Fix the generator, rule engine, validator, or config and regenerate rather than hand-editing output to satisfy tests.
+- Manual authored level edits are allowed when explicitly requested; gameplay-affecting edits must invalidate or regenerate the matching stored solution.
+- Do not depend on a `Ref/` folder being present.
+
+### Mega Generation
+
+- Mega levels must contain meaningful target-depth, blocker-color, top-color, and bottle-pattern diversity according to the active generation rules/config.
+- Do not use one repeated blocker color or a repeated `source -> helper -> mega` sequence as the primary Mega construction strategy.
+- Do not silently fall back to a simplistic legacy Mega template when a candidate fails quality requirements.
+
+### Verification
+
+For generator behavior changes, run the narrowest relevant checks:
+
+- `node --check` for changed JavaScript files.
+- Water Sort automated tests relevant to the change.
+- Exact pack validation/replay for affected/generated packs.
+- Deterministic generation using an explicit seed when generation behavior changes.
+- `git diff --check` when Git is available.
+- Do not claim Unity compilation passed unless Unity compilation was actually run.
+
+Keep verification commands concrete in the implementation summary and report anything that could not be verified.

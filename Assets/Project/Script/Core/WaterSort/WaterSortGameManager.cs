@@ -77,12 +77,15 @@ namespace TrainWaterSort.Core.WaterSort
                     hiddenStackEnabled,
                     hybridHiddenStackEnabled ? bottleData.HiddenLayerIndexes : null,
                     lockedBottlesEnabled && bottleData.IsLocked,
-                    bottleData.UnlockCompletedBottleCount));
+                    bottleData.UnlockCompletedBottleCount,
+                    bottleData.IsAdBottle,
+                    bottleData.IsMegaBottle,
+                    bottleData.TargetColor));
             }
 
             RefreshBottleLocks();
 
-            SetMessage(level.GetDisplayName(CurrentLevelIndex));
+            SetMessage("Select a bottle to pour.");
             WinStateChanged?.Invoke(false);
             StateChanged?.Invoke();
         }
@@ -170,6 +173,12 @@ namespace TrainWaterSort.Core.WaterSort
                 return;
             }
 
+            if (bottles[bottleIndex].IsMegaBottle)
+            {
+                SetMessage("Mega bottle can only receive colors.");
+                return;
+            }
+
             if (!bottles[bottleIndex].HasUnlockedTopColor)
             {
                 SetMessage("This bottle's top color is locked.");
@@ -189,6 +198,12 @@ namespace TrainWaterSort.Core.WaterSort
             if (source.IsLocked)
             {
                 message = "Source bottle is locked.";
+                return false;
+            }
+
+            if (source.IsMegaBottle)
+            {
+                message = "Mega bottle can only receive colors.";
                 return false;
             }
 
@@ -220,6 +235,12 @@ namespace TrainWaterSort.Core.WaterSort
             bool[] sourceUnlockedBeforeMove = source.GetUnlockedLayerSnapshot();
             bool[] targetUnlockedBeforeMove = target.GetUnlockedLayerSnapshot();
             bool[] lockStatesBeforeMove = GetBottleLockSnapshot();
+            if (target.IsMegaBottle && colorIndex != target.TargetColor)
+            {
+                message = "Mega bottle only accepts its target color.";
+                return false;
+            }
+
             if (!target.IsEmpty && target.TopColor != colorIndex)
             {
                 message = "Can only pour onto the same color or into an empty bottle.";
@@ -307,6 +328,27 @@ namespace TrainWaterSort.Core.WaterSort
 
         private void EvaluateWin()
         {
+            bool hasMegaBottle = false;
+            for (int i = 0; i < bottles.Count; i++)
+            {
+                if (bottles[i].IsMegaBottle)
+                {
+                    hasMegaBottle = true;
+                    if (!bottles[i].IsMegaComplete)
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (hasMegaBottle)
+            {
+                HasWon = true;
+                SetMessage("Mega bottle filled!");
+                WinStateChanged?.Invoke(true);
+                return;
+            }
+
             for (int i = 0; i < bottles.Count; i++)
             {
                 if (!bottles[i].IsComplete)

@@ -1,0 +1,26 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.10f1 (e35f0c77bd8e) revision 14901004'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'en' Physical Memory: 16106 MB
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-09-10T03:51:22.5911215Z"
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-09-10T03:51:22Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.3.10f1\Editor\Unity.exe
+-batchmode
+-quit
+-projectPath
+C:\Users\Administrator\Documents\My Unity\Train WaterSort Level
+-buildTarget
+WebGL
+-executeMethod
+TrainWaterSort.Editor.WaterSort.WebGLBuildMenu.BuildRelease
+-outputPath
+C:\Users\Administrator\Documents\My Unity\Train WaterSort Level\Builds\WebGL
+-logFile
+C:\Users\Administrator\Documents\My Unity\Train WaterSort Level\_bmad-output\build-logs\webgl-build-retry.log
+Successfully changed project path to: C:\Users\Administrator\Documents\My Unity\Train WaterSort Level
+C:/Users/Administrator/Documents/My Unity/Train WaterSort Level
+Exiting without the bug reporter. Application will terminate with return code 1

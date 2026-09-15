@@ -13,17 +13,19 @@ Create new Water Sort level JSON and matching solution JSON only. Do not create 
 
 ### In the Unity project
 
-1. `agent-rules/watersort-level-generation.md`
-2. `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`
-3. `Assets/Project/Data/WaterSort/Resources/WaterSortColorPalette.asset`
+1. `agent-rules/watersort-gameplay-modes.md`
+2. `agent-rules/watersort-level-generation.md`
+3. `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`
+4. `Assets/Project/Data/WaterSort/Resources/WaterSortColorPalette.asset`
 
 Optional: `Assets/Project/Editor/WaterSort/LevelGeneration/README.md`, `agent-rules/watersort-level-lab.md`
 
 ### In a packaged Level Lab folder
 
 1. `AGENTS.md` (Lab root / `Tools/LevelLab/AGENTS.md`)
-2. `agent-rules/watersort-level-generation.md`
-3. `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`
+2. `agent-rules/watersort-gameplay-modes.md`
+3. `agent-rules/watersort-level-generation.md`
+4. `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`
 
 ## Output Paths
 
@@ -120,3 +122,7 @@ Keep the final reply short:
 - localhost play path when Level Lab is running
 
 Do not create PRDs, architecture docs, or unrelated code.
+
+## Related
+
+- Screenshot / ASMR-similar packs (bags→locked, frost→color-lock, `?`→hidden/hybrid): `.agents/skills/watersort-asmr-like-pack/SKILL.md`

@@ -17,7 +17,7 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 - For Unity UI creation, UI edits, prefab edits, or Figma/image-to-UI work, read `agent-rules/unity-ui.md` first.
 - For game-wide state, win/lose, pause, restart, quit, level transition, scene transition, or manager structure work, read `agent-rules/game-flow.md` first.
 - For Unity animation, tweening, particle/VFX, shader, material, or MMF feedback work, read `agent-rules/unity-animation-fx.md` first.
-- For creating, editing, validating, or generating Water Sort level JSON, read `agent-rules/watersort-level-generation.md` first.
+- For creating, editing, validating, or generating Water Sort level JSON, read `agent-rules/watersort-gameplay-modes.md` then `agent-rules/watersort-level-generation.md` first.
 - For portable Level Lab packaging, localhost playtesting, or colleague generation without Unity, read `agent-rules/watersort-level-lab.md` first.
 - Keep communication token-efficient: do not repeat the request, plans, unchanged context, code, or large tool outputs.
 - Never trade correctness for brevity. Run the narrowest relevant test or compilation check available and state clearly what could not be verified.
@@ -32,6 +32,7 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 - Portable Unity UI rules: `agent-rules/unity-ui.md`
 - Portable Unity game flow rules: `agent-rules/game-flow.md`
 - Portable Unity animation, FX, shader, tween, and MMF rules: `agent-rules/unity-animation-fx.md`
+- Water Sort gameplay modes / create / solve overview: `agent-rules/watersort-gameplay-modes.md`
 - Water Sort level generation rules: `agent-rules/watersort-level-generation.md`
 - Water Sort Level Lab (portable generate + localhost WebGL playtest): `agent-rules/watersort-level-lab.md`
 
@@ -56,12 +57,14 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 
 - For interactive gameplay mechanics involving selection, validation, moving/transferring state, concurrency locks, undo, or animated action sequences, read `agent-rules/unity-gameplay-features.md` first.
 - Treat `Assets/WaterSortPuzzleColorGame/` as a legacy reference implementation only. Reuse proven concepts selectively; keep newly authored files under `Assets/Project/`.
+- `agent-rules/watersort-gameplay-modes.md` is the overview of modes, pour/win rules, and how to create/solve levels.
 - `agent-rules/watersort-level-generation.md` is the local source of truth for Water Sort level generation, authoring, validation, and solvability rules.
 - `agent-rules/watersort-level-lab.md` is the source of truth for the portable Level Lab used by colleagues without Unity.
 
 ### Water Sort Production Paths
 
 - Production generator entry point: `Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js`.
+- Unity generation `.unitypackage` builder: `Tools/create-watersort-level-generation-package.js` → `_bmad-output/unity-packages/WaterSortLevelGeneration.unitypackage`.
 - Treat modules used by the production entry point as production code. Keep the entry point thin; substantial generator, solver, rule, validation, or evaluation logic belongs in its appropriate module.
 - Do not use `_bmad-output` generator copies or `generate-watersort-100.js` as source of truth.
 - Runtime level JSON: `Assets/Project/Data/WaterSort/Resources/WaterSort/`.

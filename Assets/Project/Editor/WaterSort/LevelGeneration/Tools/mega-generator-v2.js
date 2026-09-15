@@ -381,11 +381,24 @@ function distributeTargetGroupsV2(total, capacity, profile, random) {
 function makeBlockerOnlyBottle(topColor, blockerPalette, patternSet, pairCounts, random, capacity, preferredLength = null) {
   const minDenseLength = Math.max(1, Math.ceil(capacity * 0.75));
   const length = preferredLength || randomInt(random, minDenseLength, capacity);
-  const bottle = [];
-  for (let i = 0; i < length - 1; i++) bottle.push(blockerPalette[randomInt(random, 0, blockerPalette.length - 1)]);
-  bottle.push(topColor);
-  mutateUntilDiverse(bottle, -1, blockerPalette, patternSet, pairCounts, random, capacity);
-  return bottle;
+  for (let build = 0; build < 24; build++) {
+    const bottle = [];
+    for (let i = 0; i < length - 1; i++) bottle.push(blockerPalette[randomInt(random, 0, blockerPalette.length - 1)]);
+    bottle.push(topColor);
+    // Guarantee at least 2 colors when bottle is long enough (avoid OOOO / YYY).
+    if (length >= 3 && bottle.every((color) => color === bottle[0]) && blockerPalette.length > 1) {
+      const other = blockerPalette.find((color) => color !== bottle[0]) ?? blockerPalette[0];
+      bottle[0] = other;
+    }
+    try {
+      mutateUntilDiverse(bottle, -1, blockerPalette, patternSet, pairCounts, random, capacity);
+      if (bottle.length >= 3 && bottle.every((color) => color === bottle[0])) continue;
+      return bottle;
+    } catch (_) {
+      /* retry */
+    }
+  }
+  throw new Error("Could not create mixed Mega V2 blocker-only bottle.");
 }
 
 function mutateUntilDiverse(bottle, targetColor, blockerPalette, patternSet, pairCounts, random, capacity) {
@@ -434,6 +447,10 @@ function validateMegaCandidate(candidate, profile) {
     if (i === candidate.megaBottleIndex || bottle.length === 0) continue;
     if (bottle.length === candidate.capacities[i] && bottle.every(color => color === candidate.targetColor)) {
       throw new Error("Filled normal bottle is mono targetColor.");
+    }
+    // Reject near-complete mono bottles (3–4 same-color layers) — looks pre-sorted vs mixed ASMR mega tubes.
+    if (bottle.length >= 3 && bottle.every(color => color === bottle[0])) {
+      throw new Error("Near-mono active bottle (3+ identical layers).");
     }
     const pattern = bottle.join(",");
     if (filledNormalPatterns.has(pattern)) throw new Error("Duplicate filled normal bottle pattern.");

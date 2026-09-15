@@ -97,6 +97,14 @@ function testHiddenLockAndMegaDataMatter() {
     fingerprint([bottle(4, [1, 2], { isLocked: true, unlockCompletedBottleCount: 2 })], { lockedBottles: true }));
 
   assert.notStrictEqual(
+    fingerprint([bottle(4, [1, 2], { isColorLocked: true, unlockRequiredColor: 1, unlockCompletedColorBottleCount: 1 })], { colorLockedBottles: true }),
+    fingerprint([bottle(4, [1, 2], { isColorLocked: true, unlockRequiredColor: 1, unlockCompletedColorBottleCount: 2 })], { colorLockedBottles: true }));
+
+  assert.notStrictEqual(
+    fingerprint([bottle(4, [1, 2], { isColorLocked: true, unlockRequiredColor: 1, unlockCompletedColorBottleCount: 1 })], { colorLockedBottles: true }),
+    fingerprint([bottle(4, [1, 2], { isColorLocked: true, unlockRequiredColor: 2, unlockCompletedColorBottleCount: 1 })], { colorLockedBottles: true }));
+
+  assert.notStrictEqual(
     fingerprint([bottle(12, [1], { isMegaBottle: true, targetColor: 1 }), bottle(4, [2, 1])], { megaBottle: true }),
     fingerprint([bottle(12, [1], { isMegaBottle: true, targetColor: 1 }), bottle(4, [1, 2])], { megaBottle: true }));
 }

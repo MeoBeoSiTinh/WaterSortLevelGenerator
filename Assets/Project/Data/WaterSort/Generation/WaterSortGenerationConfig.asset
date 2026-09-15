@@ -69,6 +69,12 @@ MonoBehaviour:
     maxLockedBottleCount: 1
     minCompletedBottleCountToUnlock: 1
     maxCompletedBottleCountToUnlock: 1
+    allowColorLockedBottleMode: 0
+    colorLockedBottleChance: 0
+    minColorLockedBottleCount: 1
+    maxColorLockedBottleCount: 2
+    minCompletedColorBottleCountToUnlock: 1
+    maxCompletedColorBottleCountToUnlock: 1
     allowMegaBottleMode: 0
     megaBottleChance: 0
     minMegaBottleCapacity: 12
@@ -140,12 +146,14 @@ MonoBehaviour:
     targetDifficultyScoreMin: 0.75
     targetDifficultyScoreMax: 0.9
     colorWeights:
-    - colorCount: 7
-      weight: 25
-    - colorCount: 9
-      weight: 45
-    - colorCount: 10
+    - colorCount: 6
       weight: 30
+    - colorCount: 7
+      weight: 40
+    - colorCount: 8
+      weight: 20
+    - colorCount: 9
+      weight: 10
     helperCapacityWeights:
     - helperCapacity: 8
       weight: 55
@@ -224,6 +232,12 @@ MonoBehaviour:
     maxLockedBottleCount: 2
     minCompletedBottleCountToUnlock: 1
     maxCompletedBottleCountToUnlock: 2
+    allowColorLockedBottleMode: 1
+    colorLockedBottleChance: 0.08
+    minColorLockedBottleCount: 1
+    maxColorLockedBottleCount: 2
+    minCompletedColorBottleCountToUnlock: 1
+    maxCompletedColorBottleCountToUnlock: 3
     allowMegaBottleMode: 1
     megaBottleChance: 0.15
     minMegaBottleCapacity: 12
@@ -295,14 +309,14 @@ MonoBehaviour:
     targetDifficultyScoreMin: 0.6
     targetDifficultyScoreMax: 0.75
     colorWeights:
+    - colorCount: 7
+      weight: 35
+    - colorCount: 8
+      weight: 35
     - colorCount: 9
       weight: 20
     - colorCount: 10
-      weight: 35
-    - colorCount: 11
-      weight: 30
-    - colorCount: 12
-      weight: 15
+      weight: 10
     helperCapacityWeights:
     - helperCapacity: 8
       weight: 60
@@ -411,6 +425,12 @@ MonoBehaviour:
     maxLockedBottleCount: 4
     minCompletedBottleCountToUnlock: 1
     maxCompletedBottleCountToUnlock: 3
+    allowColorLockedBottleMode: 1
+    colorLockedBottleChance: 0.2
+    minColorLockedBottleCount: 1
+    maxColorLockedBottleCount: 3
+    minCompletedColorBottleCountToUnlock: 1
+    maxCompletedColorBottleCountToUnlock: 3
     allowMegaBottleMode: 1
     megaBottleChance: 0.15
     minMegaBottleCapacity: 12
@@ -482,14 +502,14 @@ MonoBehaviour:
     targetDifficultyScoreMin: 0.72
     targetDifficultyScoreMax: 0.92
     colorWeights:
-    - colorCount: 9
-      weight: 20
-    - colorCount: 10
-      weight: 35
-    - colorCount: 11
+    - colorCount: 7
       weight: 30
-    - colorCount: 12
-      weight: 15
+    - colorCount: 8
+      weight: 35
+    - colorCount: 9
+      weight: 25
+    - colorCount: 10
+      weight: 10
     helperCapacityWeights:
     - helperCapacity: 8
       weight: 60
@@ -598,6 +618,12 @@ MonoBehaviour:
     maxLockedBottleCount: 4
     minCompletedBottleCountToUnlock: 1
     maxCompletedBottleCountToUnlock: 3
+    allowColorLockedBottleMode: 1
+    colorLockedBottleChance: 0.2
+    minColorLockedBottleCount: 1
+    maxColorLockedBottleCount: 3
+    minCompletedColorBottleCountToUnlock: 1
+    maxCompletedColorBottleCountToUnlock: 3
     allowMegaBottleMode: 1
     megaBottleChance: 0.15
     minMegaBottleCapacity: 12
@@ -781,6 +807,12 @@ MonoBehaviour:
     maxLockedBottleCount: 4
     minCompletedBottleCountToUnlock: 1
     maxCompletedBottleCountToUnlock: 3
+    allowColorLockedBottleMode: 0
+    colorLockedBottleChance: 0
+    minColorLockedBottleCount: 1
+    maxColorLockedBottleCount: 2
+    minCompletedColorBottleCountToUnlock: 1
+    maxCompletedColorBottleCountToUnlock: 2
     allowMegaBottleMode: 0
     megaBottleChance: 0
     minMegaBottleCapacity: 12

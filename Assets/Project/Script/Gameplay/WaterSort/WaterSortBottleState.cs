@@ -17,7 +17,10 @@ namespace TrainWaterSort.Gameplay.WaterSort
             int unlockCompletedBottleCount = 1,
             bool isAdBottle = false,
             bool isMegaBottle = false,
-            int targetColor = 0)
+            int targetColor = 0,
+            bool isColorLocked = false,
+            int unlockRequiredColor = 0,
+            int unlockCompletedColorBottleCount = 1)
         {
             Capacity = capacity;
             IsAdBottle = isAdBottle;
@@ -28,7 +31,10 @@ namespace TrainWaterSort.Gameplay.WaterSort
                 : new HashSet<int>(initialHiddenLayerIndexes.Where(index => index >= 0));
             HiddenStackEnabled = hiddenStackEnabled || hiddenLayerSet.Count > 0;
             IsLocked = startsLocked;
+            IsColorLocked = isColorLocked;
             UnlockCompletedBottleCount = System.Math.Max(1, unlockCompletedBottleCount);
+            UnlockRequiredColor = unlockRequiredColor;
+            UnlockCompletedColorBottleCount = System.Math.Max(1, unlockCompletedColorBottleCount);
 
             if (initialColors == null)
             {
@@ -55,7 +61,10 @@ namespace TrainWaterSort.Gameplay.WaterSort
         public bool IsMegaBottle { get; }
         public int TargetColor { get; }
         public bool IsLocked { get; private set; }
+        public bool IsColorLocked { get; }
         public int UnlockCompletedBottleCount { get; }
+        public int UnlockRequiredColor { get; }
+        public int UnlockCompletedColorBottleCount { get; }
         public IReadOnlyList<int> ColorIndexes => colorIndexes;
         public int Count => colorIndexes.Count;
         public bool IsEmpty => Count == 0;

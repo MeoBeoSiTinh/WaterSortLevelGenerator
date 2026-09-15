@@ -44,6 +44,8 @@ function runGenerator(profile, seed, count, pack, dryRun = true, extraEnv = {}) 
     ...process.env,
     WATERSORT_GENERATOR_DRY_RUN: dryRun ? "1" : "0",
     WATERSORT_LEVELS_PER_PACK: String(count),
+    // Pin production retry default so ambient shell env cannot shrink uniqueness tests.
+    WATERSORT_DUPLICATE_RETRY_ATTEMPTS: "48",
     ...extraEnv,
   };
   const output = execFileSync(process.execPath, [generator, String(pack), String(seed), profile], {
@@ -344,7 +346,15 @@ function testPackCoreFingerprintsAreUniqueAndDeterministic() {
 }
 
 function testGenerationFailsWhenCorePuzzleSpaceIsExhausted() {
-  expectGeneratorFailure("Easy", 424242, 8, 994, /Unable to generate unique core gameplay/);
+  // Retry-budget exhaustion under duplicates (not proof of global Easy puzzle-space size).
+  // Require pure duplicate fail message: no "(last rejection: ...)" quality clause before duplicate.
+  expectGeneratorFailure(
+    "Easy",
+    424242,
+    12,
+    994,
+    /Error: Unable to generate unique core gameplay \/ acceptable Special quality for level \d+ after 2 attempts \(last duplicate of Level \d+\)/,
+    { WATERSORT_DUPLICATE_RETRY_ATTEMPTS: "2" });
 }
 
 function testValidatorRejectsDuplicateCoreGameplay() {

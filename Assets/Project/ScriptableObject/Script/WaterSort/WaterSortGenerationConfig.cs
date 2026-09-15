@@ -319,6 +319,12 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
             [SerializeField] private int maxLockedBottleCount = 4;
             [SerializeField] private int minCompletedBottleCountToUnlock = 1;
             [SerializeField] private int maxCompletedBottleCountToUnlock = 3;
+            [SerializeField] private bool allowColorLockedBottleMode;
+            [SerializeField, Range(0f, 1f)] private float colorLockedBottleChance;
+            [SerializeField] private int minColorLockedBottleCount = 1;
+            [SerializeField] private int maxColorLockedBottleCount = 4;
+            [SerializeField] private int minCompletedColorBottleCountToUnlock = 1;
+            [SerializeField] private int maxCompletedColorBottleCountToUnlock = 3;
             [SerializeField] private bool allowMegaBottleMode;
             [SerializeField, Range(0f, 1f)] private float megaBottleChance;
             [SerializeField] private int minMegaBottleCapacity = 12;
@@ -407,6 +413,12 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
             public int MaxLockedBottleCount => maxLockedBottleCount;
             public int MinCompletedBottleCountToUnlock => minCompletedBottleCountToUnlock;
             public int MaxCompletedBottleCountToUnlock => maxCompletedBottleCountToUnlock;
+            public bool AllowColorLockedBottleMode => allowColorLockedBottleMode;
+            public float ColorLockedBottleChance => colorLockedBottleChance;
+            public int MinColorLockedBottleCount => minColorLockedBottleCount;
+            public int MaxColorLockedBottleCount => maxColorLockedBottleCount;
+            public int MinCompletedColorBottleCountToUnlock => minCompletedColorBottleCountToUnlock;
+            public int MaxCompletedColorBottleCountToUnlock => maxCompletedColorBottleCountToUnlock;
             public bool AllowMegaBottleMode => allowMegaBottleMode;
             public float MegaBottleChance => megaBottleChance;
             public int MinMegaBottleCapacity => minMegaBottleCapacity;
@@ -473,6 +485,11 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
                 maxLockedBottleCount = Mathf.Clamp(maxLockedBottleCount, minLockedBottleCount, 4);
                 minCompletedBottleCountToUnlock = Mathf.Max(1, minCompletedBottleCountToUnlock);
                 maxCompletedBottleCountToUnlock = Mathf.Max(minCompletedBottleCountToUnlock, maxCompletedBottleCountToUnlock);
+                colorLockedBottleChance = allowColorLockedBottleMode ? Mathf.Clamp01(colorLockedBottleChance) : 0f;
+                minColorLockedBottleCount = Mathf.Clamp(minColorLockedBottleCount, 1, 4);
+                maxColorLockedBottleCount = Mathf.Clamp(maxColorLockedBottleCount, minColorLockedBottleCount, 4);
+                minCompletedColorBottleCountToUnlock = Mathf.Max(1, minCompletedColorBottleCountToUnlock);
+                maxCompletedColorBottleCountToUnlock = Mathf.Max(minCompletedColorBottleCountToUnlock, maxCompletedColorBottleCountToUnlock);
                 megaBottleChance = allowMegaBottleMode ? Mathf.Clamp01(megaBottleChance) : 0f;
                 minMegaBottleCapacity = Mathf.Clamp(minMegaBottleCapacity, 12, 20);
                 maxMegaBottleCapacity = Mathf.Clamp(maxMegaBottleCapacity, minMegaBottleCapacity, 20);
@@ -613,6 +630,12 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
                     maxLockedBottleCount = maxLockedBottleCount,
                     minCompletedBottleCountToUnlock = minCompletedBottleCountToUnlock,
                     maxCompletedBottleCountToUnlock = maxCompletedBottleCountToUnlock,
+                    allowColorLockedBottleMode = allowColorLockedBottleMode,
+                    colorLockedBottleChance = colorLockedBottleChance,
+                    minColorLockedBottleCount = minColorLockedBottleCount,
+                    maxColorLockedBottleCount = maxColorLockedBottleCount,
+                    minCompletedColorBottleCountToUnlock = minCompletedColorBottleCountToUnlock,
+                    maxCompletedColorBottleCountToUnlock = maxCompletedColorBottleCountToUnlock,
                     allowMegaBottleMode = allowMegaBottleMode,
                     megaBottleChance = megaBottleChance,
                     minMegaBottleCapacity = minMegaBottleCapacity,
@@ -715,6 +738,7 @@ namespace TrainWaterSort.ScriptableObject.WaterSort
                     allowHiddenStackMode = false;
                     allowHybridHiddenStackMode = false;
                     allowLockedBottleMode = false;
+                    allowColorLockedBottleMode = false;
                     allowMegaBottleMode = false;
 
                     hiddenStackChance = 0f;

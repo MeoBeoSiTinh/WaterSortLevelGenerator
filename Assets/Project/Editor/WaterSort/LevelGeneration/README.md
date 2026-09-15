@@ -1,98 +1,120 @@
 # Water Sort Level Generation Package
 
-This package contains Water Sort generation data, documentation, Node.js generator tools, and a standalone Unity Editor level-data designer. It includes data ScriptableObject definitions for Inspector editing. It does not include gameplay, UI, or runtime loader scripts.
+Portable Unity package for Water Sort **level data generation**: config assets, documentation, Node.js generator/validator tools, and a standalone Editor Level Data Designer.
+
+This package does **not** include gameplay, UI, or runtime catalog loaders. Import into a project that already has (or will add) a Water Sort runtime that loads the same JSON schema via `Resources`.
 
 ## Requirements
 
-- Node.js available from the command line as `node`.
-- The imported files must keep the `Assets/LevelGenerator/...` paths unless the generator constants are updated.
+- Node.js 22+ on PATH as `node`
+- Keep imported paths under `Assets/LevelGenerator/...` (or update generator root detection)
+- Unity Editor for the Level Data Designer menu only (generation itself is Node)
+
+## Build this `.unitypackage` (project owners)
+
+From the Unity project root:
+
+```bash
+node Tools/create-watersort-level-generation-package.js
+```
+
+Output: `_bmad-output/unity-packages/WaterSortLevelGeneration.unitypackage`
+
+## Documentation map (read in this order)
+
+| Doc | Purpose |
+|---|---|
+| `Docs/watersort-gameplay-modes.md` | **Modes, pour rules, win conditions, how to create, how to solve/validate** |
+| `Docs/watersort-level-generation.md` | Authoritative generation/schema/quality/fingerprint rules |
+| `AI_CONTEXT.md` | Short AI onboarding for imported packages |
+| This `README.md` | Package contents and commands |
 
 ## Included
+
+### Data & schema
 
 - `Assets/LevelGenerator/ScriptableObject/Script/WaterSort/WaterSortGenerationConfig.cs`
 - `Assets/LevelGenerator/ScriptableObject/Script/WaterSort/WaterSortColorPalette.cs`
 - `Assets/LevelGenerator/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`
 - `Assets/LevelGenerator/Data/WaterSort/Resources/WaterSortColorPalette.asset`
+
+### Docs
+
 - `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/README.md`
 - `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/AI_CONTEXT.md`
+- `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Docs/watersort-gameplay-modes.md`
 - `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Docs/watersort-level-generation.md`
-- `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/WaterSortLevelDataDesignerWindow.cs`
-- `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js`
-- `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/mega-generator-v2.js`
-- `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/mega-generator-v2-tests.js`
-- `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/validate-pack.js`
-- `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/watersort-exhaustive-solver.js`
-- `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/solve-watersort-solutions.js`
 
-## Mega Bottle Generator V2
+### Editor
 
-Mega-bottle levels use Mega Generator V2. They should resemble a complex board around a central target, not a repeated list of one-step source bottles. Required authoring/generation rules:
+- `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/WaterSortLevelDataDesignerWindow.cs` — **Tools → Water Sort → Level Data Designer**
 
-- Use one central mega bottle with capacity 12-20.
-- Keep one visible starter layer in the mega bottle to show the required target color.
-- Keep the total target-color layer count exactly equal to mega capacity.
-- Distribute target groups across many normal bottles at mixed depths.
-- Use multiple balanced non-target blocker colors and blocker-only bottles.
-- Avoid duplicate filled bottle patterns and repeated template motifs.
-- Add normal helper bottles separately from ad bottles.
-- Stored solutions must include meaningful non-Mega blocker moves before and between Mega fills.
-- Verify by replaying the generated moves under normal pour rules: a move pours the full top contiguous same-color group, the mega bottle can only receive target color, and the mega bottle can never be a source.
+### Tools (Node)
+
+- `generate-watersort-exhaustive-100.js` — production generator entry
+- `mega-generator-v2.js` / `mega-generator-v2-tests.js`
+- `watersort-exhaustive-solver.js`
+- `watersort-core-fingerprint.js` / `watersort-core-fingerprint-tests.js`
+- `watersort-color-lock-tests.js`
+- `generator-profile-tests.js`
+- `validate-pack.js` — exact replay validation (routine)
+- `solve-watersort-solutions.js` — re-solve stale/manual levels only
+
+## Gameplay modes (summary)
+
+Full detail: `Docs/watersort-gameplay-modes.md`.
+
+- **Classic** pour: top contiguous same-color group; target empty or matching top; enough capacity.
+- **Hidden stack** / **Hybrid hidden**: visibility only; mutually exclusive.
+- **Count-lock**: unlock after N completed mono bottles (any color).
+- **Color-lock**: unlock after N completed mono bottles of a required color (prefer thresholds 1–3).
+- **Mega**: one-way target bottle (capacity 12–20); win when mega is full of `targetColor`.
+- **Ads**: 2–3 empty optional helpers; never in stored solutions; never unlock progress.
+- One bottle must not combine count-lock and color-lock.
 
 ## Usage
 
-1. Import the package into the target project.
-2. Ask the AI assistant to read `Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/AI_CONTEXT.md`.
-3. Let the AI assistant tune `Assets/LevelGenerator/Data/WaterSort/Generation/WaterSortGenerationConfig.asset` if needed.
-4. Run the generator from the project root.
-5. Generated level JSON is written to `Assets/LevelGenerator/Data/WaterSort/Resources/WaterSort`.
-6. Generated solution JSON is written to `Assets/LevelGenerator/Data/WaterSort/Resources/WaterSortSolutions`.
-
-The generated data uses the same schema as the current project and can be loaded through Unity `Resources`.
-
-Generated levels include 2 or 3 empty ad helper bottles marked with `isAdBottle: true`.
-
-## Mega Bottle Mode
-
-The generator can create non-tutorial mega-bottle levels when the active band enables `allowMegaBottleMode` and passes `megaBottleChance`. A mega bottle uses `isMegaBottle: true`, has `capacity` 12-20, stores the required color in `targetColor`, starts with one visible target-color layer, can only receive pours, and completes the level when filled. Matching target-color layers must be distributed across default bottles so the mega bottle can be filled. They should be buried under blocker colors and normal helper bottles should be present so the player must rearrange before filling the mega bottle.
-
-## Level Data Designer
-
-Open the Unity Editor tool from `Tools > Water Sort > Level Data Designer`.
-
-The designer is intentionally standalone Editor code so it can be imported into another project without gameplay, UI, or runtime loader scripts. It edits level JSON directly and can:
-
-- load a level pack and select one level by number,
-- show the 8x5 grid and each bottle's grid cell,
-- move bottles by clicking grid cells or editing x/y fields,
-- add, duplicate, and delete bottles,
-- switch bottle state between Normal, Locked, Ads, and Mega,
-- edit bottle capacity, mega target color, lock unlock threshold, and layer colors,
-- reorder, add, remove, and clear color layers,
-- validate duplicate grid cells, capacity overflow, invalid palette indexes, ad bottle rules, mega bottle fill requirements, and stale solution risk.
-
-When saving a level, the matching solution entry is reset because edited level data can invalidate the old move list. Run the solution tool again after manual edits only when the stored solution is stale or missing.
-
-Command:
+1. Import the package into the target Unity project.
+2. Ask an AI assistant to read `AI_CONTEXT.md` then `Docs/watersort-gameplay-modes.md` and `Docs/watersort-level-generation.md`.
+3. Tune `WaterSortGenerationConfig.asset` as YAML if needed (keep Unity headers).
+4. From the Unity project root:
 
 ```bash
 node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js 1
 ```
 
-Validation commands:
+Optional: `[seed] [Easy|Normal|Hard|VeryHard|Special]`.
+
+5. Levels → `Assets/LevelGenerator/Data/WaterSort/Resources/WaterSort/`
+6. Solutions → `Assets/LevelGenerator/Data/WaterSort/Resources/WaterSortSolutions/`
+
+Validate:
 
 ```bash
-node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/mega-generator-v2-tests.js
 node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/validate-pack.js Assets/LevelGenerator/Data/WaterSort/Resources/WaterSort/watersort-levels-001.json Assets/LevelGenerator/Data/WaterSort/Resources/WaterSortSolutions/watersort-solutions-001.json
 ```
 
-Do not use `solve-watersort-solutions.js` as the normal post-generation validation path. It recomputes solutions with a general solver and can be much slower than replay-validating the solutions already emitted by the generator. Use it for manually edited levels whose stored solution was reset.
+Focused tests:
 
-If an AI assistant is generating data directly, read `AI_CONTEXT.md` first.
+```bash
+node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/watersort-color-lock-tests.js
+node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/watersort-core-fingerprint-tests.js
+node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/mega-generator-v2-tests.js
+node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/generator-profile-tests.js
+```
 
-## Suggested Future Editor Improvements
+Do **not** use `solve-watersort-solutions.js` as routine post-generation validation. Use it after Level Designer / manual edits that reset solutions.
 
-- Add a button to solve the selected level and write a fresh matching solution immediately after edits.
-- Add auto-layout tools: compact to center, move to nearest free cell, and reorder by shape.
-- Add batch tools to convert selected empty bottles to Ads or Normal.
-- Add color-balance warnings that compare color counts with target capacities.
-- Add a solution replay preview so designers can inspect the exact move sequence.
+## Level Data Designer
+
+Open **Tools → Water Sort → Level Data Designer**.
+
+Supports grid placement, bottle CRUD, Normal / Locked / Color-locked / Ads / Mega states, capacities, unlock thresholds, layers, and basic validation. Saving a level resets its stored solution — re-solve and validate afterward.
+
+## Mega Bottle Mode
+
+Mega levels use Mega Generator V2. Rules are summarized in `Docs/watersort-gameplay-modes.md` and detailed in `Docs/watersort-level-generation.md` (Mega scramble section). Do not silently fall back to legacy Mega templates when V2 quality checks fail.
+
+## Portable Level Lab (full project only)
+
+Colleagues without Unity use the packaged Level Lab from the main Water Sort project (`Tools/LevelLab/`, share `Builds/LevelLab/`). This generation `.unitypackage` alone is not the Lab player bundle.

@@ -250,6 +250,12 @@ function readConfig(sourcePath = configPath) {
       maxLockedBottleCount: get("maxLockedBottleCount", 4),
       minCompletedBottleCountToUnlock: get("minCompletedBottleCountToUnlock", 1),
       maxCompletedBottleCountToUnlock: get("maxCompletedBottleCountToUnlock", 3),
+      allowColorLockedBottleMode: getBool("allowColorLockedBottleMode", false),
+      colorLockedBottleChance: get("colorLockedBottleChance", 0),
+      minColorLockedBottleCount: get("minColorLockedBottleCount", 1),
+      maxColorLockedBottleCount: get("maxColorLockedBottleCount", 4),
+      minCompletedColorBottleCountToUnlock: get("minCompletedColorBottleCountToUnlock", 1),
+      maxCompletedColorBottleCountToUnlock: get("maxCompletedColorBottleCountToUnlock", 3),
       allowMegaBottleMode: getBool("allowMegaBottleMode", false),
       megaBottleChance: get("megaBottleChance", 0),
       minMegaBottleCapacity: get("minMegaBottleCapacity", 12),
@@ -409,6 +415,8 @@ function applyGeneratedProfileDefaults(profile, profileId) {
     profile.hybridHiddenStackChance = 0;
     profile.allowLockedBottleMode = false;
     profile.lockedBottleChance = 0;
+    profile.allowColorLockedBottleMode = false;
+    profile.colorLockedBottleChance = 0;
     profile.allowMegaBottleMode = false;
     profile.megaBottleChance = 0;
     profile.allowSpecialNearWin = true;
@@ -711,6 +719,8 @@ if (resolvedProfile.profileId === "Special" && coreBottleCount != null && coreBo
     resolvedProfile.hybridHiddenStackChance = 0;
     resolvedProfile.allowLockedBottleMode = false;
     resolvedProfile.lockedBottleChance = 0;
+    resolvedProfile.allowColorLockedBottleMode = false;
+    resolvedProfile.colorLockedBottleChance = 0;
     resolvedProfile.allowMegaBottleMode = false;
     resolvedProfile.megaBottleChance = 0;
     resolvedProfile.nearWin = {
@@ -1069,6 +1079,8 @@ function chooseRecipe(config, band, profile, capacity, maxModuleCount, solvedMod
   const desiredStepCount = randomInt(random, profile.stepMin, profile.stepMax);
   const bounds = moduleCountBounds(config, band);
   const effectiveMaxModules = Math.max(1, maxModuleCount || bounds.maxModules);
+  const preferColorLockCollapse = band.allowColorLockedBottleMode === true
+    && (band.maxCompletedColorBottleCountToUnlock || 1) >= 2;
 
   let candidates = recipesForCapacity(capacity, effectiveMaxModules, config.maxBottleCount)
     .map(recipe => ({ recipe, stepCount: recipeStepCount(recipe, solvedModules) }))
@@ -1090,7 +1102,7 @@ function chooseRecipe(config, band, profile, capacity, maxModuleCount, solvedMod
       score:
         Math.abs(candidate.recipe.bottles - desiredBottleCount) * 2 +
         Math.abs(candidate.stepCount - desiredStepCount) +
-        Math.abs(Math.min(candidate.recipe.colors, paletteSize) - desiredColorCount) * 1.5 +
+        Math.abs(Math.min(candidate.recipe.colors, paletteSize) - desiredColorCount) * (preferColorLockCollapse ? 4 : 1.5) +
         candidate.recipe.modules.length * (preferFewerModules ? 3.5 : 0.5) +
         random() * 0.01,
     }))
@@ -1100,13 +1112,14 @@ function chooseRecipe(config, band, profile, capacity, maxModuleCount, solvedMod
   return { recipe: picked, desiredDistinctColors: desiredColorCount };
 }
 
-function createColorMapper(levelNumber) {
+function createColorMapper(levelNumber, distinctColorCount = paletteSize) {
   const random = rng(seedFor(levelNumber, 0xC0102, 1597334677));
-  const palette = shuffle(Array.from({ length: paletteSize }, (_, i) => i), random);
-  return color => palette[color % paletteSize];
+  const usable = Math.max(2, Math.min(paletteSize, Number(distinctColorCount) || paletteSize));
+  const palette = shuffle(Array.from({ length: paletteSize }, (_, i) => i), random).slice(0, usable);
+  return color => palette[Math.abs(Number(color) || 0) % usable];
 }
 
-function buildComposedLevel(recipe, solvedModules, levelNumber, storedSolutionTarget, attempt = 0) {
+function buildComposedLevel(recipe, solvedModules, levelNumber, storedSolutionTarget, attempt = 0, distinctColorCount = paletteSize) {
   const composeKey = levelNumber + Math.imul(attempt + 1, 2654435761);
   const random = rng(seedFor(composeKey, 0xB0771E, 3812015801));
   const board = [];
@@ -1147,7 +1160,7 @@ function buildComposedLevel(recipe, solvedModules, levelNumber, storedSolutionTa
     if (solutionMoveLists.length >= storedSolutionTarget) break;
   }
 
-  const mapColor = createColorMapper(levelNumber);
+  const mapColor = createColorMapper(levelNumber, distinctColorCount);
   const coloredBoard = board.map(bottle => bottle.map(mapColor));
   const oldToNew = shuffle(Array.from({ length: coloredBoard.length }, (_, i) => i), random);
   const permutedBoard = Array.from({ length: coloredBoard.length });
@@ -1346,7 +1359,9 @@ function shouldBuildMegaLevel(band, random) {
 
 function buildMegaLevel(config, band, levelNumber, random, attempt = 0) {
   const megaSeed = (generatorSeed ^ Math.imul(attempt + 1, 3266489917)) >>> 0;
-  return buildMegaLevelV2(config, band, levelNumber, megaSeed, paletteSize);
+  // Prefer profile colorWeights so packs can target a color budget (not always full palette).
+  const desiredColors = Math.max(4, Math.min(paletteSize, weighted(random, band.colorWeights, paletteSize)));
+  return buildMegaLevelV2(config, band, levelNumber, megaSeed, desiredColors);
 }
 
 function buildLegacyMegaLevel(config, band, levelNumber, random) {
@@ -2126,6 +2141,26 @@ function countCompletedFullBottles(state, capacity, locked) {
   return count;
 }
 
+function countCompletedFullBottlesOfColor(state, capacity, locked, colorIndex) {
+  let count = 0;
+  for (let i = 0; i < state.colors.length; i++) {
+    if (!locked[i] && state.colors[i].length === capacity) {
+      if (state.colors[i][0] === colorIndex && state.colors[i].every(value => value === colorIndex)) count++;
+    }
+  }
+  return count;
+}
+
+function countBoardColorLayers(board, colorIndex) {
+  let layers = 0;
+  for (const bottle of board) {
+    for (const color of bottle) {
+      if (color === colorIndex) layers += 1;
+    }
+  }
+  return layers;
+}
+
 function chooseLockedBottles(board, capacity, moves, band, random) {
   if (!band.allowLockedBottleMode || random() >= band.lockedBottleChance) return [];
   let state = makeInitialHiddenState(board);
@@ -2155,19 +2190,152 @@ function chooseLockedBottles(board, capacity, moves, band, random) {
   }));
 }
 
-function replaySolutionWithLocks(board, capacity, moves, lockedBottles) {
+/** When color-locks are enabled, bias toward fewer colors so unlock thresholds 2–3 are reachable. */
+function biasBandForColorLocks(band) {
+  if (!band || !band.allowColorLockedBottleMode) return band;
+  const maxUnlock = Math.max(1, Math.min(3, band.maxCompletedColorBottleCountToUnlock || 1));
+  const minUnlock = Math.max(1, Math.min(band.minCompletedColorBottleCountToUnlock || 1, maxUnlock));
+  const shift = Math.max(0, maxUnlock - 1);
+  const merged = new Map();
+  for (const row of band.colorWeights || []) {
+    const value = Math.max(5, Number(row.value) - shift);
+    merged.set(value, (merged.get(value) || 0) + Number(row.weight || 0));
+  }
+  return {
+    ...band,
+    colorWeights: [...merged.entries()]
+      .filter(([, weight]) => weight > 0)
+      .map(([value, weight]) => ({ value, weight })),
+    minCompletedColorBottleCountToUnlock: minUnlock,
+    maxCompletedColorBottleCountToUnlock: maxUnlock,
+  };
+}
+
+function chooseColorLockedBottles(board, capacity, moves, band, random, reservedIndexes = new Set()) {
+  if (!band.allowColorLockedBottleMode || random() >= band.colorLockedBottleChance) return [];
+  const minThreshold = Math.max(1, band.minCompletedColorBottleCountToUnlock || 1);
+  const maxThreshold = Math.max(minThreshold, band.maxCompletedColorBottleCountToUnlock || minThreshold);
+  const eligibleColors = [];
+  const seenColors = new Set();
+  for (const bottle of board) {
+    for (const color of bottle) seenColors.add(color);
+  }
+  for (const color of seenColors) {
+    if (countBoardColorLayers(board, color) >= capacity * minThreshold) eligibleColors.push(color);
+  }
+  if (eligibleColors.length === 0) return [];
+
+  let state = makeInitialHiddenState(board);
+  const colorCompletedBeforeTouch = Array.from({ length: board.length }, () => new Map());
+  const locked = Array(board.length).fill(false);
+  for (const index of reservedIndexes) locked[index] = true;
+  for (const move of moves) {
+    const from = move.fromBottle - 1;
+    const to = move.toBottle - 1;
+    for (const color of eligibleColors) {
+      const completed = countCompletedFullBottlesOfColor(state, capacity, locked, color);
+      if (!colorCompletedBeforeTouch[from].has(color)) colorCompletedBeforeTouch[from].set(color, completed);
+      if (!colorCompletedBeforeTouch[to].has(color)) colorCompletedBeforeTouch[to].set(color, completed);
+    }
+    // Unlock reserved count-locks as solution progresses so later completed counts stay accurate.
+    const completedAny = countCompletedFullBottles(state, capacity, locked);
+    for (const index of reservedIndexes) {
+      if (locked[index] && completedAny >= 1) locked[index] = false;
+    }
+    state = applyHiddenPour(state, from, to, capacity);
+    if (state == null) return [];
+  }
+
+  const candidates = [];
+  for (let index = 0; index < board.length; index++) {
+    if (reservedIndexes.has(index)) continue;
+    for (const color of eligibleColors) {
+      const completed = colorCompletedBeforeTouch[index].get(color);
+      if (completed == null || completed < minThreshold) continue;
+      candidates.push({ index, color, completed });
+    }
+  }
+  if (candidates.length === 0) return [];
+
+  candidates.sort((left, right) => right.completed - left.completed || left.index - right.index);
+
+  const targetCount = Math.min(
+    randomInt(random, Math.max(1, band.minColorLockedBottleCount || 1), Math.max(1, band.maxColorLockedBottleCount || 1)),
+    4);
+  const selected = [];
+  const usedIndexes = new Set();
+  // Prefer a spread across 1..maxThreshold (high first, then fill remaining).
+  const preferredThresholds = [];
+  for (let threshold = maxThreshold; threshold >= minThreshold; threshold--) preferredThresholds.push(threshold);
+  for (let slot = 0; slot < targetCount; slot++) {
+    const preferred = preferredThresholds[slot % preferredThresholds.length];
+    let chosen = null;
+    for (const threshold of [preferred, ...preferredThresholds.filter(value => value !== preferred)]) {
+      for (const candidate of candidates) {
+        if (usedIndexes.has(candidate.index)) continue;
+        if (candidate.completed < threshold) continue;
+        const freeLayers = countBoardColorLayersExcluding(board, candidate.color, new Set([...usedIndexes, candidate.index]));
+        if (Math.floor(freeLayers / capacity) < threshold) continue;
+        chosen = {
+          index: candidate.index,
+          unlockRequiredColor: candidate.color,
+          unlockCompletedColorBottleCount: threshold,
+        };
+        break;
+      }
+      if (chosen != null) break;
+    }
+    if (chosen == null) break;
+    selected.push(chosen);
+    usedIndexes.add(chosen.index);
+  }
+  return selected;
+}
+
+function countBoardColorLayersExcluding(board, colorIndex, excludedIndexes) {
+  let layers = 0;
+  for (let index = 0; index < board.length; index++) {
+    if (excludedIndexes.has(index)) continue;
+    for (const color of board[index]) {
+      if (color === colorIndex) layers += 1;
+    }
+  }
+  return layers;
+}
+
+function replaySolutionWithLocks(board, capacity, moves, lockedBottles, colorLockedBottles = []) {
   let state = makeInitialHiddenState(board);
   const locked = Array(board.length).fill(false);
-  const thresholds = new Map();
+  const lockKinds = Array(board.length).fill(null);
   for (const lockedBottle of lockedBottles) {
     locked[lockedBottle.index] = true;
-    thresholds.set(lockedBottle.index, lockedBottle.unlockCompletedBottleCount);
+    lockKinds[lockedBottle.index] = {
+      type: "count",
+      threshold: lockedBottle.unlockCompletedBottleCount,
+    };
+  }
+  for (const colorLockedBottle of colorLockedBottles) {
+    locked[colorLockedBottle.index] = true;
+    lockKinds[colorLockedBottle.index] = {
+      type: "color",
+      color: colorLockedBottle.unlockRequiredColor,
+      threshold: colorLockedBottle.unlockCompletedColorBottleCount,
+    };
   }
   for (const move of moves) {
-    const completed = countCompletedFullBottles(state, capacity, locked);
-    for (let i = 0; i < locked.length; i++) {
-      if (locked[i] && completed >= thresholds.get(i)) locked[i] = false;
-    }
+    let unlockedAny;
+    do {
+      unlockedAny = false;
+      for (let i = 0; i < locked.length; i++) {
+        if (!locked[i] || lockKinds[i] == null) continue;
+        const shouldUnlock = lockKinds[i].type === "color"
+          ? countCompletedFullBottlesOfColor(state, capacity, locked, lockKinds[i].color) >= lockKinds[i].threshold
+          : countCompletedFullBottles(state, capacity, locked) >= lockKinds[i].threshold;
+        if (!shouldUnlock) continue;
+        locked[i] = false;
+        unlockedAny = true;
+      }
+    } while (unlockedAny);
     const from = move.fromBottle - 1;
     const to = move.toBottle - 1;
     if (locked[from] || locked[to]) return false;
@@ -3021,7 +3189,7 @@ function main() {
 
   for (let localLevelNumber = 1; localLevelNumber <= config.levelsPerPack; localLevelNumber++) {
     const levelNumber = levelOffset + localLevelNumber;
-    const band = selectedProfile;
+    const band = biasBandForColorLocks(selectedProfile);
     const profile = generationIntentFor(band);
     const bounds = moduleCountBounds(config, band);
     const maxModuleCount = bounds.maxModules;
@@ -3048,7 +3216,6 @@ function main() {
           throw new Error(`GenerationConstraintFailure: requested NearWin could not be constructed under current constraints (${error.message})`);
         }
         lastRejectionReason = error instanceof Error ? error.message : String(error);
-        stats.duplicateRetryCount++;
         if (process.env.WATERSORT_DEBUG_SPECIAL_QUALITY === "1") {
           console.error(`Level ${levelNumber} NearWin attempt ${attempt + 1} failed: ${lastRejectionReason}`);
         }
@@ -3083,7 +3250,13 @@ function main() {
         }
       }
       if (recipe == null) throw new Error(`No modular recipe fits level ${levelNumber}: ${recipeFailures.join("; ")}`);
-      const composedLevel = buildComposedLevel(recipe, solvedModules, levelNumber, profile.storedSolutionTarget, attempt);
+      const composedLevel = buildComposedLevel(
+        recipe,
+        solvedModules,
+        levelNumber,
+        profile.storedSolutionTarget,
+        attempt,
+        band.allowColorLockedBottleMode ? desiredDistinctColors : paletteSize);
       board = composedLevel.board;
       solutionMoveLists = composedLevel.solutionMoveLists;
     }
@@ -3103,7 +3276,6 @@ function main() {
         });
         if (!solved.success || solved.solutions.length === 0) {
           lastRejectionReason = "embedded_workspace_unsolved";
-          stats.duplicateRetryCount++;
           continue;
         }
         solutionMoveLists = solved.solutions.map(solution => solution.moves);
@@ -3129,29 +3301,47 @@ function main() {
       levelNumber,
     });
     const gridPositions = layout.positions;
-    let lockedBottles = megaLevel == null ? chooseLockedBottles(board, capacity, solutionMoveLists[0], band, random) : [];
+    let lockedBottles = megaLevel == null ? chooseLockedBottles(board.slice(0, adHelpers.firstAdBottleIndex), capacity, solutionMoveLists[0], band, random) : [];
+    let colorLockedBottles = megaLevel == null
+      ? chooseColorLockedBottles(
+        board.slice(0, adHelpers.firstAdBottleIndex),
+        capacity,
+        solutionMoveLists[0],
+        band,
+        random,
+        new Set(lockedBottles.map(lockedBottle => lockedBottle.index)))
+      : [];
     let validSolutionMoveLists = megaLevel == null
-      ? solutionMoveLists.filter(candidateMoves => replaySolutionWithLocks(board, capacity, candidateMoves, lockedBottles))
+      ? solutionMoveLists.filter(candidateMoves => replaySolutionWithLocks(board, capacity, candidateMoves, lockedBottles, colorLockedBottles))
       : solutionMoveLists.filter(candidateMoves => replayMegaSolution(
         board,
         board.map((_, index) => index === megaLevel.megaBottleIndex ? megaLevel.megaCapacity : capacity),
         megaLevel.megaBottleIndex,
         megaLevel.megaTargetColor,
         candidateMoves));
-    if (megaLevel == null && lockedBottles.length > 0 && validSolutionMoveLists.length === 0) {
-      lockedBottles = [];
-      validSolutionMoveLists = solutionMoveLists;
+    if (megaLevel == null && (lockedBottles.length > 0 || colorLockedBottles.length > 0) && validSolutionMoveLists.length === 0) {
+      if (colorLockedBottles.length > 0) {
+        colorLockedBottles = [];
+        validSolutionMoveLists = solutionMoveLists.filter(candidateMoves => replaySolutionWithLocks(board, capacity, candidateMoves, lockedBottles, colorLockedBottles));
+      }
+      if (validSolutionMoveLists.length === 0 && lockedBottles.length > 0) {
+        lockedBottles = [];
+        validSolutionMoveLists = solutionMoveLists;
+      }
     }
     if (validSolutionMoveLists.length === 0) {
       throw new Error(`No valid solution after mode constraints at level ${levelNumber}`);
     }
     const lockedByBottle = new Map(lockedBottles.map(lockedBottle => [lockedBottle.index, lockedBottle.unlockCompletedBottleCount]));
+    const colorLockedByBottle = new Map(colorLockedBottles.map(colorLockedBottle => [colorLockedBottle.index, {
+      unlockRequiredColor: colorLockedBottle.unlockRequiredColor,
+      unlockCompletedColorBottleCount: colorLockedBottle.unlockCompletedColorBottleCount,
+    }]));
     const moves = validSolutionMoveLists[0];
     if (board.length > config.maxBottleCount) throw new Error(`Bad bottle count at level ${levelNumber}: ${board.length}`);
     assertBoardWithinCapacity(board, capacity, levelNumber, megaLevel);
     if (moves.length < band.minShortestStepCount || moves.length > band.maxShortestStepCount) {
       lastRejectionReason = `bad_step_count_${moves.length}`;
-      stats.duplicateRetryCount++;
       continue;
     }
     if (megaLevel == null && hasCapacityRepeat(board, capacity)) throw new Error(`Capacity repeat at level ${levelNumber}`);
@@ -3162,7 +3352,6 @@ function main() {
       && hasTrivialNearCompleteColorSplit(coreBoardForQuality, capacity)
     ) {
       lastRejectionReason = "trivial_capacity_minus_one_color_split";
-      stats.duplicateRetryCount++;
       if (process.env.WATERSORT_DEBUG_SPECIAL_QUALITY === "1") {
         console.error(`Level ${levelNumber} rejected: trivial_capacity_minus_one_color_split`);
       }
@@ -3178,7 +3367,7 @@ function main() {
           candidateMoves)) throw new Error(`Invalid mega solution at level ${levelNumber}`);
       } else {
         if (!replaySolution(board, capacity, candidateMoves)) throw new Error(`Invalid constructed solution at level ${levelNumber}`);
-        if (!replaySolutionWithLocks(board, capacity, candidateMoves, lockedBottles)) throw new Error(`Invalid locked solution at level ${levelNumber}`);
+        if (!replaySolutionWithLocks(board, capacity, candidateMoves, lockedBottles, colorLockedBottles)) throw new Error(`Invalid locked solution at level ${levelNumber}`);
       }
     }
 
@@ -3188,7 +3377,6 @@ function main() {
       const qualityReason = profileQualityRejection(band, difficultyMetrics, { nearWinLevel: specialLevel != null });
       if (qualityReason) {
         lastRejectionReason = qualityReason;
-        stats.duplicateRetryCount++;
         if (process.env.WATERSORT_DEBUG_SPECIAL_QUALITY === "1") {
           console.error(`Level ${levelNumber} rejected: ${qualityReason} ${JSON.stringify(difficultyMetrics)}`);
         }
@@ -3217,10 +3405,12 @@ function main() {
         hiddenStack,
         hybridHiddenStack,
         lockedBottles: lockedBottles.length > 0,
+        colorLockedBottles: colorLockedBottles.length > 0,
         megaBottle: megaLevel != null,
       },
       hybridHiddenLayers,
       lockedByBottle,
+      colorLockedByBottle,
       megaBottleIndex: megaLevel != null ? megaLevel.megaBottleIndex : -1,
       megaCapacity: megaLevel != null ? megaLevel.megaCapacity : null,
       megaTargetColor: megaLevel != null ? megaLevel.megaTargetColor : null,
@@ -3234,7 +3424,7 @@ function main() {
       }
       continue;
     }
-    const modeSuffix = `${specialLevel != null ? "nearwin" : megaLevel != null ? "mega" : hiddenStack ? "hidden" : hybridHiddenStack ? "hybrid_hidden" : "normal"}${lockedBottles.length > 0 ? "_locked" : ""}`;
+    const modeSuffix = `${specialLevel != null ? "nearwin" : megaLevel != null ? "mega" : hiddenStack ? "hidden" : hybridHiddenStack ? "hybrid_hidden" : "normal"}${lockedBottles.length > 0 ? "_locked" : ""}${colorLockedBottles.length > 0 ? "_color_locked" : ""}`;
     const solutionData = {
       solutionCount: validSolutionMoveLists.length,
       shortestStepCount: stepCount,
@@ -3295,7 +3485,13 @@ function main() {
       id: levelNumber,
       displayName: `Level ${levelNumber}`,
       layoutGrid: { columns: config.layoutGridColumns, rows: config.layoutGridRows, shape },
-      modeOptions: { hiddenStack, hybridHiddenStack, lockedBottles: lockedBottles.length > 0, megaBottle: megaLevel != null },
+      modeOptions: {
+        hiddenStack,
+        hybridHiddenStack,
+        lockedBottles: lockedBottles.length > 0,
+        colorLockedBottles: colorLockedBottles.length > 0,
+        megaBottle: megaLevel != null,
+      },
       bottles: board.map((colorsBottomToTop, index) => {
         const isMegaBottle = megaLevel != null && index === megaLevel.megaBottleIndex;
         const bottle = {
@@ -3316,6 +3512,12 @@ function main() {
         if (lockedByBottle.has(index)) {
           bottle.isLocked = true;
           bottle.unlockCompletedBottleCount = lockedByBottle.get(index);
+        }
+        if (colorLockedByBottle.has(index)) {
+          const colorLock = colorLockedByBottle.get(index);
+          bottle.isColorLocked = true;
+          bottle.unlockRequiredColor = colorLock.unlockRequiredColor;
+          bottle.unlockCompletedColorBottleCount = colorLock.unlockCompletedColorBottleCount;
         }
         return bottle;
       }),
@@ -3413,5 +3615,9 @@ if (require.main === module) {
     analyzeDynamicMoveSafety,
     applyProfileWorkspacePressure,
     profileQualityRejection,
+    replaySolutionWithLocks,
+    chooseColorLockedBottles,
+    countCompletedFullBottlesOfColor,
+    countBoardColorLayers,
   };
 }

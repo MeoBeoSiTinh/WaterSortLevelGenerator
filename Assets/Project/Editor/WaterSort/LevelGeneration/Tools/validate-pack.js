@@ -25,8 +25,27 @@ function replayNormal(level, moves) {
   const board = level.bottles.map(bottle => (bottle.colorsBottomToTop || []).slice());
   const capacity = level.bottles.find(bottle => !bottle.isAdBottle && !bottle.isMegaBottle)?.capacity || 4;
   let state = makeInitialHiddenState(board);
-  const locked = level.bottles.map(bottle => level.modeOptions?.lockedBottles && bottle.isLocked === true);
-  const thresholds = level.bottles.map(bottle => Math.max(1, bottle.unlockCompletedBottleCount || 1));
+  const locked = level.bottles.map((bottle) => {
+    const countLocked = level.modeOptions?.lockedBottles && bottle.isLocked === true;
+    const colorLocked = level.modeOptions?.colorLockedBottles && bottle.isColorLocked === true;
+    return Boolean(countLocked || colorLocked);
+  });
+  const lockKinds = level.bottles.map((bottle) => {
+    if (level.modeOptions?.colorLockedBottles && bottle.isColorLocked === true) {
+      return {
+        type: "color",
+        color: Number(bottle.unlockRequiredColor),
+        threshold: Math.max(1, bottle.unlockCompletedColorBottleCount || 1),
+      };
+    }
+    if (level.modeOptions?.lockedBottles && bottle.isLocked === true) {
+      return {
+        type: "count",
+        threshold: Math.max(1, bottle.unlockCompletedBottleCount || 1),
+      };
+    }
+    return null;
+  });
   const adIndexes = new Set(level.bottles.map((bottle, index) => bottle.isAdBottle ? index : -1).filter(index => index >= 0));
 
   for (const move of moves) {
@@ -34,10 +53,19 @@ function replayNormal(level, moves) {
     const to = move.toBottle - 1;
     if (adIndexes.has(from) || adIndexes.has(to)) return "uses ad bottle";
     if (from < 0 || to < 0 || from >= board.length || to >= board.length || from === to) return "bad move index";
-    const completed = countCompletedFullBottles(state, level.bottles, locked);
-    for (let i = 0; i < locked.length; i++) {
-      if (locked[i] && completed >= thresholds[i]) locked[i] = false;
-    }
+    let unlockedAny;
+    do {
+      unlockedAny = false;
+      for (let i = 0; i < locked.length; i++) {
+        if (!locked[i] || lockKinds[i] == null) continue;
+        const shouldUnlock = lockKinds[i].type === "color"
+          ? countCompletedFullBottlesOfColor(state, level.bottles, locked, lockKinds[i].color) >= lockKinds[i].threshold
+          : countCompletedFullBottles(state, level.bottles, locked) >= lockKinds[i].threshold;
+        if (!shouldUnlock) continue;
+        locked[i] = false;
+        unlockedAny = true;
+      }
+    } while (unlockedAny);
     if (locked[from] || locked[to]) return "uses locked bottle";
     state = applyHiddenPour(state, from, to, capacity);
     if (state == null) return "illegal pour";
@@ -55,6 +83,55 @@ function countCompletedFullBottles(state, bottles, locked) {
     if (bottle.length === capacity && bottle.every(color => color === bottle[0])) count++;
   }
   return count;
+}
+
+function countCompletedFullBottlesOfColor(state, bottles, locked, colorIndex) {
+  let count = 0;
+  for (let i = 0; i < state.colors.length; i++) {
+    if (locked[i] || bottles[i]?.isAdBottle || bottles[i]?.isMegaBottle) continue;
+    const bottle = state.colors[i];
+    const capacity = bottles[i]?.capacity || 4;
+    if (bottle.length === capacity && bottle[0] === colorIndex && bottle.every(color => color === colorIndex)) count++;
+  }
+  return count;
+}
+
+function countColorLayers(level, colorIndex, excludedIndexes = new Set()) {
+  let layers = 0;
+  for (let index = 0; index < (level.bottles || []).length; index++) {
+    const bottle = level.bottles[index];
+    if (bottle?.isAdBottle || excludedIndexes.has(index)) continue;
+    for (const color of bottle.colorsBottomToTop || []) {
+      if (color === colorIndex) layers += 1;
+    }
+  }
+  return layers;
+}
+
+function validateColorLockRules(level, index) {
+  const colorLockedIndexes = new Set();
+  for (let i = 0; i < (level.bottles || []).length; i++) {
+    const bottle = level.bottles[i];
+    if (level.modeOptions?.colorLockedBottles && bottle.isColorLocked === true) colorLockedIndexes.add(i);
+  }
+
+  for (let i = 0; i < (level.bottles || []).length; i++) {
+    const bottle = level.bottles[i];
+    const countLocked = level.modeOptions?.lockedBottles && bottle.isLocked === true;
+    const colorLocked = level.modeOptions?.colorLockedBottles && bottle.isColorLocked === true;
+    if (countLocked && colorLocked) {
+      add(index, `bottle ${i} has both count-lock and color-lock`);
+      continue;
+    }
+    if (!colorLocked) continue;
+    const required = Number(bottle.unlockRequiredColor);
+    const need = Math.max(1, bottle.unlockCompletedColorBottleCount || 1);
+    const capacity = bottle.isMegaBottle ? bottle.capacity : Math.max(2, Math.min(5, bottle.capacity || 4));
+    const freeLayers = countColorLayers(level, required, colorLockedIndexes);
+    if (freeLayers < capacity * need) {
+      add(index, `color-lock bottle ${i} lacks enough free color ${required} layers for unlock x${need}`);
+    }
+  }
 }
 
 function validateLevel(level, solutionEntry, index) {
@@ -104,6 +181,7 @@ function validateLevel(level, solutionEntry, index) {
 
   if (adCount < 2 || adCount > 3) add(index, `expected 2 or 3 ad bottles, found ${adCount}`);
   if (level.modeOptions?.megaBottle && megaCount !== 1) add(index, `expected one mega bottle, found ${megaCount}`);
+  validateColorLockRules(level, index);
 
   const solutions = solutionEntry?.solutionData?.solutions || [];
   if (solutions.length === 0) {

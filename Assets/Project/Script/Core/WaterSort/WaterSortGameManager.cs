@@ -63,6 +63,7 @@ namespace TrainWaterSort.Core.WaterSort
             bool hiddenStackEnabled = level.modeOptions?.HiddenStack == true;
             bool hybridHiddenStackEnabled = level.modeOptions?.HybridHiddenStack == true;
             bool lockedBottlesEnabled = level.modeOptions?.LockedBottles == true;
+            bool colorLockedBottlesEnabled = level.modeOptions?.ColorLockedBottles == true;
 
             foreach (WaterSortJsonBottle bottleData in level.bottles)
             {
@@ -71,16 +72,21 @@ namespace TrainWaterSort.Core.WaterSort
                     continue;
                 }
 
+                bool startsCountLocked = lockedBottlesEnabled && bottleData.IsLocked;
+                bool startsColorLocked = colorLockedBottlesEnabled && bottleData.IsColorLocked;
                 bottles.Add(new WaterSortBottleState(
                     bottleData.Capacity,
                     bottleData.ColorsBottomToTop,
                     hiddenStackEnabled,
                     hybridHiddenStackEnabled ? bottleData.HiddenLayerIndexes : null,
-                    lockedBottlesEnabled && bottleData.IsLocked,
+                    startsCountLocked || startsColorLocked,
                     bottleData.UnlockCompletedBottleCount,
                     bottleData.IsAdBottle,
                     bottleData.IsMegaBottle,
-                    bottleData.TargetColor));
+                    bottleData.TargetColor,
+                    startsColorLocked,
+                    bottleData.UnlockRequiredColor,
+                    bottleData.UnlockCompletedColorBottleCount));
             }
 
             RefreshBottleLocks();
@@ -279,7 +285,33 @@ namespace TrainWaterSort.Core.WaterSort
             int count = 0;
             for (int i = 0; i < bottles.Count; i++)
             {
-                if (bottles[i].IsFullMonoComplete)
+                WaterSortBottleState bottle = bottles[i];
+                if (bottle.IsAdBottle || bottle.IsMegaBottle)
+                {
+                    continue;
+                }
+
+                if (bottle.IsFullMonoComplete)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        private int CountCompletedFullMonoBottlesOfColor(int colorIndex)
+        {
+            int count = 0;
+            for (int i = 0; i < bottles.Count; i++)
+            {
+                WaterSortBottleState bottle = bottles[i];
+                if (bottle.IsAdBottle || bottle.IsMegaBottle)
+                {
+                    continue;
+                }
+
+                if (bottle.IsFullMonoComplete && bottle.TopColor == colorIndex)
                 {
                     count++;
                 }
@@ -290,15 +322,32 @@ namespace TrainWaterSort.Core.WaterSort
 
         private void RefreshBottleLocks()
         {
-            int completedBottleCount = CountCompletedFullMonoBottles();
-            for (int i = 0; i < bottles.Count; i++)
+            bool unlockedAny;
+            do
             {
-                WaterSortBottleState bottle = bottles[i];
-                if (bottle.IsLocked && completedBottleCount >= bottle.UnlockCompletedBottleCount)
+                unlockedAny = false;
+                int completedBottleCount = CountCompletedFullMonoBottles();
+                for (int i = 0; i < bottles.Count; i++)
                 {
+                    WaterSortBottleState bottle = bottles[i];
+                    if (!bottle.IsLocked)
+                    {
+                        continue;
+                    }
+
+                    bool shouldUnlock = bottle.IsColorLocked
+                        ? CountCompletedFullMonoBottlesOfColor(bottle.UnlockRequiredColor) >= bottle.UnlockCompletedColorBottleCount
+                        : completedBottleCount >= bottle.UnlockCompletedBottleCount;
+                    if (!shouldUnlock)
+                    {
+                        continue;
+                    }
+
                     bottle.SetLocked(false);
+                    unlockedAny = true;
                 }
             }
+            while (unlockedAny);
         }
 
         private bool[] GetBottleLockSnapshot()

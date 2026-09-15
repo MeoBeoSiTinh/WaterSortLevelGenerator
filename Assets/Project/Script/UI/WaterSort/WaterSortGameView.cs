@@ -466,7 +466,12 @@ namespace TrainWaterSort.UI.WaterSort
             rect.offsetMin = new Vector2(4f, 4f);
             rect.offsetMax = new Vector2(-4f, -4f);
 
-            VerticalLayoutGroup stack = bottleObject.AddComponent<VerticalLayoutGroup>();
+            // Stack lives in a child so lock/ad/mega overlays are not shifted by VerticalLayoutGroup.
+            GameObject stackObject = new("Stack", typeof(RectTransform));
+            stackObject.transform.SetParent(bottleObject.transform, false);
+            RectTransform stackRect = stackObject.GetComponent<RectTransform>();
+            Stretch(stackRect);
+            VerticalLayoutGroup stack = stackObject.AddComponent<VerticalLayoutGroup>();
             stack.padding = new RectOffset(10, 10, 12, 12);
             stack.spacing = 4f;
             stack.childControlWidth = true;
@@ -480,7 +485,7 @@ namespace TrainWaterSort.UI.WaterSort
             for (int i = capacity - 1; i >= 0; i--)
             {
                 GameObject slotObject = new($"Slot{i + 1}");
-                slotObject.transform.SetParent(bottleObject.transform, false);
+                slotObject.transform.SetParent(stackObject.transform, false);
                 Image slot = slotObject.AddComponent<Image>();
                 slot.color = new Color(0.85f, 0.88f, 0.93f, 0.45f);
                 slot.raycastTarget = false;
@@ -512,9 +517,20 @@ namespace TrainWaterSort.UI.WaterSort
                 Color.white);
             lockedText.fontStyle = FontStyle.Bold;
             lockedText.enabled = false;
+            lockedText.horizontalOverflow = HorizontalWrapMode.Overflow;
+            lockedText.verticalOverflow = VerticalWrapMode.Overflow;
             LayoutElement lockedLayout = lockedText.GetComponent<LayoutElement>();
             lockedLayout.ignoreLayout = true;
+            lockedLayout.minHeight = 0f;
+            lockedLayout.preferredHeight = 0f;
             Stretch(lockedText.rectTransform);
+            lockedText.rectTransform.anchoredPosition = Vector2.zero;
+            Outline lockedOutline = lockedText.gameObject.AddComponent<Outline>();
+            lockedOutline.enabled = false;
+            lockedOutline.effectColor = new Color(0f, 0f, 0f, 0.95f);
+            lockedOutline.effectDistance = new Vector2(2.5f, -2.5f);
+            lockedOutline.useGraphicAlpha = true;
+            lockedText.transform.SetAsLastSibling();
 
             Text adText = CreateText(
                 "AdLabel",
@@ -589,7 +605,50 @@ namespace TrainWaterSort.UI.WaterSort
                     : bottle.IsAdBottle
                     ? new Color(1f, 0.78f, 0.18f, 0.8f)
                     : new Color(1f, 1f, 1f, 0.72f);
-                bottleLockedTexts[i].enabled = bottle.IsLocked;
+                Text lockedText = bottleLockedTexts[i];
+                lockedText.enabled = bottle.IsLocked;
+                if (bottle.IsLocked)
+                {
+                    RectTransform lockedRect = lockedText.rectTransform;
+                    Outline lockedOutline = lockedText.GetComponent<Outline>();
+                    Stretch(lockedRect);
+                    lockedRect.offsetMin = Vector2.zero;
+                    lockedRect.offsetMax = Vector2.zero;
+                    lockedRect.anchoredPosition = Vector2.zero;
+                    lockedText.alignment = TextAnchor.MiddleCenter;
+                    lockedText.fontStyle = FontStyle.Bold;
+                    lockedText.transform.SetAsLastSibling();
+                    if (bottle.IsColorLocked)
+                    {
+                        lockedText.text = bottle.UnlockCompletedColorBottleCount.ToString();
+                        lockedText.color = hasPlayableCatalog
+                            ? manager.Catalog.GetColor(bottle.UnlockRequiredColor)
+                            : Color.white;
+                        lockedText.fontSize = 56;
+                        lockedText.horizontalOverflow = HorizontalWrapMode.Overflow;
+                        lockedText.verticalOverflow = VerticalWrapMode.Overflow;
+                        if (lockedOutline == null)
+                        {
+                            lockedOutline = lockedText.gameObject.AddComponent<Outline>();
+                        }
+
+                        lockedOutline.enabled = true;
+                        lockedOutline.effectColor = new Color(0f, 0f, 0f, 0.95f);
+                        lockedOutline.effectDistance = new Vector2(3f, -3f);
+                        lockedOutline.useGraphicAlpha = true;
+                    }
+                    else
+                    {
+                        lockedText.text = "LOCK";
+                        lockedText.color = Color.white;
+                        lockedText.fontSize = 22;
+                        if (lockedOutline != null)
+                        {
+                            lockedOutline.enabled = false;
+                        }
+                    }
+                }
+
                 bottleAdTexts[i].enabled = bottle.IsAdBottle;
                 bottleMegaTexts[i].enabled = bottle.IsMegaBottle;
 

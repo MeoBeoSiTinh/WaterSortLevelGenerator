@@ -50,11 +50,26 @@ node Tools/LevelLab/generate.js
 
 Generate luôn **pin** bản config lúc chạy vào `GenerationRuns/pack-###-config.asset`. Sửa config giữa chừng không làm hỏng run đang chạy; lần generate sau mới dùng bản mới. Đổi palette màu thì cần player mới từ chủ project — đổi config sinh level thì không.
 
+## Chế độ chơi & quy tắc (đọc nhanh)
+
+Chi tiết đầy đủ: `agent-rules/watersort-gameplay-modes.md` (đổ nước, thắng/thua, ẩn lớp, khóa số, khóa màu, Mega, Ads, cách tạo & cách giải).
+
+Schema/generator: `agent-rules/watersort-level-generation.md`.
+
+Tóm tắt:
+
+- Đổ nguyên nhóm cùng màu ở miệng lọ; đích trống hoặc cùng màu miệng; đủ chỗ.
+- Ẩn đầy đủ / ẩn lai (không bật cả hai).
+- Khóa đếm: mở sau N lọ mono đầy (mọi màu).
+- Khóa màu: mở sau N lọ mono đầy đúng màu yêu cầu (ưu tiên ngưỡng 1–3).
+- Mega: chỉ nhận màu đích, không đổ ra; thắng khi Mega đầy.
+- Ads: 2–3 lọ trống tùy chọn; không nằm trong solution; không tính unlock.
+
 ## Tạo level bằng AI
 
 Mở thư mục gốc trong công cụ AI, gửi:
 
-> Đọc AGENTS.md và agent-rules/watersort-level-generation.md. Nếu cần, sửa `WaterSortGenerationConfig.asset` theo yêu cầu của tôi trước. Tạo một pack mới bằng Tools/LevelLab/generate.js. Kiểm tra solution, không ghi đè pack cũ. Cho tôi biết pack nào để chơi thử.
+> Đọc AGENTS.md, agent-rules/watersort-gameplay-modes.md và agent-rules/watersort-level-generation.md. Nếu cần, sửa `WaterSortGenerationConfig.asset` theo yêu cầu của tôi trước. Tạo một pack mới bằng Tools/LevelLab/generate.js. Kiểm tra solution, không ghi đè pack cũ. Cho tôi biết pack nào để chơi thử.
 
 Hoặc tự chạy:
 

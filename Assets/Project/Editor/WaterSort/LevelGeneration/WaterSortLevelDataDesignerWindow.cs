@@ -280,6 +280,11 @@ namespace WaterSort.LevelGeneration.Editor
                     AddBottle(BottleKind.Locked);
                 }
 
+                if (GUILayout.Button("Add ColorLocked"))
+                {
+                    AddBottle(BottleKind.ColorLocked);
+                }
+
                 if (GUILayout.Button("Add Ads"))
                 {
                     AddBottle(BottleKind.Ads);
@@ -344,6 +349,16 @@ namespace WaterSort.LevelGeneration.Editor
                 if (bottle.isLocked)
                 {
                     bottle.unlockCompletedBottleCount = EditorGUILayout.IntSlider("Unlock Completed Bottles", Mathf.Max(1, bottle.unlockCompletedBottleCount), 1, 10);
+                }
+
+                if (bottle.isColorLocked)
+                {
+                    bottle.unlockRequiredColor = DrawColorPopup(Mathf.Max(0, bottle.unlockRequiredColor));
+                    bottle.unlockCompletedColorBottleCount = EditorGUILayout.IntSlider(
+                        "Unlock Color Bottle Count",
+                        Mathf.Max(1, bottle.unlockCompletedColorBottleCount),
+                        1,
+                        10);
                 }
 
                 using (new EditorGUILayout.HorizontalScope())
@@ -720,11 +735,32 @@ namespace WaterSort.LevelGeneration.Editor
                         validationMessages.Add($"Bottle {i + 1}: ads bottle should start empty.");
                     }
                 }
+
+                if (bottle.isLocked && bottle.isColorLocked)
+                {
+                    validationMessages.Add($"Bottle {i + 1}: cannot combine count-lock and color-lock.");
+                }
+
+                if (bottle.isColorLocked)
+                {
+                    int need = Mathf.Max(1, bottle.unlockCompletedColorBottleCount);
+                    int layers = selectedLevel.bottles
+                        .Where(candidate => candidate != null && !candidate.isAdBottle)
+                        .SelectMany(candidate => candidate.colorsBottomToTop ?? new List<int>())
+                        .Count(color => color == bottle.unlockRequiredColor);
+                    if (layers < bottle.Capacity * need)
+                    {
+                        validationMessages.Add($"Bottle {i + 1}: color-lock needs {bottle.Capacity * need} layers of color {bottle.unlockRequiredColor}, found {layers}.");
+                    }
+                }
             }
+
+            selectedLevel.modeOptions ??= new ModeOptions();
+            selectedLevel.modeOptions.lockedBottles = selectedLevel.bottles.Any(bottle => bottle.isLocked);
+            selectedLevel.modeOptions.colorLockedBottles = selectedLevel.bottles.Any(bottle => bottle.isColorLocked);
 
             if (megaCount > 0)
             {
-                selectedLevel.modeOptions ??= new ModeOptions();
                 selectedLevel.modeOptions.megaBottle = true;
                 foreach (BottleData megaBottle in selectedLevel.bottles.Where(bottle => bottle.isMegaBottle))
                 {
@@ -895,7 +931,15 @@ namespace WaterSort.LevelGeneration.Editor
 
         private static string GridCellLabel(int bottleIndex, BottleData bottle)
         {
-            string state = bottle.isMegaBottle ? "M" : bottle.isAdBottle ? "A" : bottle.isLocked ? "L" : "N";
+            string state = bottle.isMegaBottle
+                ? "M"
+                : bottle.isAdBottle
+                ? "A"
+                : bottle.isColorLocked
+                ? "C"
+                : bottle.isLocked
+                ? "L"
+                : "N";
             return $"{bottleIndex + 1}\n{state}";
         }
 
@@ -916,6 +960,11 @@ namespace WaterSort.LevelGeneration.Editor
                 return new Color(0.68f, 0.42f, 1f);
             }
 
+            if (bottle.isColorLocked)
+            {
+                return new Color(1f, 0.55f, 0.35f);
+            }
+
             return bottle.isLocked ? new Color(0.65f, 0.72f, 0.9f) : Color.white;
         }
 
@@ -923,6 +972,7 @@ namespace WaterSort.LevelGeneration.Editor
         {
             if (bottle.isMegaBottle) return BottleKind.Mega;
             if (bottle.isAdBottle) return BottleKind.Ads;
+            if (bottle.isColorLocked) return BottleKind.ColorLocked;
             return bottle.isLocked ? BottleKind.Locked : BottleKind.Normal;
         }
 
@@ -930,12 +980,14 @@ namespace WaterSort.LevelGeneration.Editor
         {
             bottle.isAdBottle = kind == BottleKind.Ads;
             bottle.isLocked = kind == BottleKind.Locked;
+            bottle.isColorLocked = kind == BottleKind.ColorLocked;
             bottle.isMegaBottle = kind == BottleKind.Mega;
             if (bottle.isAdBottle)
             {
                 bottle.colorsBottomToTop ??= new List<int>();
                 bottle.colorsBottomToTop.Clear();
                 bottle.isLocked = false;
+                bottle.isColorLocked = false;
                 bottle.isMegaBottle = false;
             }
             else if (bottle.isMegaBottle)
@@ -948,7 +1000,21 @@ namespace WaterSort.LevelGeneration.Editor
                     bottle.colorsBottomToTop.Add(bottle.targetColor);
                 }
                 bottle.isLocked = false;
+                bottle.isColorLocked = false;
                 bottle.isAdBottle = false;
+            }
+            else if (bottle.isColorLocked)
+            {
+                bottle.isLocked = false;
+                bottle.isAdBottle = false;
+                bottle.isMegaBottle = false;
+                bottle.unlockCompletedColorBottleCount = Mathf.Max(1, bottle.unlockCompletedColorBottleCount);
+            }
+            else if (bottle.isLocked)
+            {
+                bottle.isColorLocked = false;
+                bottle.isAdBottle = false;
+                bottle.isMegaBottle = false;
             }
             else
             {
@@ -980,6 +1046,9 @@ namespace WaterSort.LevelGeneration.Editor
                 gridPosition = new GridPosition { x = bottle.gridPosition?.x ?? 0, y = bottle.gridPosition?.y ?? 0 },
                 isLocked = bottle.isLocked,
                 unlockCompletedBottleCount = bottle.unlockCompletedBottleCount,
+                isColorLocked = bottle.isColorLocked,
+                unlockRequiredColor = bottle.unlockRequiredColor,
+                unlockCompletedColorBottleCount = bottle.unlockCompletedColorBottleCount,
                 isAdBottle = bottle.isAdBottle,
                 isMegaBottle = bottle.isMegaBottle,
                 targetColor = bottle.targetColor
@@ -1000,6 +1069,7 @@ namespace WaterSort.LevelGeneration.Editor
         {
             Normal,
             Locked,
+            ColorLocked,
             Ads,
             Mega
         }
@@ -1034,6 +1104,7 @@ namespace WaterSort.LevelGeneration.Editor
             public bool hiddenStack;
             public bool hybridHiddenStack;
             public bool lockedBottles;
+            public bool colorLockedBottles;
             public bool megaBottle;
         }
 
@@ -1053,6 +1124,9 @@ namespace WaterSort.LevelGeneration.Editor
             public GridPosition gridPosition = new();
             public bool isLocked;
             public int unlockCompletedBottleCount = 1;
+            public bool isColorLocked;
+            public int unlockRequiredColor;
+            public int unlockCompletedColorBottleCount = 1;
             public bool isAdBottle;
             public bool isMegaBottle;
             public int targetColor;

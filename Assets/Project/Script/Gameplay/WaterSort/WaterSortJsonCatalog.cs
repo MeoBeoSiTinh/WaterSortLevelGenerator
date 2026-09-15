@@ -148,11 +148,13 @@ namespace TrainWaterSort.Gameplay.WaterSort
         public bool hiddenStack;
         public bool hybridHiddenStack;
         public bool lockedBottles;
+        public bool colorLockedBottles;
         public bool megaBottle;
 
         public bool HiddenStack => hiddenStack;
         public bool HybridHiddenStack => hybridHiddenStack;
         public bool LockedBottles => lockedBottles;
+        public bool ColorLockedBottles => colorLockedBottles;
         public bool MegaBottle => megaBottle;
     }
 
@@ -186,6 +188,9 @@ namespace TrainWaterSort.Gameplay.WaterSort
         public WaterSortJsonGridPosition gridPosition = new();
         public bool isLocked;
         public int unlockCompletedBottleCount = 1;
+        public bool isColorLocked;
+        public int unlockRequiredColor;
+        public int unlockCompletedColorBottleCount = 1;
         public bool isAdBottle;
         public bool isMegaBottle;
         public int targetColor;
@@ -196,6 +201,9 @@ namespace TrainWaterSort.Gameplay.WaterSort
         public Vector2Int GridPosition => gridPosition == null ? new Vector2Int(-1, -1) : new Vector2Int(gridPosition.x, gridPosition.y);
         public bool IsLocked => isLocked;
         public int UnlockCompletedBottleCount => Mathf.Max(1, unlockCompletedBottleCount);
+        public bool IsColorLocked => isColorLocked;
+        public int UnlockRequiredColor => unlockRequiredColor;
+        public int UnlockCompletedColorBottleCount => Mathf.Max(1, unlockCompletedColorBottleCount);
         public bool IsAdBottle => isAdBottle;
         public bool IsMegaBottle => isMegaBottle;
         public int TargetColor => targetColor;

@@ -43,11 +43,12 @@ Prerequisites: Node.js 22+.
 
 1. Unzip the shared folder and run `Start.cmd` (Windows) or `./Start.sh` (macOS/Linux; `chmod +x Start.sh` once if needed). Or run `node Tools/LevelLab/server.js`.
 2. Server binds loopback only, auto-picks a free port starting at 8081, opens the browser, and serves no-cache data.
-3. Edit config when needed:
+3. Read mode/rules overview: `agent-rules/watersort-gameplay-modes.md` (packaged with the Lab).
+4. Edit config when needed:
    - `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset` (YAML; keep Unity headers)
    - Schema: `Assets/Project/ScriptableObject/Script/WaterSort/WaterSortGenerationConfig.cs`
-4. Generate: `node Tools/LevelLab/generate.js` with optional `--pack`, `--seed`, `--profile`, `--config`.
-5. Reload the Lab pack list and open the player. Hard-refresh (`Ctrl+F5`) after a new WebGL player is packaged.
+5. Generate: `node Tools/LevelLab/generate.js` with optional `--pack`, `--seed`, `--profile`, `--config`.
+6. Reload the Lab pack list and open the player. Hard-refresh (`Ctrl+F5`) after a new WebGL player is packaged.
 
 Config edits do not require a player rebuild. Palette or gameplay code changes do.
 

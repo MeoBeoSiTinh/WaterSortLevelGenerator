@@ -23,12 +23,14 @@ The tool is standalone Editor code intended to be included in the generation pac
 
 The editor tool should support:
 
-- changing bottle state between Normal, Locked, and Ads,
+- changing bottle state between Normal, Locked, Color-locked, Ads, and Mega,
 - showing each bottle on the configured grid,
 - moving bottles by grid cell while preserving unique positions,
 - adding, duplicating, and deleting bottles with their state,
-- editing bottle capacity, lock threshold, layer colors, and layer order,
-- validating duplicate grid cells, out-of-grid positions, capacity overflow, invalid color indexes, and ad bottle rules.
+- editing bottle capacity, count-lock / color-lock thresholds, mega target color, layer colors, and layer order,
+- validating duplicate grid cells, out-of-grid positions, capacity overflow, invalid color indexes, ad bottle rules, and dual-lock conflicts.
+
+Gameplay mode overview (pour rules, win conditions, create/solve): `agent-rules/watersort-gameplay-modes.md`.
 
 When a level is edited manually, reset or regenerate the matching solution entry because old moves may no longer replay legally.
 
@@ -140,6 +142,8 @@ Bottle rules:
 - `gridPosition` is required for authored/generated layout and must be unique inside the level.
 - `hiddenLayerIndexes` is used only by hybrid hidden-stack levels.
 - `isLocked` and `unlockCompletedBottleCount` are used only by locked-bottle levels.
+- `isColorLocked`, `unlockRequiredColor`, and `unlockCompletedColorBottleCount` are used only by color-locked-bottle levels.
+- A bottle must not combine count-lock and color-lock fields as active locks.
 - `isAdBottle` marks an empty optional helper bottle reserved for future interstitial/rewarded ad flows.
 - Each generated level should include 2 or 3 empty `isAdBottle: true` bottles.
 - Ad bottles must start empty with `colorsBottomToTop: []` and should not be referenced by stored solution moves.
@@ -162,6 +166,9 @@ Mode rules:
 - If a generator roll would enable both hidden modes, hybrid should take precedence and full hidden-stack should be disabled.
 - `modeOptions.lockedBottles` means 1 to 4 bottles may start locked.
 - Locked bottles can be unlocked only after the player has enough completed full single-color bottles.
+- `modeOptions.colorLockedBottles` means 1 to 4 bottles may start color-locked.
+- Color-locked bottles unlock only after enough completed full single-color bottles of `unlockRequiredColor`.
+- Count-lock and color-lock may coexist on the same level; a single bottle must not use both lock types.
 - `modeOptions.megaBottle` means the level contains a mega bottle and uses mega completion rules.
 - Mega-bottle generation is controlled per difficulty profile by `allowMegaBottleMode`, `megaBottleChance`, `minMegaBottleCapacity`, and `maxMegaBottleCapacity`, matching the same config style as hidden-stack and hybrid hidden-stack modes.
 
@@ -175,6 +182,7 @@ Generate for classic Water Sort rules:
 - A level is won when every non-empty bottle is full and contains only one color.
 - In mega-bottle mode, the level is won when every mega bottle is full of its target color.
 - Locked bottles cannot be used as source or target until unlocked.
+- Color-locked bottles cannot be used as source or target until enough completed full mono bottles of the required color exist.
 - Mega bottles cannot be used as source and can receive only their target color.
 - Hidden layers must not change the actual color order. They only change what is visible to the player.
 - Solutions must be valid under the exact mode options stored in the level data.
@@ -263,6 +271,18 @@ Hybrid hidden-stack:
 - Do not hide every lower layer in hybrid mode; that is full hidden-stack behavior.
 - Generated solutions must validate with hybrid visibility restrictions.
 
+## Color-Locked Bottle Generation
+
+- Enable with profile `allowColorLockedBottleMode` / `colorLockedBottleChance` / min-max color-locked counts and color-unlock thresholds.
+- Prefer unlock thresholds spanning **1–3** completed mono bottles of the required color when profile max allows; bias selection toward higher feasible thresholds first.
+- When color-locks are enabled, reduce distinct palette colors (config weights + mapper collapse) so multiple bottles share a color and thresholds 2–3 become reachable; fewer colors per level is expected and acceptable.
+- Emit `modeOptions.colorLockedBottles` and per-bottle `isColorLocked`, `unlockRequiredColor`, `unlockCompletedColorBottleCount`.
+- Do not place count-lock and color-lock on the same bottle; both modes may appear on one level.
+- Required color stock must be reachable from non-Ad, non-color-locked bottles: free layers ≥ normal capacity × unlock count.
+- Ad bottles never count toward unlock progress or required color stock.
+- Special / NearWin / Mega generation should keep color-locks off unless config explicitly enables them (current production forces off for Special/NearWin/Mega paths).
+- Stored solutions must replay with color-aware unlock before each pour.
+
 ## Locked-Bottle Generation
 
 Locked-bottle mode is optional per profile.
@@ -316,7 +336,20 @@ Solutions must be replay-valid against:
 - actual color order,
 - hidden-stack or hybrid visibility,
 - locked-bottle state and unlock thresholds,
+- color-locked bottles (`unlockRequiredColor` + completed mono count of that color),
+- Mega source/target and completion rules,
+- Ad-bottle exclusion from stored paths,
 - normal pour legality.
+
+## Pack Core Fingerprint Dedupe
+
+- Before accepting a generated level into a pack, compute a canonical `coreGameplayFingerprint` (`watersort-core-fingerprint.js`).
+- Fingerprint includes core bottle capacity/content, normal helpers, modeOptions, hidden layers, lock + unlock threshold, color-lock + required color/count, Mega + targetColor, and other gameplay-affecting bottle fields.
+- Fingerprint ignores Ad bottles, id/displayName, gridPosition, layout/cosmetic metadata, and generation metadata.
+- Canonicalize by stripping Ads, remapping color IDs by structural occurrence, and normalizing bottle order when order is not gameplay-significant.
+- Duplicate fingerprint → reject candidate and retry with a deterministic attempt seed; if retries exhaust, fail generation clearly. Track `duplicateCandidatesRejected` / `duplicateRetryCount`.
+- Pack validation (`validate-pack.js`) must also reject packs that contain duplicate core fingerprints.
+- Difficulty / diversity scoring must not treat Ad count/position, color rename, grid layout, or bottle permutation as uniqueness.
 
 ## Required Validation After Generation or Rule-Relevant Edits
 

@@ -11,9 +11,9 @@
   <p id="status" role="status">Đang đọc và kiểm tra solution…</p>
   <section id="errors" hidden><h2>Pack cần sửa</h2><pre id="errorText"></pre></section>
   <section class="guide"><h2>Tạo pack mới với AI</h2><p>Mở thư mục đã giải nén trong công cụ AI của bạn, rồi gửi:</p>
-    <blockquote>Đọc AGENTS.md và rules trong thư mục này. Nếu cần, sửa Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset (YAML, không cần Unity) theo yêu cầu của tôi — ví dụ levelsPerPack hoặc profile — rồi chạy Tools/LevelLab/generate.js, kiểm tra solution và cho tôi biết pack vừa tạo để chơi thử trên localhost.</blockquote>
+    <blockquote>Đọc AGENTS.md, agent-rules/watersort-gameplay-modes.md và agent-rules/watersort-level-generation.md. Nếu cần, sửa Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset (YAML, không cần Unity) theo yêu cầu của tôi — ví dụ levelsPerPack hoặc profile — rồi chạy Tools/LevelLab/generate.js, kiểm tra solution và cho tôi biết pack vừa tạo để chơi thử trên localhost.</blockquote>
     <p>Hoặc chạy từ thư mục gốc:</p><pre>node Tools/LevelLab/generate.js</pre>
-    <p>Config và JSON nằm trong thư mục Lab; AI/editor sửa được trực tiếp. Game đọc JSON mới mỗi lần mở; không cần build lại. Đổi palette/gameplay mới cần player mới từ chủ project.</p>
+    <p>Hướng dẫn chế độ chơi / quy tắc / tạo / giải: <code>agent-rules/watersort-gameplay-modes.md</code>. Config và JSON nằm trong thư mục Lab; AI/editor sửa được trực tiếp. Game đọc JSON mới mỗi lần mở; không cần build lại. Đổi palette/gameplay mới cần player mới từ chủ project.</p>
   </section>
 </main><script src="/lab.js"></script>
 </body></html>

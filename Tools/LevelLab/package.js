@@ -4,11 +4,28 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { ROOT, TOOLS, CONFIG, PALETTE, LEVELS, SOLUTIONS, packPaths, readData, validatePair } = require("./common");
 
-const GENERATOR_FILES = ["generate-watersort-exhaustive-100.js", "watersort-exhaustive-solver.js", "mega-generator-v2.js", "watersort-core-fingerprint.js", "validate-pack.js", "solve-watersort-solutions.js", "mega-generator-v2-tests.js", "generator-profile-tests.js", "watersort-core-fingerprint-tests.js"];
+const GENERATOR_FILES = [
+  "generate-watersort-exhaustive-100.js",
+  "watersort-exhaustive-solver.js",
+  "mega-generator-v2.js",
+  "watersort-core-fingerprint.js",
+  "watersort-color-lock-tests.js",
+  "validate-pack.js",
+  "solve-watersort-solutions.js",
+  "mega-generator-v2-tests.js",
+  "generator-profile-tests.js",
+  "watersort-core-fingerprint-tests.js",
+];
 const LAB_FILES = ["common.js", "server.js", "generate.js", "index.html", "lab.js", "lab.css", "README.md", "AGENTS.md", "Start.cmd", "Start.sh"];
-const CONTEXT_FILES = [CONFIG, PALETTE, "agent-rules/watersort-level-generation.md", "agent-rules/watersort-level-lab.md",
+const CONTEXT_FILES = [
+  CONFIG,
+  PALETTE,
+  "agent-rules/watersort-level-generation.md",
+  "agent-rules/watersort-level-lab.md",
+  "agent-rules/watersort-gameplay-modes.md",
   "Assets/Project/ScriptableObject/Script/WaterSort/WaterSortGenerationConfig.cs",
-  "Assets/Project/ScriptableObject/Script/WaterSort/WaterSortColorPalette.cs"];
+  "Assets/Project/ScriptableObject/Script/WaterSort/WaterSortColorPalette.cs",
+];
 
 function copyFile(source, destination) {
   if (!fs.lstatSync(source).isFile()) throw new Error(`Expected a regular file: ${source}`);

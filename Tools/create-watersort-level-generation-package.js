@@ -16,6 +16,7 @@ const assetEntries = [
   "Assets/Project/Data/WaterSort/Resources/WaterSortColorPalette.asset",
   "Assets/Project/Editor/WaterSort/LevelGeneration/README.md",
   "Assets/Project/Editor/WaterSort/LevelGeneration/AI_CONTEXT.md",
+  "Assets/Project/Editor/WaterSort/LevelGeneration/Docs/watersort-gameplay-modes.md",
   "Assets/Project/Editor/WaterSort/LevelGeneration/Docs/watersort-level-generation.md",
   "Assets/Project/Editor/WaterSort/LevelGeneration/WaterSortLevelDataDesignerWindow.cs",
   "Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js",
@@ -24,6 +25,10 @@ const assetEntries = [
   "Assets/Project/Editor/WaterSort/LevelGeneration/Tools/validate-pack.js",
   "Assets/Project/Editor/WaterSort/LevelGeneration/Tools/watersort-exhaustive-solver.js",
   "Assets/Project/Editor/WaterSort/LevelGeneration/Tools/solve-watersort-solutions.js",
+  "Assets/Project/Editor/WaterSort/LevelGeneration/Tools/watersort-core-fingerprint.js",
+  "Assets/Project/Editor/WaterSort/LevelGeneration/Tools/watersort-core-fingerprint-tests.js",
+  "Assets/Project/Editor/WaterSort/LevelGeneration/Tools/watersort-color-lock-tests.js",
+  "Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generator-profile-tests.js",
 ].map(sourcePath => ({
   sourcePath,
   packagePath: sourcePath.replace(/^Assets\/Project\//, "Assets/LevelGenerator/"),
@@ -32,10 +37,7 @@ const assetEntries = [
 function readGuid(metaPath) {
   const text = fs.readFileSync(metaPath, "utf8");
   const match = text.match(/^guid:\s*([0-9a-fA-F]+)\s*$/m);
-  if (!match) {
-    throw new Error(`Missing guid in ${metaPath}`);
-  }
-
+  if (!match) throw new Error(`Missing guid in ${metaPath}`);
   return match[1].toLowerCase();
 }
 
@@ -44,20 +46,14 @@ function assertInsideRoot(relativePath) {
   if (!resolved.startsWith(path.resolve(root) + path.sep)) {
     throw new Error(`Path escapes project root: ${relativePath}`);
   }
-
   return resolved;
 }
 
 function copyPackageEntry(tempDir, entry) {
   const assetPath = assertInsideRoot(entry.sourcePath);
   const metaPath = `${assetPath}.meta`;
-  if (!fs.existsSync(assetPath)) {
-    throw new Error(`Missing asset: ${entry.sourcePath}`);
-  }
-
-  if (!fs.existsSync(metaPath)) {
-    throw new Error(`Missing meta: ${entry.sourcePath}.meta`);
-  }
+  if (!fs.existsSync(assetPath)) throw new Error(`Missing asset: ${entry.sourcePath}`);
+  if (!fs.existsSync(metaPath)) throw new Error(`Missing meta: ${entry.sourcePath}.meta`);
 
   const guid = readGuid(metaPath);
   const entryDir = path.join(tempDir, guid);
@@ -72,22 +68,14 @@ function main() {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "watersort-level-generation-package-"));
 
   try {
-    for (const entry of assetEntries) {
-      copyPackageEntry(tempDir, entry);
-    }
-
-    if (fs.existsSync(outputPath)) {
-      fs.rmSync(outputPath);
-    }
+    for (const entry of assetEntries) copyPackageEntry(tempDir, entry);
+    if (fs.existsSync(outputPath)) fs.rmSync(outputPath);
 
     const result = spawnSync("tar", ["-czf", outputPath, "-C", tempDir, "."], {
       cwd: root,
       encoding: "utf8",
     });
-
-    if (result.status !== 0) {
-      throw new Error(`tar failed:\n${result.stderr || result.stdout}`);
-    }
+    if (result.status !== 0) throw new Error(`tar failed:\n${result.stderr || result.stdout}`);
 
     console.log(JSON.stringify({
       package: path.relative(root, outputPath),

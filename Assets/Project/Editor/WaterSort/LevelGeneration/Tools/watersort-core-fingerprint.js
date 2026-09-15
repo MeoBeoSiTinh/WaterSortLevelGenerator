@@ -16,6 +16,13 @@ function cloneBottleForCore(bottle) {
     unlockCompletedBottleCount: bottle.unlockCompletedBottleCount == null
       ? null
       : Number(bottle.unlockCompletedBottleCount),
+    isColorLocked: Boolean(bottle.isColorLocked),
+    unlockRequiredColor: bottle.unlockRequiredColor == null
+      ? null
+      : Number(bottle.unlockRequiredColor),
+    unlockCompletedColorBottleCount: bottle.unlockCompletedColorBottleCount == null
+      ? null
+      : Number(bottle.unlockCompletedColorBottleCount),
     hiddenLayerIndexes: Array.isArray(bottle.hiddenLayerIndexes)
       ? bottle.hiddenLayerIndexes.map((index) => Number(index)).sort((a, b) => a - b)
       : [],
@@ -30,6 +37,9 @@ function bottleSignature(bottle) {
     targetColor: bottle.targetColor,
     isLocked: bottle.isLocked,
     unlockCompletedBottleCount: bottle.unlockCompletedBottleCount,
+    isColorLocked: bottle.isColorLocked,
+    unlockRequiredColor: bottle.unlockRequiredColor,
+    unlockCompletedColorBottleCount: bottle.unlockCompletedColorBottleCount,
     hiddenLayerIndexes: bottle.hiddenLayerIndexes,
   });
 }
@@ -45,6 +55,9 @@ function bottleShapeSignature(bottle) {
     return localMap.get(color);
   });
   const targetColor = bottle.targetColor == null ? null : localMap.get(bottle.targetColor) ?? "external";
+  const unlockRequiredColor = bottle.unlockRequiredColor == null
+    ? null
+    : localMap.get(bottle.unlockRequiredColor) ?? "external";
   return JSON.stringify({
     capacity: bottle.capacity,
     colorsBottomToTop: localColors,
@@ -52,6 +65,9 @@ function bottleShapeSignature(bottle) {
     targetColor,
     isLocked: bottle.isLocked,
     unlockCompletedBottleCount: bottle.unlockCompletedBottleCount,
+    isColorLocked: bottle.isColorLocked,
+    unlockRequiredColor,
+    unlockCompletedColorBottleCount: bottle.unlockCompletedColorBottleCount,
     hiddenLayerIndexes: bottle.hiddenLayerIndexes,
   });
 }
@@ -73,6 +89,7 @@ function remapColors(bottles) {
       ...bottle,
       colorsBottomToTop: bottle.colorsBottomToTop.map(mapColor),
       targetColor: bottle.targetColor == null ? null : mapColor(bottle.targetColor),
+      unlockRequiredColor: bottle.unlockRequiredColor == null ? null : mapColor(bottle.unlockRequiredColor),
     };
     return remapped;
   });
@@ -116,6 +133,7 @@ function canonicalizeModeOptions(modeOptions = {}) {
     hiddenStack: Boolean(modeOptions.hiddenStack),
     hybridHiddenStack: Boolean(modeOptions.hybridHiddenStack),
     lockedBottles: Boolean(modeOptions.lockedBottles),
+    colorLockedBottles: Boolean(modeOptions.colorLockedBottles),
     megaBottle: Boolean(modeOptions.megaBottle),
   };
 }
@@ -136,6 +154,7 @@ function coreGameplayFingerprintFromBoard({
   modeOptions = {},
   hybridHiddenLayers = null,
   lockedByBottle = null,
+  colorLockedByBottle = null,
   megaBottleIndex = -1,
   megaCapacity = null,
   megaTargetColor = null,
@@ -158,6 +177,12 @@ function coreGameplayFingerprintFromBoard({
     if (lockedByBottle && lockedByBottle.has(index)) {
       bottle.isLocked = true;
       bottle.unlockCompletedBottleCount = lockedByBottle.get(index);
+    }
+    if (colorLockedByBottle && colorLockedByBottle.has(index)) {
+      const colorLock = colorLockedByBottle.get(index);
+      bottle.isColorLocked = true;
+      bottle.unlockRequiredColor = colorLock.unlockRequiredColor;
+      bottle.unlockCompletedColorBottleCount = colorLock.unlockCompletedColorBottleCount;
     }
     return bottle;
   });

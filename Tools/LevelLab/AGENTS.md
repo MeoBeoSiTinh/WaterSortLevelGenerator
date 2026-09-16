@@ -54,7 +54,7 @@ Supported modes (summary — see gameplay-modes doc): classic, full/hybrid hidde
 - `Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/watersort-solutions-###.json`
 - Receipt/config snapshot: `GenerationRuns/pack-###.json` and `GenerationRuns/pack-###-config.asset`
 
-Each pair has at most 100 levels. IDs are pack-scoped: map `level.id` to `solution.levelNumber`. Every level needs exactly one matching solution entry; all stored paths must replay. Keep 2–3 empty optional Ad bottles out of solutions; normal capacities 2–5; Mega 12–20; unique positions on an 8x5 grid. Hidden and hybrid modes are mutually exclusive. Count-lock and color-lock may coexist on a level but not on the same bottle.
+Each pair has at most 100 levels. IDs are pack-scoped: map `level.id` to `solution.levelNumber`. Every level needs exactly one matching solution entry; all stored paths must replay. Keep 2–3 empty optional Ad bottles out of solutions; normal capacities 2–5; Mega 12–20; visual placement via playband (`boardLayout` + unique `layoutPosition`). Hidden and hybrid modes are mutually exclusive. Count-lock and color-lock may coexist on a level but not on the same bottle.
 
 Stored solutions may include `difficultyMetrics` (difficultyScore, safeMoveRatio, deadEndPotential, trapLikelihood, …). Those are tuning/inspection metrics, not a second solvability proof.
 
@@ -71,4 +71,4 @@ Or:
 
 The server auto-detects `Player/` (packaged) or, in the Unity project, `Builds/WebGL`. It picks a free localhost port (default start 8081), opens the browser, and serves no-cache JSON. Use Reload List after generating. Existing game tabs need a page reload (hard refresh after a new player package). Keep the server running.
 
-On the WebGL Lab player, side panels show level metrics / difficultyMetrics and stored solution steps. Report pack number, level count, validation result, and the localhost play path. Return both JSON files plus `GenerationRuns` receipt/config to the project owner.
+On the WebGL Lab player, left panels show level metrics + stored solution steps; the right panel can Save/Import curated levels. Report pack number, level count, validation result, and the localhost play path. Return both JSON files plus `GenerationRuns` receipt/config to the project owner.

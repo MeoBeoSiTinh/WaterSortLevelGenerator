@@ -187,7 +187,7 @@ function buildMegaCandidate(config, band, levelNumber, random, profile, paletteS
     capacity: defaultCapacity,
     helperCount,
     profile,
-    maxPhysicalBottles: Math.min(config.maxBottleCount || 40, 40),
+    maxPhysicalBottles: Math.min(config.maxBottleCount || 35, 35),
   });
   for (let i = 0; i < densityBudget.blockerOnlyBottleCount; i++) {
     const color = blockerPalette[i % blockerPalette.length];
@@ -206,7 +206,7 @@ function buildMegaCandidate(config, band, levelNumber, random, profile, paletteS
     board.push([]);
   }
 
-  if (board.length + 3 > Math.min(config.maxBottleCount || 40, 40)) {
+  if (board.length + 3 > Math.min(config.maxBottleCount || 35, 35)) {
     throw new Error("Mega V2 candidate exceeds max bottle count before ads.");
   }
 
@@ -436,7 +436,7 @@ function adjacentPairsWithinLimit(bottle, pairCounts) {
 
 function validateMegaCandidate(candidate, profile) {
   if (candidate.megaCapacity < 12 || candidate.megaCapacity > 20) throw new Error("Mega capacity out of range.");
-  if (candidate.board.length > 40) throw new Error("Mega candidate exceeds 40 bottles.");
+  if (candidate.board.length > 35) throw new Error("Mega candidate exceeds 35 bottles.");
   if (candidate.board[candidate.megaBottleIndex].length < 1) throw new Error("Mega bottle needs visible target layer.");
   const totalTarget = candidate.board.reduce((sum, bottle) => sum + bottle.filter(color => color === candidate.targetColor).length, 0);
   if (totalTarget !== candidate.megaCapacity) throw new Error("Mega target count must exactly fill Mega bottle.");

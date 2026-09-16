@@ -18,6 +18,15 @@ namespace TrainWaterSort.Editor.WaterSort
             catalog.AddPack("005", Levels(1, 2), Solutions(1, 33, 2, 44), true);
             Check(catalog.Levels[2].solutionData.shortestStepCount == 33, "Local IDs must be scoped to their pack.");
             Check(catalog.Levels[0].solutionData.shortestStepCount == 11, "Another pack must not overwrite solutions.");
+            Check(catalog.Levels[0].sourcePackId == "004" && catalog.Levels[2].sourcePackId == "005", "Levels keep pack origin.");
+            Check(catalog.Levels[0].GetDisplayName(0) == "[004] Level 301", "Display names include pack id.");
+            Check(catalog.Levels[2].GetDisplayName(2) == "[005] Level 1", "Same local names stay unique across packs.");
+
+            WaterSortJsonCatalog sameNames = WaterSortJsonCatalog.Create(null);
+            sameNames.AddPack("a", "{\"levels\":[{\"id\":1,\"displayName\":\"Level 1\",\"bottles\":[{}]}]}", null);
+            sameNames.AddPack("b", "{\"levels\":[{\"id\":1,\"displayName\":\"Level 1\",\"bottles\":[{}]}]}", null);
+            Check(sameNames.Levels[0].GetDisplayName(0) != sameNames.Levels[1].GetDisplayName(1), "Duplicate displayName across packs must disambiguate.");
+            Check(sameNames.Levels[0].id == 1 && sameNames.Levels[1].id == 1, "Pack-local ids may repeat across packs.");
 
             WaterSortJsonCatalog legacy = WaterSortJsonCatalog.Create(null);
             legacy.AddPack("old", "{\"levels\":[{\"bottles\":[{}]},{\"bottles\":[{}]}]}", Solutions(2, 20, 1, 10), true);

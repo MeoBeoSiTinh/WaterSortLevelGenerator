@@ -286,7 +286,7 @@ function readConfig(sourcePath = configPath) {
       maxMegaSingleLayerBottleCount: get("maxMegaSingleLayerBottleCount", 0),
       megaFreeCapacityConcentrationRatio: get("megaFreeCapacityConcentrationRatio", 0.65),
       minTargetBottleCount: get("minTargetBottleCount", 4),
-      maxTargetBottleCount: get("maxTargetBottleCount", 40),
+      maxTargetBottleCount: get("maxTargetBottleCount", 35),
       minShortestStepCount: get("minShortestStepCount", 8),
       maxShortestStepCount: get("maxShortestStepCount", 80),
       maxSolutionCount: get("maxSolutionCount", 1000000),
@@ -321,7 +321,7 @@ function readConfig(sourcePath = configPath) {
     layoutGridRows: top("layoutGridRows", 5),
     preferredMinEmptyBottleCount: topNumber("preferredMinEmptyBottleCount", 1),
     preferredMaxEmptyBottleCount: topNumber("preferredMaxEmptyBottleCount", 3),
-    maxBottleCount: topNumber("maxBottleCount", 40),
+    maxBottleCount: topNumber("maxBottleCount", 35),
     selectionPolicy: String(top("selectionPolicy", "shortest_non_loop_empty_priority_opening_diversity_soft")),
     profiles,
     bands: profiles,
@@ -3225,10 +3225,18 @@ function main() {
       board = specialLevel.board;
       solutionMoveLists = specialLevel.solutionMoveLists;
     } else if (shouldBuildMegaLevel(band, random)) {
-      megaLevel = buildMegaLevel(config, band, levelNumber, random, attempt);
-      capacity = megaLevel.capacity;
-      board = megaLevel.board;
-      solutionMoveLists = megaLevel.solutionMoveLists;
+      try {
+        megaLevel = buildMegaLevel(config, band, levelNumber, random, attempt);
+        capacity = megaLevel.capacity;
+        board = megaLevel.board;
+        solutionMoveLists = megaLevel.solutionMoveLists;
+      } catch (error) {
+        lastRejectionReason = error instanceof Error ? error.message : String(error);
+        if (process.env.WATERSORT_DEBUG_MEGA_QUALITY === "1") {
+          console.error(`Level ${levelNumber} Mega attempt ${attempt + 1} failed: ${lastRejectionReason}`);
+        }
+        continue;
+      }
     } else if (shouldBuildSmallIntroLevel(band)) {
       const introLevel = buildSmallIntroLevel(config, band, levelNumber, random, attempt);
       capacity = introLevel.capacity;
@@ -3344,7 +3352,10 @@ function main() {
       lastRejectionReason = `bad_step_count_${moves.length}`;
       continue;
     }
-    if (megaLevel == null && hasCapacityRepeat(board, capacity)) throw new Error(`Capacity repeat at level ${levelNumber}`);
+    if (megaLevel == null && hasCapacityRepeat(board, capacity)) {
+      lastRejectionReason = "capacity_repeat";
+      continue;
+    }
     const coreBoardForQuality = board.slice(0, adHelpers.firstAdBottleIndex);
     if (
       megaLevel == null

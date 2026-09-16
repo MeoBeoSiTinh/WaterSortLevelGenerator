@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TrainWaterSort.Core.WaterSort;
@@ -14,6 +15,7 @@ namespace TrainWaterSort.UI.WaterSort
         private const int GridColumns = 8;
         private const int GridRows = 5;
         private const float WebInspectionPanelWidth = 300f;
+        private const int MaxSavedLevels = 100;
 
         private readonly List<Button> bottleButtons = new();
         private readonly List<Image> bottleOutlines = new();
@@ -22,6 +24,7 @@ namespace TrainWaterSort.UI.WaterSort
         private readonly List<Text> bottleLockedTexts = new();
         private readonly List<Text> bottleAdTexts = new();
         private readonly List<Text> bottleMegaTexts = new();
+        private readonly List<SavedLevelEntry> savedLevels = new();
 
         private WaterSortGameManager manager;
         private Text messageText;
@@ -36,13 +39,28 @@ namespace TrainWaterSort.UI.WaterSort
         private RectTransform boardRect;
         private Vector2 lastBoardSize;
         private int lastRebuiltLevelIndex = -1;
+        private bool usingPlaybandLayout;
+        private readonly List<RectTransform> playbandBottleRects = new();
         private Text metricsText;
         private Text solutionStepsText;
         private RectTransform metricsContent;
         private RectTransform solutionContent;
+        private RectTransform savedListContent;
+        private Text savedEmptyText;
+        private Font inspectionFont;
+        private bool inspectionLandscape;
         private static readonly Color TextPrimary = new(0.92f, 0.95f, 0.98f, 1f);
         private static readonly Color TextSecondary = new(0.72f, 0.78f, 0.86f, 1f);
         private static readonly Color PanelBackground = new(0.08f, 0.1f, 0.13f, 0.94f);
+
+        private sealed class SavedLevelEntry
+        {
+            public string PackId;
+            public int LevelId;
+            public int CatalogIndex;
+            public string DisplayName;
+            public WaterSortJsonLevel Level;
+        }
 
         private static bool ShowWebInspectionPanels
         {
@@ -103,14 +121,17 @@ namespace TrainWaterSort.UI.WaterSort
 
             if (inspection)
             {
+                inspectionFont = font;
+                inspectionLandscape = landscape;
+
                 metricsText = CreateInspectionPanel(
                     "MetricsPanel",
                     root,
                     font,
                     "Level summary",
-                    new Vector2(0f, 0f),
+                    new Vector2(0f, 0.5f),
                     new Vector2(0f, 1f),
-                    new Vector2(sidePad, footerHeight + 8f),
+                    new Vector2(sidePad, 4f),
                     new Vector2(sidePad + WebInspectionPanelWidth, -(headerHeight + 8f)),
                     out metricsContent);
 
@@ -119,11 +140,20 @@ namespace TrainWaterSort.UI.WaterSort
                     root,
                     font,
                     "Solution hint",
+                    new Vector2(0f, 0f),
+                    new Vector2(0f, 0.5f),
+                    new Vector2(sidePad, footerHeight + 8f),
+                    new Vector2(sidePad + WebInspectionPanelWidth, -4f),
+                    out solutionContent);
+
+                CreateSavedLevelsPanel(
+                    root,
+                    font,
+                    landscape,
                     new Vector2(1f, 0f),
                     new Vector2(1f, 1f),
                     new Vector2(-(sidePad + WebInspectionPanelWidth), footerHeight + 8f),
-                    new Vector2(-sidePad, -(headerHeight + 8f)),
-                    out solutionContent);
+                    new Vector2(-sidePad, -(headerHeight + 8f)));
             }
 
             RectTransform header = CreateRect("Header", root, new Vector2(0f, 1f), Vector2.one,
@@ -248,14 +278,388 @@ namespace TrainWaterSort.UI.WaterSort
             return body;
         }
 
+        private void CreateSavedLevelsPanel(
+            Transform parent,
+            Font font,
+            bool landscape,
+            Vector2 anchorMin,
+            Vector2 anchorMax,
+            Vector2 offsetMin,
+            Vector2 offsetMax)
+        {
+            RectTransform panel = CreateRect("SavedLevelsPanel", parent, anchorMin, anchorMax, offsetMin, offsetMax);
+            Image panelImage = panel.gameObject.AddComponent<Image>();
+            panelImage.color = PanelBackground;
+            panelImage.raycastTarget = true;
+
+            RectTransform titleRect = CreateRect("Title", panel, new Vector2(0f, 1f), Vector2.one, new Vector2(14f, -42f), new Vector2(-14f, -10f));
+            Text titleLabel = CreateText("TitleLabel", titleRect, font, "Saved levels", 20, TextAnchor.MiddleLeft, TextPrimary);
+            Stretch(titleLabel.rectTransform);
+
+            RectTransform toolbar = CreateRect("Toolbar", panel, new Vector2(0f, 1f), Vector2.one, new Vector2(8f, -88f), new Vector2(-8f, -46f));
+            HorizontalLayoutGroup toolbarLayout = toolbar.gameObject.AddComponent<HorizontalLayoutGroup>();
+            toolbarLayout.spacing = 6f;
+            toolbarLayout.childAlignment = TextAnchor.MiddleCenter;
+            toolbarLayout.childControlWidth = true;
+            toolbarLayout.childControlHeight = true;
+            toolbarLayout.childForceExpandWidth = false;
+            toolbarLayout.childForceExpandHeight = true;
+
+            Button saveButton = CreateButton("SaveButton", toolbar, font, "Save", SaveCurrentLevelToList, landscape);
+            saveButton.GetComponent<LayoutElement>().preferredWidth = 70f;
+            saveButton.GetComponent<LayoutElement>().preferredHeight = 36f;
+
+            Button exportButton = CreateButton("ExportButton", toolbar, font, "Export", ExportSavedLevelsToFile, landscape);
+            exportButton.GetComponent<LayoutElement>().preferredWidth = 78f;
+            exportButton.GetComponent<LayoutElement>().preferredHeight = 36f;
+
+            Button clearButton = CreateButton("ClearAllButton", toolbar, font, "Del all", ClearAllSavedLevels, landscape);
+            clearButton.GetComponent<LayoutElement>().preferredWidth = 78f;
+            clearButton.GetComponent<LayoutElement>().preferredHeight = 36f;
+
+            RectTransform scrollRoot = CreateRect("Scroll", panel, Vector2.zero, Vector2.one, new Vector2(8f, 8f), new Vector2(-8f, -96f));
+            ScrollRect scroll = scrollRoot.gameObject.AddComponent<ScrollRect>();
+            scroll.horizontal = false;
+            scroll.vertical = true;
+            scroll.movementType = ScrollRect.MovementType.Clamped;
+            scroll.scrollSensitivity = 28f;
+
+            RectTransform viewport = CreateRect("Viewport", scrollRoot, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+            viewport.gameObject.AddComponent<RectMask2D>();
+            Image viewportImage = viewport.gameObject.AddComponent<Image>();
+            viewportImage.color = new Color(0f, 0f, 0f, 0.01f);
+            viewportImage.raycastTarget = true;
+
+            savedListContent = CreateRect("Content", viewport, new Vector2(0f, 1f), Vector2.one, Vector2.zero, Vector2.zero);
+            savedListContent.pivot = new Vector2(0.5f, 1f);
+            VerticalLayoutGroup listLayout = savedListContent.gameObject.AddComponent<VerticalLayoutGroup>();
+            listLayout.spacing = 6f;
+            listLayout.padding = new RectOffset(2, 2, 2, 2);
+            listLayout.childAlignment = TextAnchor.UpperCenter;
+            listLayout.childControlWidth = true;
+            listLayout.childControlHeight = true;
+            listLayout.childForceExpandWidth = true;
+            listLayout.childForceExpandHeight = false;
+            ContentSizeFitter fitter = savedListContent.gameObject.AddComponent<ContentSizeFitter>();
+            fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+            fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+            savedEmptyText = CreateText("Empty", savedListContent, font, "No saved levels.\nSave keys by pack + id.", 15, TextAnchor.UpperLeft, TextSecondary);
+            savedEmptyText.horizontalOverflow = HorizontalWrapMode.Wrap;
+            savedEmptyText.verticalOverflow = VerticalWrapMode.Overflow;
+            LayoutElement emptyLayout = savedEmptyText.GetComponent<LayoutElement>();
+            emptyLayout.minHeight = 64f;
+            emptyLayout.preferredHeight = 72f;
+
+            scroll.viewport = viewport;
+            scroll.content = savedListContent;
+            RefreshSavedLevelsList();
+        }
+
+        private void SaveCurrentLevelToList()
+        {
+            WaterSortJsonLevel level = manager?.CurrentLevel;
+            if (level == null || manager.Catalog == null)
+            {
+                SetMessage("No level to save.");
+                return;
+            }
+
+            int catalogIndex = manager.CurrentLevelIndex;
+            int levelId = level.ResolvedId(catalogIndex);
+            string packId = string.IsNullOrWhiteSpace(level.sourcePackId) ? "-" : level.sourcePackId;
+            for (int i = 0; i < savedLevels.Count; i++)
+            {
+                if (string.Equals(savedLevels[i].PackId, packId, StringComparison.Ordinal)
+                    && savedLevels[i].LevelId == levelId)
+                {
+                    SetMessage($"{level.GetDisplayName(catalogIndex)} is already saved (#{i + 1}).");
+                    return;
+                }
+            }
+
+            if (savedLevels.Count >= MaxSavedLevels)
+            {
+                SetMessage($"Saved list is full ({MaxSavedLevels}).");
+                return;
+            }
+
+            savedLevels.Add(new SavedLevelEntry
+            {
+                PackId = packId,
+                LevelId = levelId,
+                CatalogIndex = catalogIndex,
+                DisplayName = level.GetDisplayName(catalogIndex),
+                Level = WaterSortLevelJsonExport.CloneLevel(level, includeSolutionData: false)
+            });
+            RefreshSavedLevelsList();
+            SetMessage($"Saved {level.GetDisplayName(catalogIndex)}.");
+        }
+
+        private void ExportSavedLevelsToFile()
+        {
+            if (savedLevels.Count == 0)
+            {
+                SetMessage("Nothing to export — save levels first.");
+                return;
+            }
+
+            List<WaterSortJsonLevel> exportLevels = new(savedLevels.Count);
+            HashSet<string> usedNames = new(StringComparer.Ordinal);
+            for (int i = 0; i < savedLevels.Count; i++)
+            {
+                SavedLevelEntry entry = savedLevels[i];
+                WaterSortJsonLevel clone = WaterSortLevelJsonExport.CloneLevel(entry.Level, includeSolutionData: false);
+                // One exported pack cannot reuse colliding pack-local ids/names from multiple sources.
+                clone.id = i + 1;
+                clone.displayName = BuildUniqueExportDisplayName(entry, i, usedNames);
+                exportLevels.Add(clone);
+            }
+
+            string json = WaterSortLevelJsonExport.BuildLevelPackJson("Saved Water Sort Levels", exportLevels);
+            string filename = $"watersort-levels-export-{System.DateTime.UtcNow:yyyyMMdd-HHmmss}.json";
+            string path = WaterSortFileDownload.DownloadText(filename, json);
+            SetMessage($"Exported {exportLevels.Count} level(s) → WaterSortExport.\n{path}");
+        }
+
+        private static string BuildUniqueExportDisplayName(SavedLevelEntry entry, int index, HashSet<string> usedNames)
+        {
+            string raw = entry.Level != null
+                ? entry.Level.GetBaseDisplayName(Mathf.Max(0, entry.LevelId - 1))
+                : $"Level {entry.LevelId}";
+            string packId = string.IsNullOrWhiteSpace(entry.PackId) || entry.PackId == "-"
+                ? null
+                : entry.PackId;
+            string candidate = packId == null ? raw : $"[{packId}] {raw}";
+            if (!usedNames.Add(candidate))
+            {
+                candidate = $"{candidate} #{index + 1}";
+                usedNames.Add(candidate);
+            }
+
+            return candidate;
+        }
+
+        private void ClearAllSavedLevels()
+        {
+            if (savedLevels.Count == 0)
+            {
+                return;
+            }
+
+            savedLevels.Clear();
+            RefreshSavedLevelsList();
+            SetMessage("Cleared all saved levels.");
+        }
+
+        private void MoveSavedLevel(int index, int delta)
+        {
+            int target = index + delta;
+            if (index < 0 || index >= savedLevels.Count || target < 0 || target >= savedLevels.Count)
+            {
+                return;
+            }
+
+            SavedLevelEntry entry = savedLevels[index];
+            savedLevels.RemoveAt(index);
+            savedLevels.Insert(target, entry);
+            RefreshSavedLevelsList();
+        }
+
+        private void RemoveSavedLevel(int index)
+        {
+            if (index < 0 || index >= savedLevels.Count)
+            {
+                return;
+            }
+
+            string name = savedLevels[index].DisplayName;
+            savedLevels.RemoveAt(index);
+            RefreshSavedLevelsList();
+            SetMessage($"Removed {name} from saved list.");
+        }
+
+        private void JumpToSavedLevel(int index)
+        {
+            if (index < 0 || index >= savedLevels.Count || manager?.Catalog == null)
+            {
+                return;
+            }
+
+            SavedLevelEntry entry = savedLevels[index];
+            int catalogIndex = entry.CatalogIndex;
+            if (!MatchesSavedEntry(manager.Catalog.Levels, catalogIndex, entry))
+            {
+                catalogIndex = FindCatalogIndexByPackAndId(entry.PackId, entry.LevelId);
+            }
+
+            if (catalogIndex < 0)
+            {
+                SetMessage($"Saved {entry.DisplayName} is not in the loaded catalog.");
+                return;
+            }
+
+            manager.LoadLevel(catalogIndex);
+        }
+
+        private static bool MatchesSavedEntry(IReadOnlyList<WaterSortJsonLevel> levels, int catalogIndex, SavedLevelEntry entry)
+        {
+            if (levels == null || catalogIndex < 0 || catalogIndex >= levels.Count || levels[catalogIndex] == null)
+            {
+                return false;
+            }
+
+            WaterSortJsonLevel level = levels[catalogIndex];
+            string packId = string.IsNullOrWhiteSpace(level.sourcePackId) ? "-" : level.sourcePackId;
+            return string.Equals(packId, entry.PackId, StringComparison.Ordinal)
+                && level.ResolvedId(catalogIndex) == entry.LevelId;
+        }
+
+        private int FindCatalogIndexByPackAndId(string packId, int levelId)
+        {
+            if (manager?.Catalog?.Levels == null)
+            {
+                return -1;
+            }
+
+            for (int i = 0; i < manager.Catalog.Levels.Count; i++)
+            {
+                WaterSortJsonLevel level = manager.Catalog.Levels[i];
+                if (level == null)
+                {
+                    continue;
+                }
+
+                string levelPack = string.IsNullOrWhiteSpace(level.sourcePackId) ? "-" : level.sourcePackId;
+                if (string.Equals(levelPack, packId, StringComparison.Ordinal)
+                    && level.ResolvedId(i) == levelId)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        private void RefreshSavedLevelsList()
+        {
+            if (savedListContent == null)
+            {
+                return;
+            }
+
+            for (int i = savedListContent.childCount - 1; i >= 0; i--)
+            {
+                Transform child = savedListContent.GetChild(i);
+                if (savedEmptyText != null && child == savedEmptyText.transform)
+                {
+                    continue;
+                }
+
+                Destroy(child.gameObject);
+            }
+
+            if (savedEmptyText != null)
+            {
+                savedEmptyText.gameObject.SetActive(savedLevels.Count == 0);
+            }
+
+            if (inspectionFont == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < savedLevels.Count; i++)
+            {
+                CreateSavedLevelRow(i, savedLevels[i]);
+            }
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate(savedListContent);
+        }
+
+        private void CreateSavedLevelRow(int index, SavedLevelEntry entry)
+        {
+            GameObject rowObject = new($"SavedLevel_{index}");
+            rowObject.transform.SetParent(savedListContent, false);
+            Image rowImage = rowObject.AddComponent<Image>();
+            rowImage.color = new Color(0.12f, 0.15f, 0.2f, 0.95f);
+            LayoutElement rowLayout = rowObject.AddComponent<LayoutElement>();
+            rowLayout.preferredHeight = inspectionLandscape ? 40f : 48f;
+            rowLayout.minHeight = 36f;
+
+            HorizontalLayoutGroup rowGroup = rowObject.AddComponent<HorizontalLayoutGroup>();
+            rowGroup.spacing = 4f;
+            rowGroup.padding = new RectOffset(4, 4, 2, 2);
+            rowGroup.childAlignment = TextAnchor.MiddleCenter;
+            rowGroup.childControlWidth = true;
+            rowGroup.childControlHeight = true;
+            rowGroup.childForceExpandWidth = false;
+            rowGroup.childForceExpandHeight = true;
+
+            Button upButton = CreateButton($"Up_{index}", rowObject.transform, inspectionFont, "↑", () => MoveSavedLevel(index, -1), true);
+            ConfigureCompactToolbarButton(upButton, 32f);
+            upButton.interactable = index > 0;
+
+            Button downButton = CreateButton($"Down_{index}", rowObject.transform, inspectionFont, "↓", () => MoveSavedLevel(index, 1), true);
+            ConfigureCompactToolbarButton(downButton, 32f);
+            downButton.interactable = index < savedLevels.Count - 1;
+
+            string label = entry.DisplayName;
+            if (label.Length > 18)
+            {
+                label = label.Substring(0, 16) + "…";
+            }
+
+            Button selectButton = CreateButton(
+                $"Select_{index}",
+                rowObject.transform,
+                inspectionFont,
+                $"{index + 1}. {label}",
+                () => JumpToSavedLevel(index),
+                true);
+            LayoutElement selectLayout = selectButton.GetComponent<LayoutElement>();
+            selectLayout.preferredWidth = 140f;
+            selectLayout.flexibleWidth = 1f;
+            selectLayout.preferredHeight = inspectionLandscape ? 34f : 40f;
+            Text selectLabel = selectButton.GetComponentInChildren<Text>();
+            if (selectLabel != null)
+            {
+                selectLabel.fontSize = 14;
+                selectLabel.alignment = TextAnchor.MiddleLeft;
+            }
+
+            Button deleteButton = CreateButton($"Delete_{index}", rowObject.transform, inspectionFont, "X", () => RemoveSavedLevel(index), true);
+            ConfigureCompactToolbarButton(deleteButton, 32f);
+        }
+
+        private static void ConfigureCompactToolbarButton(Button button, float width)
+        {
+            LayoutElement layout = button.GetComponent<LayoutElement>();
+            layout.preferredWidth = width;
+            layout.flexibleWidth = 0f;
+            layout.preferredHeight = 34f;
+            Text label = button.GetComponentInChildren<Text>();
+            if (label != null)
+            {
+                label.fontSize = 16;
+            }
+        }
+
         private void LateUpdate()
         {
-            FitBoardGrid(force: false);
+            if (usingPlaybandLayout)
+            {
+                FitPlaybandBottles(force: false);
+            }
+            else
+            {
+                FitBoardGrid(force: false);
+            }
         }
 
         private void FitBoardGrid(bool force)
         {
-            if (boardRect == null || boardGrid == null)
+            if (usingPlaybandLayout || boardRect == null || boardGrid == null)
             {
                 return;
             }
@@ -288,6 +692,143 @@ namespace TrainWaterSort.UI.WaterSort
             height = Mathf.Max(58f, height);
             boardGrid.cellSize = new Vector2(width, height);
             boardGrid.spacing = new Vector2(spacing, spacing);
+        }
+
+        private void FitPlaybandBottles(bool force)
+        {
+            if (!usingPlaybandLayout || boardRect == null || playbandBottleRects.Count == 0)
+            {
+                return;
+            }
+
+            Vector2 size = boardRect.rect.size;
+            if (!force && (size - lastBoardSize).sqrMagnitude < 0.25f)
+            {
+                return;
+            }
+
+            lastBoardSize = size;
+            if (size.x <= 1f || size.y <= 1f)
+            {
+                return;
+            }
+
+            WaterSortJsonLevel level = manager?.CurrentLevel;
+            ComputePlaybandBottleSize(size, level, playbandBottleRects.Count, out float width, out float height);
+            for (int i = 0; i < playbandBottleRects.Count; i++)
+            {
+                RectTransform rect = playbandBottleRects[i];
+                if (rect == null)
+                {
+                    continue;
+                }
+
+                bool mega = manager != null
+                    && i < manager.Bottles.Count
+                    && manager.Bottles[i].IsMegaBottle;
+                float scale = mega ? PlaybandMegaScale : 1f;
+                rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width * scale);
+                rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height * scale);
+            }
+        }
+
+        private const float PlaybandMegaScale = 1.35f;
+        // Air gap between bottle outlines; neighbor center pitch comes from boardLayout.
+        private const float PlaybandBottleGapPixels = 4f;
+        private const float PlaybandBottleAspect = 118f / 190f;
+        private const float DefaultColPitch = 0.095f;
+        private const float DefaultRowPitch = 0.132f;
+
+        private void ComputePlaybandBottleSize(
+            Vector2 boardSize,
+            WaterSortJsonLevel level,
+            int bottleCount,
+            out float width,
+            out float height)
+        {
+            float colPitch = level?.boardLayout != null && level.boardLayout.ColPitch > 0.01f
+                ? level.boardLayout.ColPitch
+                : DefaultColPitch;
+            float rowPitch = level?.boardLayout != null && level.boardLayout.RowPitch > 0.01f
+                ? level.boardLayout.RowPitch
+                : DefaultRowPitch;
+
+            // Size from fixed lattice pitch so every adjacent pair keeps the same visual gap.
+            float maxWidthFromCols = colPitch * boardSize.x - PlaybandBottleGapPixels;
+            float maxHeightFromRows = rowPitch * boardSize.y - PlaybandBottleGapPixels;
+            float densityCap = Mathf.Min(maxWidthFromCols, maxHeightFromRows * PlaybandBottleAspect);
+            densityCap = Mathf.Clamp(densityCap, 28f, 120f);
+
+            if (level?.bottles == null || level.bottles.Count == 0)
+            {
+                width = densityCap;
+                height = width / PlaybandBottleAspect;
+                return;
+            }
+
+            int count = Mathf.Min(bottleCount, level.bottles.Count);
+            Vector2[] centers = new Vector2[count];
+            float[] scales = new float[count];
+            for (int i = 0; i < count; i++)
+            {
+                centers[i] = ResolvePlaybandNormalized(level, i);
+                scales[i] = level.bottles[i] != null && level.bottles[i].isMegaBottle
+                    ? PlaybandMegaScale
+                    : 1f;
+            }
+
+            float lo = 24f;
+            float hi = densityCap;
+            for (int iter = 0; iter < 22; iter++)
+            {
+                float mid = (lo + hi) * 0.5f;
+                float midHeight = mid / PlaybandBottleAspect;
+                if (PlaybandSizesFit(boardSize, centers, scales, mid, midHeight, PlaybandBottleGapPixels))
+                {
+                    lo = mid;
+                }
+                else
+                {
+                    hi = mid;
+                }
+            }
+
+            // Prefer filling toward the lattice pitch (constant neighbor spacing).
+            float pitchTarget = Mathf.Min(
+                colPitch * boardSize.x - PlaybandBottleGapPixels,
+                (rowPitch * boardSize.y - PlaybandBottleGapPixels) * PlaybandBottleAspect);
+            width = Mathf.Clamp(Mathf.Min(lo, pitchTarget), 24f, densityCap);
+            height = width / PlaybandBottleAspect;
+        }
+
+        private static bool PlaybandSizesFit(
+            Vector2 boardSize,
+            Vector2[] centers,
+            float[] scales,
+            float width,
+            float height,
+            float gapPixels)
+        {
+            for (int i = 0; i < centers.Length; i++)
+            {
+                float wi = width * scales[i];
+                float hi = height * scales[i];
+                for (int j = i + 1; j < centers.Length; j++)
+                {
+                    float wj = width * scales[j];
+                    float hj = height * scales[j];
+                    float dx = Mathf.Abs(centers[i].x - centers[j].x) * boardSize.x;
+                    float dy = Mathf.Abs(centers[i].y - centers[j].y) * boardSize.y;
+                    bool collideX = dx < (wi + wj) * 0.5f + gapPixels;
+                    bool collideY = dy < (hi + hj) * 0.5f + gapPixels;
+                    if (collideX && collideY)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         private Canvas CreateCanvas()
@@ -389,7 +930,90 @@ namespace TrainWaterSort.UI.WaterSort
             bottleLockedTexts.Clear();
             bottleAdTexts.Clear();
             bottleMegaTexts.Clear();
+            playbandBottleRects.Clear();
 
+            WaterSortJsonLevel level = manager.CurrentLevel;
+            usingPlaybandLayout = level != null && level.UsesPlaybandLayout;
+            if (boardGrid != null)
+            {
+                boardGrid.enabled = !usingPlaybandLayout;
+            }
+
+            if (usingPlaybandLayout)
+            {
+                RebuildPlaybandBottles(level);
+            }
+            else
+            {
+                RebuildGridBottles();
+            }
+
+            lastRebuiltLevelIndex = manager.CurrentLevelIndex;
+            if (usingPlaybandLayout)
+            {
+                FitPlaybandBottles(force: true);
+            }
+            else
+            {
+                FitBoardGrid(force: true);
+                if (boardRoot is RectTransform boardLayoutRect)
+                {
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(boardLayoutRect);
+                }
+            }
+        }
+
+        private void RebuildPlaybandBottles(WaterSortJsonLevel level)
+        {
+            Vector2 boardSize = boardRect != null ? boardRect.rect.size : new Vector2(720f, 960f);
+            if (boardSize.x <= 1f || boardSize.y <= 1f)
+            {
+                boardSize = new Vector2(720f, 960f);
+            }
+
+            ComputePlaybandBottleSize(boardSize, level, manager.Bottles.Count, out float width, out float height);
+
+            for (int i = 0; i < manager.Bottles.Count; i++)
+            {
+                int bottleIndex = i;
+                WaterSortBottleState bottle = manager.Bottles[i];
+                Vector2 normalized = ResolvePlaybandNormalized(level, bottleIndex);
+
+                GameObject holderObject = new($"PlaybandSlot{bottleIndex + 1}");
+                RectTransform holder = holderObject.AddComponent<RectTransform>();
+                holder.SetParent(boardRoot, false);
+                holder.anchorMin = normalized;
+                holder.anchorMax = normalized;
+                holder.pivot = new Vector2(0.5f, 0.5f);
+                holder.anchoredPosition = Vector2.zero;
+                float scale = bottle.IsMegaBottle ? PlaybandMegaScale : 1f;
+                holder.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width * scale);
+                holder.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height * scale);
+                playbandBottleRects.Add(holder);
+
+                Button button = CreateBottleButton(holder, bottleIndex, bottle.Capacity, bottle.IsMegaBottle, () => manager.SelectBottle(bottleIndex));
+                bottleButtons.Add(button);
+            }
+        }
+
+        private static Vector2 ResolvePlaybandNormalized(WaterSortJsonLevel level, int bottleIndex)
+        {
+            if (level?.bottles != null && bottleIndex >= 0 && bottleIndex < level.bottles.Count)
+            {
+                WaterSortJsonBottle data = level.bottles[bottleIndex];
+                if (data?.layoutPosition != null)
+                {
+                    return data.LayoutNormalized;
+                }
+            }
+
+            // Fallback spread if metadata is incomplete.
+            float t = bottleIndex / Mathf.Max(1f, (level?.bottles?.Count ?? 1) - 1f);
+            return new Vector2(Mathf.Lerp(0.12f, 0.88f, t), 0.5f);
+        }
+
+        private void RebuildGridBottles()
+        {
             Transform[] cells = new Transform[GridColumns * GridRows];
             for (int i = 0; i < cells.Length; i++)
             {
@@ -410,13 +1034,6 @@ namespace TrainWaterSort.UI.WaterSort
                 int cellIndex = ResolveGridCellIndex(bottleIndex, occupiedCells);
                 Button button = CreateBottleButton(cells[cellIndex], bottleIndex, bottle.Capacity, bottle.IsMegaBottle, () => manager.SelectBottle(bottleIndex));
                 bottleButtons.Add(button);
-            }
-
-            lastRebuiltLevelIndex = manager.CurrentLevelIndex;
-            FitBoardGrid(force: true);
-            if (boardRoot is RectTransform boardLayoutRect)
-            {
-                LayoutRebuilder.ForceRebuildLayoutImmediate(boardLayoutRect);
             }
         }
 
@@ -457,23 +1074,30 @@ namespace TrainWaterSort.UI.WaterSort
             Image outline = bottleObject.AddComponent<Image>();
             outline.color = new Color(1f, 1f, 1f, 0.65f);
 
+            // Clip liquid slots so colors never bleed past the bottle outline.
+            bottleObject.AddComponent<RectMask2D>();
+
             Button button = bottleObject.AddComponent<Button>();
             button.targetGraphic = outline;
             button.onClick.AddListener(onClick);
 
             RectTransform rect = bottleObject.GetComponent<RectTransform>();
             Stretch(rect);
-            rect.offsetMin = new Vector2(4f, 4f);
-            rect.offsetMax = new Vector2(-4f, -4f);
+            rect.offsetMin = new Vector2(3f, 3f);
+            rect.offsetMax = new Vector2(-3f, -3f);
 
             // Stack lives in a child so lock/ad/mega overlays are not shifted by VerticalLayoutGroup.
             GameObject stackObject = new("Stack", typeof(RectTransform));
             stackObject.transform.SetParent(bottleObject.transform, false);
             RectTransform stackRect = stackObject.GetComponent<RectTransform>();
             Stretch(stackRect);
+            // Inset keeps liquid inside the visible bottle rim.
+            stackRect.offsetMin = new Vector2(6f, 8f);
+            stackRect.offsetMax = new Vector2(-6f, -8f);
+
             VerticalLayoutGroup stack = stackObject.AddComponent<VerticalLayoutGroup>();
-            stack.padding = new RectOffset(10, 10, 12, 12);
-            stack.spacing = 4f;
+            stack.padding = new RectOffset(2, 2, 2, 2);
+            stack.spacing = 2f;
             stack.childControlWidth = true;
             stack.childControlHeight = true;
             stack.childForceExpandWidth = true;
@@ -489,7 +1113,11 @@ namespace TrainWaterSort.UI.WaterSort
                 Image slot = slotObject.AddComponent<Image>();
                 slot.color = new Color(0.85f, 0.88f, 0.93f, 0.45f);
                 slot.raycastTarget = false;
-                slotObject.AddComponent<LayoutElement>().minHeight = isMegaBottle ? 8f : 22f;
+                LayoutElement slotLayout = slotObject.AddComponent<LayoutElement>();
+                // Flexible heights avoid forcing minHeight past the bottle bounds (overflow cause).
+                slotLayout.minHeight = 0f;
+                slotLayout.preferredHeight = isMegaBottle ? 4f : 0f;
+                slotLayout.flexibleHeight = 1f;
 
                 Text questionText = CreateText(
                     "LockedLabel",

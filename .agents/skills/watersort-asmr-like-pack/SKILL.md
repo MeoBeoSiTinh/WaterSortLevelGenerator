@@ -139,5 +139,8 @@ Table: pack level id, screenshot cue, modes, core bottles, colors, empty normals
 
 ## Related
 
-- Full config-driven packs (no screenshots): `watersort-generate-levels`
+- Full config-driven packs: `watersort-generate-levels`
 - Portable Lab: `agent-rules/watersort-level-lab.md`
+- Visual placement SoT: `agent-rules/watersort-asmr-playband-layout.md` (`boardLayout` + `layoutPosition`; families include stagger/zigzag/doubleV)
+- Portable prompt: `Tools/asmr-playband-layout-PORTING-PROMPT.md`
+- Stamp: `node Tools/apply-asmr-playband-layout.js <levels.json> --inplace` (strips legacy grid fields; pack-biases stagger/zigzag)

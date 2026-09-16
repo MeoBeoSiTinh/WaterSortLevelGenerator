@@ -8,6 +8,7 @@ namespace TrainWaterSort.Core.WaterSort
     public static class WaterSortBootstrap
     {
         private const string LevelResourceFolder = "WaterSort";
+        private const string ExportLevelResourceFolder = "WaterSortExport";
         private const string SolutionResourceFolder = "WaterSortSolutions";
         private const string ColorPaletteResourceName = "WaterSortColorPalette";
 
@@ -24,6 +25,8 @@ namespace TrainWaterSort.Core.WaterSort
                 return;
             }
             WaterSortJsonCatalog catalog = WaterSortJsonCatalog.LoadFromResources(LevelResourceFolder, SolutionResourceFolder, palette);
+            // Saved/exported packs live beside generated levels (no required solutions).
+            catalog.LoadLevelPacksFromResources(ExportLevelResourceFolder);
             InitializeGame(catalog);
         }
 

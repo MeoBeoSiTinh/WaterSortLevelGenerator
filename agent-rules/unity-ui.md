@@ -21,7 +21,7 @@ Use these rules for Unity UI creation, UI edits, prefab edits, Figma/image-to-UI
 ## Water Sort WebGL Lab Layout
 
 - Ordinary mobile/portrait Water Sort UI keeps a single gameplay column.
-- WebGL Level Lab builds may add left/right inspection panels outside the gameplay board. Keep the left panel concise and human-readable (summary + a few playability ratios), not a full dump of generator fields. Gate panels with `UNITY_WEBGL`.
+- WebGL Level Lab builds may add left/right inspection panels outside the gameplay board. Left stacks level summary + solution hints; right hosts the saved-level list (Save / Import / reorder / delete / jump). Keep the left summary concise and human-readable, not a full dump of generator fields. Gate panels with `UNITY_WEBGL`.
 - On landscape WebGL, prefer reference resolution around 1920×1080, reserve non-overlapping header/board/footer regions, mask the board, and size bottle cells from available board rect so controls do not overlap bottles.
 - Inspection text should remain readable on dark backgrounds; do not duplicate the level title in the status message.
 

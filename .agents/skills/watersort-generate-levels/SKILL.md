@@ -40,8 +40,9 @@ Optional: `Assets/Project/Editor/WaterSort/LevelGeneration/README.md`, `agent-ru
 - Difficulty comes from explicit profiles (Easy → Special), not level number.
 - Profile composition/difficulty fields in config must be honored by the production generator (helpers, partial fills, safe-move / dead-end / trap targets). Prefer partial fills over many empty normal helpers.
 - Keep the approved 2026-09-10 difficulty baseline. Do **not** loosen empties/helpers/partials/safe-move/dead-end/trap/NearWin thresholds unless the user explicitly asks. Fail/retry candidates instead of softening gates.
-- `layoutGrid` must be **8x5**.
-- Total bottles ≤ **40**; each bottle has a unique `gridPosition`.
+- Visual layout uses playband (`boardLayout` + unique `layoutPosition`). Do not author `layoutGrid` / `gridPosition`. After generate, stamp with `node Tools/apply-asmr-playband-layout.js <levels.json> --inplace` unless the generator already emits playband.
+- `boardLayout` must carry `system`, `family`, `version`, `maxColumns`, `maxRows`, `maxSpanRows`, `columnCount`, `colPitch`, `rowPitch`. Families include `stagger` / `zigzag` / `doubleV` (pack stamp prefers stagger+zigzag for non-mega). See `agent-rules/watersort-asmr-playband-layout.md`.
+- Total bottles ≤ **35** (≤7 cols × ≤5 rows; silhouette span ≤5 row-pitch units).
 - Bottle `capacity` comes from config/`bottleCapacityWeights`. Do **not** clamp down to 2 or 3 when config requests 4.
 - Every generated level must include **2 or 3** empty ads bottles:
   - `isAdBottle: true`
@@ -96,9 +97,9 @@ Confirm:
 
 - levels count matches config `levelsPerPack`
 - matching `levelSolutions` count
-- `layoutGrid` 8x5
-- max bottles ≤ 40
-- unique grid positions
+- playband `boardLayout` + unique `layoutPosition` (no `layoutGrid` / `gridPosition`)
+- `boardLayout.family` valid; `colPitch`/`rowPitch`/`maxRows`/`maxSpanRows` present when stamped
+- max bottles ≤ 35; ≤7 columns; ≤5 rows/col
 - capacity follows config (no illegal clamp)
 - each level has 2–3 empty ads bottles
 - no ads bottle indexes appear in stored solution moves

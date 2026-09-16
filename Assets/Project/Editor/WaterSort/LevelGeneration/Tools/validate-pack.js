@@ -135,15 +135,43 @@ function validateColorLockRules(level, index) {
 }
 
 function validateLevel(level, solutionEntry, index) {
-  if (!level.layoutGrid || level.layoutGrid.columns !== 8 || level.layoutGrid.rows !== 5) add(index, "layoutGrid must be 8x5");
+  const playband = level.boardLayout?.system === "asmrPlayband";
+  if (playband) {
+    if (![
+      "columns",
+      "honeycomb",
+      "diamond",
+      "wings",
+      "valley",
+      "pillar",
+      "stagger",
+      "zigzag",
+      "doubleV",
+      "frame",
+      "megaOrbit",
+      "packed",
+      "alt",
+      "chevron",
+      "hourglass",
+    ].includes(level.boardLayout.family)) {
+      add(index, `boardLayout.family invalid: ${level.boardLayout.family}`);
+    }
+    if (level.layoutGrid) add(index, "playband level must not include layoutGrid");
+  } else if (!level.boardLayout || level.boardLayout.system !== "asmrPlayband") {
+    // Legacy packs only: keep old grid checks until migrated.
+    if (!level.layoutGrid || level.layoutGrid.columns !== 8 || level.layoutGrid.rows !== 5) {
+      add(index, "legacy layoutGrid must be 8x5 (or migrate to boardLayout asmrPlayband)");
+    }
+  }
   if (!Array.isArray(level.bottles)) {
     add(index, "bottles must be an array");
     return;
   }
-  if (level.bottles.length > 40) add(index, "more than 40 bottles");
+  if (level.bottles.length > 35) add(index, "more than 35 bottles");
   if (level.modeOptions?.hiddenStack && level.modeOptions?.hybridHiddenStack) add(index, "hidden and hybrid hidden both enabled");
 
   const grid = new Set();
+  const playbandKeys = new Set();
   let adCount = 0;
   let megaCount = 0;
   for (let bottleIndex = 0; bottleIndex < level.bottles.length; bottleIndex++) {
@@ -162,13 +190,26 @@ function validateLevel(level, solutionEntry, index) {
       adCount++;
       if (colors.length !== 0) add(index, `ad bottle ${bottleIndex + 1} is not empty`);
     }
-    const pos = bottle.gridPosition;
-    if (!pos || pos.x < 0 || pos.x >= 8 || pos.y < 0 || pos.y >= 5) {
-      add(index, `bottle ${bottleIndex + 1} gridPosition out of range`);
+    if (playband) {
+      const pos = bottle.layoutPosition;
+      if (!pos || typeof pos.nx !== "number" || typeof pos.ny !== "number"
+        || pos.nx < 0 || pos.nx > 1 || pos.ny < 0 || pos.ny > 1) {
+        add(index, `bottle ${bottleIndex + 1} layoutPosition out of range`);
+      } else {
+        const key = `${pos.nx.toFixed(3)},${pos.ny.toFixed(3)}`;
+        if (playbandKeys.has(key)) add(index, `duplicate layoutPosition ${key}`);
+        playbandKeys.add(key);
+      }
+      if (bottle.gridPosition) add(index, `bottle ${bottleIndex + 1} must not include gridPosition on playband levels`);
     } else {
-      const key = `${pos.x},${pos.y}`;
-      if (grid.has(key)) add(index, `duplicate gridPosition ${key}`);
-      grid.add(key);
+      const pos = bottle.gridPosition;
+      if (!pos || pos.x < 0 || pos.x >= 8 || pos.y < 0 || pos.y >= 5) {
+        add(index, `bottle ${bottleIndex + 1} gridPosition out of range`);
+      } else {
+        const key = `${pos.x},${pos.y}`;
+        if (grid.has(key)) add(index, `duplicate gridPosition ${key}`);
+        grid.add(key);
+      }
     }
     if (Array.isArray(bottle.hiddenLayerIndexes)) {
       for (const hiddenIndex of bottle.hiddenLayerIndexes) {

@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "profile": "Normal",
+    "bottles": 24,
+    "mega": true
+  },
+  {
+    "id": 2,
+    "profile": "Hard",
+    "bottles": 30,
+    "mega": false
+  },
+  {
+    "id": 3,
+    "profile": "VeryHard",
+    "bottles": 27,
+    "mega": false
+  },
+  {
+    "id": 4,
+    "profile": "Normal",
+    "bottles": 24,
+    "mega": true
+  },
+  {
+    "id": 5,
+    "profile": "Hard",
+    "bottles": 26,
+    "mega": false
+  },
+  {
+    "id": 6,
+    "profile": "VeryHard",
+    "bottles": 32,
+    "mega": false
+  },
+  {
+    "id": 7,
+    "profile": "Normal",
+    "bottles": 23,
+    "mega": true
+  },
+  {
+    "id": 8,
+    "profile": "Hard",
+    "bottles": 32,
+    "mega": false
+  },
+  {
+    "id": 9,
+    "profile": "VeryHard",
+    "bottles": 28,
+    "mega": false
+  },
+  {
+    "id": 10,
+    "profile": "Normal",
+    "bottles": 22,
+    "mega": true
+  },
+  {
+    "id": 11,
+    "profile": "Hard",
+    "bottles": 32,
+    "mega": false
+  },
+  {
+    "id": 12,
+    "profile": "VeryHard",
+    "bottles": 32,
+    "mega": false
+  },
+  {
+    "id": 13,
+    "profile": "Normal",
+    "bottles": 24,
+    "mega": true
+  },
+  {
+    "id": 14,
+    "profile": "Hard",
+    "bottles": 27,
+    "mega": false
+  },
+  {
+    "id": 15,
+    "profile": "VeryHard",
+    "bottles": 26,
+    "mega": false
+  },
+  {
+    "id": 16,
+    "profile": "Normal",
+    "bottles": 23,
+    "mega": true
+  },
+  {
+    "id": 17,
+    "profile": "Hard",
+    "bottles": 25,
+    "mega": false
+  },
+  {
+    "id": 18,
+    "profile": "VeryHard",
+    "bottles": 29,
+    "mega": false
+  },
+  {
+    "id": 19,
+    "profile": "Normal",
+    "bottles": 23,
+    "mega": true
+  },
+  {
+    "id": 20,
+    "profile": "Hard",
+    "bottles": 27,
+    "mega": false
+  }
+]

@@ -19,22 +19,45 @@ namespace TrainWaterSort.Gameplay.WaterSort
             {
                 ColorPalette = colorPalette
             };
+            catalog.LoadLevelPacksFromResources(levelResourcesFolder, solutionResourcesFolder, requireSolutions: false);
+            return catalog;
+        }
+
+        /// <summary>
+        /// Loads level JSON packs from a Resources folder. Solutions are optional
+        /// (exported saved packs typically have no matching solution files).
+        /// </summary>
+        public void LoadLevelPacksFromResources(string levelResourcesFolder, string solutionResourcesFolder = null, bool requireSolutions = false)
+        {
+            if (string.IsNullOrWhiteSpace(levelResourcesFolder))
+            {
+                return;
+            }
+
             TextAsset[] levelFiles = Resources.LoadAll<TextAsset>(levelResourcesFolder);
+            if (levelFiles == null || levelFiles.Length == 0)
+            {
+                return;
+            }
+
             Array.Sort(levelFiles, (left, right) => string.CompareOrdinal(left.name, right.name));
             Dictionary<string, TextAsset> solutionFiles = new(StringComparer.Ordinal);
-            foreach (TextAsset file in Resources.LoadAll<TextAsset>(solutionResourcesFolder))
+            if (!string.IsNullOrWhiteSpace(solutionResourcesFolder))
             {
-                string id = GetPackId(file.name, "watersort-solutions-");
-                if (!solutionFiles.TryAdd(id, file))
-                    throw new FormatException($"Duplicate solution pack {id}.");
+                foreach (TextAsset file in Resources.LoadAll<TextAsset>(solutionResourcesFolder))
+                {
+                    string id = GetPackId(file.name, "watersort-solutions-");
+                    if (!solutionFiles.TryAdd(id, file))
+                        throw new FormatException($"Duplicate solution pack {id}.");
+                }
             }
+
             foreach (TextAsset file in levelFiles)
             {
                 string id = GetPackId(file.name, "watersort-levels-");
                 solutionFiles.TryGetValue(id, out TextAsset solutions);
-                catalog.AddPack(id, file.text, solutions?.text);
+                AddPack(id, file.text, solutions?.text, requireSolutions);
             }
-            return catalog;
         }
 
         public static WaterSortJsonCatalog Create(WaterSortColorPalette colorPalette)
@@ -78,6 +101,9 @@ namespace TrainWaterSort.Gameplay.WaterSort
                 int id = level.id == 0 ? index + 1 : level.id;
                 if (id < 1 || !byId.TryAdd(id, level))
                     throw new FormatException($"Pack {packId}: duplicate or ambiguous level identity {id}.");
+                // IDs and display names are pack-scoped; stamp origin so multi-pack catalogs stay unique in UI/save.
+                level.id = id;
+                level.sourcePackId = packId;
             }
             HashSet<int> attached = new();
             if (solutions?.levelSolutions != null)
@@ -120,14 +146,30 @@ namespace TrainWaterSort.Gameplay.WaterSort
         public int id;
         public string displayName;
         public WaterSortJsonLayoutGrid layoutGrid = new();
+        public WaterSortJsonBoardLayout boardLayout = new();
         public WaterSortJsonModeOptions modeOptions = new();
         public List<WaterSortJsonBottle> bottles = new();
         public WaterSortJsonSolutionData solutionData = new();
 
+        /// <summary>Runtime pack origin (e.g. "009"). Not part of authored level JSON.</summary>
+        [NonSerialized] public string sourcePackId;
+
+        public int ResolvedId(int levelIndex) => id > 0 ? id : levelIndex + 1;
+
+        public string GetBaseDisplayName(int levelIndex)
+        {
+            return string.IsNullOrWhiteSpace(displayName) ? $"Level {ResolvedId(levelIndex)}" : displayName;
+        }
+
         public string GetDisplayName(int levelIndex)
         {
-            return string.IsNullOrWhiteSpace(displayName) ? $"Level {levelIndex + 1}" : displayName;
+            string baseName = GetBaseDisplayName(levelIndex);
+            return string.IsNullOrWhiteSpace(sourcePackId) ? baseName : $"[{sourcePackId}] {baseName}";
         }
+
+        public bool UsesPlaybandLayout =>
+            boardLayout != null
+            && string.Equals(boardLayout.system, WaterSortJsonBoardLayout.AsmrPlaybandSystem, StringComparison.Ordinal);
     }
 
     [Serializable]
@@ -140,6 +182,40 @@ namespace TrainWaterSort.Gameplay.WaterSort
         public int Columns => columns > 0 ? columns : 8;
         public int Rows => rows > 0 ? rows : 5;
         public string Shape => string.IsNullOrWhiteSpace(shape) ? "default" : shape;
+    }
+
+    /// <summary>
+    /// Playband visual layout metadata. Canonical placement system (not discrete grid).
+    /// </summary>
+    [Serializable]
+    public sealed class WaterSortJsonBoardLayout
+    {
+        public const string AsmrPlaybandSystem = "asmrPlayband";
+
+        public string system;
+        public string family;
+        public int version = 1;
+        public int maxColumns;
+        public int columnCount;
+        public float colPitch;
+        public float rowPitch;
+
+        public string System => string.IsNullOrWhiteSpace(system) ? string.Empty : system;
+        public string Family => string.IsNullOrWhiteSpace(family) ? string.Empty : family;
+        public int Version => version > 0 ? version : 1;
+        public int MaxColumns => maxColumns > 0 ? maxColumns : 0;
+        public int ColumnCount => columnCount > 0 ? columnCount : 0;
+        public float ColPitch => colPitch > 0f ? colPitch : 0f;
+        public float RowPitch => rowPitch > 0f ? rowPitch : 0f;
+    }
+
+    [Serializable]
+    public sealed class WaterSortJsonLayoutPosition
+    {
+        public float nx;
+        public float ny;
+
+        public Vector2 Normalized => new(Mathf.Clamp01(nx), Mathf.Clamp01(ny));
     }
 
     [Serializable]
@@ -186,6 +262,8 @@ namespace TrainWaterSort.Gameplay.WaterSort
         public List<int> colorsBottomToTop = new();
         public List<int> hiddenLayerIndexes = new();
         public WaterSortJsonGridPosition gridPosition = new();
+        public WaterSortJsonLayoutPosition layoutPosition = new();
+        public string layoutRole;
         public bool isLocked;
         public int unlockCompletedBottleCount = 1;
         public bool isColorLocked;
@@ -199,6 +277,8 @@ namespace TrainWaterSort.Gameplay.WaterSort
         public IReadOnlyList<int> ColorsBottomToTop => colorsBottomToTop;
         public IReadOnlyList<int> HiddenLayerIndexes => hiddenLayerIndexes;
         public Vector2Int GridPosition => gridPosition == null ? new Vector2Int(-1, -1) : new Vector2Int(gridPosition.x, gridPosition.y);
+        public Vector2 LayoutNormalized => layoutPosition == null ? new Vector2(0.5f, 0.5f) : layoutPosition.Normalized;
+        public string LayoutRole => string.IsNullOrWhiteSpace(layoutRole) ? string.Empty : layoutRole;
         public bool IsLocked => isLocked;
         public int UnlockCompletedBottleCount => Mathf.Max(1, unlockCompletedBottleCount);
         public bool IsColorLocked => isColorLocked;

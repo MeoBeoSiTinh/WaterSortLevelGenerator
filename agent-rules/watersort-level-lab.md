@@ -65,8 +65,8 @@ Never silently fall back to embedded Resources data after an external Lab load f
 
 On WebGL builds, `WaterSortGameView` shows side panels outside the gameplay board:
 
-- Left: short level summary — difficulty profile, stored step count, bottle/color/mode overview, and a few readable playability ratios (difficulty score /10, safe moves, dead-end risk, trap risk, opening choices, fragmentation, free slots). Special trap type only when present.
-- Right: stored solution move list for the current level.
+- Left (stacked): level summary (difficulty profile, bottle/color/mode overview, playability ratios) above the stored solution move list for the current level.
+- Right: saved-level curation — **Save** adds the current level (keyed by pack id + level id) to an in-memory list; **Import** downloads that list as a `watersort-levels-*.json` pack with unique renumbered ids and pack-prefixed display names; rows support reorder (↑/↓), delete, delete all, and click-to-jump to that level in the loaded catalog. UI titles use `[packId] displayName` so duplicate names across packs stay distinct.
 
 Do not enable these panels on non-WebGL player builds. Difficulty metrics come from stored solution JSON; they are selector/tuning signals, not a second solvability proof. Solvability remains exact solution replay.
 

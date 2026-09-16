@@ -5,6 +5,7 @@ Use this rule whenever creating, editing, validating, or regenerating Water Sort
 ## Source of Truth
 
 - Runtime level JSON lives in `Assets/Project/Data/WaterSort/Resources/WaterSort/`.
+- Exported/saved level packs live in `Assets/Project/Data/WaterSort/Resources/WaterSortExport/` (sibling folder; no required solutions).
 - Runtime solution JSON lives in `Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/`.
 - Generation tuning comes from `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`.
 - Config schema is defined by `Assets/Project/ScriptableObject/Script/WaterSort/WaterSortGenerationConfig.cs`.
@@ -24,11 +25,11 @@ The tool is standalone Editor code intended to be included in the generation pac
 The editor tool should support:
 
 - changing bottle state between Normal, Locked, Color-locked, Ads, and Mega,
-- showing each bottle on the configured grid,
-- moving bottles by grid cell while preserving unique positions,
+- showing each bottle on the playband board via `layoutPosition`,
+- moving bottles in normalized play-band space while preserving uniqueness,
 - adding, duplicating, and deleting bottles with their state,
 - editing bottle capacity, count-lock / color-lock thresholds, mega target color, layer colors, and layer order,
-- validating duplicate grid cells, out-of-grid positions, capacity overflow, invalid color indexes, ad bottle rules, and dual-lock conflicts.
+- validating duplicate `layoutPosition`, out-of-band positions, capacity overflow, invalid color indexes, ad bottle rules, and dual-lock conflicts.
 
 Gameplay mode overview (pour rules, win conditions, create/solve): `agent-rules/watersort-gameplay-modes.md`.
 
@@ -107,10 +108,16 @@ Each generated level should include layout and mode data in the level itself:
 {
   "id": 1,
   "displayName": "Level 1",
-  "layoutGrid": {
-    "columns": 8,
-      "rows": 5,
-    "shape": "circle"
+  "boardLayout": {
+    "system": "asmrPlayband",
+    "family": "zigzag",
+    "version": 1,
+    "maxColumns": 7,
+    "maxRows": 5,
+    "maxSpanRows": 5,
+    "columnCount": 7,
+    "colPitch": 0.095,
+    "rowPitch": 0.132
   },
   "modeOptions": {
     "hiddenStack": false,
@@ -121,7 +128,8 @@ Each generated level should include layout and mode data in the level itself:
     {
       "capacity": 4,
       "colorsBottomToTop": [0, 1, 0, 2],
-      "gridPosition": { "x": 3, "y": 4 },
+      "layoutRole": "active",
+      "layoutPosition": { "nx": 0.42, "ny": 0.61 },
       "hiddenLayerIndexes": [1],
       "isLocked": false,
       "unlockCompletedBottleCount": 0,
@@ -139,7 +147,9 @@ Bottle rules:
 - Generated bottle capacity must come from the active profile's `bottleCapacityWeights`, clamped only to the supported 2-5 range.
 - Tutorial or low-step generation must not force capacity down to 2 or 3 when config requests capacity 4.
 - `colorsBottomToTop` must not exceed `capacity`.
-- `gridPosition` is required for authored/generated layout and must be unique inside the level.
+- Visual placement uses playband `layoutPosition` / `boardLayout` (see `agent-rules/watersort-asmr-playband-layout.md`). Do not author `layoutGrid` / `gridPosition` on new levels.
+- `boardLayout` must include `system`, `family`, `version`, `maxColumns`, `maxRows`, `maxSpanRows`, `columnCount`, `colPitch`, `rowPitch`.
+- Total bottles must not exceed top-level `maxBottleCount` (≤35).
 - `hiddenLayerIndexes` is used only by hybrid hidden-stack levels.
 - `isLocked` and `unlockCompletedBottleCount` are used only by locked-bottle levels.
 - `isColorLocked`, `unlockRequiredColor`, and `unlockCompletedColorBottleCount` are used only by color-locked-bottle levels.
@@ -156,7 +166,8 @@ Bottle rules:
 - Mega target-color layers should not all start on top of their source bottles. Generated mega levels should bury target groups under blocker colors and provide normal helper bottles so the player must rearrange blockers before filling the mega bottle.
 - A default source bottle may contain more than one target-color layer, but it should not be a mono target-color bottle.
 - Total bottles must not exceed top-level `maxBottleCount`.
-- In an 8x5 grid, generated bottle count must never exceed 40 physical grid cells even if config limits are raised later.
+- Generated bottle count must never exceed 35 even if config limits are raised later.
+- Playband visual layout: at most 7 columns and 5 rows per column.
 
 Mode rules:
 
@@ -188,40 +199,23 @@ Generate for classic Water Sort rules:
 - Solutions must be valid under the exact mode options stored in the level data.
 - Non-intro generated boards must not place any color totaling exactly one bottle capacity as a `(capacity-1)+1` split across two bottles (for capacity 4: trivial 3+1). Modular recipes must not use 1-color modules because that layout is always this pattern.
 
-## Grid and Shape Rules
+## Visual Layout Rules
 
-The board is a grid, currently 8x5.
+Canonical visual placement is the **ASMR playband** system:
 
-- Every bottle must have one unique grid cell.
-- The visual layout must use `gridPosition`; do not rely on array index for placement.
-- Shape selection must first filter shapes by `minBottleCount` and `maxBottleCount`.
-- Weights should only be applied among shapes that fit the current bottle count.
-- Shape cell order should prefer middle-aligned cells first, then expand outward.
-- Open shapes must not start from a corner when the level uses only part of the shape.
-- Horizontal line shapes (`-`, `horizontal`, `line`) must be centered vertically and horizontally for the current bottle count.
-- Dense shapes should minimize empty cells inside the occupied middle area instead of spreading bottles thinly across the full 8x5 grid.
-- Staggered/zigzag dense shapes should use adjacent rows or columns with alternating offsets, similar to a compact reference layout.
-- Alternating-row shapes should intentionally leave checkerboard-style gaps: one row uses even columns and the adjacent row uses odd columns.
-- Dense layout preference should override generic shape weighting for a meaningful share of denser profiles when dense candidates fit.
-- Alternating-gap preference should also be applied explicitly so checkerboard-style layouts appear in generated packs, not only as passive config options.
-- If a shape path has fewer cells than required, fill the remaining cells from nearby free grid cells while preserving uniqueness and readability.
-- Do not select shapes blindly at random when they cannot fit the bottle count.
-- YAML-quoted shape scalars such as `shape: '-'` must be normalized to the actual shape name `-` before generation.
+- `boardLayout.system: "asmrPlayband"`
+- per-bottle `layoutPosition: { nx, ny }` in play-band normalized space
+- `boardLayout` also stores `maxColumns`, `maxRows`, `maxSpanRows`, `columnCount`, `colPitch` (~0.095), `rowPitch` (~0.132)
+- families: `columns` | `honeycomb` | `diamond` | `wings` | `valley` | `pillar` | `stagger` | `zigzag` | `doubleV` | `frame`
+- Caps: ≤ 7 straight columns, ≤ 5 rows/column, silhouette span ≤ 5 row-pitch units, ≤ 35 bottles
+- Pack stamp prefers `stagger` / `zigzag` for most non-mega levels; mega → `frame`
+- L/R mirror symmetry; ads integrated in-silhouette
+- Full rules + JSON field tables: `agent-rules/watersort-asmr-playband-layout.md`
+- Portable implement prompt: `Tools/asmr-playband-layout-PORTING-PROMPT.md`
 
-Supported shape names:
+Do not use `layoutGrid` / `gridPosition` / discrete shape names (`circle`, `staggered`, …) for new visual authoring. Stamp playband onto packs with `Tools/apply-asmr-playband-layout.js`.
 
-- closed or compact: `circle`, `triangle`, `square`, `heart`, `diamond`, `spiral`, `plus`, `frame`
-- open or directional: `arc`, `double_arc`, `x`, `y`, `v`, `u`, `w`, `l`, `s`, `zigzag`, `wave`, `-`, `horizontal`, `line`
-- dense: `dense`, `compact`, `block`, `compact_zigzag`, `dense_zigzag`, `staggered`, `stagger`, `honeycomb`, `dense_columns`, `columns`
-- alternating gaps: `checkerboard`, `alternating`, `alternating_rows`, `parity`
-
-New shapes are allowed only if:
-
-- they produce deterministic 8x5 candidate cells,
-- they can report practical `minBottleCount` and `maxBottleCount`,
-- they preserve unique grid positions,
-- they remain readable for the expected bottle counts.
-
+Production generator modules may still compute internal candidate seats while searching; exported level JSON for playable packs should carry playband layout, not an 8×5 grid.
 
 ## Mega Bottle Scramble Rules
 
@@ -304,8 +298,7 @@ Generated levels should satisfy:
 - no bottle starts with the same color repeated to full capacity in non-tutorial generated levels,
 - enough free capacity exists somewhere in the level for legal play,
 - the level does not start solved,
-- bottle count does not exceed the configured maximum, currently 40,
-- bottle count fits inside the layout grid cell count,
+- bottle count does not exceed the configured maximum, currently 35,
 - palette color indexes are valid for the active palette,
 - generated `difficultyScore` should be inside the profile target range when possible.
 
@@ -345,11 +338,11 @@ Solutions must be replay-valid against:
 
 - Before accepting a generated level into a pack, compute a canonical `coreGameplayFingerprint` (`watersort-core-fingerprint.js`).
 - Fingerprint includes core bottle capacity/content, normal helpers, modeOptions, hidden layers, lock + unlock threshold, color-lock + required color/count, Mega + targetColor, and other gameplay-affecting bottle fields.
-- Fingerprint ignores Ad bottles, id/displayName, gridPosition, layout/cosmetic metadata, and generation metadata.
+- Fingerprint ignores Ad bottles, id/displayName, layout cosmetics (`layoutPosition`, `boardLayout`, legacy grid fields if present), and generation metadata.
 - Canonicalize by stripping Ads, remapping color IDs by structural occurrence, and normalizing bottle order when order is not gameplay-significant.
 - Duplicate fingerprint → reject candidate and retry with a deterministic attempt seed; if retries exhaust, fail generation clearly. Track `duplicateCandidatesRejected` / `duplicateRetryCount`.
 - Pack validation (`validate-pack.js`) must also reject packs that contain duplicate core fingerprints.
-- Difficulty / diversity scoring must not treat Ad count/position, color rename, grid layout, or bottle permutation as uniqueness.
+- Difficulty / diversity scoring must not treat Ad count/position, color rename, visual layout, or bottle permutation as uniqueness.
 
 ## Required Validation After Generation or Rule-Relevant Edits
 
@@ -358,11 +351,8 @@ Run the narrowest available verification for the files touched:
 - JSON parses cleanly.
 - generated level count equals `levelsPerPack`.
 - all capacities are between 2 and 5.
-- total bottle count is at or below top-level `maxBottleCount`.
-- total bottle count is at or below the physical grid cell count.
-- all grid positions are inside the configured grid.
-- no duplicate grid positions exist within a level.
-- shape names are supported by runtime/generator.
+- total bottle count is at or below top-level `maxBottleCount` (≤35).
+- playband levels: `boardLayout.system === "asmrPlayband"`, valid family, unique in-band `layoutPosition` values; no reliance on `layoutGrid` / `gridPosition`.
 - hidden-stack and hybrid hidden-stack are not both enabled in the same level.
 - hybrid hidden layer indexes are valid and do not exceed bottle contents.
 - locked-bottle counts and unlock thresholds are within config limits.

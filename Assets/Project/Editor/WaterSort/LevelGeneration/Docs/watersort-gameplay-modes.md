@@ -1,6 +1,6 @@
 # Water Sort — Gameplay Modes, Rules, Create, Solve
 
-Use this guide when explaining, implementing, authoring, generating, or validating Water Sort levels. Generation schema details live in `Docs/watersort-level-generation.md`. Portable Lab workflow lives in `(Level Lab: see Tools/LevelLab when present)`.
+Use this guide when explaining, implementing, authoring, generating, or validating Water Sort levels. Generation schema details live in `agent-rules/watersort-level-generation.md`. Portable Lab workflow lives in `agent-rules/watersort-level-lab.md`.
 
 ## 1. Core pour rules
 
@@ -37,7 +37,7 @@ Modes can combine when rules allow (e.g. hybrid + color-lock). Full hidden and h
 
 ### Classic (no special mode flags)
 
-Standard Water Sort sorting on the 8×5 grid.
+Standard Water Sort sorting on the playband board.
 
 ### Full hidden stack — `hiddenStack: true`
 
@@ -74,15 +74,15 @@ Special profile may build near-win boards with trap/false-progress pressure. Nea
 Project root:
 
 ```bash
-node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js <packNumber> [seed] [Easy|Normal|Hard|VeryHard|Special]
+node Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js <packNumber> [seed] [Easy|Normal|Hard|VeryHard|Special]
 ```
 
-Config: `Assets/LevelGenerator/Data/WaterSort/Generation/WaterSortGenerationConfig.asset` (YAML).
+Config: `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset` (YAML).
 
 Outputs:
 
-- `Assets/LevelGenerator/Data/WaterSort/Resources/WaterSort/watersort-levels-###.json`
-- `Assets/LevelGenerator/Data/WaterSort/Resources/WaterSortSolutions/watersort-solutions-###.json`
+- `Assets/Project/Data/WaterSort/Resources/WaterSort/watersort-levels-###.json`
+- `Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/watersort-solutions-###.json`
 
 In a portable Level Lab folder:
 
@@ -124,7 +124,7 @@ Allowed when requested. Must follow schema in `watersort-level-generation.md`, i
 ### After generation (routine)
 
 ```bash
-node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/validate-pack.js <levels.json> <solutions.json>
+node Assets/Project/Editor/WaterSort/LevelGeneration/Tools/validate-pack.js <levels.json> <solutions.json>
 ```
 
 Lab `generate.js` already runs this before publishing.
@@ -132,7 +132,7 @@ Lab `generate.js` already runs this before publishing.
 ### After manual designer/JSON edits (stale solution)
 
 ```bash
-node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/solve-watersort-solutions.js
+node Assets/Project/Editor/WaterSort/LevelGeneration/Tools/solve-watersort-solutions.js
 ```
 
 Then validate the pack. Do **not** use the general solver as routine post-generation validation (slow and unnecessary when the generator already emitted replay-valid paths).
@@ -140,16 +140,16 @@ Then validate the pack. Do **not** use the general solver as routine post-genera
 ### Focused tests
 
 ```bash
-node --check Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js
-node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/watersort-color-lock-tests.js
-node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/watersort-core-fingerprint-tests.js
-node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/mega-generator-v2-tests.js
-node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/generator-profile-tests.js
+node --check Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generate-watersort-exhaustive-100.js
+node Assets/Project/Editor/WaterSort/LevelGeneration/Tools/watersort-color-lock-tests.js
+node Assets/Project/Editor/WaterSort/LevelGeneration/Tools/watersort-core-fingerprint-tests.js
+node Assets/Project/Editor/WaterSort/LevelGeneration/Tools/mega-generator-v2-tests.js
+node Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generator-profile-tests.js
 ```
 
 ## 6. Quick mode checklist for authors
 
-- [ ] Grid 8×5, unique in-bounds `gridPosition`, ≤40 bottles
+- [ ] Playband layout (`boardLayout` + unique `layoutPosition`), ≤35 bottles, ≤5 rows/col
 - [ ] Normal capacity 2–5; Mega 12–20
 - [ ] 2–3 empty Ads; Ads absent from solution moves
 - [ ] Not both `hiddenStack` and `hybridHiddenStack`
@@ -158,3 +158,4 @@ node Assets/LevelGenerator/Editor/WaterSort/LevelGeneration/Tools/generator-prof
 - [ ] Mega: enough target layers, never source, only receives `targetColor`
 - [ ] Stored solution exact-replays under all mode transitions (unlock/reveal)
 - [ ] No trivial non-intro `(capacity-1)+1` color split
+- [ ] Straight columns ≤ 7; no curved silhouette

@@ -4,321 +4,771 @@
     {
       "id": 1,
       "displayName": "Level 1",
-      "layoutGrid": {
-        "columns": 8,
-        "rows": 5,
-        "shape": "-"
-      },
       "modeOptions": {
         "hiddenStack": false,
         "hybridHiddenStack": false,
         "lockedBottles": false,
-        "megaBottle": false
+        "colorLockedBottles": false,
+        "megaBottle": true
       },
       "bottles": [
         {
+          "capacity": 15,
+          "colorsBottomToTop": [
+            1
+          ],
+          "isMegaBottle": true,
+          "targetColor": 1,
+          "layoutRole": "mega",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.566
+          }
+        },
+        {
           "capacity": 4,
           "colorsBottomToTop": [
-            0,
-            0
+            1,
+            2,
+            5,
+            5
           ],
-          "gridPosition": {
-            "x": 2,
-            "y": 1
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.632
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [
             0,
+            1,
+            3,
             0
           ],
-          "gridPosition": {
-            "x": 3,
-            "y": 1
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.698
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [
-            10,
-            10
+            1,
+            0,
+            2,
+            3
           ],
-          "gridPosition": {
-            "x": 4,
-            "y": 1
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.566
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [
-            10,
-            10
+            4,
+            1,
+            4,
+            2
           ],
-          "gridPosition": {
-            "x": 5,
-            "y": 1
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            0,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            1,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            1,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            1,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            2,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            1,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            3,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            3,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.5
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 0,
-            "y": 1
-          },
-          "isAdBottle": true
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.434
+          }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 1,
-            "y": 1
-          },
-          "isAdBottle": true
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.5
+          }
         }
-      ]
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "frame",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
     },
     {
       "id": 2,
       "displayName": "Level 2",
-      "layoutGrid": {
-        "columns": 8,
-        "rows": 5,
-        "shape": "-"
-      },
       "modeOptions": {
         "hiddenStack": false,
         "hybridHiddenStack": false,
-        "lockedBottles": false,
+        "lockedBottles": true,
+        "colorLockedBottles": false,
         "megaBottle": false
       },
       "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            12,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.434
+          }
+        },
         {
           "capacity": 4,
           "colorsBottomToTop": [
             12,
-            12
+            8
           ],
-          "gridPosition": {
-            "x": 2,
-            "y": 2
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.632
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [
-            12
+            4,
+            8,
+            8,
+            7
           ],
-          "gridPosition": {
-            "x": 3,
-            "y": 2
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [
+            5,
+            12,
+            5,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            9,
+            8,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            8,
+            9,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            4,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            2,
+            2,
+            2
+          ],
+          "isLocked": true,
+          "unlockCompletedBottleCount": 1,
+          "layoutRole": "locked",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            12,
+            5,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            8,
+            5,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            7,
+            12,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            12,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            4,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            7,
+            4
+          ],
+          "isLocked": true,
+          "unlockCompletedBottleCount": 1,
+          "layoutRole": "locked",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            5,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            9,
+            4,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            5,
+            8,
             12
           ],
-          "gridPosition": {
-            "x": 4,
-            "y": 2
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            12,
+            4,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            4,
+            7,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            7,
+            8,
+            4
+          ],
+          "isLocked": true,
+          "unlockCompletedBottleCount": 1,
+          "layoutRole": "locked",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            5,
+            8,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            4,
+            8,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            8,
+            9,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            9,
+            9,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            7,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.434
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 5,
-            "y": 2
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.302
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 0,
-            "y": 2
-          },
-          "isAdBottle": true
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 1,
-            "y": 2
-          },
-          "isAdBottle": true
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.302
+          }
         }
-      ]
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "zigzag",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
     },
     {
       "id": 3,
       "displayName": "Level 3",
-      "layoutGrid": {
-        "columns": 8,
-        "rows": 5,
-        "shape": "-"
-      },
       "modeOptions": {
-        "hiddenStack": false,
+        "hiddenStack": true,
         "hybridHiddenStack": false,
         "lockedBottles": false,
-        "megaBottle": false
-      },
-      "bottles": [
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [
-            5,
-            5
-          ],
-          "gridPosition": {
-            "x": 2,
-            "y": 1
-          }
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [
-            5,
-            5
-          ],
-          "gridPosition": {
-            "x": 3,
-            "y": 1
-          }
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 4,
-            "y": 1
-          }
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 2,
-            "y": 2
-          },
-          "isAdBottle": true
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 3,
-            "y": 2
-          },
-          "isAdBottle": true
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 4,
-            "y": 2
-          },
-          "isAdBottle": true
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "displayName": "Level 4",
-      "layoutGrid": {
-        "columns": 8,
-        "rows": 5,
-        "shape": "-"
-      },
-      "modeOptions": {
-        "hiddenStack": false,
-        "hybridHiddenStack": false,
-        "lockedBottles": false,
-        "megaBottle": false
-      },
-      "bottles": [
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [
-            6,
-            3
-          ],
-          "gridPosition": {
-            "x": 2,
-            "y": 3
-          }
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [
-            6,
-            6,
-            6
-          ],
-          "gridPosition": {
-            "x": 3,
-            "y": 3
-          }
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [
-            3,
-            3,
-            3
-          ],
-          "gridPosition": {
-            "x": 4,
-            "y": 3
-          }
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 5,
-            "y": 3
-          },
-          "isAdBottle": true
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 6,
-            "y": 3
-          },
-          "isAdBottle": true
-        },
-        {
-          "capacity": 4,
-          "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 7,
-            "y": 3
-          },
-          "isAdBottle": true
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "displayName": "Level 5",
-      "layoutGrid": {
-        "columns": 8,
-        "rows": 5,
-        "shape": "-"
-      },
-      "modeOptions": {
-        "hiddenStack": false,
-        "hybridHiddenStack": false,
-        "lockedBottles": false,
+        "colorLockedBottles": false,
         "megaBottle": false
       },
       "bottles": [
@@ -326,52 +776,6828 @@
           "capacity": 4,
           "colorsBottomToTop": [
             11,
-            11
+            7,
+            10,
+            12
           ],
-          "gridPosition": {
-            "x": 2,
-            "y": 1
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.731
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [
-            11
+            6,
+            10,
+            12,
+            6
           ],
-          "gridPosition": {
-            "x": 3,
-            "y": 1
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.599
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [
+            5,
             11
           ],
-          "gridPosition": {
-            "x": 4,
-            "y": 1
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.665
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.533
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            8,
+            5,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.401
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            5,
+            11,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.269
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            12,
+            6,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.731
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            6,
+            2,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.599
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            12,
+            6,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.467
           }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 0,
-            "y": 1
-          },
-          "isAdBottle": true
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.467
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            11,
+            7,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.335
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            10,
+            12,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.599
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            11,
+            7,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.335
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            5,
+            11,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.731
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            8,
+            5,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.599
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            7,
+            5,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.467
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            2,
+            8,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.335
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            10,
+            12,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.665
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            6,
+            10,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.533
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            5,
+            11,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.401
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            2,
+            8,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.269
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            12,
+            6,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.731
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            7,
+            10,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.599
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            6,
+            2,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.467
+          }
         },
         {
           "capacity": 4,
           "colorsBottomToTop": [],
-          "gridPosition": {
-            "x": 1,
-            "y": 1
-          },
-          "isAdBottle": true
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.335
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.335
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.467
+          }
         }
-      ]
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "stagger",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 4,
+      "displayName": "Level 4",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": true
+      },
+      "bottles": [
+        {
+          "capacity": 14,
+          "colorsBottomToTop": [
+            3,
+            3
+          ],
+          "isMegaBottle": true,
+          "targetColor": 3,
+          "layoutRole": "mega",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            1,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            5,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            6,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            2,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            4,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            2,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            3,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            3,
+            5,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            6,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            1,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            3,
+            5,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            0,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            2,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            6,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            6,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.5
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "frame",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 5,
+      "displayName": "Level 5",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            3,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            7,
+            8,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            7,
+            8,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            4,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            8,
+            4,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            4,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            7,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            3,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            4,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            8,
+            4,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            7,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            7,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            3,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            4,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            3,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            8,
+            4,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            7,
+            8,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            3,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            8,
+            4,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            7,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.434
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "zigzag",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 6,
+      "displayName": "Level 6",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            7,
+            0,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            0,
+            12,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            11,
+            6,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            12,
+            11,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            11,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            7,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            11,
+            6,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            7,
+            0,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            0,
+            12,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            12,
+            11,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            7,
+            0,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            7,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            12,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            7,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            7,
+            0,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            12,
+            11,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            12,
+            11,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            11,
+            6,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            6,
+            7,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            0,
+            7,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            12,
+            11,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            0,
+            12,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            7,
+            0,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            0,
+            12,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            11,
+            6,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.302
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "stagger",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 7,
+      "displayName": "Level 7",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": true
+      },
+      "bottles": [
+        {
+          "capacity": 13,
+          "colorsBottomToTop": [
+            0
+          ],
+          "isMegaBottle": true,
+          "targetColor": 0,
+          "layoutRole": "mega",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            5,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            2,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            1,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            4,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            0,
+            2,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            4,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            0,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            5,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            4,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            5,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            3,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.5
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "frame",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 8,
+      "displayName": "Level 8",
+      "modeOptions": {
+        "hiddenStack": true,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            12,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            12,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            11,
+            5,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            9,
+            11,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            12,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            0,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            2,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            3,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            3,
+            12,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            5,
+            1,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            3,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            5,
+            1,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            9,
+            9,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            9,
+            11,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            3,
+            12,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            12,
+            9,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            0,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            2,
+            0,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            2,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            11,
+            5,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            12,
+            5,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            11,
+            3,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            5,
+            1,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            3,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            12,
+            9,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            9,
+            11,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.302
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "stagger",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 9,
+      "displayName": "Level 9",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": true,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            11,
+            4,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            11,
+            4,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            3,
+            2,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isLocked": true,
+          "unlockCompletedBottleCount": 3,
+          "layoutRole": "locked",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            10,
+            11,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            11,
+            4,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            10,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            10,
+            11,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            4,
+            6,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            10,
+            11,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            2,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            10,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            10,
+            11,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            4,
+            3,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            6,
+            3,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            4,
+            6,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            6,
+            3,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            10,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            11,
+            4,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            3,
+            2,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            2,
+            10,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            4,
+            6,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            3,
+            2,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.5
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "zigzag",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 10,
+      "displayName": "Level 10",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": true
+      },
+      "bottles": [
+        {
+          "capacity": 13,
+          "colorsBottomToTop": [
+            2,
+            2
+          ],
+          "isMegaBottle": true,
+          "targetColor": 2,
+          "layoutRole": "mega",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            5,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            4,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            3,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            2,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            2,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            2,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            1,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            5,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            5,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.368
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "frame",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 11,
+      "displayName": "Level 11",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            12,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            12,
+            2,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            9,
+            12,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            6,
+            6,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            2,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            6,
+            8,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            6,
+            1,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            8,
+            9,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            8,
+            2,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            8,
+            3,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            1,
+            4,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            1,
+            6,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            3,
+            8,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            2,
+            6,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            12,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            8,
+            9,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            1,
+            3,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            1,
+            6,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            3,
+            12,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            8,
+            9,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            6,
+            3,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            4,
+            9,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            12,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            1,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            4,
+            8,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.302
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "stagger",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 12,
+      "displayName": "Level 12",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            11,
+            12,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            2,
+            2,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            11,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            4,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            4,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            5,
+            11,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            9,
+            5,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            12,
+            11,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            6,
+            5,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            12,
+            4,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            2,
+            2,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            9,
+            9,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            2,
+            9,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            11,
+            6,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            11,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            5,
+            4,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            11,
+            9,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            2,
+            6,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            12,
+            2,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            9,
+            4,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            6,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            2,
+            2,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            9,
+            11,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            4,
+            12,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            11,
+            12,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            6,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.302
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "zigzag",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 13,
+      "displayName": "Level 13",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": true
+      },
+      "bottles": [
+        {
+          "capacity": 14,
+          "colorsBottomToTop": [
+            4
+          ],
+          "isMegaBottle": true,
+          "targetColor": 4,
+          "layoutRole": "mega",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            5,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            3,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            1,
+            2,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            2,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            3,
+            1,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            2,
+            4,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            0,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            4,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            0,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            0,
+            4,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            3,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            2,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            3,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.368
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "frame",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 14,
+      "displayName": "Level 14",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": true,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            8,
+            12,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            6,
+            8,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            9,
+            12,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            4,
+            10,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            0,
+            9,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            10,
+            8,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            0,
+            6,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            10,
+            12,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            8,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            9,
+            9,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            6,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            8,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            10,
+            12,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            12,
+            6,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            8,
+            10,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            10,
+            9,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            9,
+            0,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            10,
+            0,
+            0
+          ],
+          "isLocked": true,
+          "unlockCompletedBottleCount": 2,
+          "layoutRole": "locked",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            12,
+            9,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            9,
+            12,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            4,
+            0,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.5
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "pillar",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 15,
+      "displayName": "Level 15",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            9,
+            5,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            5,
+            7,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            10,
+            9,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            12,
+            6,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            7,
+            5,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            11,
+            10,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            5,
+            7,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            11,
+            10,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            5,
+            7,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            6,
+            11,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            10,
+            9,
+            12,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            7,
+            12,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            6,
+            11,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            11,
+            10,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            12,
+            6,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            6,
+            11,
+            10
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            10,
+            9,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            12,
+            6,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            7,
+            12,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            10,
+            9,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.632
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "doubleV",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 16,
+      "displayName": "Level 16",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": true
+      },
+      "bottles": [
+        {
+          "capacity": 14,
+          "colorsBottomToTop": [
+            1
+          ],
+          "isMegaBottle": true,
+          "targetColor": 1,
+          "layoutRole": "mega",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            0,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            0,
+            5,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            4,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            4,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            3,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            3,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            2,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            4,
+            3,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            5,
+            2,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            3,
+            5,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            2,
+            1,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            1,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            4,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            2,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            4,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.368
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "frame",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 17,
+      "displayName": "Level 17",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            8,
+            0,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.7145
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            0,
+            11,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.5825
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            8,
+            9,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.6485
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            0,
+            11,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5165
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            0,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.3845
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            9,
+            8,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.2525
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.4505
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            9,
+            8,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.7475
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            8,
+            0,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.6155
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            11,
+            5,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.4835
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            5,
+            9,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.3515
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            8,
+            0,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.7145
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            5,
+            8,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5825
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            9,
+            8,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.7475
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            9,
+            8,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.6155
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            8,
+            0,
+            11,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.4835
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            9,
+            8,
+            0,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.3515
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            5,
+            9,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.6485
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5165
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            11,
+            5,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.3845
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            11,
+            5,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.2525
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            11,
+            5,
+            9
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.7145
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            5,
+            9,
+            8
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.5825
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.4505
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.4505
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "honeycomb",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 18,
+      "displayName": "Level 18",
+      "modeOptions": {
+        "hiddenStack": true,
+        "hybridHiddenStack": false,
+        "lockedBottles": true,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            7,
+            5,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            7,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            7,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            0,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            0,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            5,
+            2,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            7,
+            4,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            7,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            5,
+            2,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            7,
+            5,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            4,
+            0,
+            7
+          ],
+          "isLocked": true,
+          "unlockCompletedBottleCount": 1,
+          "layoutRole": "locked",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            4,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            5,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            7,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            7,
+            5,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            7,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            4,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            5,
+            2,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            0,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            5,
+            2,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            4,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            7,
+            5,
+            7,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            4,
+            0,
+            7
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.302
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "columns",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 19,
+      "displayName": "Level 19",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": false,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": true
+      },
+      "bottles": [
+        {
+          "capacity": 14,
+          "colorsBottomToTop": [
+            5
+          ],
+          "isMegaBottle": true,
+          "targetColor": 5,
+          "layoutRole": "mega",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            5,
+            6,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            0,
+            1,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            3,
+            1,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            3,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            2,
+            0,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            5,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            4,
+            5,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            5,
+            4,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            6,
+            5,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            6,
+            0,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            1,
+            2,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            5,
+            4,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            2,
+            3,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            3,
+            1,
+            3
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            4,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            6,
+            6
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            6,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            6,
+            1,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.368
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "frame",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
+    },
+    {
+      "id": 20,
+      "displayName": "Level 20",
+      "modeOptions": {
+        "hiddenStack": false,
+        "hybridHiddenStack": true,
+        "lockedBottles": false,
+        "colorLockedBottles": false,
+        "megaBottle": false
+      },
+      "bottles": [
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            11,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            11,
+            5
+          ],
+          "hiddenLayerIndexes": [
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            4,
+            4,
+            1
+          ],
+          "hiddenLayerIndexes": [
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            1,
+            0,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            11,
+            0,
+            4
+          ],
+          "hiddenLayerIndexes": [
+            0,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.31,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            1,
+            5,
+            1
+          ],
+          "hiddenLayerIndexes": [
+            0,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            4,
+            1,
+            5
+          ],
+          "hiddenLayerIndexes": [
+            0,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "layoutRole": "helper",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            11,
+            0,
+            12
+          ],
+          "hiddenLayerIndexes": [
+            0,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            4,
+            1
+          ],
+          "hiddenLayerIndexes": [
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.405,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            1,
+            5,
+            4
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            5,
+            4,
+            1
+          ],
+          "hiddenLayerIndexes": [
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.5,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            5,
+            4,
+            11
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.764
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            12,
+            1,
+            5
+          ],
+          "hiddenLayerIndexes": [
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            12,
+            1,
+            12,
+            12
+          ],
+          "hiddenLayerIndexes": [
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            4,
+            1,
+            12
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.595,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            1,
+            1,
+            5,
+            1
+          ],
+          "hiddenLayerIndexes": [
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.632
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            0,
+            11,
+            5
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.5
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            0,
+            4,
+            5,
+            11
+          ],
+          "hiddenLayerIndexes": [
+            0,
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.368
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            5,
+            12,
+            12,
+            4
+          ],
+          "hiddenLayerIndexes": [
+            1
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.69,
+            "ny": 0.236
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            11,
+            4,
+            1,
+            5
+          ],
+          "hiddenLayerIndexes": [
+            1,
+            2
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.698
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            0,
+            12
+          ],
+          "hiddenLayerIndexes": [
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.566
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [
+            4,
+            0,
+            1,
+            0
+          ],
+          "layoutRole": "active",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.434
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.785,
+            "ny": 0.302
+          }
+        },
+        {
+          "capacity": 4,
+          "colorsBottomToTop": [],
+          "isAdBottle": true,
+          "layoutRole": "ad",
+          "layoutPosition": {
+            "nx": 0.215,
+            "ny": 0.434
+          }
+        }
+      ],
+      "boardLayout": {
+        "system": "asmrPlayband",
+        "family": "diamond",
+        "version": 1,
+        "maxColumns": 7,
+        "maxRows": 5,
+        "maxSpanRows": 5,
+        "columnCount": 7,
+        "colPitch": 0.095,
+        "rowPitch": 0.132
+      }
     }
   ]
 }

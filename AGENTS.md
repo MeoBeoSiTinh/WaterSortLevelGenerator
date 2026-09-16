@@ -18,6 +18,7 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 - For game-wide state, win/lose, pause, restart, quit, level transition, scene transition, or manager structure work, read `agent-rules/game-flow.md` first.
 - For Unity animation, tweening, particle/VFX, shader, material, or MMF feedback work, read `agent-rules/unity-animation-fx.md` first.
 - For creating, editing, validating, or generating Water Sort level JSON, read `agent-rules/watersort-gameplay-modes.md` then `agent-rules/watersort-level-generation.md` first.
+- For visual bottle placement (multi-family playband, ≤ 7 columns), read `agent-rules/watersort-asmr-playband-layout.md`.
 - For portable Level Lab packaging, localhost playtesting, or colleague generation without Unity, read `agent-rules/watersort-level-lab.md` first.
 - Keep communication token-efficient: do not repeat the request, plans, unchanged context, code, or large tool outputs.
 - Never trade correctness for brevity. Run the narrowest relevant test or compilation check available and state clearly what could not be verified.
@@ -59,6 +60,7 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 - Treat `Assets/WaterSortPuzzleColorGame/` as a legacy reference implementation only. Reuse proven concepts selectively; keep newly authored files under `Assets/Project/`.
 - `agent-rules/watersort-gameplay-modes.md` is the overview of modes, pour/win rules, and how to create/solve levels.
 - `agent-rules/watersort-level-generation.md` is the local source of truth for Water Sort level generation, authoring, validation, and solvability rules.
+- `agent-rules/watersort-asmr-playband-layout.md` is the canonical visual layout system (`boardLayout` + `layoutPosition`).
 - `agent-rules/watersort-level-lab.md` is the source of truth for the portable Level Lab used by colleagues without Unity.
 
 ### Water Sort Production Paths
@@ -68,6 +70,7 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 - Treat modules used by the production entry point as production code. Keep the entry point thin; substantial generator, solver, rule, validation, or evaluation logic belongs in its appropriate module.
 - Do not use `_bmad-output` generator copies or `generate-watersort-100.js` as source of truth.
 - Runtime level JSON: `Assets/Project/Data/WaterSort/Resources/WaterSort/`.
+- Exported/saved level JSON: `Assets/Project/Data/WaterSort/Resources/WaterSortExport/` (sibling of generated packs; loaded at runtime without solutions).
 - Runtime solution JSON: `Assets/Project/Data/WaterSort/Resources/WaterSortSolutions/`.
 - Generation config: `Assets/Project/Data/WaterSort/Generation/WaterSortGenerationConfig.asset`.
 - Water Sort palette assets live under `Assets/Project/Data/WaterSort/Resources/`.
@@ -81,7 +84,7 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 - Lab generation must call the production generator/validator; do not invent a parallel engine.
 - Config is editable as YAML in the Lab folder; palette/gameplay changes still need a new WebGL player from the project owner.
 - Lab mode loads packs over localhost (`levelLab=1`); normal builds keep Resources loading.
-- WebGL Lab play UI may show side inspection panels (metrics + stored solution steps). Non-WebGL builds must not require those panels.
+- WebGL Lab play UI may show side inspection panels (left: summary + solution; right: saved-level list with Save/Import). Non-WebGL builds must not require those panels.
 
 ### Generator Invariants
 
@@ -90,7 +93,7 @@ Unity 6000.3.10f1 project using URP 2D. BMAD configuration lives in `_bmad/`; ge
 - Prefer partial fills (2/4, 3/4) over multiple fully empty normal helpers. Ads are separate optional assistance and never count as normal helpers or toward `coreBottleCount`.
 - Treat the 2026-09-10 config difficulty floors as the approved baseline. Do not silently soften helper/empty/partial/safe-move/dead-end/trap/NearWin gates to improve generation success rate; change them only when the user explicitly asks.
 - Generated normal bottle capacity must be 2-5. Mega bottle capacity must be 12-20.
-- Generated layouts use the configured 8x5 grid, at most 40 physical bottles, and unique in-bounds `gridPosition` values.
+- Generated layouts use playband visual placement (`boardLayout` + `layoutPosition`), at most 35 physical bottles (≤7 columns × ≤5 rows), and unique in-band positions. Do not author `layoutGrid` / `gridPosition` on new packs.
 - Full hidden-stack and hybrid hidden-stack are mutually exclusive.
 - Locked bottles cannot be source or target while locked.
 - Mega bottles cannot be sources and accept only `targetColor`.

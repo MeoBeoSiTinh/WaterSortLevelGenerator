@@ -37,7 +37,7 @@ Modes can combine when rules allow (e.g. hybrid + color-lock). Full hidden and h
 
 ### Classic (no special mode flags)
 
-Standard Water Sort sorting on the 8×5 grid.
+Standard Water Sort sorting on the playband board.
 
 ### Full hidden stack — `hiddenStack: true`
 
@@ -149,7 +149,7 @@ node Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generator-profile-tes
 
 ## 6. Quick mode checklist for authors
 
-- [ ] Grid 8×5, unique in-bounds `gridPosition`, ≤40 bottles
+- [ ] Playband layout (`boardLayout` + unique `layoutPosition`), ≤35 bottles, ≤5 rows/col
 - [ ] Normal capacity 2–5; Mega 12–20
 - [ ] 2–3 empty Ads; Ads absent from solution moves
 - [ ] Not both `hiddenStack` and `hybridHiddenStack`
@@ -158,3 +158,4 @@ node Assets/Project/Editor/WaterSort/LevelGeneration/Tools/generator-profile-tes
 - [ ] Mega: enough target layers, never source, only receives `targetColor`
 - [ ] Stored solution exact-replays under all mode transitions (unlock/reveal)
 - [ ] No trivial non-intro `(capacity-1)+1` color split
+- [ ] Straight columns ≤ 7; no curved silhouette

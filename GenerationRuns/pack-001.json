@@ -1,8 +1,10 @@
-{
+﻿{
   "pack": "001",
-  "seed": 10001,
-  "profile": "Easy",
-  "levelCount": 10,
-  "configHash": "7a4c2b7abe8ccf5d64a4ec38b4ae78ff9732c6f103e8b1693fb3413ff85a0347",
-  "pairHash": "9cbe927860836fbf72e2eb0ea20e1c307b0bd769d30db42fa47f8a55f81ca1ac"
+  "levelCount": 20,
+  "mix": { "Normal": 7, "Hard": 7, "VeryHard": 6 },
+  "order": "round-robin Normal/Hard/VeryHard",
+  "seeds": { "Normal": 26091601, "Hard": 26091602, "VeryHard": 26091603 },
+  "maxBottleCount": 35,
+  "observedMaxBottles": 32,
+  "note": "Normal batch includes Mega (frame layout). Hard/VeryHard generated with Mega disabled in temp configs to avoid Mega V2 hangs. Production config mega settings unchanged. levelsPerPack=20, maxBottleCount=35."
 }
